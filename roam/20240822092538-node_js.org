@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       baec4014-29b8-4beb-9f5f-0115fe5c4457
+:END:
+#+title: Node.js
+
+Node.js 不可以简单理解为后端 js ，而是应该理解成一个区别于浏览器的 js 解释器或者虚拟机。
+
+与 Node.js 搭配的包管理器有多种，比如 npm, yarn 等，这里是一个有关他们的[[https://blog.logrocket.com/javascript-package-managers-compared/][对比]] 。

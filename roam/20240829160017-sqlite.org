@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       95418126-5fe4-45f7-beb1-ab6cffd6eb43
+:END:
+#+title: SQLite
+
+SQLite 是一种轻量级的的关系型数据库管理系统，无需服务器进程，也不需要配置，SQLite 数据库以文件形式存储，可以直接访问。适用于嵌入式设备和小型应用程序。
+
+SQLite3 是 SQLite 的一个版本，是 SQLite 数据库的命令行工具。

@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       9fa2a766-8c58-4457-9613-c242246ad869
+:END:
+#+title: Python MetaClass
+
+Python 和 C 这种编译型语言不同，函数和类的定义，不是编译时定义的，而是运行时动态创建的。也就是说，我们看到的 ~class XXX~ 或者 ~def xxx~ 语句，并不是一个静态的声明，而是一个可以被运行的语句。
+
+更具体来说，Python 中的 class 就像一个字典一样，存储着属性（attr）键值对，比如说“数据名-数据”或者“函数名-函数体”（得益于函数式编程，变量和函数没有明显的分别）。我们定义一个 class 的过程，就类似于创建一个字典的过程。
+
+再更进一步，创建 class 这个字典的时候，具体发生了什么？我们可以这样理解，我们平时习惯的 ~class~ 语法，其实一个语法糖，实际发生的，是根据 Metaclass 创建 class 的过程，这就像根据 class 创建 instance 的过程一样。
+
+常规情况下，类的 metaclass 是 ~type~ ，我们可以用 ~type~ 来这样定义一个类：
+
+#+begin_src python
+def fn(self):
+    print('Hello, world')
+
+# 创建一个名为 Example ，继承 Object ，属性有 hello 和 data 的类
+Example = type('Example', (object, ), dict(hello=fn, data=3))
+e = Example()
+e.hello()
+print(e.data)
+#+end_src
+
+更进一步，这种显式声明的方式还是不够优雅，实际上在 class 被定义的时候，它的 metacalss 中的 ~__new__(cls, name, bases, attrs)~ 方法会被调用， ~__new__~ 函数的四个参数依次是：
+
+1. ~cls~: 当前准备创建的类的对象；
+2. ~name~: 类的名字；
+3. ~bases~: 类继承的父类集合；
+4. ~attrs~: 类的方法集合。
+
+#+begin_src python
+class DemoMeta(type):
+    def __new__(cls, name, bases, attrs):
+        print(f'Declare class {name}') # 打印类名
+        attrs['hello'] = lambda self: print('Hello, world')
+        return type.__new__(cls, name, bases, attrs)
+
+# 在这里会输出：
+# Declare class DemoClass
+class DemoClass(metaclass=DemoMeta):
+    pass
+
+demo = DemoClass()
+# demo 天然就有一个方法
+# Hello, world
+demo.hello()
+#+end_src
+
+总之利用 metaclass ，我们可以采用一种元编程的手段，来使得 ~class~ 在定义时就具有很多能力。

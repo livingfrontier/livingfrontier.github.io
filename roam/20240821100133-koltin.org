@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       9f250cd1-7d2f-4f19-85aa-8a8cad68ec04
+:END:
+#+title: Koltin
+
+由 JetBrain 俄罗斯团队开发的一种基于 JVM 的语言。适合 [[id:e3938d33-5497-4640-9901-1a1b1bb66b8f][Android]] 应用的开发。

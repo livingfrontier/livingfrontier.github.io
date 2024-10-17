@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       731a33db-9fb8-4b90-be32-9b6fe35a4246
+:END:
+#+title: MIT
+
+据说 SJTU 号称“东方 MIT”，🐶。

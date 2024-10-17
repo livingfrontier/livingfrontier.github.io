@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       d3a007f0-0f83-47f9-b729-d0fcbbcf007c
+:END:
+#+title: Elisp Quote
+
+在 Elisp 中，一般用扩号写出来的 ~s-exp~ 都被求值，如下所示：
+
+#+begin_src emacs-lisp
+(+ (+ 1 2) 3) ; => 6
+#+end_src
+
+如果希望避免被求值，而是仅仅传递一个 ~s-exp~ 字面量，可以使用引号 ~'~ 来修饰 ~s-exp~ ：
+
+#+begin_src emacs-lisp
+'(+ (+ 1 2) 3) ; => (+ (+ 1 2) 3)
+#+end_src
+
+如果希望在使用字面量的时候部分求值，那么可以使用反引号 ~`~ 来修饰 ~s-exp~ ：
+
+#+begin_src emacs-lisp
+`(+ ,(+ 1 2) 3) ; => (+ 3 3)
+#+end_src

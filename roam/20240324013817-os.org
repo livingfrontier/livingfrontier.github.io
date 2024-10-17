@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       cba7c63a-21aa-4875-835e-888813182ff2
+:END:
+#+title: OS
+#+filetags: :root:
+
+* Firmware
+Firmware 固件存放在主板 ROM 中的软件，一般由硬件厂商提供，他们的主要任务是找到外存中对应的 bootloader 。
+
+- [[id:82a37f12-bc16-4554-b6e0-2d931b759b00][BIOS]]
+- [[id:e8f0d45b-991b-4c77-901d-d62d8914c417][UEFI]]
+- [[id:7f0c8234-4a59-41e1-b200-c2be3a86a815][Boot ROM]]
+
+* Bootloader
+Bootloader 是外存上的软件，用于加载操作系统。因为启动过程比较繁复，所以往往分成多个阶段进行加载（一般是 2 个阶段）。
+
+Stage1 Bootloader 主要是对于内存控制器的设置和对于安全的设置:
+
+- [[id:3e44a83f-ded4-48eb-bcfb-21f79a57a21c][MBR]]
+
+Stage2 Bootloader 主要负责加载内核：
+
+- [[id:7960b36a-4544-499a-b4c8-e8346b75805a][Uboot]]
+- [[id:10732f20-f769-45b8-abe8-9dc4c7a921c3][Grub]]
+
+* 操作系统
+- [[id:03abe92f-02d1-4dfb-addc-5ba89fc354be][Linux]]
+- [[id:2b0578d1-ed79-4fd4-838c-672dcc151b6e][Unix]]
+- [[id:9b12f29e-686a-4d74-93a9-220a14a4bd73][Windows]]
+
+* 组件
+- Linux 内核构建：[[id:b93aba59-daa5-4ed1-aa32-a5c32fb46a72][Kernel Build]]
+- 中断：[[id:c4a730af-1bf7-48c4-839e-510cad9c26a1][Interrupt]]
+- 进程管理：[[id:40407a50-af1b-4741-a0e9-a3e2a06aa2ba][Process]]
+- 进程间通信：[[id:c0968d4e-8cdf-4923-b866-5f87522e7521][IPC]]
+- 文件系统：[[id:359e8726-a892-42d7-a679-d6fd1f51ff22][FS]]
+- 虚拟化：[[id:7351996e-f1b8-4054-8c79-17285f48af42][Virtualization]]
+- 设备：[[id:a0e6a0e6-7341-43ed-bec6-9a442e8007ed][Device]]
+- 安全：[[id:774bd682-2a02-44c9-b9cd-e9b65ca92232][Security]]
+- 并行：[[id:431af327-c60e-4f6f-852a-4784b3171bfe][Parralle]]
+- 初始化：[[id:8a5f7eed-7163-4716-a6ca-80d1971fca88][Init]]
+
+* 理念
+- 微内核：[[id:8c581929-cb97-4621-a2d7-1f1218087ca7][Microkernel]]
+- 外核：[[id:73a7eb01-596c-4ea6-8702-cfe9a5e6015d][ExoKernel]]

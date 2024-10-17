@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       73a7eb01-596c-4ea6-8702-cfe9a5e6015d
+:END:
+#+title: ExoKernel
+
+操作系统内核在硬件资源管理方面的两个主要功能是资源抽象和多路复用（multiplexing），其中，对硬件资源的抽象存在两个方面的问题：
+
+1. 过度的硬件资源抽象可能会带来较大的性能损失
+2. 操作系统的抽象是针对所有应用的通用（general）抽象，对于某些具体的应用往往不是最好的选择
+
+在实际观察中，许多性能敏感的 Application 比 OS 更了解如何使用硬件资源，所以 ExoKernel 主张 OS 只负责基础的硬件隔离和复用工作，将资源抽象的任务交给 Application 完成。也就是说，OS 不再提供如“虚拟地址空间”和“文件”这种抽象，而是直接提供“物理地址块”和“磁盘块”这样的抽象。负责抽象任务的将会是一些函数库（library），这些也被称为 LibOS 。
+
+ExoKernel 与 [[id:8c581929-cb97-4621-a2d7-1f1218087ca7][Microkernel]] 的区别在于对于硬件资源的管理方式。Exokernel 将资源分成多份，每份有多种资源，交给一个 LibOS 管理并服务于一个 Application ；而 Microkernel 使用一个用户线程管理一种资源，服务所有的 Application 。

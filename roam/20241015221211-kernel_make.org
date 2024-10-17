@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       4bb3a253-8ada-4a57-aaf6-4c3aed59cfa5
+:END:
+#+title: Kernel Make
+
+这里记录着 kernel 用到的 make rules:
+
+* prepare
+用于准备 Linux 内核源代码树，以便进行内核或模块的编译。具体来说，它会执行以下操作：
+
+- 生成必要的头文件
+- 检查和配置环境
+- 创建符号链接和目录
+
+* prepare_modules
+只准备内核模块编译所需要的环境。

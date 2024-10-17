@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       bf75d5ae-95de-4b8f-b3f0-cff45fa5c1d4
+:END:
+#+title: Scala
+
+一种对于函数式编程支持良好的，基于 JVM 的开源语言。

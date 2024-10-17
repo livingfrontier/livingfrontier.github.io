@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       bf6d0659-4370-4113-bd0b-4eefab2dd075
+:END:
+#+title: Parallel
+
+- 互斥锁和自选锁：[[id:ca5c7436-c30b-49a8-9521-87f495d4afee][Mutex vs Spinlock]]
+- 悲观锁和乐观锁： [[id:ad55bb19-61e7-4f0e-acbd-cb289cc58e28][Optimistic Lock vs Pessimistic Lock]]
+- 信号量：[[id:a79b65ec-7b50-408f-84ca-5cdb3d83d3da][Semaphore]]
+- 条件变量：[[id:dee1ced5-7a6d-483b-ad13-5a025fcec5c7][Condition Variable]]

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       6be71639-6af9-4b84-90e4-1268d839e713
+:END:
+#+title: SignalFD
+
+在 [[id:984efd69-75b8-462d-a992-ab5ff4271cad][Signal]] 中我们指出了 Signal Handler 存在可重入问题，这对于编程开发人员十分不友好。此外，因为 signal 在实现上，是在 syscall 返回前“插入”了一个 handler ，虽然看似不会破坏 syscall 原本的效果，但是实际上会存在影响，可能一些系统调用会失败（当然一般来说，它们本来就有概率失败）。
+
+也就是说，这种异步的方式对编程人员很不友好，所以 Linux 提供了 SignalFD 机制。它说的是给程序一个 ~singalfd~ ，当收到信号后，使用 ~read(signalfd)~ 可以读出诸如 ~signum~ 等信息，然后再进行同步处理，这种方式不再依靠“在 syscall 后插入一个 handler”的方式来实现，编程的友好度高了很多。

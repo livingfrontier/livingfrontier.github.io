@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       cd28d72b-a49d-401b-8938-d3f3e29a87e4
+:END:
+#+title: Upstart
+
+是 [[id:8e3d5527-8c90-4c7b-a0ea-34d6b2e8ed3d][Ubuntu]] 开发的一款用于代替 [[id:a8c93c59-67ca-407a-97fe-02ffcc309b3f][System V]] 的 init 程序。
+
+Upstart 基于事件来管理服务。例如，当一个硬件设备被插入时，Upstart 可以触发相应的服务启动。通过这种方式，Upstart 支持了并行启动。
+
+

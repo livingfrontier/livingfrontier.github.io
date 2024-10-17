@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       359e8726-a892-42d7-a679-d6fd1f51ff22
+:END:
+#+title: FS
+
+* 一切皆文件
+文件系统在“[[id:1c8e3111-0118-4ca0-9712-0257cfab3064][一切皆文件]]”的设计哲学下，不再是一个单纯的数据组织形式，而变成了一种通用的接口。
+
+特殊的文件有：
+
+- 用户态缺页异常文件：[[id:2b6fab80-9f6d-416f-bce9-143874b48f92][UserFaultFD]]
+- 信号处理文件：[[id:6be71639-6af9-4b84-90e4-1268d839e713][SignalFD]]
+- 性能事件文件：[[id:f048101d-a378-44c5-9a9e-aa1521fefb9a][PerfEventFD]]
+* 文件系统类型
+** 虚拟文件系统
+- 临时文件系统：[[id:e789137e-9e7c-40cb-9623-d4e824fb15d8][TmpFS]]
+- 进程文件系统：[[id:cca4a29b-cb79-4a61-943e-79c039ad715e][Proc FS]]
+- 系统文件系统：[[id:0fd5f49e-02b3-4ae5-abb5-379e9fd73a82][Sys FS]]
+
+** 磁盘文件系统
+- [[id:6096afa9-773f-483a-a259-c8a73db690a5][FAT]]
+- EXT
+- [[id:538ceec2-e612-476a-97f1-573cf943d3c2][BtrFS]]
+- [[id:2c5e57ab-0fe6-4113-aaca-8e49c8ef55f4][NTFS]]
+
+* 设计思想
+- [[id:7b282ca5-3a3f-4a49-aaed-0591596d1cd0][FAT vs INode]]
+- [[id:41085103-8e32-4c34-ae89-422711ee009b][FS Journal]]

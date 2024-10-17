@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       f048101d-a378-44c5-9a9e-aa1521fefb9a
+:END:
+#+title: PerfEventFD
+
+Performance Event FD 用于为程序提供 counter 功能。它的功能非常强大且多样化，具体的需求可以参考 [[https://man7.org/linux/man-pages/man2/perf_event_open.2.html][此链接]] 。
+
+总的来说，程序将自己性能测试的需求写入到 ~perf_event_attr~ 这个结构体中，然后根据 ~attr~ 利用 ~perf_event_open()~ 创建一个 fd ，然后通过 ~ioctl()~ 来控制计时器的行为（比如 enable, disable, reset ）。最后用 ~read()~ 读取 counter 的值。
+
+示例代码如下：
+
+#+begin_src c
+#include <linux/perf_event.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+
+// 目前 perf_event_open 在 glibc 中没有封装，需要手工封装一下
+int perf_event_open(
+    struct perf_event_attr* attr, pid_t pid, int cpu, int group_fd, unsigned long flags)
+{
+    return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
+}
+
+int main()
+{
+    int i = 5;
+
+    // 设置 perf event
+    struct perf_event_attr attr;
+    memset(&attr, 0, sizeof(struct perf_event_attr));
+    attr.size = sizeof(struct perf_event_attr);
+    attr.type = PERF_TYPE_HARDWARE;           // 监测硬件
+    attr.config = PERF_COUNT_HW_CPU_CYCLES;   // 监测 cycle 数
+    attr.disabled = 1;                        // counter 初始状态为禁用
+    // pe.exclude_kernel = 1;                    // 排除 kernel 时间
+    // pe.exclude_hv = 1;                        // 排除 hypervisor 时间
+
+    // 创建 perf 文件描述符，其中 pid = 0,cpu = -1 表示监测当前进程，不论运行在那个 cpu 上
+    int fd = perf_event_open(&attr, 0, -1, -1, 0);
+    if (fd < 0) {
+        perror("Cannot open perf fd!, Use sudo or Check Kernel Config");
+        return 1;
+    }
+
+    ioctl(fd, PERF_EVENT_IOC_RESET, 0);    // 重置
+    ioctl(fd, PERF_EVENT_IOC_ENABLE, 0);   // 开启
+
+
+    while (i--) {
+        uint64_t cycles;
+        // 读取最新的计数值
+        read(fd, &cycles, sizeof(cycles));
+        printf("cycles = %ld\n", cycles);
+        sleep(1);
+    }
+
+    ioctl(fd, PERF_EVENT_IOC_DISABLE, 0);   // 关闭
+}
+#+end_src
+
+Linux Perf 机制依赖于 ~CONFIG_PERF_EVENTS~, ~CONFIG_HW_PERF_EVENTS~ 的开启。

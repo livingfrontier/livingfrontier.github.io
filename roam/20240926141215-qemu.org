@@ -1,0 +1,115 @@
+:PROPERTIES:
+:ID:       deb8ffd4-7f33-4cf0-871f-dc9327d59221
+:END:
+#+title: Qemu
+
+* 运行不同架构的可执行文件
+在 ~archlinux~ 上需要安装 ~qemu-binfmt-support, qemu-user~ 这两个包。
+
+~qemu-binfmt-support~ 使得 qemu 可以解析其他架构的可执行文件，而 ~qemu-user~ 使得 host 可以利用 qemu 模拟其他架构来运行可执行文件。
+
+这个功能十分强大，我们可以用它们来制作其他架构的根目录文件系统。
+
+* Ubuntu Base Image for Qemu
+** 创建镜像
+使用如下命令创建一个 1G 的磁盘进行并格式化成 EXT4 格式：
+
+#+begin_src shell
+dd if=/dev/zero of=ubuntu.ext4 bs=1M count=1024
+mkfs.ext4 ubuntu.ext4
+#+end_src
+
+** ChRoot 前
+Ubuntu 磁盘镜像可以用于 qemu 等模拟器。但是普通的 Ubuntu Base 镜像并没有办法直接运行，因为缺少一些程序。我们可以使用 [[id:0e30c122-9c10-4ee3-9cd3-1831732d59cb][Chroot]] 进入根文件系统后，使用包管理器安装所缺少的硬件。
+
+正如前所言，构架不同架构的根文件磁盘镜像，是需要 qemu 协助的，不然即使 chroot 进去，那些不同架构的包管理器可执行文件依然是无法在宿主机上执行的。
+
+为此我们首先需要安装 ~qemu-binfmt-support, qemu-user-static~ 来进行异构执行。之所以使用 ~static~ ，是因为我们需要将其移动到磁盘文件系统中，移动 ~static~ 比较简单：
+
+#+begin_src shell
+cp /usr/bin/qemu-aarch64-static mnt/usr/bin/
+#+end_src
+
+除此之外还需要复制 host 的域名解析文件：
+
+#+begin_src shell
+sudo cp /etc/resolv.conf mnt/etc/resolv.conf
+#+end_src
+
+安装 Linux 内核模块：
+
+#+begin_src shell
+cd linux
+sudo make modules_install ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- INSTALL_MOD_PATH=mnt
+#+end_src
+
+** ChRoot 后
+然后使用如下脚本完成 ~chroot~ ：
+
+#+begin_src shell
+#!/bin/bash
+
+if [ ! -d "./mnt" ]; then
+    mkdir ./mnt
+    echo "mkdir mnt"
+fi
+
+mount $1 mnt
+mount --bind /sys mnt/sys
+mount --bind /proc mnt/proc
+mount --bind /dev mnt/dev
+mount --bind /dev/pts mnt/dev/pts # 伪终端
+chroot mnt
+#+end_src
+
+然后在 ~chroot~ 后还需要修改 =/tmp/= 文件夹的权限来让 ~apt~ 正常工作：
+
+#+begin_src shell
+chmod 1777 /tmp
+#+end_src
+
+ubunut base 是不带 ~init~ 等程序的，需要自行安装：
+
+#+begin_src shell
+apt update
+apt upgrade
+apt install init systemd sudo rsyslog resolvconf udev vim
+#+end_src
+
+
+安装完后还需要进行一些其他配置（[[id:0fe03161-b7dc-47df-a73f-cbb05f151b77][Systemd]] 是需要普通用户的）：
+
+#+begin_src shell
+useradd -s '/bin/bash' -m -G adm,sudo hellouser
+passwd hellouser
+echo "ubuntu22" > /etc/hostname
+#+end_src
+
+退出后用以下脚本解绑：
+
+#+begin_src shell
+#!/bin/bash
+
+umount mnt/sys
+umount mnt/proc
+umount mnt/dev/pts
+umount mnt/dev
+umount mnt 
+#+end_src
+
+* ~-device~ 与 ~-drive~ 
+当我们在 qemu 中模拟一个外存设备时，使用的参数如下：
+
+#+begin_src shell
+-device virtio-blk-device,drive=hd0 \
+-drive file=ubuntu22-base.ext4,if=none,format=raw,id=hd0 \
+#+end_src
+
+需要 ~-device~ 和 ~-drive~ 两个参数。其实可以理解为 ~-device~ 参数是前端，用于定义和 CPU 交互的接口，而 ~-drive~ 是后端，用于定义实际的设备参数，两者通过 ~id~ 衔接。这是一种“控制器-设备”解耦的思想。唯一值得诟病的就是， ~drive~ 这个单词看上去太像前端了。
+
+网络设备也是同理，以 ~-device~ 为前端，以 ~-netdev~ 为后端，如下所示：
+
+#+begin_src shell
+-device virtio-net-device,netdev=eth0 \
+-netdev user,id=eth0 \
+#+end_src

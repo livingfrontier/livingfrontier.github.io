@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       a79c8fc5-a0f3-4310-86ec-0e41f8dff2d1
+:END:
+#+title: tar.gz, zip, 7z
+
+* 对比
+压缩工具有很多种，有如下对比：
+
+从适用平台上， ~tar.gz~ 是 Linux/Unix 下的归档压缩工具，可以保留符号链接和一些 [[id:03abe92f-02d1-4dfb-addc-5ba89fc354be][Linux]] 独属的文件信息，而 ~zip~ 是 [[id:9b12f29e-686a-4d74-93a9-220a14a4bd73][Windows]] 下的。虽然说 ~zip~ 号称兼容性最好，但是我发现它在 Linux 平台下使用还是会有一些难以察觉的问题。所以我觉得在 Linux 平台下能用 ~tar.gz~ 还是应该用 ~tar.gz~ 。
+
+从压缩率上来说， ~7z~ 遥遥领先，但是相应的压缩速度就会有所下降。
+
+* tar.gz
+使用如下命令进行压缩：
+
+#+begin_src shell
+tar czvf archive_name.tar.gz file1 file2 directory/
+#+end_src
+
+
+使用如下命令进行解压缩：
+
+#+begin_src shell
+tar xzvf archive_name.tar.gz -C /path/to/destination
+#+end_src
+
+其中 ~c~ 表示 create 创建压缩包，而 ~x~ 表示解压缩。
+
+* zip
+使用如下命令进行压缩：
+
+#+begin_src shell
+zip archive_name.zip file1 file2 file3
+#+end_src
+
+使用如下命令进行解压缩：
+
+#+begin_src shell
+unzip archive_name.zip -d /path/to/destination
+#+end_src
+
+* 7z
+使用如下命令进行压缩：
+
+#+begin_src shell
+7z a archive_name.7z file1 file2 file3
+#+end_src
+
+使用如下命令进行解压缩：
+
+#+begin_src shell
+7z x archive_name.7z -o/path/to/destination
+#+end_src

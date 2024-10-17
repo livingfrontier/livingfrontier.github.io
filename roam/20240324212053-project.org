@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       2446ba47-29b0-48d3-9e12-685bea4679d5
+:END:
+#+title: Project
+#+filetags: :root:
+
+这里存放着与项目有关的经验
+
+- 硬件模拟器 [[id:deb8ffd4-7f33-4cf0-871f-dc9327d59221][Qemu]]

@@ -1,0 +1,127 @@
+:PROPERTIES:
+:ID:       0c92bba8-7f89-48f2-9f51-d06bdc9895e0
+:END:
+#+title: Python Attribute
+
+* 变量
+在 python 的类中，大概有这样几种变量属性：
+** 实例属性
+这是最为常见的属性，也就是每个实例都有自己对应的一份属性，其关键在于声明时必须以 ~self.~ 开头：
+
+#+begin_src python
+class Demo:
+    def __init__(self, d):
+        self.data = d
+
+d1 = Demo(1)
+d2 = Demo(2)
+print(d1.data) # 1
+print(d2.data) # 2
+#+end_src
+
+** 类属性
+类属性就是属于 class 的变量而 instance 的变量。类属性可以在类中被访问，也可以被实例访问，如下所示：
+
+#+begin_src python
+class Demo:
+    data = 1
+    pass
+
+d = Demo()
+print(d.data) # 1
+print(Demo.data) # 1
+#+end_src
+
+** 私有属性
+其实上面已经介绍完了所有的形式，剩下的只是一些“装饰”。对于私有变量，我们以 ~__~ 开头，如下所示：
+
+#+begin_src python
+class Demo:
+    def __init__(self, d):
+        self.__data = d
+        self._data = d
+
+d = Demo(1)
+print(d._data)
+print(d.__data) # error: no attribute '__data'
+#+end_src
+
+而 ~_~ 开头的属性，则是“应该是私有变量，但是允许访问”。
+
+** 访问器
+访问器指的是通过定义方法和使用[[id:14647b81-6676-4ff0-af88-e7af3dc545dc][装饰器]] ，使得“像访问数据一样使用方法”：
+
+#+begin_src python
+class MyClass:
+    def __init__(self):
+        self._value = 0
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, new_value):
+        if new_value < 0:
+            raise ValueError("Value cannot be negative")
+        self._value = new_value
+
+obj = MyClass()
+obj.value = 10
+print(obj.value)  # 输出: 10
+#+end_src
+
+* 方法
+方法的不同点就是对于该类上属性访问权限的差异导致的，而差异其实是由前面的 ~cls, self~ 参数决定的。
+
+需要注意的是，属性不止有数据，还有方法，像静态方法这种低权限的方法，是没有办法调用实例方法这种高特权级的方法的。
+
+** 静态方法
+静态方法既不能访问类属性，也不能访问实例属性：
+
+#+begin_src python
+class Demo:
+    cls_data = 2
+    def __init__(self):
+        self.inst_data = 1
+
+    @staticmethod
+    def fn1():
+        print("This is a static method.")
+
+Demo.fn1()
+#+end_src
+
+所以它是没有 ~cls, self~ 这种参数的，而且需要 ~@staticmethod~ 修饰。
+
+** 类方法
+可以访问类属性，但是不能访问实例属性：
+
+#+begin_src python
+class Demo:
+    cls_data = 2
+    def __init__(self):
+        self.inst_data = 1
+
+    @classmethod
+    def fn2(cls):
+        print(f"cls_data {cls.cls_data}")
+
+Demo.fn2()
+#+end_src
+
+** 实例方法
+以 ~self~ 为参数，可以访问类属性和实例属性：
+
+#+begin_src python
+class Demo:
+    cls_data = 2
+    def __init__(self):
+        self.inst_data = 1
+
+    def fn3(self):
+        print(f"cls_data {self.cls_data}, inst_data {self.inst_data}")
+
+d = Demo()
+d.fn3()
+#+end_src

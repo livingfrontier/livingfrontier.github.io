@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       ffd0d8c8-d5e4-40c3-996e-122bac7b9fc3
+:END:
+#+title: Launchd
+
+Launchd 是 [[id:28de76a8-415d-458c-a22e-aebac7d3372f][Apple]] 开发的 macOS 和 iOS 系统中的一个系统守护进程，负责管理系统的启动、服务和进程。它用于替代传统的 Unix 系统中的 init 系统，提供更高效的服务管理方式。
+
+Launchd 使用配置文件（plist 文件）来定义服务和任务，这些文件通常位于 =/System/Library/LaunchDaemons= 和 =/Library/LaunchAgents= 等目录中。

@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       2c5e57ab-0fe6-4113-aaca-8e49c8ef55f4
+:END:
+#+title: NTFS
+
+NTFS（New Technology File System）是一种由 [[id:b7cbbb61-17ec-450c-b6d4-1c919b86d53b][Microsoft]] 开发的文件系统，主要用于 [[id:9b12f29e-686a-4d74-93a9-220a14a4bd73][Windows]]
+系统中。它是对早期 [[id:6096afa9-773f-483a-a259-c8a73db690a5][FAT]] 文件系统的升级和改进，尤其是在文件管理和数据安全性方面。

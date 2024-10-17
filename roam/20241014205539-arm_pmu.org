@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       0c247ea5-c714-408d-b54f-a6b01c3ac473
+:END:
+#+title: ARM PMU
+
+* Perf Event
+为了避免 Meltdown 等攻击，在 ARMv8 中 PMU 的访问被严格控制。这就导致 EL0 没有办法访问硬件计数器。我之前的思路是通过配置 ~pmcr, pmcntenset~ 等寄存器，来使得 PMU 允许 EL0 的访问。
+
+但是这种方法的成功率很低，因为内核存在一些机制阻止对于 PMU 的配置，甚至在配置后还会重新 reset PMU 。这是内核出于安全的考虑。
+
+所以正确的做法是使用 Linux 的 [[id:f048101d-a378-44c5-9a9e-aa1521fefb9a][PerfEventFD]] 机制来完成统计。
+
+* Raw Config
+Linux Perf 机制依赖于 ~CONFIG_PERF_EVENTS~, ~CONFIG_HW_PERF_EVENTS~ 的开启。或许有可能在无法重新编译内核且配置项关闭的情况下，perf 功能无法使用。那么这个时候可能就需要手工配置了。但是正如上文所说，成功的概率不大。
+
+遇到这种情况，也应当先选取网上现有的 [[id:50ab95fd-c96d-4467-a6a9-e34a4744e2fa][Kernel Module]] 来避免手动配置的尴尬。不过似乎网上的内核模块针对于 Cortex A5 系列，对于更常见、更先进的 Cortex A7 没有明确支持。从我个人文档阅读来看，两者基本类似。
+
+如果一定要手动配置了，那么是可以根据板子找文档的。对于这样大体量的文档，文档阅读不仅要搜索全文，甚至还有搜索目录。以下是我读 Cortex-A78 文档的笔记：
+
+PMU 有 event counter 和 cycle counter 。
+
+对于 event counter ：
+
+- ~PMCR~: Performance Monitor Control Register. ~PMCR.E~ 是总的 enable ？
+- ~PMCNTENSET~: Permormance Monitor Counter Enable Set. 似乎是各个 counter 的 enable 寄存器，可能长得像一个位图数组 ~PMCNTENSET.P<n>~ 。
+
+对于 cycle counter ：
+
+- ~PMCCNTR~: Performance Monitor Cycle Counter Register. 就是 cycle register 。
+- ~PMCR~: Performance Monitor Control Register. ~PMCR.E(0)~ 是总的 enable 。 ~PMCR.C(2)~ 是将 ~PMCCNTR~ 设置为 0 。
+- ~PMCNTENSET~: Performance Monitor Counter Enable Set. ~PMCNTENSET.C(31)~ 是 cycle 的 enable
+- ~PMUACR_EL1~: Performance Monitor User Access Control Register. ~PMUACR.C~ 是 cycle 的 user access 。似乎在 A78 上没有这个寄存器。
+- ~PMUSERENR_EL0~: Performance Monitor User Enable Register. ~PMUSERENR_EL0.UEN(4)~ 似乎是 user 的总 enable 。 ~PMUSERENR_EL0.CR(2)~ 置 1 ，那么就是只读的，置 0 是可读写的。 ~PMUSERENR_EL0.EN(0)~ ，如果置 0 那么就会禁止访问寄存器。
+- ~PMCCFILTR~: Performance Monitor Cycle Counter Filter Register. 决定了 cycle counter 的工作模式， ~PMCCFILTR.U(30)~ 置 1 表示不在 EL0 进行计数。
+
+另外，PMU 在每个 CPU Core 上都有，所以配置也需要在每个 core 上都进行一遍，在内核中我们可以使用 ~on_each_cpu()~ 这个函数。

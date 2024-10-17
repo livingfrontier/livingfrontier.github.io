@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       ed6bd31e-0b93-4965-a2a3-bb22ca752a6c
+:END:
+#+title: Enviroment
+#+filetags: :root:
+
+这里记录着工作环境的工具：
+
+- 编辑器：[[id:7ba3aeb8-f711-4fc8-aac6-5ef4fb647011][Emacs]]
+- 截屏软件：flameshot
+- 录屏软件：peek
+- 远端仓库：[[id:de9e3146-021b-4bef-b844-c0eb67de0966][Github]]
+- 输入法框架：[[id:63b2a6df-87d0-4189-a609-3de09b0866b4][Fcitx]]
+- 输入法：[[id:440c4422-026f-4499-9760-8983f38b4e02][Rime]]
+- 字体配置：[[id:86c95f93-f218-4c05-ad56-f7f15cd62a84][FontConfig]]
+- 磁盘分区工具：[[id:f0579c4f-a581-4da1-8451-230629d3c930][GParted]]
+- 静态网站生成器：[[id:aa310248-f305-487c-a1e8-0d4f8d26e9ca][Hexo]]
+- Linux 发行版：[[id:8210f9ca-154c-4102-b60e-64f4fa1c7773][ArchLinux]]
+- 构建工具：[[id:90a458e2-3cce-44e8-9337-eb6499c2d28b][Make]]

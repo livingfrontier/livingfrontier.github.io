@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       cca4a29b-cb79-4a61-943e-79c039ad715e
+:END:
+#+title: Proc FS
+
+=/proc/= 提供了一个接口用于访问进程信息的虚拟文件系统。我们可以使用 =/proc/<pid>= 的形式去访问某个进程的信息。
+
+除了进程信息外， =/proc/= 还提供了对于内核信息的访问（所以我觉得其实 =/proc/= 本质是一个展示 *运行时* 的文件系统），比如说：
+
+- =/proc/cpuinfo= ：显示 CPU 的信息。
+- =/proc/meminfo= ：显示内存的使用情况。
+- =/proc/version= ：显示内核的版本信息。
+- =/proc/modules= ：显示内核模块挂载信息。
+- =/proc/kallsyms= ：内核的所有符号
+- =/proc/devices= ：内核所有的设备驱动（即每个主设备号一行）
+
+需要注意，在查看 =/proc/= 时最好加上 ~sudo~ ，这是因为很多信息都只有在 root 权限下才能得到正确展示。

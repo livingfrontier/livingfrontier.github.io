@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       352f8005-a441-4fad-aaf1-d2ee8396df65
+:END:
+#+title: RISCV MMU
+
+用户和内核都使用 ~satp~ 寄存器存放页表基地址。

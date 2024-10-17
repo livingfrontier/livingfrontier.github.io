@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       8210f9ca-154c-4102-b60e-64f4fa1c7773
+:END:
+#+title: ArchLinux
+
+* Yay
+当需要彻底卸载一个软件包时，可以使用如下命令：
+
+#+begin_src shell
+yay -Rns <package-name>
+#+end_src
+
+其中参数为：
+
+- ~R~: 移除（remove）指定的包。
+- ~n~: 不保存（no-save）依赖项。
+- ~s~: 移除未使用的依赖项（cascade removal）。
+
+* 参数
+~pacman~ 和 ~yay~ 的参数很相近，其中参数可以分为两类，第一类是大写的，表示 operation: 
+
+- ~-S~: 安装软件包
+- ~-R~: 删除软件包
+- ~-U~: 安装本地包
+- ~-Q~: 查询已安装的软件包
+
+operation 后是第二类小写参数，为 option ，用于修饰 operation

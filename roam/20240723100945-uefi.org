@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       e8f0d45b-991b-4c77-901d-d62d8914c417
+:END:
+#+title: UEFI
+
+UEFI 是相比于 [[id:82a37f12-bc16-4554-b6e0-2d931b759b00][BIOS]] 更加先进的固件，它不再局限于寻找 [[id:3e44a83f-ded4-48eb-bcfb-21f79a57a21c][MBR]] ，而是可以直接加载外存上的 EFI 文件（这些文件往往就是bootloader）。
+
+UEFI 有专门的 ESP(EFI System Partion) 来存储启动相关的文件和数据，这在 Linux 上就是 =/boot/= 目录，如果用 ~lsblk -f~ 去查看，就可以看到相关显示，会发现这个分区的文件系统是 [[id:6096afa9-773f-483a-a259-c8a73db690a5][FAT]] ，这主要是为了提高跨平台兼容性。
+
+在 ESP 中存放着：
+
+- bootloader: 如 [[id:10732f20-f769-45b8-abe8-9dc4c7a921c3][Grub]]
+- 内核镜像：比如说 =/boot/vmlinuz-linux=
+- bootloader 的配置文件等

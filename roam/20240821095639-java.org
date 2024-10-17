@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       dca1538c-0f4f-486a-9d39-556f2ab5d121
+:END:
+#+title: Java
+

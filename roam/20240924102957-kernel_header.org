@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       73f142fe-d868-42f1-9850-130c74daeebd
+:END:
+#+title: Kernel Header
+
+#+begin_quote
+头文件是 C 语言提供 API 的方式
+#+end_quote
+
+* ~<>~ 和 ~""~ 
+内核的头文件可以分为两种：
+
+1. 集中在 =/include= 文件夹下
+2. 散布在各个源码文件夹下，比如说 =/mm/slab.h=
+
+第一种头文件提供的 API 可以被整个内核代码使用。他们的 ~include~ 方式是以 ~/include/~ 为起点的，并使用 ~<>~ ，比如说 =/include/linux/pagewalk.h= 这个头文件的，引用方式如下：
+
+#+begin_src c
+#include <linux/pagewalk.h>
+#+end_src
+
+第二种头文件提供的 API 往往只能在其所在文件夹下使用，使用 ~""~ 来引用，如下所示：
+
+#+begin_src c
+#include "slab.h"
+#+end_src
+
+总的来说，这两种语法就是最基础的 C 语法，在任何一个 C 工程中都有可能出现，并没有涉及到 Linux Kernel 的特殊之处。
+
+* =/include/= 子文件夹
+=/include/= 下具有多个子文件夹，它们都具有“API”的属性，但是它们是存在一些区别的，
+
+- =/include/linux/= ：供内核使用的 API ，也就是供内核和[[id:50ab95fd-c96d-4467-a6a9-e34a4744e2fa][内核模块]]使用的
+- =/include/uapi= ：供用户使用的 API ，大部分都是系统调用相关，也就是供 libc 这样的函数库使用的
+- =/include/asm= ：不同架构存在差异的头文件，它会被链接到 =/arch/<arch>/include/asm= 上
+- =/include/net, include/video...= 等其他头文件，是具体的设备子模块。
+
+严格意义上，一个函数能否被内核模块使用，并不取决于它的声明是否出现在 =/include/linux/= 中，而是取决于它的实现后是否有 ~EXPORT_SYMBOL~ 宏声明。
+
+* =/usr/include= 和 =/lib/modules/$(shell uname -r)/build= 
+其实这个部分不应该在这里提出的，但是这个部分是写作的主旨，是最能体现“头文件是 API 的载体”的写作主旨的部分。
+
+我们这里讨论两种程序的编写：用户程序和内核模块。
+
+对于用户程序而言，它编程中所使用的头文件，默认都是在 =/usr/include= 这个目录下的，而这个目录下的头文件中的 API ，本质都是 libc 库提供的。libc 库通过使用上文提到的 =kernel/include/uapi= 中记录的 API 来实现它自己的功能。如果我们希望跨过 libc 独立使用 ~uapi~ ，那么需要安装 ~linux-headers-$(shell uname -r)~ 包，然后就可以在 =/usr/src/~linux-headers-$(shell uname -r)= 文件夹下找到 ~uapi~ 了。
+
+对于内核模块而言，它编程中使用的头文件，是在 =/lib/modules/$(shell uname -r)/build= 下的，这个目录下存放着 kernel 的源码，所以它使用的，大部分都是 =kernel/include/linux= 的内容，也就是内核 API 。与内核源码相比，内核模块是无法利用 ~static~ 函数或者只出现在 ~include "header.h"~ 的头文件 API 的。

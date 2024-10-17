@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       ca5c7436-c30b-49a8-9521-87f495d4afee
+:END:
+#+title: Mutex vs Spinlock
+
+Mutex 是互斥锁，指的是没有拿到锁的线程会被放入 OS 的调度队列中（但是之后还是可以被调度的）。这种锁的实现需要 OS 的配合。而 Spinlock 自选锁就是忙等。
+
+Mutex 的优势在于不需要忙等，这样可以节省忙等时所占据的资源给其他的线程，但是它的缺点在于挂起和恢复需要一定的开销，对于时间较短的资源占用，反而不如 Spinlock 表现出色。
+
+Mutex 的“挂起”机制和 [[id:a79b65ec-7b50-408f-84ca-5cdb3d83d3da][Semaphore]] 或者 [[id:dee1ced5-7a6d-483b-ad13-5a025fcec5c7][Condition Variable]] 的“挂起/唤醒”机制不同，Mutex 并没有等待队列的概念，它只是被重新放入到了 OS 的调度队列。

@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       8638049a-635a-4f83-bbd6-abc14976e109
+:END:
+#+title: DBMS
+
+数据库管理系统（DBMS，Database Management System）是一种软件系统，用于创建、管理和操作数据库。
+
+* 种类
+- [[id:2227f095-7c94-412b-b62d-3275d6564aba][MySQL]]
+- [[id:95418126-5fe4-45f7-beb1-ab6cffd6eb43][SQLite]]
+- [[id:116303b7-7f7f-4513-9893-cc3f5ff32beb][Redis]]

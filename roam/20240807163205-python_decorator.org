@@ -1,0 +1,67 @@
+:PROPERTIES:
+:ID:       14647b81-6676-4ff0-af88-e7af3dc545dc
+:END:
+#+title: Python Decorator
+
+Python 的装饰器（Decorator）就是出现在函数声明上方以 ~@~ 开头的语句，如下所示：
+
+#+begin_src python
+@log
+def now():
+    print('2024-08-07')
+#+end_src
+
+这种语句可以拓展函数的功能，就像“装饰”了原本的函数一样，所以被称为装饰器。
+
+而实际上它是一个语法糖，当我们调用 ~now()~ 的时候，实际上是调用了：
+
+#+begin_src python
+# now()
+log(now)()
+#+end_src
+
+所以总的来说，实际调用的，其实是以 ~now~ 为参数（函数式编程）构造出的一个新函数，而非 ~now~ 了，更具体一些， ~log~ 可以实现成这个样子：
+
+#+begin_src python
+def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+#+end_src
+
+这是一种[[id:a7dbf3a6-05a8-4408-950a-d80be197ab62][闭包]]的手法， ~wrapper~ 捕获了外部变量 ~func~ ，实际调用的是 ~wrapper~ ，而 ~wrapper~ 的效果是先打印一句 ~call funcname~ ，然后再调用 ~now~ 。此时调用 ~now()~ 的效果如下：
+
+#+begin_src text
+call now():
+2024-08-07
+#+end_src
+
+更进一步，装饰器是可以有参数的，比如这种：
+
+#+begin_src python
+@log('execute')
+def now():
+    print('2024-6-1')
+#+end_src
+
+这种语法糖的本质是：
+
+#+begin_src python
+# now()
+log('execute')(now)()
+#+end_src
+
+因此，此时 ~log~ 会在外面多一层，用于接收装饰器参数：
+
+#+begin_src python
+def log(text):
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+#+end_src
+
+闭包分别捕获了 ~text~ 和 ~func~ 。

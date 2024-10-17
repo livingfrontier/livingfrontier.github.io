@@ -1,0 +1,138 @@
+:PROPERTIES:
+:ID:       90a458e2-3cce-44e8-9337-eb6499c2d28b
+:END:
+#+title: Make
+
+* 规则
+Makefile 中规则（rule）由 3 个部分组成：
+
+#+begin_src makefile
+target: dependencies
+    command
+#+end_src
+
+依赖可以是具体的文件或者是其他目标。
+
+* 增量构建原理
+Make 进行增量构建的原理非常简单，利用了构建的产物和依赖的时间戳。
+
+每个目标都存在直接或者间接的依赖，最终都会具体到一些文件。当我们选择构建目标时，make 会检查 target 的产物的时间戳是否比它的依赖的时间戳旧，如果旧的话，就说明上次构建后，又新修改了依赖，那么就需要再次构建。
+
+可以想见，如果依赖不全的话，那么很容易导致增量构建忽视掉了本应该重新构建的文件。这种现象多出现在头文件中，因为按理说头文件中没有实现，那么无需作为依赖，而当其中包含具体实现的时候，那么就需要纳入依赖文件中了。
+
+* 变量
+** 基础使用
+在 Makefile 中，我们用 ~=, ?=, +=, :=~ 来对变量进行赋值，变量的类型应该都是字符串，所以是可以有空格出现且不需要引号的。并且等号两边也是可以有空格的。
+
+我们用 ~$(VAR)~ 的形式使用变量，示例如下：
+
+#+begin_src makefile
+VAR = Hello world
+
+all:
+	echo $(VAR) # Hello world
+#+end_src
+
+需要注意的是，虽然 Makefile 的 command 类似于 [[id:920e0ad2-a9d0-4a0c-9e75-21ec9fdc28d9][ShellScript]] ，但是有很多用法都不一样，比如说：
+
+- 赋值语法：shellscript 不允许等号两侧有空格，makfile 允许。
+- 赋值符号：shellscript 是没有 ~?=, :=~ 的，只有 ~=, +=~ 。
+- 变量使用：shellscript 使用变量为 ~${VAR}, $VAR~ ，而 ~$(Command)~ 表示对于 ~Command~ 求值并引用。
+
+** 赋值
+条件赋值是指一个变量如果没有被定义过，就直接给它赋值；如果之前被定义过，那么这条赋值语句就什么都不做。
+
+#+begin_src makefile
+VAR = hello
+VAR ?= hi
+
+all:
+	echo $(VAR) # hello
+#+end_src
+
+** 立即变量和延迟变量
+使用 ~=~ 进行赋值的变量被称为延迟变量，它是在使用时才去求值。以下面为例， ~VAR2~ 的值是被 ~VAR1~ 赋予的，在给 ~VAR2~ 赋值后， ~VAR1~ 又发生了变化，延迟变量 ~VAR2~ 最后打印的是更改后的结果。
+
+#+begin_src makefile
+VAR1 = Hello
+VAR2 = $(VAR1)
+VAR1 = Hi
+
+all:
+	echo $(VAR2) # Hi
+#+end_src
+
+而如果是立即赋值，那么就会打印更改前的结果。
+
+#+begin_src makefile
+VAR1 = Hello
+VAR2 := $(VAR1)
+VAR1 = Hi
+
+all:
+	echo $(VAR2) # Hello
+#+end_src
+
+立即变量和延迟变量对于字面量没有差别。主要在于像 ~VAR2~ 这种的间接量才会存在差异。一般来说，这两种变量的差异类似于“编译时”和“运行时”的差异，如果在运行时有变化的变量（比如说 ~VAR1~ 的两次赋值，或者执行某个指令，如 ~$(pwd)~ ），那么应该使用延迟变量，否则应该使用立即变量。
+
+** 自动变量
+自动变量是局部变量，作用域范围在当前的规则内，有如下种类：
+
+- ~$@~ ：目标
+- ~$^~ ：所有目标依赖
+- ~$<~ ：目标依赖列表中的第一个依赖
+- ~$?~ ：所有目标依赖中被修改过的文件
+
+* 函数
+** 基本使用
+对于内建的函数，使用如下方式调用：
+
+#+begin_src makefile
+$(func arg1, arg2, arg3)
+#+end_src
+
+对于自定义的函数，需要使用 ~call~ 进行间接调用：
+
+#+begin_src makefile
+define func
+    @echo "pram1 = $(0)"
+    @echo "pram2 = $(1)"
+endef
+all:
+    $(call func, hello, zhaixue.cc)
+#+end_src
+
+** 常见函数
+*** wildcard
+wildcard 就是“通配符”的意思，也可以翻译成“外卡”。据说起源是牌类游戏的概念，wildcard 类似与 UNO 中的万能牌，也就是和谁都可以搭配的牌，被用作通配符非常有道理。
+
+Makefile 中使用通配符并没有 shell 中那么自然，比较像 shell 的情况只出现在依赖和命令中。如下所示：
+
+#+begin_src makefile
+*.o: *.c
+	gcc -c $^
+
+clean:
+    rm -f *.o
+#+end_src
+
+但是如果希望在变量中使用，那么就需要用 ~wildcard~ 函数了：
+
+#+begin_src makefile
+SRC  = $(wildcard *.c)
+HEAD = $(wildcard *.h)
+#+end_src
+
+*** patsubst
+~patsubst~ 函数主要用来模式替换：使用通配符 ~%~ 代表一个单词中的若干字符，在 ~PATTERN~ 和 ~REPLACEMENT~ 如果都包含这个通配符，表示两者表示的是相同的若干个字符，并执行替换操作。
+
+#+begin_src makefile
+$(patsubst PATTERN, REPLACEMENT, TEXT)
+#+end_src
+
+*** shell
+在 makefile 中运行 shell 命令需要使用 ~shell~ 函数，如下所示：
+
+#+begin_src makefile
+current_path = $(shell pwd)
+#+end_src

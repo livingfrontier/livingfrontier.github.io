@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       e1104263-adcd-43f0-81ec-9af70ae66cd6
+:END:
+#+title: Process Group
+
+Process Group 进程组是多个进程的一个管理单位。处于同一个进程组的进程可以收到同一个 [[id:984efd69-75b8-462d-a992-ab5ff4271cad][Signal]]。
+
+用管道 ~|~ 衔接的命令，就是在一个进程组中，如下面命令的 ~proc1, proc2, proc3, proc4~ 就属于一个进程组：
+
+#+begin_src shell
+proc1 | proc2 | proc3 | proc4
+#+end_src
+
+在会话上下文语义下的进程组也被称为作业（job）。有前台作业（fg）和后台作业（bg）之分。

@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       d61f1439-255a-4d3a-a14d-00337f86ed00
+:END:
+#+title: UnZip
+
+在压缩文件中如果含有中文文件名，可能会导致解压缩后文件名出现乱码，可以使用如下方法解决：
+
+#+begin_src shell
+unzip -O GBK xxx.zip
+#+end_src

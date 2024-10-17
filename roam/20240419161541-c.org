@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       a209fbd7-ef3d-4796-895a-c080dd44190e
+:END:
+#+title: C
+
+- [[id:114774aa-1a4f-4fef-a1e0-01b05cc733cf][C Restrict]]
+- [[id:136d2032-4c95-462f-bb01-fd06481a73d2][GCC]]

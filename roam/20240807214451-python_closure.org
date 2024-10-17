@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       a7dbf3a6-05a8-4408-950a-d80be197ab62
+:END:
+#+title: Python Closure
+
+直到我去写它时，我依然没有掌握函数闭包（Closure）的用法。
+
+在函数式编程中，函数闭包指的是定义的函数（无论是不是匿名函数），都可以捕获环境中的变量（复制环境变量并与自身绑定，值拷贝或者引用拷贝都是语言的细节问题），并利用捕获到的变量改变函数的行为。
+
+一个很朴素的想法就会从我们心底冒出：“如果要改变函数的行为，为什么不通过函数传参的方式改变，而是要通过捕获环境变量的方式？”。这是因为函数参数对于函数行为的影响发生在函数调用时；而捕获变量对于函数行为的影响发生在函数定义时。这是两种截然不同的语义。如果我们不使用闭包，但是希望函数的行为按照其“定义时”的变量而改变，那么就需要保留其定义时的数据，并在函数调用的时候作为参数传递给函数。
+
+如此看来，其实能与闭包相比较的，应该是面向对象思想中的私有数据类似。这是因为私有数据以可以看作是在实例创建时保存的数据，并且可以影响实例方法的行为，比如说一个可以指定从几开始计数的计数器，OOP 的实现方式如下：
+
+#+begin_src python
+class Counter:
+    def __init__(self, start):
+        self.start = start
+
+    def increment(self):
+        self.start += 1
+        return self.start
+
+counter = Counter(10) # 从 10 开始计数
+print(counter.increment()) # 11
+#+end_src
+
+而函数闭包的实现方式如下：
+
+#+begin_src python
+def make_counter(start):
+    def increment():
+        nonlocal start
+        start += 1
+        return start
+    return increment
+
+counter = make_counter(10) # 从 10 开始计数
+print(counter()) # 11
+#+end_src
+
+在这个例子中， ~increment~ 函数捕获了外围变量 ~start~ ，并将其绑定在自己身上，就像 OOP 中的 ~self.start~ 一样。
+
+那么面对这种场景到底是该用 OOP 还是 Closure 呢？我没有想清楚这两者到底那种更加简洁易懂，不过可以肯定的是，两者是可以互相代替的，而且闭包对于函数式编程，是一种语义的补充。

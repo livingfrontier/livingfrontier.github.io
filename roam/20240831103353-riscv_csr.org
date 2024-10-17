@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       c3854bd3-6b28-4eab-b8d2-bc4cda4add9d
+:END:
+#+title: RISCV CSR
+
+RISCV 的系统寄存器被称为 CSR(Control and Status Register, 控制和状态寄存器) 。RISCV 的基础指令都具有 3 个操作数，而不是像 Arm64 一样的 2 个。
+
+- ~csrrw~ (CSR read and write)：读写， ~csr~ 中的值写入 ~rd~ ， ~rs1~ 的值写入 ~csr~ 。
+- ~csrrs~ (CSR read and set)：读并置位， ~csr~ 中的值写入 ~rd~ ， ~rs1~ 的值或上 ~csr~ 中的值再写入 ~csr~ 。
+- ~csrrc~ (CSR read and clear)：读并清除， ~csr~ 中的值读入 ~rd~ ，根据 ~rs1~ 的值对 ~csr~ 中的值按位清零再写入 ~csr~ 中。
+
+~csrrwi~ 、 ~csrrsi~ 、 ~csrrci~ 分别于 ~csrrw~ 、 ~csrrs~ 、 ~csrrc~ 相似，除了它们是使用一个处于 ~rs1~ 字段的、零扩展到 XLEN 位的 5 位立即数。
+
+我们常用的系统寄存器读指令 ~csrr~ ，系统寄存器写指令 ~csrw~ ，系统寄存器清空指令 ~csrc~ 和系统寄存器置位指令 ~csrs~ 都是伪指令，如下所示：
+
+#+begin_src asm
+csrr rd, csr    // csrrs rd, csr, zero
+csrw csr, rs1   // csrrw zero, csr, rs1
+csrc csr, rs1   // csrrc zero, csr, rs1
+csrs csr, rs1   // csrrs zero, csr, rs1
+#+end_src

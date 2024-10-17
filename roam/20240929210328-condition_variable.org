@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       dee1ced5-7a6d-483b-ad13-5a025fcec5c7
+:END:
+#+title: Condition Variable
+
+条件变量并不是一个变量，它应该是一个等待队列。正因为它不是一个共享的变量，所以它的功能弱于 [[id:a79b65ec-7b50-408f-84ca-5cdb3d83d3da][Semaphore]] 。

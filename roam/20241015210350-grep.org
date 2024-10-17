@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       422b5ea1-894a-4823-914b-cb87167e8eec
+:END:
+#+title: Grep
+
+虽然 ~grep~ 的 Global Regular Expression Print ，但是实际上只支持普通正则表达式，对于模糊搜索，有两点可以更加“模糊”的方法：
+
+一个是使用 ~-i~ 参数，这样可以忽略大小写，另一个是使用 ~-E~ 参数，这样可以使用拓展正则表达式。
+
+~grep~ 如果用于搜索一个二维表格，会出现忽略表头的情况，比如说我想查看 systemd 的 unit 单元，使用如下命令：
+
+#+begin_src shell
+$ systemctl list-unit-files
+UNIT FILE                                    STATE           PRESET  
+accounts-daemon.service                      disabled        disabled
+acpid.service                                disabled        disabled
+alsa-restore.service                         static          -       
+alsa-state.service                           static          -       
+apparmor.service                             enabled         disabled
+...
+#+end_src
+
+如果我希望只查看 ~v2raya~ 的服务，很容易写出这样的命令，获得如下输出：
+
+#+begin_src shell
+$ systemctl list-unit-files | grep v2ray 
+v2ray.service                                disabled        disabled
+v2ray@.service                               disabled        disabled
+v2raya.service                               enabled         disabled
+#+end_src
+
+但是这种输出就缺少表头了，我们可以将第一行也考虑在内，主要是利用了 ~|~ 这个控制符：
+
+#+begin_src shell
+$ systemctl list-unit-files | grep "v2ray\|UNIT"  
+UNIT FILE                                    STATE           PRESET
+v2ray.service                                disabled        disabled
+v2ray@.service                               disabled        disabled
+v2raya.service                               enabled         disabled
+#+end_src

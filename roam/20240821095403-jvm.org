@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       b2336b71-97c9-499e-874b-67eedb96c697
+:END:
+#+title: JVM
+
+不仅只有 [[id:dca1538c-0f4f-486a-9d39-556f2ab5d121][Java]] 可以在 JVM 上运行。实际上，只要高级语言被编译成了在 JVM 上运行的字节码（ByteCode），就可以在 JVM 上运行。
+
+比较著名的在 JVM 上运行的语言还有 [[id:9f250cd1-7d2f-4f19-85aa-8a8cad68ec04][Koltin]] 和 [[id:bf75d5ae-95de-4b8f-b3f0-cff45fa5c1d4][Scala]] 。

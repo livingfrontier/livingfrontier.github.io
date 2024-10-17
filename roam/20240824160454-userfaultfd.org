@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       2b6fab80-9f6d-416f-bce9-143874b48f92
+:END:
+#+title: UserFaultFD
+
+UserFaultFD 是一种 Linux 用于实现 User Page Fault Handler 的机制。
+
+不过有一说一，UserFaultFD 所对应的 File ，非常不像一个传统的“文件”，而变得更加像一个内核资源（从它使用 ~ioctl()~ 来看，也可以说像一个设备）。
+
+在使用上，需要使用 User Page Fault Handler 的线程会通过通过特定的系统调用申请一个 ~userfaultfd~ ，然后在它对应的 File 上注册（通过 ~ioctl()~ ）监视的虚拟地址区域，只有这个区域内发生 Page Fault 会调用用户态处理程序。
+
+然后我们还需要在 ~userfaultfd~ 上注册一个 pagefault handler 函数，并启动一个线程来执行这个函数。在 ~man~ 里说注册线程和处理线程可以不属于同一个进程，但是我没有找到具体的例子。这种逻辑其实就类似于 [[id:c0968d4e-8cdf-4923-b866-5f87522e7521][IPC]] 了，当发生缺页异常的时候，异常发生线程会被阻塞，而当 handler 线程被调度的时候，它就会处理这个缺页异常，处理结束后，异常发生线程就可以重新被调度。
+
+在异常处理过程中，handler 线程会用 ~poll()~ 来监视 ~userfaultfd~ ，当其可以被读是，它就会用 ~read()~ 从这个 fd 中读出一个 ~uffd_msg~ 结构体来，如下所示：
+
+#+begin_src c
+struct uffd_msg {
+	__u8  event;            /* Type of event */
+	...
+	union {
+		struct {
+			__u64 flags;    /* Flags describing fault */
+			__u64 address;  /* Faulting address */
+			union {
+				__u32 ptid; /* Thread ID of the fault */
+			} feat;
+		} pagefault;
+
+		struct {            /* Since Linux 4.11 */
+			__u32 ufd;      /* Userfault file descriptor
+							   of the child process */
+		} fork;
+
+		struct {            /* Since Linux 4.11 */
+			__u64 from;     /* Old address of remapped area */
+			__u64 to;       /* New address of remapped area */
+			__u64 len;      /* Original mapping length */
+		} remap;
+
+		struct {            /* Since Linux 4.11 */
+			__u64 start;    /* Start address of removed area */
+			__u64 end;      /* End address of removed area */
+		} remove;
+		...
+	} arg;
+
+	/* Padding fields omitted */
+} __packed;
+#+end_src
+
+可以看到这个结构体中包含着进行进行 handle 时所需要的数据，比如说 page fault address 等。但是因为 Linux 是宏内核的原因，所以具体的映射依然是通过系统调用进行。handler 会填写好（通过 ~ioctl()~ ）一个请求结构体（有多种请求，包括 ~copy, zero~ 等），在结构体中指定虚拟地址等信息，然后通过 ~ioctl()~ 让内核完成后续操作。

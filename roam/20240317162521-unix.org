@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       2b0578d1-ed79-4fd4-838c-672dcc151b6e
+:END:
+#+title: Unix
+
+* 历史
+见 [[id:b129daf1-4ace-4fb0-9bba-9351410f0733][Unix History]] 。
+
+* 开源变体
+- [[id:a8c93c59-67ca-407a-97fe-02ffcc309b3f][System V]]
+- [[id:53950d04-73ab-41dd-b9a2-af2d289719fc][BSD]]
+
+* 商业变体
+- Solaris: 由 [[id:49180d53-be3e-455d-a49a-d84a83acabfd][Sun]] 开发
+- HP-UX: 由 [[id:a61c230a-7ebf-41f7-abdd-434aa543d9ae][HP]] 开发
+- AIX: 由 [[id:461a096e-181f-4c25-af06-b585fe591407][IBM]] 开发

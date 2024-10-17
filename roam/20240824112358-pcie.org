@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       45f5bda0-5fb7-4c7d-abb5-961533c52a2c
+:END:
+#+title: PCIe
+
+PCIe 即 Peripheral Component Interconnect Express 。
+
+[[file:img/clipboard-20240824T113218.png]]
+
+PCIe 采用点到点拓扑，不同于 PCI 的共享总线拓扑，所以效率更好。
+
+PCIe 上，root 侧有不同厂家的 cpu，device 侧有不同加速器，而且pcie 提出的时候就没有加速器一致性访存的约束。
+
+也是近几年 AI 爆热吵起来的，只有 GPU 加速器这种强大的设备才需要拥有这么强大的总线。
