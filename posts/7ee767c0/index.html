@@ -30,17 +30,17 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、主板虽然在《计算机组成》这么课上，我大部分时间都在和 CPU 搏斗，但是并不是说 CPU 就是硬件世界的唯一或者说 Boss，主板上的其他元器件并不是 nobody。非常遗憾我最近才意识到这点。 一块结构较为完整的主板长成这个样子，可以看到处理 CPU 外，其实上面会有很多个其他的元器件  导致结构不完整的一个原因是在 Soc 技术在手机主板上的应用，具有多种功能的元器件，比如说 CPU，内存">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//1280px-Intel_D945GCCR_Socket_775.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//1vVKnGLj6-ttt5vlcmUcdaw.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240312201051842.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//1094457-20171019112241084-1805450176.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//1094457-20171019111628396-1048214045.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//msi-irq.PNG">
-<meta property="og:image" content="https://thysrael.github.io/.io//gicv3-model.PNG">
-<meta property="og:image" content="https://thysrael.github.io/.io//7000.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//system-configuration-with-dmac.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//800px-Motherboard_diagram.svg.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//8f7debc826664d2c8092f8ff7a0061cf.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/1280px-Intel_D945GCCR_Socket_775.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/1vVKnGLj6-ttt5vlcmUcdaw.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/image-20240312201051842.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/1094457-20171019112241084-1805450176.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/1094457-20171019111628396-1048214045.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/msi-irq.PNG">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/gicv3-model.PNG">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/7000.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/system-configuration-with-dmac.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/800px-Motherboard_diagram.svg.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/7ee767c0/8f7debc826664d2c8092f8ff7a0061cf.png">
 <meta property="article:published_time" content="2024-03-12T08:04:18.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.430Z">
 <meta property="article:author" content="Thysrael">
@@ -48,7 +48,7 @@
 <meta property="article:tag" content="S8课上">
 <meta property="article:tag" content="硬件平台">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//1280px-Intel_D945GCCR_Socket_775.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/7ee767c0/1280px-Intel_D945GCCR_Socket_775.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/7ee767c0/">
 
@@ -306,9 +306,9 @@
       
         <h2 id="一、主板"><a href="#一、主板" class="headerlink" title="一、主板"></a>一、主板</h2><p>虽然在《计算机组成》这么课上，我大部分时间都在和 CPU 搏斗，但是并不是说 CPU 就是硬件世界的唯一或者说 Boss，主板上的其他元器件并不是 nobody。非常遗憾我最近才意识到这点。</p>
 <p>一块结构较为完整的主板长成这个样子，可以看到处理 CPU 外，其实上面会有很多个其他的元器件</p>
-<p><img src="/.io//1280px-Intel_D945GCCR_Socket_775.png" alt="undefined"></p>
+<p><img src="/posts/7ee767c0/1280px-Intel_D945GCCR_Socket_775.png" alt="undefined"></p>
 <p>导致结构不完整的一个原因是在 Soc 技术在手机主板上的应用，具有多种功能的元器件，比如说 CPU，内存，各种控制器都会被放到一个芯片里，这样信号不再需要像以前那样通过很多外部的金属线，而是都在芯片里传输，让传输的距离变短。如图所示：</p>
-<p><img src="/.io//1vVKnGLj6-ttt5vlcmUcdaw.png" alt="img"></p>
+<p><img src="/posts/7ee767c0/1vVKnGLj6-ttt5vlcmUcdaw.png" alt="img"></p>
 <p>此外因为硬件的发展，许多落后的总线和设备会被淘汰，更加高速的总线和设备会被提出，不过无论如何在主板上的组成成分不会发生变化：</p>
 <ul>
 <li>CPU：计算核心，它是软件开发人员唯一可以控制的东西（但并不意味着它可以控制所有的东西）。</li>
@@ -319,17 +319,17 @@
 <li>桥（bridge）：将多个总线连在一起的结构，可能有分发或者汇聚的作用。比起“桥”，它更像是一个“十字路口”。</li>
 </ul>
 <p>这些组成成分里，只有 CPU，内存，外设在软件开发人员眼中不是透明的，而控制器，总线，桥之类的元件是透明的，有失偏颇的说，软件开发者是不会意识到这些东西的存在的。</p>
-<p><img src="/.io//image-20240312201051842.png" alt="image-20240312201051842"></p>
+<p><img src="/posts/7ee767c0/image-20240312201051842.png" alt="image-20240312201051842"></p>
 <hr>
 <h2 id="二、通信抽象"><a href="#二、通信抽象" class="headerlink" title="二、通信抽象"></a>二、通信抽象</h2><p>既然主板上有如此多的设备，那么 CPU 是怎么和它们通信的？</p>
 <p>对于内存来说，软件开发者有内存空间这个抽象，软件开发者只需要指定要写入或者读出的地址和读取的大小，就可以读写内存了，涉及的指令是 <code>load, store</code> 之类的。此外，我们如果需要配置地址空间，需要修改相关的寄存器，比如说页表基址寄存器或者 TLB 配置寄存器之类的。</p>
 <p>对于设备来说，比较直观的想法是用特殊的指令和寄存器来控制外设。这种方法的缺陷在于“特化”，如果每一个设备都需要对应的指令和寄存器，那么指令集就会爆炸高，而且会过于死板（总不能指望市面上每增加一种新的设备，指令集就修改一遍）。</p>
 <p>所以相比于内存这种有专有指令和寄存器的特例（毕竟只有一种内存，更好的内存都会变成 cache）。CPU 与外设通信的难点在于如何将繁复庞杂的外设都统一出同一个抽象。其实很简单，就是利用“地址空间”这个抽象，“空间”这个概念是“同质”的，“异质”的设备通过占据不同的“空间地址”来表达异质性。我们可以通过写入某个特定的地址来编辑某个特定设备的寄存器的值，也可以通过读出某片空间中的数据来获得某个设备生产出的数据。</p>
 <p>根据地址空间的性质，又有两种方案，一种是独立于内存地址空间，设计一个设备地址空间，所有设备贡献一个地址空间，如下所示：</p>
-<p><img src="/.io//1094457-20171019112241084-1805450176.png" alt="img"></p>
+<p><img src="/posts/7ee767c0/1094457-20171019112241084-1805450176.png" alt="img"></p>
 <p>内存和 I/O 设备有各自的地址空间。 端口映射 I/O 通常使用一种特殊的 CPU 指令，专门执行 I/O 操作。在 Intel 的微处理器中，使用的指令是 <code>IN</code> 和 <code>OUT</code> 。为了实现地址空间的隔离，要么在 CPU 物理接口上增加一个 I/O 引脚，要么增加一条专用的 I/O 总线。由于 I/O 地址空间与内存地址空间是隔离的，所以有时将 PMIO 称为被隔离的 IO(Isolated I/O)。</p>
 <p>另一种方案是从内存地址空间中取出一部分作为设备地址空间，也就是内存和外设共享同一个地址空间，如下所示：</p>
-<p><img src="/.io//1094457-20171019111628396-1048214045.png" alt="img"></p>
+<p><img src="/posts/7ee767c0/1094457-20171019111628396-1048214045.png" alt="img"></p>
 <p>在 MMIO 中，内存和 I/O 设备共享同一个地址空间。 MMIO 是应用得最为广泛的一种 IO 方法，它使用相同的地址总线来处理内存和 I/O 设备，I/O 设备的内存和寄存器被映射到与之相关联的地址。当 CPU 访问某个内存地址时，它可能是物理内存，也可以是某个 I/O 设备的内存。因此，用于访问内存的 CPU 指令也可来访问 I/O 设备。每个 I/O 设备监视 CPU 的地址总线，一旦 CPU 访问分配给它的地址，它就做出响应，将数据总线连接到需要访问的设备硬件寄存器。为了容纳 I/O 设备，CPU 必须预留给 I/O 一个地址区域，该地址区域不能给物理内存使用。</p>
 <p>需要强调的是，即使有了 MMIO 和 PMIO 两种手段，有的设备还是需要通过读写 CSR 的方式来进行，比如说 RISCV 和 Arm 对于中断控制器（设备的一种）的配置，这样做的原因可能是会提高读写的速度（不消耗统一的总线带宽）。</p>
 <p>有趣的是，用“地址空间”这样的抽象来概括异质性、多样化的实体的策略在其他地方也有类似体现，比如说 Unix “一切皆文件”的设计抽象，“文件”跟“地址空间”具有一定的相似性。</p>
@@ -355,21 +355,21 @@
 <p>但是这种方式非常消耗 CPU 资源，如果当 CPU 发出请求后，CPU 不再忙等而是去干别的事情，等外设完成自己的工作后，再发通知提醒 CPU，这种以外设为主导的方式节省了 CPU 资源。需要强调的是，即使通信的主导方是外设，但是并不意味着控制逻辑是在外设处实现的。外设只是通知 CPU 一下，CPU 依然要进行数据的读取和搬运工作，外设没办法替 CPU 干这种事情（本来也不是 CPU 的活）。</p>
 <p>不过如果以外设为主导，那么依然存在上文讨论的问题，外设众多，如果每个外设的中断都直接给到 CPU，由于外设数量众多，这会导致连接 CPU 引脚数量众多，从而增加 CPU 的体积。如果同时有多个中断发生，CPU 需要维护一个中断等待队列，并且中断还有优先级，维护队列和判定优先级都会占用 CPU 的时间，降低 CPU 的性能。因此中断控制器就应运而生。</p>
 <p>中断控制器相当于一个代理，外设产生的中断会先发给中断控制器，中断控制器管理、控制可屏蔽中断，并且对中断的优先级进行判断，再高优先级中断转交给 CPU，这样 CPU 既能专注计算，又能及时响应到中断事件，并执行相应的中断服务程序。示意图如下（PE 是 process element，即 CPU）。</p>
-<p><img src="/.io//msi-irq.PNG" alt="消息中断"></p>
+<p><img src="/posts/7ee767c0/msi-irq.PNG" alt="消息中断"></p>
 <p>当前主流芯片架构通常采用不同的中断控制器，ARM 使用的 GIC（Generic Interrupt Controller，通用中断控制器）的具体结构如下所示：</p>
-<p><img src="/.io//gicv3-model.PNG" alt="GICv3编程模型"></p>
+<p><img src="/posts/7ee767c0/gicv3-model.PNG" alt="GICv3编程模型"></p>
 <p>CPU 通过<strong>中断号</strong>来识别不同的外设，中断号是中断控制器对于不同设备的编码（没准就是某个设备连在特定的引脚，它的编号就是那个引脚号）。此外如果设备过多，以至于一个中断控制器</p>
 <p>外设发出通知后，还要经过如下过程才可以到达 CPU</p>
-<p><img src="/.io//7000.png" alt="img"></p>
+<p><img src="/posts/7ee767c0/7000.png" alt="img"></p>
 <p>中断控制器只承担了“通知”的功能，而实际的数据搬运，比如说将数据从设备空间搬运到其他地方（这基本上必然发生，因为设备空间的数据很容易被设备的下一次结果覆盖），依然要使用 CPU，这无疑是消耗 CPU 资源的，所以才有了 DMA（<strong>D</strong>irect <strong>M</strong>emory <strong>A</strong>ccess）。如下所示：</p>
-<p><img src="/.io//system-configuration-with-dmac.png" alt="Direct Memory Access controller and I/O Processor | Computer Architecture"></p>
+<p><img src="/posts/7ee767c0/system-configuration-with-dmac.png" alt="Direct Memory Access controller and I/O Processor | Computer Architecture"></p>
 <hr>
 <h2 id="四、总线与桥"><a href="#四、总线与桥" class="headerlink" title="四、总线与桥"></a>四、总线与桥</h2><p>总线是一种在计算机内部组件之间或计算机之间传输数据的通信系统。总线给我的直观感觉像是一个马路一样，各种元件的数据都在这个马路上跑。不过实际上，总线更像是一个协议，如果一个设备想要使用某个总线通信，那么就必须实现这个总线对应的协议。</p>
 <p>而桥则是实现了多个总线协议的芯片，它发挥着“中转站”的作用，将不同的数据包分发或者收拢。在历史上有著名的南北桥，这实际是在系统设计上将 I/O 工作层层转包。CPU 把比较慢的 bus 转包给北桥，北桥把更慢的 bus 转包给南桥，南桥把更更慢的 bus 转包给 Super I/O。如下所示：</p>
-<p><img src="/.io//800px-Motherboard_diagram.svg.png" alt="undefined"></p>
+<p><img src="/posts/7ee767c0/800px-Motherboard_diagram.svg.png" alt="undefined"></p>
 <h2 id="五、设备树"><a href="#五、设备树" class="headerlink" title="五、设备树"></a>五、设备树</h2><h3 id="5-1-意义"><a href="#5-1-意义" class="headerlink" title="5.1 意义"></a>5.1 意义</h3><p>设备树提出的背景是在Linux3.x之前的内核源码中，存在大量对板级细节信息描述的代码。这些代码充斥在 <code>/arch/arm/plat-xxx</code>和 <code>/arch/arm/mach-xxx</code> 目录中。每年新出的 ARM 架构芯片少说都有数十、数百款，每一款芯片又会有很多款基于该芯片的板子，这些板子上的设备又不相同，每一块板子都要有自己的板级信息文件，所以 Linux 内核下板级信息文件将会成指数级增长！关键是这些板级信息文件还都是 <code>.c</code>  或 <code>.h</code> 文件，它们都会被编译进 Linux 内核中，导致 Linux 内核“虚胖”。</p>
 <p>所以将描述主板上外设信息的工作从 Linux Kernel 中去除，采用设备树的方式描述主板信息，内核只需要读取设备树文件并根据文件选择适合自己的驱动就可以了（似乎应用了 kenerl module 的技术）。之所以称之为“设备树”，是因为用采用树形结构描述板级设备，如下所示：</p>
-<p><img src="/.io//8f7debc826664d2c8092f8ff7a0061cf.png" alt="img"></p>
+<p><img src="/posts/7ee767c0/8f7debc826664d2c8092f8ff7a0061cf.png" alt="img"></p>
 <p>虽然设备树是用于解决驱动的问题，但是我们也可以通过设备树来了解一些主板的信息。</p>
 <h3 id="5-2-文件"><a href="#5-2-文件" class="headerlink" title="5.2 文件"></a>5.2 文件</h3><p>DTB（device tree source）文件是一种 ASCII 文本格式的设备树描述文件，此文件适合人类阅读主要是给用户看的。一个 <code>.dts</code> 文件对应一个 ARM 的设备，一般放置在 <code>arch/xxx/boot/dts/</code> 中。由于 DTS 中包含了很多公共部分，linux 内核为了简化，将 Soc 公共部分提炼为 <code>.dtsi</code> 文件，类似 c 语言中的 <code>.h</code> 文件。</p>
 <p>DTB（device tree blob） 是将 DTS 编译以后得到的二进制文件。将 DTS 编译为 DTB 需要编译工具 DTC（device tree compiler）。</p>

@@ -30,17 +30,17 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="跟布尔代数那一篇性质类似，可以看做是布尔代数在数字电路中的一个应用。里面介绍的东西跟计组这门课关系不大。 但是可以说，这个实在是太漂亮优雅了。首先接触的时候就可以体会出硬件思想与编程软件思想的区别（还是多亏了叶哥哥的提醒），然后还可以体会设计思想，是一种完全不同于解题的理念，需要考虑的东西更多，有的时候求的不是最完美，而是最合适。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019205227001.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019205619171.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019210211837.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019212956503.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019214143528.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019214738074.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231019214839095.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231020102046049.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231020102231696.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231020102344171.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231020103055372.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019205227001.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019205619171.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019210211837.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019212956503.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019214143528.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019214738074.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231019214839095.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231020102046049.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231020102231696.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231020102344171.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231020103055372.png">
 <meta property="article:published_time" content="2022-01-06T12:48:41.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.577Z">
 <meta property="article:author" content="Thysrael">
@@ -48,7 +48,7 @@
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20231019205227001.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/c9751615/image-20231019205227001.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/c9751615/">
 
@@ -366,42 +366,42 @@ C3 = G2 | G1 &amp; P2 | G0 &amp; P1 &amp; P2 | P0 &amp; P1 &amp; P2 &amp; C0;
 C4 = G3 | G2 &amp; P3 | G1 &amp; P2 &amp; P3 | G0 &amp; P1 &amp; P2 &amp; P3 | P0 &amp; P1 &amp; P2 &amp; P3 &amp; C0;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，$C<em>i$ 不再和 $C</em>{i-1}$ 有直接关系了，这样就为<strong>并行计算</strong>提供了方法。但是相应的，电路设计变得复杂。</p>
 <h3 id="1-7-无符号乘法"><a href="#1-7-无符号乘法" class="headerlink" title="1.7 无符号乘法"></a>1.7 无符号乘法</h3><p>首先我们看无符号乘法的的实现，其流程基本上就是 W 次（其中 W 为数据位宽）的加法和移位操作，是二进制竖式乘法的模拟：</p>
-<p><img src="/.io//image-20231019205227001.png" alt="image-20231019205227001"></p>
+<p><img src="/posts/c9751615/image-20231019205227001.png" alt="image-20231019205227001"></p>
 <p>做出来硬件比较直观的是这样：</p>
-<p><img src="/.io//image-20231019205619171.png" alt="image-20231019205619171"></p>
+<p><img src="/posts/c9751615/image-20231019205619171.png" alt="image-20231019205619171"></p>
 <p>可以看到利用 6 的不同位并配合 3 的左移位（SL）和加法就达到计算的效果。但是这种直观的方法会导致计算时间很长，因为靠右侧的加法单元要等待左侧加法单元的计算结果稳定后（也就是算完后），再进行计算（被串行化）了。</p>
 <p>所以我们就提出了下面这种模型，相比于上面的简陋版，将“等待前一个加法单元计算结果”这个过程抽象为一个周期，这样虽然周期数增加了（周期数就是 W），但是每个周期的时间剪短了（原来要 W 个加法计算时间爱你，现在只要 W 个）。这种结构的好处在于节约了硬件资源，原先用 W - 1 个加法单元可以完成的事情，现在用 1 个就可以完成了。</p>
-<p><img src="/.io//image-20231019210211837.png" alt="image-20231019210211837"></p>
+<p><img src="/posts/c9751615/image-20231019210211837.png" alt="image-20231019210211837"></p>
 <p>当然还有另一种设计，因为乘法十分优良的并行性（每一位之间是没有关系的），所以可以产生一个树结构来汇总加法计算结果，这样在一个周期内就可以完成运算，而一个周期的时间其实是 logW 个加法单元的时间，其缺点就在于会使用 W - 1 个加法单元，如下所示：</p>
-<p><img src="/.io//image-20231019212956503.png" alt="image-20231019212956503"></p>
+<p><img src="/posts/c9751615/image-20231019212956503.png" alt="image-20231019212956503"></p>
 <p>在实际实现中，可以在上面这两种设计思路中取一个平衡，使得计算资源和计算时间更加均衡或者符合要求。乘法实现如此自由，得益于乘法良好的并行性。</p>
 <h3 id="1-8-有符号乘法"><a href="#1-8-有符号乘法" class="headerlink" title="1.8 有符号乘法"></a>1.8 有符号乘法</h3><p>首先应当明确，有符号数乘法与有符号加法不同，有符号加法可以完全使用无符号加法的加法器（利用了溢出原理），但是有符号乘法和无符号乘法是不一样的，比如说 3（4b’0011）与 -6 （4’b1010）如果做无符号乘法，那么结果是 8’b00011110，其对应的有符号数是 30，这与原本的结果 -18 风马牛不相及。</p>
 <p>为了保证有符号数的正确性，较为直观就可以想到，可以先对乘数取绝对值，然后对绝对值进行运算，然后将结果改变符号。这种思路非常直观，但是需要的硬件资源较多，因为要进行补码运算（这里插一嘴，我刚开始学的时候总觉得原码和反码是一对，因为俩个数在二进制中“针锋相对”，十分漂亮，但是仔细想，只有原码和他的补码的和是 $2^W$，这是更加美妙的数学性质），比较耗资源。</p>
 <p>另外其实也可以考虑利用 1.1 节提到的思路，将最高位视为负数（也就是减法器），这样就可以实现正确运算，如下所示</p>
 <script type="math/tex; mode=display">
 −3 × 6 = (−1×2^3+1×2^2+0×2^1+1×2^0)×6=−2^3×6+2^2×6+2^0×6= -18</script><p>一种对应的实现如下：</p>
-<p><img src="/.io//image-20231019214143528.png" alt="image-20231019214143528"></p>
+<p><img src="/posts/c9751615/image-20231019214143528.png" alt="image-20231019214143528"></p>
 <p>可以看到圈出的部分有可能是加法，也有可能是减法。需要注意，即使 ain 是一个负数，这个实现依然是可以使用的。</p>
 <p>还有一种设计思路是这样的：我们为了算补码的乘法，可以这样算，首先将乘数符号拓展到 2W 位，然后相乘，得到 4W 的结果，取低 2W 位即为正确的积，演示如下：</p>
-<p><img src="/.io//image-20231019214738074.png" alt="image-20231019214738074"></p>
+<p><img src="/posts/c9751615/image-20231019214738074.png" alt="image-20231019214738074"></p>
 <p>其证明如下（感谢 kg）：</p>
-<p><img src="/.io//image-20231019214839095.png" alt="image-20231019214839095"></p>
+<p><img src="/posts/c9751615/image-20231019214839095.png" alt="image-20231019214839095"></p>
 <p>我们可以用硬件模拟这种结果即可。同时也可以这样优化硬件，因为有</p>
 <pre class="line-numbers language-none"><code class="language-none">111.111 * a = -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>比如 a * b 如果 a 最高位是 1，那无符号乘结果高 W 位减去 b 就行，同理 b 最高位是1，无符号结果高 W 位减 a 就行。</p>
 <h3 id="1-9-无符号除法"><a href="#1-9-无符号除法" class="headerlink" title="1.9 无符号除法"></a>1.9 无符号除法</h3><p>无符号除法也是二进制竖式计算的模拟</p>
-<p><img src="/.io//image-20231020102046049.png" alt="image-20231020102046049"></p>
+<p><img src="/posts/c9751615/image-20231020102046049.png" alt="image-20231020102046049"></p>
 <p>在实际的实现中，会将余数和被除数放在一个寄存器中，其算法流程如图所示</p>
-<p><img src="/.io//image-20231020102231696.png" alt="image-20231020102231696"></p>
+<p><img src="/posts/c9751615/image-20231020102231696.png" alt="image-20231020102231696"></p>
 <p>其实现结构如下：</p>
-<p><img src="/.io//image-20231020102344171.png" alt="image-20231020102344171"></p>
+<p><img src="/posts/c9751615/image-20231020102344171.png" alt="image-20231020102344171"></p>
 <p>在运算中，我们需要：</p>
 <ul>
 <li>将除数放在 Divisor 的高 32 位</li>
 <li>将 Quotient 置为 0</li>
 </ul>
 <p>当然这个结构还是十分朴素的，因为还有很多优化的空间，在优化之后我们可以看到如下结构</p>
-<p><img src="/.io//image-20231020103055372.png" alt="image-20231020103055372"></p>
+<p><img src="/posts/c9751615/image-20231020103055372.png" alt="image-20231020103055372"></p>
 <p>可以解释一下为什么这样可以：</p>
 <ul>
 <li>首先除数本来就应该是 32 位的，之前是 64 位是为了和 64 位的被除数或者余数做运算。</li>

@@ -30,19 +30,19 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、直观理解1.1 语法分析的目的语法分析是在进行完词法分析后进行的步骤，词法分析会将一个个的字母拆解成不同的符号，这些符号会被组成一个线性的数组交给语法分析部分，语法分析不会会将这个线性的数组重新组织成一个语法树，交给后面的语义分析部分。 至于为什么要组织成一个树形结构？其实也并不是一个必选项，其实本质是这个线性数组可以被语法规则完全的接受。只不过是因为特定的语法规则刚好可以被组织成一个语法树的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230209160923676.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116104329690.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116104454079.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116105548980.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116110349286.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116110507990.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116110634029.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116112037159.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221116112811168.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//层次结构.jpg">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221108190515286.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230210150129057.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//v2-b83de87c60a17edc7fa2f28e5f60dbd8_r.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20230209160923676.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116104329690.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116104454079.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116105548980.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116110349286.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116110507990.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116110634029.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116112037159.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221116112811168.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/层次结构.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20221108190515286.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/image-20230210150129057.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/2fb034c4/v2-b83de87c60a17edc7fa2f28e5f60dbd8_r.jpg">
 <meta property="article:published_time" content="2023-02-09T07:20:48.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.530Z">
 <meta property="article:author" content="Thysrael">
@@ -50,7 +50,7 @@
 <meta property="article:tag" content="S5假期">
 <meta property="article:tag" content="编译技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20230209160923676.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/2fb034c4/image-20230209160923676.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/2fb034c4/">
 
@@ -309,7 +309,7 @@
         <h2 id="一、直观理解"><a href="#一、直观理解" class="headerlink" title="一、直观理解"></a>一、直观理解</h2><h3 id="1-1-语法分析的目的"><a href="#1-1-语法分析的目的" class="headerlink" title="1.1 语法分析的目的"></a>1.1 语法分析的目的</h3><p>语法分析是在进行完词法分析后进行的步骤，词法分析会将一个个的字母拆解成不同的符号，这些符号会被组成一个线性的数组交给语法分析部分，语法分析不会会将这个线性的数组重新组织成一个语法树，交给后面的语义分析部分。</p>
 <p>至于为什么要组织成一个<strong>树形结构</strong>？其实也并不是一个必选项，其实本质是这个线性数组可以被语法规则完全的接受。只不过是因为特定的语法规则刚好可以被组织成一个语法树的形式（语法树可以看做是语法分析的“历史记录”），而且语法树的结构又被后面的语义分析部分所需要，所以我们才恰好需要这棵语法树。</p>
 <h3 id="1-2-编译中的矛盾"><a href="#1-2-编译中的矛盾" class="headerlink" title="1.2 编译中的矛盾"></a>1.2 编译中的矛盾</h3><h4 id="1-2-1-推导和规约"><a href="#1-2-1-推导和规约" class="headerlink" title="1.2.1 推导和规约"></a>1.2.1 推导和规约</h4><p>推导（<strong>derivation</strong>）和规约（<strong>reducation</strong>）是针对语法规则进行的两个相反方向的过程，如下图所示</p>
-<p><img src="/.io//image-20230209160923676.png" alt="image-20230209160923676"></p>
+<p><img src="/posts/2fb034c4/image-20230209160923676.png" alt="image-20230209160923676"></p>
 <p>如果结合语法树来看，推导是有一种让语法树“向下遍历”的趋势的（越来越具体），规约是有一种让语法树“向上遍历”的趋势的（越来越抽象）。两者的本质都是依赖于语法规则。</p>
 <p>那么到底我们平时是用哪一种呢？这其实对应了 LL 和 LR 两种语法设计思路，在 LL 中采用的是推导的方式，而在 LR 中采用的是规约的方式。具体的对比需要之后说，这里只是一个铺垫。</p>
 <h4 id="1-2-2-规范规约"><a href="#1-2-2-规范规约" class="headerlink" title="1.2.2 规范规约"></a>1.2.2 规范规约</h4><p>不可否认，无论是规约还是推导，都可以有多种思路的，先推左边的，后推右边的，想怎么推怎么推，想怎么规约就怎么规约。</p>
@@ -387,10 +387,10 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 <p>当我们找短语的时候，首先先根据句型画出语法树，然后遍历语法树的子树（这个子树包括语法树本身，其实就是遍历非叶子节点）（不遍历叶子节点的原因是叶子节点没有推导过程，而定义中要求最少经过一步推导，所以叶子节点一定不是），非叶子节点的叶子子孙（也就是不必须是子代节点）组成了短语，这个非叶子节点就是“相对于<strong>某个非终结符</strong>”的那个“非终结符”。如果叶子节点都是这个节点的子代，那么就被称为简单短语。</p>
 <p>不过我们一般不强调“相对于<strong>某个非终结符</strong>”这个属性，所以说到短语，直说他是某个句型的短语。</p>
 <p>$E$</p>
-<p><img src="/.io//image-20221116104329690.png" alt="image-20221116104329690"></p>
+<p><img src="/posts/2fb034c4/image-20221116104329690.png" alt="image-20221116104329690"></p>
 <p>它没有非叶子节点，所以就没有短语，所以啥都没有</p>
 <p>$T$</p>
-<p><img src="/.io//image-20221116104454079.png" alt="image-20221116104454079"></p>
+<p><img src="/posts/2fb034c4/image-20221116104454079.png" alt="image-20221116104454079"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -413,7 +413,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 </table>
 </div>
 <p>$i$</p>
-<p><img src="/.io//image-20221116105548980.png" alt="image-20221116105548980"></p>
+<p><img src="/posts/2fb034c4/image-20221116105548980.png" alt="image-20221116105548980"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -451,7 +451,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 </table>
 </div>
 <p>$T * F$</p>
-<p><img src="/.io//image-20221116110349286.png" alt="image-20221116110349286"></p>
+<p><img src="/posts/2fb034c4/image-20221116110349286.png" alt="image-20221116110349286"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -482,7 +482,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 </table>
 </div>
 <p>$F * F$</p>
-<p><img src="/.io//image-20221116110507990.png" alt="image-20221116110507990"></p>
+<p><img src="/posts/2fb034c4/image-20221116110507990.png" alt="image-20221116110507990"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -519,7 +519,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 </table>
 </div>
 <p>$i * F$</p>
-<p><img src="/.io//image-20221116110634029.png" alt="image-20221116110634029"></p>
+<p><img src="/posts/2fb034c4/image-20221116110634029.png" alt="image-20221116110634029"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -564,7 +564,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 </table>
 </div>
 <p>$F * i$</p>
-<p><img src="/.io//image-20221116112037159.png" alt="image-20221116112037159"></p>
+<p><img src="/posts/2fb034c4/image-20221116112037159.png" alt="image-20221116112037159"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -609,7 +609,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 </table>
 </div>
 <p>$F + F + F$</p>
-<p><img src="/.io//image-20221116112811168.png" alt="image-20221116112811168"></p>
+<p><img src="/posts/2fb034c4/image-20221116112811168.png" alt="image-20221116112811168"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -670,7 +670,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 <p>不得不说，这种列表法是有一定问题的，对于短语和简单短语，确实是可以每个非叶子节点都立即得出的，而对于句柄，其实是在得到所有的简单短语后，挑选最左面的简单短语获得的；而对于素短语，则是得到所有的短语后，从中挑出含有非终结符的最短短语。</p>
 </blockquote>
 <h3 id="1-4-语法范围"><a href="#1-4-语法范围" class="headerlink" title="1.4 语法范围"></a>1.4 语法范围</h3><p>如图所示</p>
-<p><img src="/.io//层次结构.jpg" alt=""></p>
+<p><img src="/posts/2fb034c4/层次结构.jpg" alt=""></p>
 <p>有如下规律：</p>
 <ul>
 <li>LR 一定包括同级的 LL</li>
@@ -764,7 +764,7 @@ A \rightarrow ASd | \varepsilon</script><p>中，$\varepsilon \in FIRST(A)$ ，�
 <p>另一个是对于这种</p>
 <script type="math/tex; mode=display">
 A \rightarrow ASd</script><p>左递归形式，其实就是如果被递归的 $FIRST$ 集中没有 $\varepsilon$ ，那么就不用考虑了，如果有的话，那么就考虑下面的，没有什么过于稀奇的（依然是有一些稀奇的）。</p>
-<h4 id="2-2-3-FOLLOW-的求解"><a href="#2-2-3-FOLLOW-的求解" class="headerlink" title="2.2.3 FOLLOW 的求解"></a>2.2.3 FOLLOW 的求解</h4><p><img src="/.io//image-20221108190515286.png" alt="image-20221108190515286"></p>
+<h4 id="2-2-3-FOLLOW-的求解"><a href="#2-2-3-FOLLOW-的求解" class="headerlink" title="2.2.3 FOLLOW 的求解"></a>2.2.3 FOLLOW 的求解</h4><p><img src="/posts/2fb034c4/image-20221108190515286.png" alt="image-20221108190515286"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -981,7 +981,7 @@ E::= E + T \space\space|\space\space T \\
 <p>我们是这样描述的，在算符优先分析法中，每次规约的都是<strong>最左素短语</strong>。</p>
 <p><strong>素短语</strong>和<strong>简单短语</strong>有一定的相似性，比如说<strong>素短语</strong>强调了一定的<strong>最小性</strong>，素短语内部是不可以嵌套素短语的，这就使得素短语是一个“较小”的短语，同时素短语也要求必须含有至少一个终结符，这是其特性。</p>
 <p>在与 LR 的对比中，可以发现，因为素短语并不一定是简单短语，所以规约是<strong>有可能是利用了多个语法规则的</strong>，比如说下面的语法树，按照算符优先分析，应当如此递归</p>
-<p><img src="/.io//image-20230210150129057.png" alt="image-20230210150129057"></p>
+<p><img src="/posts/2fb034c4/image-20230210150129057.png" alt="image-20230210150129057"></p>
 <p>会发现在第二次递归的时候直接递归了两步，这是一个十分神奇而且我觉得其实是不严谨的地方。在某种意义上说，这意味着我们并没有按照语法规则去递归建树，我们将语法规则翻译成算符优先表之后，就彻底抛弃了原来的语法规则。</p>
 <h3 id="3-2-SLR"><a href="#3-2-SLR" class="headerlink" title="3.2 SLR"></a>3.2 SLR</h3><h4 id="3-2-1-活前缀和下推自动机"><a href="#3-2-1-活前缀和下推自动机" class="headerlink" title="3.2.1 活前缀和下推自动机"></a>3.2.1 活前缀和下推自动机</h4><p>活前缀指的是在一个句型中，不包括“句柄之后的符号”的其他部分组成的前缀。</p>
 <p>那么活前缀代表着什么？LR 有两个基本动作“移进”和“规约”，如果一个活前缀不包括句柄，那么它就可以通过不断的移进操作增加它的长度，直到包括了句柄为止，而当一个活前缀包括句柄时，就可以通过规约操作改变活前缀，然后继续重复“移进-规约”的循环。这个过程似乎是可以用一个 DFA 来描述的，因为 DFA 会有一种记录自己状态的感觉，当前状态到起始状态的连线就是当前的活前缀。</p>
@@ -997,7 +997,7 @@ E::= E + T \space\space|\space\space T \\
 </ul>
 </blockquote>
 <p>现在我们尝试用一个例子来解释一下 LR 面对的问题（其本质是规约和规约的冲突，规约和移入的冲突）</p>
-<p><img src="/.io//v2-b83de87c60a17edc7fa2f28e5f60dbd8_r.jpg" alt="img"></p>
+<p><img src="/posts/2fb034c4/v2-b83de87c60a17edc7fa2f28e5f60dbd8_r.jpg" alt="img"></p>
 <p>构建这个图很简单，就是不断的移动那个点就好了，然后求出一个闭包即可。</p>
 <p>我们来看一下一个移进过程具体是怎样的，对于 $id * id$ 这个输入来说，首先看到的是 $id$，那么移进就是在当前状态和输入考虑状态转移，所以我们考虑转移到 $I_5$ ，然后发现 $I_5$ 里的项目有一个特征</p>
 <script type="math/tex; mode=display">

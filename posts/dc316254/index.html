@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="这篇总结并不是一个很好的知识体系，他只是为了考试而临时搭建的一个考试体系。 通常把存放一个二进制单位的物理器件称为存储元，地址码相同的多个存储元构成一个存储单元（这个定义一针见血！）。若干个存储单元构成一个存储体（又被称为存储矩阵），其特点就是会用到地址这个概念。 这个没有更新完，是因为我有看了关于虚拟机的部分内容，感觉挺有意思的，想写一个更加融汇贯通的，所以搭建文章脉络的周期会延长，考试前可能更">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220108142811614.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107120238544.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107120320101.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc316254/image-20220108142811614.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc316254/image-20220107120238544.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc316254/image-20220107120320101.png">
 <meta property="article:published_time" content="2022-01-06T13:05:35.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.570Z">
 <meta property="article:author" content="Thysrael">
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220108142811614.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/dc316254/image-20220108142811614.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/dc316254/">
 
@@ -359,7 +359,7 @@
 <h4 id="1-2-2-DRAM刷新"><a href="#1-2-2-DRAM刷新" class="headerlink" title="1.2.2 DRAM刷新"></a>1.2.2 DRAM刷新</h4><p>因为DRAM电容上的电荷只能维持$1\sim2$ 秒，所以必须在信息消失前进行刷新。此外，即使DRAM的破坏读出后会有恢复过程，那么也必须刷新，可能是应为没法精确定位。</p>
 <p>首先介绍<strong>刷新周期</strong>的概念，刷新周期指的是信息的<strong>保存时间</strong>，注意，刷新的最小间隔不是刷新周期，刷新一次用的时间也不是刷新周期。刷新周期说的是在这个时间间隔内，我们必须刷新一次，而不是刷新一次要花一个刷新周期的时间。就好比我们每年放七天假，一年一个年假，刷新周期就类似于一年，而不是七天。</p>
 <p>DRAM是按照行刷新的，每次刷新都刷一行，DRAM芯片中有很多行，所以要在一个刷新周期中安排不同的刷新。就好像在一年的时间里要给不同的人安排不同日期的假期一样。以此我们产生了多种方式</p>
-<p><img src="/.io//image-20220108142811614.png" alt="image-20220108142811614"></p>
+<p><img src="/posts/dc316254/image-20220108142811614.png" alt="image-20220108142811614"></p>
 <ul>
 <li>集中刷新，就是在一段固定的时间里，对所有行逐行刷新，就好像把所有人的假期都安排到一定的顺序时间里，在这个期间内停止对存储器的读写，称为“死时间”，又称访存“死区”。</li>
 <li>分散刷新，将对每行的刷新分散到各个工作周期中，每个工作周期分为两部分：前半部分用于正常的读写或者保持，后半部分用于刷新（这样一个刷新周期，每行应该就会刷新多次）。这样就没有“死时间”了。但是系统的存取周期会加长，降低了整机的速度。（这个跟图就有点不一样了，不知道具体到底哪个对）。</li>
@@ -380,9 +380,9 @@
 <p>当我们做位拓展的时候，需要用到片选信号，此时是需要外置译码器的。</p>
 <h3 id="2-3-芯片拓展"><a href="#2-3-芯片拓展" class="headerlink" title="2.3 芯片拓展"></a>2.3 芯片拓展</h3><p>经过上面的介绍，可以明确，一个存储器我们最看重的两个指标，<strong>一个是地址的范围，一个是字的位数</strong>，也就是这两个标志 $a \times b$。a就是地址的范围，b就是字的宽度。因为单个存储芯片与实际存储区存在差异，所以我们才需要拓展，拓展的对象就是这两个参数。</p>
 <h4 id="2-3-1-字拓展"><a href="#2-3-1-字拓展" class="headerlink" title="2.3.1 字拓展"></a>2.3.1 字拓展</h4><p>注意这里说字拓展，不是把字拓展，而是拓展字的数量，也就是说，拓展地址范围，此时地址线的位数增加，那么多出的地址线，就会用于控制片选信号，控制前需要经过一个外置的<strong>译码器</strong>，结构如图：</p>
-<p><img src="/.io//image-20220107120238544.png" alt="image-20220107120238544"></p>
+<p><img src="/posts/dc316254/image-20220107120238544.png" alt="image-20220107120238544"></p>
 <h4 id="2-3-2-位拓展"><a href="#2-3-2-位拓展" class="headerlink" title="2.3.2 位拓展"></a>2.3.2 位拓展</h4><p>就是说对数据位进行拓展，是很简单的操作。装置如下：</p>
-<p><img src="/.io//image-20220107120320101.png" alt="image-20220107120320101"></p>
+<p><img src="/posts/dc316254/image-20220107120320101.png" alt="image-20220107120320101"></p>
 <hr>
 <h2 id="三、高速缓存"><a href="#三、高速缓存" class="headerlink" title="三、高速缓存"></a>三、高速缓存</h2><p>块和页都是复制的单位</p>
 <p>块和页的大小决定了偏移量的位数</p>

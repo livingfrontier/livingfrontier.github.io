@@ -30,12 +30,12 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、从分治到动态规划1.1 动态规划的性质动态规划具有以下三个明显特性：  无后效性：如果给定某一阶段的状态，则在这一阶段以后过程的发展不受这阶段以前各段状态的影响。如果说的直白一些，就是当我们求出 $dp_i$ 的时候，我们是怎样求出来的，就不用管了，我们只需要利用 $dp_i$ 就可以了。类似于“只要上了北航，没人管你到底是从河北考上的的，还是从月球考上的，大家只认为你是一个北航学生。” 最优">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221020103059238.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221020103243850.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221020104707346.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221020104813138.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//微信图片_20221020105946.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//排序.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/538b27b7/image-20221020103059238.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/538b27b7/image-20221020103243850.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/538b27b7/image-20221020104707346.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/538b27b7/image-20221020104813138.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/538b27b7/微信图片_20221020105946.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/538b27b7/排序.png">
 <meta property="article:published_time" content="2022-10-20T01:09:42.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.510Z">
 <meta property="article:author" content="Thysrael">
@@ -43,7 +43,7 @@
 <meta property="article:tag" content="S5课上">
 <meta property="article:tag" content="算法设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20221020103059238.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/538b27b7/image-20221020103059238.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/538b27b7/">
 
@@ -327,15 +327,15 @@
 <script type="math/tex; mode=display">
 dp_j \rightarrow dp_i \quad (j \leq i) \\
 dp_{x, y} \rightarrow dp_{i, j} \quad (x \leq i, y \leq j)</script><p>的特征，如果是二维状态，那么就是当前单元格只依赖与其左上角区域的单元格，如图所示：</p>
-<p><img src="/.io//image-20221020103059238.png" alt="image-20221020103059238"></p>
+<p><img src="/posts/538b27b7/image-20221020103059238.png" alt="image-20221020103059238"></p>
 <p>那么其计算路径就是：</p>
-<p><img src="/.io//image-20221020103243850.png" alt="image-20221020103243850"></p>
+<p><img src="/posts/538b27b7/image-20221020103243850.png" alt="image-20221020103243850"></p>
 <h3 id="2-2-斜向遍历"><a href="#2-2-斜向遍历" class="headerlink" title="2.2 斜向遍历"></a>2.2 斜向遍历</h3><p>经典例题就是<strong>矩阵链乘法</strong>，在题目中出现的<strong>括号匹配问题</strong>。其状态转移方程呈现</p>
 <script type="math/tex; mode=display">
 (dp_{left, middle}, dp_{middle + 1, right}) \rightarrow dp_{left, right} \quad (left \leq middle < right)</script><p>其填表的结构更加典型，只有上三角，而且基准情况出现在对角线。</p>
-<p><img src="/.io//image-20221020104707346.png" alt="image-20221020104707346"></p>
+<p><img src="/posts/538b27b7/image-20221020104707346.png" alt="image-20221020104707346"></p>
 <p>其顺序是斜向填写，即</p>
-<p><img src="/.io//image-20221020104813138.png" alt="image-20221020104813138"></p>
+<p><img src="/posts/538b27b7/image-20221020104813138.png" alt="image-20221020104813138"></p>
 <p>而在实际实现的时候，需要先对与长度进行遍历（比较显然，就是只有先确定了长度比较小的子问题，然后才可以确定长度比较大的子问题），也就是<strong>长度即规模</strong>的思想。</p>
 <p>代码如下（括号匹配）</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h&gt;</span></span>
@@ -394,7 +394,7 @@ string s<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-3-排序遍历"><a href="#2-3-排序遍历" class="headerlink" title="2.3 排序遍历"></a>2.3 排序遍历</h3><p>这个是一个很有意思的东西，例题是<strong>箱子问题</strong></p>
-<p><img src="/.io//微信图片_20221020105946.png" alt=""></p>
+<p><img src="/posts/538b27b7/微信图片_20221020105946.png" alt=""></p>
 <p>在获得箱子数组后，需要对于这个数组进行一个排序，让标号小的箱子不可能堆叠在标号大的箱子上（即标号大的箱子可能可以堆叠在标号小的箱子上）。我本来以为这是一个神来之笔。但是实际上这是确立计算路径的一种方式。</p>
 <p>如果从自顶向下的角度来看，这个排序是没有必要的，用递归来解的话，大概是这样的</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 备忘录</span>
@@ -425,7 +425,7 @@ string s<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但是在自底向下的时候，排序就变成必要的了，因为在不排序的时候，依赖是可能出现在当前状态之后的（即标号比当前状态大）</p>
-<p><img src="/.io//排序.png" alt=""></p>
+<p><img src="/posts/538b27b7/排序.png" alt=""></p>
 <p>但是排序后，依赖状态一定先于当前状态求解，这十分美妙。</p>
 <p>最后给出这道题两种解法的实现代码：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>

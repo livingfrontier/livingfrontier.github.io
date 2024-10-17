@@ -30,11 +30,11 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、NumPy1.1 参考资料这篇文章写得实在是太好了图解链接 。 1.2 Array Matrix这两种东西是不一样的，np.array 也可以有多维，但是它的 * 就是点对点乘法，而 @ 是点乘。但是对于 np.matrix 来说，无论是 * 还是 @ 都是点乘，sp.Matrix 同理。有如下演示">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//1519122294-2.gif">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221117192850324.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221117192735809.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221117200007302.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221118104318761.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d9d8ff0a/1519122294-2.gif">
+<meta property="og:image" content="https://thysrael.github.io/posts/d9d8ff0a/image-20221117192850324.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d9d8ff0a/image-20221117192735809.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d9d8ff0a/image-20221117200007302.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d9d8ff0a/image-20221118104318761.png">
 <meta property="article:published_time" content="2022-10-14T06:15:30.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.390Z">
 <meta property="article:author" content="Thysrael">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="工具总结">
 <meta property="article:tag" content="数学建模">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//1519122294-2.gif">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/d9d8ff0a/1519122294-2.gif">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/d9d8ff0a/">
 
@@ -714,7 +714,7 @@ prob<span class="token punctuation">.</span>solve<span class="token punctuation"
 <h3 id="4-2-凸优化"><a href="#4-2-凸优化" class="headerlink" title="4.2 凸优化"></a>4.2 凸优化</h3><p>cvxpy 本质上是一个凸优化库，所以不是凸优化的问题是没有办法用这个库来求解的。</p>
 <hr>
 <h2 id="五、Matplotlib"><a href="#五、Matplotlib" class="headerlink" title="五、Matplotlib"></a>五、Matplotlib</h2><h3 id="5-1-架构"><a href="#5-1-架构" class="headerlink" title="5.1 架构"></a>5.1 架构</h3><p>如图所示</p>
-<p><img src="/.io//1519122294-2.gif" alt="Matplotlib图像组成"></p>
+<p><img src="/posts/d9d8ff0a/1519122294-2.gif" alt="Matplotlib图像组成"></p>
 <p>但是似乎学不学的吧，因为这种比较普世和灵活，如果只是为了应付简单的画图任务，完全不需要这种复杂的结构，其比较规范的结构如下所示</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
@@ -740,7 +740,7 @@ axes2<span class="token punctuation">.</span>set_title<span class="token punctua
 <span class="token comment"># 展示</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其效果如下，可以看到很灵活</p>
-<p><img src="/.io//image-20221117192850324.png" alt="image-20221117192850324"></p>
+<p><img src="/posts/d9d8ff0a/image-20221117192850324.png" alt="image-20221117192850324"></p>
 <p>另外我们一般只用 <code>pyplot</code>，虽然我不知道为啥，但是写成这样就可以了</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> pyplot <span class="token keyword">as</span> plt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="5-2-基本操作"><a href="#5-2-基本操作" class="headerlink" title="5.2 基本操作"></a>5.2 基本操作</h3><p>首先说，下面的代码似乎并不规整，规整的代码是先创建一个 <code>figure</code> 然后再其上创建 <code>Axes</code> 然后再干一大堆事情，但是我懒了，所以就选了一些比较简单的方法。可以说，上面的写法是<strong>面向对象的</strong>，而下面的写法是<strong>面向过程的</strong>。</p>
@@ -802,7 +802,7 @@ plt<span class="token punctuation">.</span>plot<span class="token punctuation">(
 <span class="token comment"># 展示</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其效果如下：</p>
-<p><img src="/.io//image-20221117192735809.png" alt="image-20221117192735809"></p>
+<p><img src="/posts/d9d8ff0a/image-20221117192735809.png" alt="image-20221117192735809"></p>
 <h4 id="5-2-4-多种不一样的图"><a href="#5-2-4-多种不一样的图" class="headerlink" title="5.2.4 多种不一样的图"></a>5.2.4 <strong>多种不一样的图</strong></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> matplotlib
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -841,7 +841,7 @@ plt<span class="token punctuation">.</span>pie<span class="token punctuation">(<
 plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">"plt.png"</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>效果如下：</p>
-<p><img src="/.io//image-20221117200007302.png" alt="image-20221117200007302"></p>
+<p><img src="/posts/d9d8ff0a/image-20221117200007302.png" alt="image-20221117200007302"></p>
 <h4 id="5-2-5-保存图像"><a href="#5-2-5-保存图像" class="headerlink" title="5.2.5 保存图像"></a>5.2.5 <strong>保存图像</strong></h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">"plt.png"</span><span class="token punctuation">)</span>
 <span class="token comment"># savefig 一定要在 plt.show 之前，似乎 plt.show() 会清空画像</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -861,7 +861,7 @@ plt<span class="token punctuation">.</span>xlim<span class="token punctuation">(
 plt<span class="token punctuation">.</span>legend<span class="token punctuation">(</span>loc<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>效果</p>
-<p><img src="/.io//image-20221118104318761.png" alt="image-20221118104318761"></p>
+<p><img src="/posts/d9d8ff0a/image-20221118104318761.png" alt="image-20221118104318761"></p>
 <h3 id="5-3-解决乱码问题"><a href="#5-3-解决乱码问题" class="headerlink" title="5.3 解决乱码问题"></a>5.3 解决乱码问题</h3><p>按照如下操作即可在 win 下解决问题</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt

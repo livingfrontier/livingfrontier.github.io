@@ -30,16 +30,16 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、代码规范1.1 常量我个人规范是将所有的常量都用伪指令.eqv声明，其格式会在3.2中介绍。关键涉及一个问题，就是.eqv这样定义的是一个立即数，但是不是所有的指令都可以重载了立即数参数模式，所以更加规范的规范是每次使用被.eqv定义的常量之前，都加载立即数到一个寄存器（规定为$t7），然后使用这个寄存器，这就是常量的全部规范。 当然，还有几种方法，一种就是把常量直接保存在寄存器中，每次就是用">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103111911645.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103112212068.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103112257784.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//微信图片_20211103112531.jpg">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103113419910.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103113544907.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103113742226.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211103114618896.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211101112726458.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211101113013771.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103111911645.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103112212068.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103112257784.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/微信图片_20211103112531.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103113419910.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103113544907.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103113742226.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103114618896.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211101112726458.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211101113013771.png">
 <meta property="article:published_time" content="2022-01-16T07:54:13.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.563Z">
 <meta property="article:author" content="Thysrael">
@@ -47,7 +47,7 @@
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20211103111911645.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/50c7e0e6/image-20211103111911645.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/50c7e0e6/">
 
@@ -504,24 +504,24 @@ loop_end:<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <p>我们用P2的迷宫题目举例子。然后我们来看一下基本的用命令行解决输入问题的指令</p>
 <pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">E:\learn\semester3\ComputerSystem\MARS&gt;java -jar Mars4_5.jar P2_L1_puzzle.asm &lt; puzzle_test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>首先介绍打开命令行的方式，这是我的文件夹</p>
-<p><img src="/.io//image-20211103111911645.png" alt="image-20211103111911645"></p>
+<p><img src="/posts/50c7e0e6/image-20211103111911645.png" alt="image-20211103111911645"></p>
 <p>然后需要<strong>在这个文件夹内</strong>打开控制台，方法就是点击上面的路径，然后将其改为cmd，然后按回车键。这样</p>
-<p><img src="/.io//image-20211103112212068.png" alt="image-20211103112212068"></p>
+<p><img src="/posts/50c7e0e6/image-20211103112212068.png" alt="image-20211103112212068"></p>
 <p>这样就可以打开控制台了，像这样：</p>
-<p><img src="/.io//image-20211103112257784.png" alt="image-20211103112257784"></p>
+<p><img src="/posts/50c7e0e6/image-20211103112257784.png" alt="image-20211103112257784"></p>
 <p>然后就只需要输入这个命令就好了，就是这个（严格说，你还需要把程序写好，然后在准备好测试文件才行）</p>
 <pre class="line-numbers language-none"><code class="language-none">java -jar Mars4_5.jar P2_L1_puzzle.asm &lt; puzzle_test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后解释一下这是啥意思：</p>
 <p>java就是最基础的命令，在java中，有这个图</p>
-<p><img src="/.io//微信图片_20211103112531.jpg" alt="微信图片_20211103112531"></p>
+<p><img src="/posts/50c7e0e6/微信图片_20211103112531.jpg" alt="微信图片_20211103112531"></p>
 <p>jar里面就有好多class文件，所以需要使用java让他执行。</p>
 <p>但是jar不是传统的.class文件，所以需要告诉java，让他知道他执行的是个jar文件夹，所以后面的 -jar 就是用来告诉他他处理的是jar，然后后面的Mars4_5.jar是需要处理的jar文件，我们这里就是这个MARS，但是在help里面，他用的是Mars.jar这是因为他给改名了，然后P2_L1_puzzle.asm就是需要运行的MIPS程序，然后puzzle_test.txt就是测试样例所在的文件，需要提前写好，我的就是这样的：</p>
-<p><img src="/.io//image-20211103113419910.png" alt="image-20211103113419910"></p>
+<p><img src="/posts/50c7e0e6/image-20211103113419910.png" alt="image-20211103113419910"></p>
 <p>然后就会输出结果，像这样：</p>
-<p><img src="/.io//image-20211103113544907.png" alt="image-20211103113544907"></p>
+<p><img src="/posts/50c7e0e6/image-20211103113544907.png" alt="image-20211103113544907"></p>
 <p>可以看到输出了答案2。</p>
 <p>这里需要介绍一下路径的概念，比如有的人，他的.txt文件没有跟.asm文件放在一起，那么怎么办，比如我把.txt文件放在这里</p>
-<p><img src="/.io//image-20211103113742226.png" alt="image-20211103113742226"></p>
+<p><img src="/posts/50c7e0e6/image-20211103113742226.png" alt="image-20211103113742226"></p>
 <p>那么就需要改成这样的指令</p>
 <pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">java -jar Mars4_5.jar P2_L1_puzzle.asm &lt; E:\learn\semester3\ComputerSystem\puzzle_test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样就可以了，这个叫绝对路径法，还有一个相对路径法，大家自己查吧（因为不适应考试，所以就不介绍了）</p>
@@ -530,15 +530,15 @@ loop_end:<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <p>out就是输出文件。</p>
 <p>然后再介绍一下MARS的相关指令，这个可以在help中查到，以一个为例，nc就是不显示版权信息，如果我们加入这个参数，那么就有这种效果：</p>
 <pre class="line-numbers language-none"><code class="language-none">java -jar Mars4_5.jar nc P2_L1_puzzle.asm &lt; puzzle_test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/.io//image-20211103114618896.png" alt="image-20211103114618896"></p>
+<p><img src="/posts/50c7e0e6/image-20211103114618896.png" alt="image-20211103114618896"></p>
 <p>与上面对比，发现版权信息没了。</p>
 <h4 id="2-2-2-文件操作"><a href="#2-2-2-文件操作" class="headerlink" title="2.2.2 文件操作"></a>2.2.2 文件操作</h4><h4 id="2-2-3-普通调试流程"><a href="#2-2-3-普通调试流程" class="headerlink" title="2.2.3 普通调试流程"></a>2.2.3 普通调试流程</h4><p>让调试丝滑的办法首先就是<strong>多使用快捷键</strong>，先按F3进行汇编，然后再按F5运行，运行结束以后需要按F12进行复位，然后才能进行再一次的F5运行，当意识到需要逐步调试的时候，可以按F7单步前进和F8单步后退进行调试。</p>
 <p>关于广义上的<strong>单步调试</strong>，分为真正按F7的单步调试和结合断点的F5调试。对于前一种，很好理解，很好操作，是MARS调试能达到的最小单位，就不在此介绍了。对于结合断点的F5调试，具体解释，原本按一次F5就可以执行完的程序，可以通过设置n个断点，按n + 1次F5执行完毕，这种调试方法的优势在于极大的提高了狭义单步调试按来按去F7的低效性。</p>
 <p>我们以puzzle那道题目举例子，如果是单步调试，前面有一个复杂的数组录入，我的指令大概每个数组元素录入都需要7步，也就是需要按7次F7，要是样例，那么就要按175次无意义操作，只有第一次检查一下数组录入功能正不正常就好了，没必要进行后面的操作，当然可以按F5一下到底，但是递归的过程就没法看到了。我最开始的时候是调节run的速度，然后眼疾手快按F11到递归函数那里暂停，但是因为代码可读性太差，所以经常暂停完就还需要F7和F8的微调，就很不丝滑。</p>
 <p>但是只要在所有数据都输入完以后，设置一个断点，就可以按一次F5，仅仅完成数据输入过程，然后对照Memory和寄存器列表检查就好了，设置断点的方法如下</p>
-<p><img src="/.io//image-20211101112726458.png" alt="image-20211101112726458"></p>
+<p><img src="/posts/50c7e0e6/image-20211101112726458.png" alt="image-20211101112726458"></p>
 <p>勾上右边那个点就好了，勾上以后按F5，就可以运行到输入截止时停止，此时在I/O口连续输入“5 a b b b c”，就可以直接在Memory监视窗口看到成果（此题是judge那道题），如下：</p>
-<p><img src="/.io//image-20211101113013771.png" alt="image-20211101113013771"></p>
+<p><img src="/posts/50c7e0e6/image-20211101113013771.png" alt="image-20211101113013771"></p>
 <p>要是想改数制，可以在下面的底栏中勾选，我个人喜欢十进制的地址。</p>
 <p>将这个概念应用到更多的方面，其实程序需要看的只有那么几个关键点，所以<strong>多</strong>设置断点，构建一种颗粒更大的“单步调试”，可以提高调试的效率，这就好像“调试中的函数”一样。</p>
 

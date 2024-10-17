@@ -30,17 +30,17 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、理论 前端：分析部分，包括词法和语法分析，符号表建立，语义分析，中间代码生成，错误处理 后端：综合部分，包括与机器有关的代码优化，目标代码生成，符号表操作，错误处理 编译有 5 个阶段，分别是：词法分析，语法分析，语义分析和中间代码生成，代码优化，生成目标程序。有两个事件贯穿其中，即符号表管理和错误处理。也就组成了 7 个逻辑部分。 字母表和符号串 符号：可以理解为一个个的字母，比如说 $a,">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//20201114151434.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127092639906.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127100749339.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127100837401.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127101329112.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127104249290.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127105539112.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127105551870.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127115720469.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127120709252.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221127151143762.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/20201114151434.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127092639906.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127100749339.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127100837401.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127101329112.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127104249290.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127105539112.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127105551870.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127115720469.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127120709252.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c699b1c8/image-20221127151143762.png">
 <meta property="article:published_time" content="2023-02-11T13:20:22.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.520Z">
 <meta property="article:author" content="Thysrael">
@@ -48,7 +48,7 @@
 <meta property="article:tag" content="S5假期">
 <meta property="article:tag" content="编译技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//20201114151434.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/c699b1c8/20201114151434.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/c699b1c8/">
 
@@ -339,7 +339,7 @@
 <li>动态存储管理，这部分在编译实验中被拆成了两个部分，一个部分在 llvm 翻译的时候完成，比如说栈式符号表之类的东西就出现在此处，一部分在 mips 翻译的时候完成，比如说函数运行栈的结构。这就导致似乎没法建立一个统一的体系，只能说和理论在表面上看有些出入。</li>
 </ul>
 </li>
-<li>非分程序的结构语言：每个可独立进行编译的程序单元时一个不包含有子模块的单一模块。如 FORTRAN 语言。另外常说的 Module 这个概念，也可能是来自这个语言<img src="/.io//20201114151434.png" alt="img"></li>
+<li>非分程序的结构语言：每个可独立进行编译的程序单元时一个不包含有子模块的单一模块。如 FORTRAN 语言。另外常说的 Module 这个概念，也可能是来自这个语言<img src="/posts/c699b1c8/20201114151434.png" alt="img"></li>
 <li>IR(Intermediate representation)：不同层次的 IR 代表了不同层次的抽象(类型、操作)通过分层抽象,实现最大限度的重用。</li>
 <li>错误分类：<ul>
 <li>语法错误：不符合词法和语法规则的错误。</li>
@@ -391,24 +391,24 @@ D ::= Dd | d</script><h2 id="三、逆波兰"><a href="#三、逆波兰" class="
 <p>对于中缀表达式转换成后缀表达式，本来应该用栈结构和优先级进行一个操作，但是如此就太繁琐了，所以可以考虑画树，然后对树进行后序遍历，得到的遍历序列就是后缀表达式，举个例子</p>
 <script type="math/tex; mode=display">
 A - (C + B) \times (D - C)</script><p>有树</p>
-<p><img src="/.io//image-20221127092639906.png" alt="image-20221127092639906"></p>
+<p><img src="/posts/c699b1c8/image-20221127092639906.png" alt="image-20221127092639906"></p>
 <p>很容易就可以得到后序遍历序列：</p>
 <script type="math/tex; mode=display">
 ACB+DC-*-</script><h2 id="四、动态存储分配"><a href="#四、动态存储分配" class="headerlink" title="四、动态存储分配"></a>四、动态存储分配</h2><p>当进入一个程序模块（module）的时候，就需要在运行栈上压栈。说白了运行栈是程序的运行栈，而非某个模块的运行栈。</p>
 <p>压栈的这个东西属于模块，是模块专用的数据区，被称为<strong>活动记录（Activation Record，AR）</strong>。</p>
-<p><img src="/.io//image-20221127100749339.png" alt="image-20221127100749339"></p>
+<p><img src="/posts/c699b1c8/image-20221127100749339.png" alt="image-20221127100749339"></p>
 <p>对于数据区，其功能十分显然：</p>
-<p><img src="/.io//image-20221127100837401.png" alt="image-20221127100837401"></p>
+<p><img src="/posts/c699b1c8/image-20221127100837401.png" alt="image-20221127100837401"></p>
 <p>对于参数区，其分区为</p>
-<p><img src="/.io//image-20221127101329112.png" alt="image-20221127101329112"></p>
+<p><img src="/posts/c699b1c8/image-20221127101329112.png" alt="image-20221127101329112"></p>
 <p>主要是对于 prevabp 的理解：<strong>Previous Active Record Base Pointer 前一个活动记录的基地址</strong>。说白了就是，在 mips 中，我们每次调用函数的时候，有一个栈增长操作，使用 <code>sub sp</code> 实现的，在结束调用后，又一个 <code>add sp</code> 的栈消减操作，这里不用对栈指针进行如此操作了，而是将栈指针直接填充成 prevabp 的值，完成弹栈操作。</p>
 <p>关于 display 区，有</p>
-<p><img src="/.io//image-20221127104249290.png" alt="image-20221127104249290"></p>
+<p><img src="/posts/c699b1c8/image-20221127104249290.png" alt="image-20221127104249290"></p>
 <p>在讨论 display 的算法之前，还是先讨论一下 display 的作用，其作用是让内层模块方便的访问外层模块。那么为什么这么难理解呢？是因为 C 语言没有 display 区，而且 llvm 进一步弱化了“让内层模块方便的访问外层模块”这个需求。</p>
 <p>对于 C 语言，没有在函数里定义函数的操作，所以函数是一个只会收到形参影响，并且只会通过返回值对外界造成影响的模块，不需要 display，对于 block 里面定义变量的情况，确实会有内外变量之分，但是在翻译 llvm 的时候，已经通过栈式符号表将内外变量重命名成两个变量了，同时消除了内外之分，所以在翻译成 mips 的时候并不需要 display。</p>
 <p>关于 display 区的生成算法，一共有两条规则，都是极其直观好理解的，与栈结构类似：</p>
-<p><img src="/.io//image-20221127105539112.png" alt="image-20221127105539112"></p>
-<p><img src="/.io//image-20221127105551870.png" alt="image-20221127105551870"></p>
+<p><img src="/posts/c699b1c8/image-20221127105539112.png" alt="image-20221127105539112"></p>
+<p><img src="/posts/c699b1c8/image-20221127105551870.png" alt="image-20221127105551870"></p>
 <p>此外因为 display 区主要用于 pascal 程序，所以有必要掌握一些小语法，实例如下</p>
 <pre class="line-numbers language-pascal" data-language="pascal"><code class="language-pascal"><span class="token comment">{程序名}</span>
 <span class="token keyword">program</span> calFactorialAndFubnacii<span class="token punctuation">;</span>   
@@ -477,7 +477,7 @@ ACB+DC-*-</script><h2 id="四、动态存储分配"><a href="#四、动态存储
 <p>可以看到声明了 <code>i, j, k, matrix</code> 这几个局部变量（<code>ten</code> 是常量，并不放在动态区，而是有一个常数表，直接在编译期完成了替换，所以也不会出现在符号表中）。对于整型量，就直接声明即可，对于数组，需要记录一个数组模板（很显然的），然后再记录。</p>
 <p>因为是主函数，所以不存在参数区和 display 区。</p>
 <p>所以最终栈结构如下所示</p>
-<p><img src="/.io//image-20221127115720469.png" alt="image-20221127115720469"></p>
+<p><img src="/posts/c699b1c8/image-20221127115720469.png" alt="image-20221127115720469"></p>
 <p>然后运行 <code>add(i, j, k)</code></p>
 <pre class="line-numbers language-pascal" data-language="pascal"><code class="language-pascal"><span class="token keyword">procedure</span> add<span class="token punctuation">(</span>m1<span class="token punctuation">,</span> m2<span class="token punctuation">:</span> integer<span class="token punctuation">;</span> <span class="token keyword">var</span> rlt<span class="token punctuation">:</span> integer<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">var</span> tmp<span class="token punctuation">:</span> integer<span class="token punctuation">;</span>
@@ -492,7 +492,7 @@ ACB+DC-*-</script><h2 id="四、动态存储分配"><a href="#四、动态存储
 <span class="token keyword">end</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到 <code>add</code> 这个模块声明了 3 个形参 <code>m1, m2, rlt</code> ，一个局部变量 <code>tmp</code>。所以需要在栈上体现。</p>
 <p>同时 <code>add</code> 是一个过程，所以没有返回值。最终栈结构如下（图里的 <code>retadd(1) 指向这里</code> 错了，返回值具体没法在栈上定位，他指向代码段 ）</p>
-<p><img src="/.io//image-20221127120709252.png" alt="image-20221127120709252"></p>
+<p><img src="/posts/c699b1c8/image-20221127120709252.png" alt="image-20221127120709252"></p>
 <p>然后运行这里</p>
 <pre class="line-numbers language-pascal" data-language="pascal"><code class="language-pascal"><span class="token keyword">function</span> mul<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> integer<span class="token punctuation">)</span><span class="token punctuation">:</span> integer<span class="token punctuation">;</span>
 <span class="token keyword">begin</span> 
@@ -501,7 +501,7 @@ ACB+DC-*-</script><h2 id="四、动态存储分配"><a href="#四、动态存储
 <span class="token keyword">end</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里声明了 <code>x, y</code> 两个形参，还有一个返回值。</p>
 <p>display 区的生成需要先拷贝，再加一条</p>
-<p><img src="/.io//image-20221127151143762.png" alt="image-20221127151143762"></p>
+<p><img src="/posts/c699b1c8/image-20221127151143762.png" alt="image-20221127151143762"></p>
 <h2 id="五、栈式符号表"><a href="#五、栈式符号表" class="headerlink" title="五、栈式符号表"></a>五、栈式符号表</h2><blockquote>
 <p>这个东西很显然，基本上就用在 llvm 的生成过程中，是一个很显然的过程。唯一需要注意的就是表头问题。</p>
 <p>类型就是是什么数据类型的，而种类则包含一定的语义信息，比如说是参数还是变量之类的。</p>

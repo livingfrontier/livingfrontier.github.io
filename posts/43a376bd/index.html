@@ -30,16 +30,16 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、寄存器与内存1.1 字节与字关于对字（word）的理解，我又有了新的认识，word是一种操作单位，而且是最常见的操作单位（不是最小的），内存的地址是用一个字（32位二进制数）来表示的，一条指令的长度是一个字，寄存器的大小也是一个字，立即数的大小也是一个字，甚至对于那些不足一个字长度的数据，我们都需要给它补齐，然后再对它进行操作。所以字最大的特点就是它的通用性。 那么什么是字节（byte）呢？字">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211007213120086.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211007214104034.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211007214531391.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/43a376bd/image-20211007213120086.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/43a376bd/image-20211007214104034.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/43a376bd/image-20211007214531391.png">
 <meta property="article:published_time" content="2022-01-15T16:39:46.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.563Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20211007213120086.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/43a376bd/image-20211007213120086.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/43a376bd/">
 
@@ -304,7 +304,7 @@
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">.data
 str: .ascii "12345678"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>得到的结果是这样的</p>
-<p><img src="/.io//image-20211007213120086.png" alt="image-20211007213120086"></p>
+<p><img src="/posts/43a376bd/image-20211007213120086.png" alt="image-20211007213120086"></p>
 <p>也就是说，MARS对地址的显示方式，在一个字内是逆序的，在字之间是顺序的，如下图</p>
 <div class="table-container">
 <table>
@@ -337,10 +337,10 @@ num: .space 4
 li $t1, 0x11223344
 sw $t1, num<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>得到的结果如图</p>
-<p><img src="/.io//image-20211007214104034.png" alt="image-20211007214104034" style="zoom:200%;"></p>
+<p><img src="/posts/43a376bd/image-20211007214104034.png" alt="image-20211007214104034" style="zoom:200%;"></p>
 <p>也就是说，高位的11，被存在了0x00000003，低位的44被存在了0x00000000。所以MIPS是小端存储。</p>
 <p>小端存储对于数字来说是自然的，但是对于字符串，就是逆序的。比如储存 “love”，会得到如下结果：</p>
-<p><img src="/.io//image-20211007214531391.png" alt="image-20211007214531391" style="zoom: 200%;"></p>
+<p><img src="/posts/43a376bd/image-20211007214531391.png" alt="image-20211007214531391" style="zoom: 200%;"></p>
 <h3 id="1-3-寄存器为主"><a href="#1-3-寄存器为主" class="headerlink" title="1.3 寄存器为主"></a>1.3 寄存器为主</h3><p><strong>寄存器为主</strong>是一种MIPS指令集给我的直观感受。第一、有很多指令都是以寄存器为<strong>对象</strong>的，比如<strong>lw</strong>，就是将内存的内容加载到<strong>寄存器</strong>中，<strong>sw</strong>就是将<strong>寄存器</strong>中的数据存到内存中，<strong>li</strong>就是将立即数加载到<strong>寄存器</strong>中。第二、对寄存器的<strong>操作最多</strong>，我们可以复制一个寄存器中的值到另一个寄存器，可以给寄存器一个立即数，可以运算寄存器中的值，这些都是内存实现不了的。所以在设计的时候，不仅在速度上，寄存器更加占优势，而且在指令集完备性上，寄存器也远远优于内存。</p>
 <hr>
 <h2 id="二、汇编语言细节"><a href="#二、汇编语言细节" class="headerlink" title="二、汇编语言细节"></a>二、汇编语言细节</h2><h3 id="2-1-寄存器的数字表示"><a href="#2-1-寄存器的数字表示" class="headerlink" title="2.1 寄存器的数字表示"></a>2.1 寄存器的数字表示</h3><p>在MIPS中，寄存器都是用5位二进制数表示的，刚好对应<strong>32个通用寄存器</strong>。还是十分合理的。</p>

@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、圆周率计算方法综述1.1 几何1.1.1 线弧近似法由古希腊数学家阿基米德提出，它采用多边形周长的方法来近似圆周长，以此求出圆周率。 对于圆的周长计算，有圆周长公式如下">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20231119211203871.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//800px-Cutcircle.svg.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//800px-Liuhui_Pi_Inequality.svg.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/80ff4241/image-20231119211203871.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/80ff4241/800px-Cutcircle.svg.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/80ff4241/800px-Liuhui_Pi_Inequality.svg.png">
 <meta property="article:published_time" content="2023-12-21T12:16:07.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.557Z">
 <meta property="article:author" content="Thysrael">
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="S7课上">
 <meta property="article:tag" content="补充数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20231119211203871.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/80ff4241/image-20231119211203871.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/80ff4241/">
 
@@ -308,17 +308,17 @@ l_{2n} = \sqrt{(r - \sqrt{r^2 - \frac{l_n^2}{4}})^2 + \frac{l_n^2}{4}}</script><
 <script type="math/tex; mode=display">
 C_{内接 n 变形} \lt C_n \lt C_{外接 n 变形} \\
 \frac{n}{2r} l_{内接 n 变形} < \pi < \frac{n}{2r} l_{外接 n 变形}</script><p>$n$ 的取值越大，那么就可以使 $\pi$ 更加精确。其示意图如下</p>
-<p><img src="/.io//image-20231119211203871.png" alt="image-20231119211203871"></p>
+<p><img src="/posts/80ff4241/image-20231119211203871.png" alt="image-20231119211203871"></p>
 <p>阿基米德算到了当 $n = 96$ 的情况，但是因为每次迭代都需要进行开根计算，所以基本上迭代 4 次就是极限了（从 $n = 6$ 开始迭代，每次 $n$ 翻倍）。这不只是阿基米德的极限，也是人类手算的极限。</p>
 <h4 id="1-1-2-割圆术"><a href="#1-1-2-割圆术" class="headerlink" title="1.1.2 割圆术"></a>1.1.2 割圆术</h4><p>由三国时期魏国数学家刘徽发明，他也采用了用内接正多边形去逼近圆的思想，不过采用了面积逼近而不是和阿基米德一样的周长逼近，这是因为面积逼近可以使用他发明的“圆周率捷法”。</p>
 <p>在面积计算上，对于正 $2n$ 边形，有如下公式：</p>
 <script type="math/tex; mode=display">
 S_{2n} = \frac{nl_n}{2} \times r</script><p>这个公式的得出依靠刘徽发明的“出入相补术”（也就是图形的裁剪拼接法），将正 $2n$ 边形切成 n 份，然后重新拼接成一个矩形：</p>
-<p><img src="/.io//800px-Cutcircle.svg.png" alt="undefined"></p>
+<p><img src="/posts/80ff4241/800px-Cutcircle.svg.png" alt="undefined"></p>
 <p>有了上面这个公式再结合 $l_{2n}$ 的递推公式，就可以进行类似的递推。</p>
 <p>此外刘徽还进步于它只利用了圆的内接正多边形，而没有使用圆的外接正多边形，在计算量上面减少了一半。</p>
 <p>刘徽实现这一点，是通过一种新的图形拼接构造，如下所示：</p>
-<p><img src="/.io//800px-Liuhui_Pi_Inequality.svg.png" alt="undefined"></p>
+<p><img src="/posts/80ff4241/800px-Liuhui_Pi_Inequality.svg.png" alt="undefined"></p>
 <p>可以看到圆的面积是小于红色、绿色（$S_{2n} - S_n$）和黄色（$S_n$）的和，而红色的面积是等于绿色面积的（拼接可得），所以有</p>
 <script type="math/tex; mode=display">
 S \lt S_{red} + S_{green} + S_{yellow} = 2S_{2n} - S_n</script><p>所以夹逼方式变成了</p>

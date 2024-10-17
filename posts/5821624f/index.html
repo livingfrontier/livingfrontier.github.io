@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="设计文档1 设计需求该项目名为“魔法补完计划”，是一个简易的电商平台，针对于一个书商，多个购书用户进行开发。 1.1 买家侧需求1.1.1 浏览商品">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//book.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5821624f/book.png">
 <meta property="article:published_time" content="2023-01-05T04:10:11.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.753Z">
 <meta property="article:author" content="Thysrael">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="S5课上">
 <meta property="article:tag" content="Ruby设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//book.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/5821624f/book.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/5821624f/">
 
@@ -314,7 +314,7 @@
 <li>pc: manjaro</li>
 <li>IDE: RubyMine</li>
 </ul>
-<h2 id="3-概念模型"><a href="#3-概念模型" class="headerlink" title="3 概念模型"></a>3 概念模型</h2><p><img src="/.io//book.png" alt=""></p>
+<h2 id="3-概念模型"><a href="#3-概念模型" class="headerlink" title="3 概念模型"></a>3 概念模型</h2><p><img src="/posts/5821624f/book.png" alt=""></p>
 <p>可以看到， ER 图中存在多个“多对多”关系，这是有意为之的，相比原要求中要求的多个属性，我更想体验更加复杂关系的开发，所以实现了<strong>收藏夹</strong>和<strong>促销活动</strong>两个功能，这两个功能都是“多对多”关系的，相应的，消除了原要求中的“颜色，尺寸”等单独成表，这种方式过于冗余，有一种“为了凑个数而凑表”之嫌。</p>
 <h2 id="4-数据模型"><a href="#4-数据模型" class="headerlink" title="4 数据模型"></a>4 数据模型</h2><p><code>rails</code> 方便的提供了数据库的视图在 <code>projec/db/schema.rb</code> 中，我的如下所示，可以看到我一共是 9 张表。</p>
 <pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby"><span class="token constant">ActiveRecord</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">Schema</span><span class="token punctuation">[</span><span class="token number">7.0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>define<span class="token punctuation">(</span>version<span class="token punctuation">:</span> <span class="token number">2023</span>_01_03_154008<span class="token punctuation">)</span> <span class="token keyword">do</span>

@@ -30,15 +30,15 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、性能1.1 一个饭店当我们讨论芯片的性能的时候，我们到底在讨论什么？我觉得我们讨论的是理想的优秀。所谓的“高性能”，就跟“成功”一样，是一个绝对正确的概念，有人会说“有钱”好，有人会说“有钱”不好，有人会说“有媳妇”好，有人会说“有媳妇”不好，成功有很多的标准，但是作为最终目标的“成功”，是绝对褒义的，没有人会说“成功”是不好的。 “高性能”这个概念跟“成功”一样，没人会拒绝“高性能”。但是跟">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220126120547211.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220126213819033.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211104155056775.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211104184835065.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220127000423341.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220127000452258.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220127001244445.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220127004734183.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220127005103696.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220126120547211.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220126213819033.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20211104155056775.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20211104184835065.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220127000423341.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220127000452258.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220127001244445.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220127004734183.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220127005103696.png">
 <meta property="article:published_time" content="2022-01-26T17:06:46.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.597Z">
 <meta property="article:author" content="Thysrael">
@@ -47,7 +47,7 @@
 <meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220126120547211.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/5f31c0f9/image-20220126120547211.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/5f31c0f9/">
 
@@ -323,7 +323,7 @@
 <p>你现在学的CPU是一个很简单的CPU，真实的CPU是很复杂的，GPU与其相比，是一个很简单的东西。</p>
 </blockquote>
 <p>此外，需要强调的是，尽管现在出现了多核CPU，但是它们采用的不是<strong>用高吞吐隐藏高延迟</strong>这个策略，它们的性能提升应该来自的是<strong>并行对资源的进一步利用</strong>，我们可以用下面的图解释这个区别：</p>
-<p><img src="/.io//image-20220126120547211.png" alt="image-20220126120547211"></p>
+<p><img src="/posts/5f31c0f9/image-20220126120547211.png" alt="image-20220126120547211"></p>
 <p>可以看到，多核CPU的高效来自于Cache的效率没有被单核CPU完全开发（当数据集增长到与Cache容量相当的时候，Cache的效率开发到了最大），而GPU的高效来自于并行的收益要大于访存的损失，一个是优化，一个是献祭，这就是区别。</p>
 <h3 id="1-4-度量性能"><a href="#1-4-度量性能" class="headerlink" title="1.4 度量性能"></a>1.4 度量性能</h3><p>虽然在1.1我论述了性能的<strong>不可度量性</strong>，但是在实际生产生活中，我们还是需要一套方法来对性能进行度量的，尽管这套方法一定是不合理的。就好像用营业额评判一个饭店的好坏一样。</p>
 <p>我们量化的性能是这样的：</p>
@@ -425,7 +425,7 @@
 <p>切换线程的一个好处就是单个处理器的功能单元被充分利用了，比如说一些功能单元是访存用的，那么其他的算术资源就被闲置了，那么如果切换线程的话，那么算数资源就可以被有效利用了，不过其实这只是一点，因为这个有点<strong>多发射</strong>也能实现，比如同时发射一条算数指令和一条访存指令，就可以达到充分利用功能单元的目的。切换线程还有一个优点是<strong>消除数据依赖</strong>，切换线程可以有效的消除一个线程前后指令的数据依赖，所以有降低阻塞发生几率的作用。</p>
 <p>关于切换线程的方式，有两种实现方式，一种是<strong>细粒度多线程</strong>（fine-grained multithreading），也就是每条指令执行后都会进行切换线程，细粒度多线程的主要优点是同时隐藏短阻塞和长阻塞引起的吞吐量损失，因为当一个线程阻塞的时候就可以执行其他线程的指令。主要缺点是降低了单个线程的执行速度，因为就绪状态的线程会因为其他的线程而延迟执行。</p>
 <p><strong>粗粒度多线程</strong>（coarse-grained multithreading）仅在高开销（最后一级缓存缺失）阻塞的时候才进行线程切换，这种方式的优点是降低了对高速线程切换的要求，并且几乎不会降低单个线程的执行速度，但是其切换线程的代价较大。有如下示意图：</p>
-<p><img src="/.io//image-20220126213819033.png" alt="image-20220126213819033"></p>
+<p><img src="/posts/5f31c0f9/image-20220126213819033.png" alt="image-20220126213819033"></p>
 <p>GPU不像CPU一样依赖多级存储来隐藏访存的长延迟，GPU依赖硬件多线程来隐藏延迟，在存储器请求和数据到达之间，GPU会执行数以百计与该请求无关的线程。可以说，硬件多线程是GPU优化性能策略的核心。</p>
 <h3 id="2-3-GPU"><a href="#2-3-GPU" class="headerlink" title="2.3 GPU"></a>2.3 GPU</h3><h4 id="2-3-1-总论"><a href="#2-3-1-总论" class="headerlink" title="2.3.1 总论"></a>2.3.1 总论</h4><p><strong>GPU是一个由多个多线程SIMD处理器组成的MIMD处理器</strong>。这句话的意思是说，如果以厨房为例，这个厨房不但有很多厨子，而且每个厨子还长了很多只手。</p>
 <p>此外，这一章的概念都是对简单科普文章谬误的纠正。比如说有人说可以将CPU比喻成一个教授，而GPU是成千上万个小学生。这种理解是错误的，我们的GPU不是有一万个核，他却是核挺多的，但是以Fermi架构举例，根据价格不同，最多的GPU只有15个处理器，也就说，若还以厨房举例，，那么厨师的个数不是成百上千，而是十几个，还是挺正常的，只不过，这些厨师每个人都长了64只手（可能更多）。</p>
@@ -471,10 +471,10 @@
 <h3 id="3-4-dump"><a href="#3-4-dump" class="headerlink" title="3.4 dump"></a>3.4 dump</h3><p>dump指的是把汇编码翻译成机器语言的工具（这个过程叫做<strong>汇编</strong>，把高级语言翻译成汇编语言的过程叫做<strong>编译</strong>）。这个东西我也不知道为啥要记在这里，可能就是开心吧。</p>
 <hr>
 <h2 id="四、处理器"><a href="#四、处理器" class="headerlink" title="四、处理器"></a>四、处理器</h2><h3 id="4-1-总论"><a href="#4-1-总论" class="headerlink" title="4.1 总论"></a>4.1 总论</h3><p>这个处理器，指的就是SM，也就是一个SIMD的处理器，大概长成这个样子：</p>
-<p><img src="/.io//image-20211104155056775.png" alt="image-20211104155056775"></p>
+<p><img src="/posts/5f31c0f9/image-20211104155056775.png" alt="image-20211104155056775"></p>
 <p>还是需要再次强调，这个东西，一片GPU上面最多十几个，而不是成百上千个，这个东西应该也是同一时间只会运行一个warp，只不过细颗粒度的线程切换，在一个不太短的时间内，会看到SM核上交替运行很多个warp，这些图里面的小单元就是并行的功能单元，一个指令如果只用LD/ST，那么计算core就会空缺，此时如果切换线程，就可以达到充分利用执行模块资源的目的。</p>
 <p>如果从流水线的角度看，一个处理器的结构如下：</p>
-<p><img src="/.io//image-20211104184835065.png" alt="image-20211104184835065"></p>
+<p><img src="/posts/5f31c0f9/image-20211104184835065.png" alt="image-20211104184835065"></p>
 <p>这个里面引入了一个在简单CPU中没有概念，就是<strong>发射（Issue）</strong>，这个概念挺有意思的，因为我们课上见到的CPU，都是顺序执行的（偶尔的跳转，也是软件层面的跳转）。但是发射这个概念，让指令的执行变得更加灵活，比如说可以进行<strong>乱序执行</strong>（out of order），也就是说，如果前后两条指令没啥数据依赖，换换顺序又何妨，进而衍生出一系列概念，比如说buffer，虽然之前也有，但是之前的buffer是当cache那么用的，而这里的buffer是当备选项那么用的，每次发射，都需要从buffer中挑出一个比较好的指令进行发射。当然，为了完成这个挑选功能，那么相应的控制元件也要跟上，那么就是图里面的计分板（scoreboard）了。</p>
 <p>正是因为思考的问题变得复杂了，所以对问题的划分也跟之前不一样了，按照教材的说法，三个部分是由<strong>循环</strong>组成的、分为front-end和back-end两部分（我个人对循环的理解，就是一个比流水级稍微大一点的组织单位，并没有实际意义）</p>
 <ul>
@@ -484,14 +484,14 @@
 </ul>
 <p>在下面的几章中，因为时间关系，我只能介绍几个重点的元件，并且解释他们是干什么用的，但是对于整体的设计的介绍，可能就会稍微薄弱一些，这也是没有办法的事情。</p>
 <h3 id="4-2-SIMT-Stack"><a href="#4-2-SIMT-Stack" class="headerlink" title="4.2 SIMT Stack"></a>4.2 SIMT Stack</h3><p>SIMT Stack的本质是一种控制流元件，我更喜欢强调它的功能是完成了<strong>由SIMT到MIMT</strong>的封装。我们知道，一个warp里的线程本应该执行相同的指令，那么很容易就会让软件编程人员发现这个厨师是长了128只手的，我们希望不要发现这个事情，所以我们必须让warp内部的线程可以执行不同的指令。解决办法是连载执行那些需要不同分支的过程，也就是并不是同时分支，而是先让warp中符合某些条件的线程完成一个分支，再让warp中符合另一个条件的线程完成另一个分支，在一定程度上“串行”了。</p>
-<p><img src="/.io//image-20220127000423341.png" alt="image-20220127000423341"></p>
+<p><img src="/posts/5f31c0f9/image-20220127000423341.png" alt="image-20220127000423341"></p>
 <p>实现这个功能用到了一个栈，这个栈有三个数据段合成了一个条目（entry），分别是合流指令地址（reconvergence programer counter，RPC），下一条执行指令地址（the address of the next instruction to excute，Next PC），活跃掩码（active mask）。下面结合这张图介绍一下栈的原理：</p>
-<p><img src="/.io//image-20220127000452258.png" alt="image-20220127000452258"></p>
+<p><img src="/posts/5f31c0f9/image-20220127000452258.png" alt="image-20220127000452258"></p>
 <p>首先，在第一幅图，当第一个分支指令出现的时候，分支指令导致的两个分支相关信息都会入栈，也就是分别分向B和F，最后在G合流，那些线程属于这个分支，然后弹一次栈，NextPC的值就是下一条指令的地址，执行的线程就是1110。</p>
 <p>其次，对于每个<strong>分流点</strong>，都会先把它对应的<strong>合流点</strong>压入栈中，然后再把各个<strong>分支</strong>压入栈中。当弹栈元素的Reconv.PC与此事栈顶的元素的next PC相同时，就说明这个分支结束了。</p>
 <p>如果说的玄学一点，可以说借助这个<strong>栈结构</strong>，SM完成了一次对<strong>分支流程图</strong>类似DFS遍历的过程。</p>
 <p>教材里还介绍了这种栈结构的一种缺点，即栈死锁，其实<strong>与后续研究关系不大</strong>，但是较难理解，故仅仅录于此：</p>
-<p><img src="/.io//image-20220127001244445.png" alt="image-20220127001244445"></p>
+<p><img src="/posts/5f31c0f9/image-20220127001244445.png" alt="image-20220127001244445"></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token operator">*</span>mutex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
 <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -610,9 +610,9 @@ w<span class="token operator">:</span>
 <p>而GPU的计分板，只有3-4位标志位就够了（这个数量是I-buffer的容量），每次指令从I-cache解完码进入I-buffer的时候，就会比较是否与I-buffer中现存的指令的操作数寄存器存在冲突，如果冲突，那么就将其中的一位置1，等这条前面的指令执行完了，就把这个置1位消掉，可以看出，这样就节省了大量的空间。</p>
 <h3 id="4-4-Operand-Collector"><a href="#4-4-Operand-Collector" class="headerlink" title="4.4 Operand Collector"></a>4.4 Operand Collector</h3><p>这里首先介绍一下切换线程的时候存在的一个问题，就是寄存器的切换，这是就涉及读寄存器的问题，我们最希望看到的，是比如一个warp32个寄存器，warp一切换，32个寄存器立马更新成了新的值，但是实际上，不可能有32个读端口，这样太浪费资源了。</p>
 <p>因此我们引入了bank的结构：<strong>bank</strong>是一种把好多寄存器放到一块，用一个端口访问的结构，很多个bank组合成了banks。我们可以用高一点的延迟，来换取一个32个端口的假象。</p>
-<p><img src="/.io//image-20220127004734183.png" alt="image-20220127004734183"></p>
+<p><img src="/posts/5f31c0f9/image-20220127004734183.png" alt="image-20220127004734183"></p>
 <p>这是传统bank的结构，但是会存在一个问题，就是如果同时访问同一个bank，那么就会造成bank conflict，那么就需要<strong>串行化</strong>处理，那么就显然会造成延迟增加，所以有没有办法解决呢，我们对这个结构加上改善</p>
-<p><img src="/.io//image-20220127005103696.png" alt="image-20220127005103696"></p>
+<p><img src="/posts/5f31c0f9/image-20220127005103696.png" alt="image-20220127005103696"></p>
 <p>加装了一个collector结构，可以这样形象地说明，虽然存在conflict，但是有的时刻，还是有bank的端口没有被光临，那么不如这个时候自动读取里面的内容到collector中，这样当这个端口存在conflict的时候，可以查看collector有没有之前空闲的时候拷贝的数据，这样达到了一种<strong>保险</strong>的思想。</p>
 <h3 id="4-5-Replay"><a href="#4-5-Replay" class="headerlink" title="4.5 Replay"></a>4.5 Replay</h3><p>尽管做了这么多的举措，但是有的时候还是没能隐藏掉延迟，那么应该怎么办？CPU采取的策略是暂停。GPU并不适合暂停的策略，因为暂停需要大量的硬件资源，而且会阻碍其他warp的发射。所以我们采取的策略是replay，就是把这条指令让这条指令保持在I-buffer中，直到这条指令真的被执行完。其实就是重复执行，一次不行就先跳过，轮一轮以后再试一遍。</p>
 <hr>

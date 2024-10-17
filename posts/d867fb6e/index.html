@@ -30,8 +30,8 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论旁路攻击（Side Channel Attack）指的是利用计算机通信过程中产生的“副作用”发起的攻击。也就是说，攻击者没有选择像监听信道或者破解密码等“正面手段”，而是利用通信时的时延、电压变化、能耗变化、JTag、异常等“边缘特征”等来发起攻击，是一种“侧面突破”。 我个人感觉旁路攻击利用的边缘特征，往往都是在根本上无法避免的特征，我们并不能为了避免时延旁路攻击，就放弃使用 Cache">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240407000737679.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240407002611613-17124207742361.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d867fb6e/image-20240407000737679.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d867fb6e/image-20240407002611613-17124207742361.png">
 <meta property="article:published_time" content="2024-04-05T12:51:26.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.753Z">
 <meta property="article:author" content="Thysrael">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="信息安全">
 <meta property="article:tag" content="S8课上">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20240407000737679.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/d867fb6e/image-20240407000737679.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/d867fb6e/">
 
@@ -303,7 +303,7 @@
 <p>所以我们其实是可以知道 CPU 前一段时间访问了<strong>哪个地址</strong>，这是因为如果我们再次访问的话，会发现访问的时延很短，这是因为之前访问过了，数据在 Cache 中。这种“知晓”是不受到普通的隔离机制防范的，用户可以借此查看内核之前访问过的地址，或者是查看另一个用户访问的地址（当然还需要一些辅助构造手段）。因为隔离机制往往只隔离了内存和 CPU，而对于 Cache，则没有隔离效果。</p>
 <p>朴素地想，知道地址并不是一件很危险的事情，比如说我知道了我想要窃取的数据 <code>secret</code> 的地址是 <code>0x0030</code> ，那我也无计可施，我又没有 <code>0x0030</code> 对应的页表（内核页表或者另一个用户程序的页表），Cache 中就算预存了 <code>secret</code> ，我也拿不出来。</p>
 <p>不过换一个角度去想，如果攻击方可以诱导被攻击方用 <code>secret</code> <strong>作为地址</strong>去访问数据就好了，这样攻击方就可以直接知道 <code>secret</code> 内容了。那么应该怎么诱导呢？凭什么被攻击方就听攻击者的了？根据实现的不同，又分为了 Meltdown 和 Spectre 两种实现。Meltdown 从用户程序攻击内核，Spectre 则更加通用，也可以从用户程序攻击另一个另一个用户程序。总结如下：</p>
-<p><img src="/.io//image-20240407000737679.png" alt="image-20240407000737679"></p>
+<p><img src="/posts/d867fb6e/image-20240407000737679.png" alt="image-20240407000737679"></p>
 <p>其中 Meltdown 利用的是，在异常发生时，CPU 会立刻切换到内核态，但是因为乱序执行的缘故，攻击者在异常发生后的紧邻的几条指令会在内核态得到执行，只是它们不会被提交，它们会在后续被 CPU 作废处理，但是已经在 Cache 中留下痕迹了，这就足够发动攻击了。</p>
 <p>具体代码如下：</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">; [rcx] is kernel secret
@@ -317,7 +317,7 @@ mov rbx, qword [rbx + rax] ; read probe[secret], cache remeber! <span aria-hidde
 <p>其中第 2 条指令用于放大 <code>secret</code> “信号”，避免 cache 加速了多个 <code>probe</code> 元素的访问，使 Cache 只能加速一个元素的访问。第 3 条指令用于判断第 4 条指令是否执行，因为如果 CPU 反应快，会立刻将 <code>rax</code> 注销清 0，那么就需要再次尝试，所以这里有个循环。</p>
 <p>按 Meltdown 论文的说法，他们在 Intel 的 CPU 上可以用五百多 K 每秒的速度 Dump 内核映像！</p>
 <p>Sepecture 基于类似的原理</p>
-<p><img src="/.io//image-20240407002611613-17124207742361.png" alt="image-20240407002611613"></p>
+<p><img src="/posts/d867fb6e/image-20240407002611613-17124207742361.png" alt="image-20240407002611613"></p>
 <p>利用数组越界访问来诱导 CPU 执行指令。这幅图中的 <code>Instrument</code> 就是 Meltdown 中的 <code>prob</code> 。<code>A[x]</code> 对应 <code>secret</code>。</p>
 
     </div>

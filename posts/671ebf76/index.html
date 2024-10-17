@@ -30,31 +30,31 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论1.1 软硬件分工首先先明确，异常处理流是一个需要软硬件协作的流程。如果仅仅掌握了计组的知识，是没有办法对于异常处理流有一个很好的认识的。但是如果掌握了操作系统知识，而没有掌握计组知识，则不会有任何的实现负担。这是因为在 CPU 层面已经将异常处理流的硬件部分封装起来了（整个封装过程就是 P7，可以看到 P7 还是很难的），我们只要了解一下 CPU 提供给操作系统的接口，就可以利用这些接口">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//异常处理总论.drawio-16509617693631.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426173308911.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//异常处理流程.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426200407641.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426205044011.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426205144463.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426213212839.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426213741842.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220426213754952.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//内核栈结构.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//异常内核栈.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//内核栈结构.drawio-16526749882911.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220516122924259.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//MMU缺失中断流程图.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//tlb.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//tlb_entry.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220409154810627.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220409154846877.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//时钟中断流程图.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//微信图片_20220510093613.jpg">
-<meta property="og:image" content="https://thysrael.github.io/.io//写时复制异常流程图.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220516163430299.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//系统调用流程图.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220511204955352-16527034425482.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//4_fork_process.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/异常处理总论.drawio-16509617693631.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426173308911.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/异常处理流程.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426200407641.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426205044011.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426205144463.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426213212839.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426213741842.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220426213754952.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/内核栈结构.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/异常内核栈.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/内核栈结构.drawio-16526749882911.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220516122924259.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/MMU缺失中断流程图.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/tlb.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/tlb_entry.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220409154810627.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220409154846877.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/时钟中断流程图.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/微信图片_20220510093613.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/写时复制异常流程图.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220516163430299.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/系统调用流程图.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/image-20220511204955352-16527034425482.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/671ebf76/4_fork_process.png">
 <meta property="article:published_time" content="2022-04-26T07:41:52.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.320Z">
 <meta property="article:author" content="Thysrael">
@@ -62,7 +62,7 @@
 <meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//异常处理总论.drawio-16509617693631.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/671ebf76/异常处理总论.drawio-16509617693631.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/671ebf76/">
 
@@ -320,15 +320,15 @@
       
         <h2 id="一、总论"><a href="#一、总论" class="headerlink" title="一、总论"></a>一、总论</h2><h3 id="1-1-软硬件分工"><a href="#1-1-软硬件分工" class="headerlink" title="1.1 软硬件分工"></a>1.1 软硬件分工</h3><p>首先先明确，异常处理流是一个需要软硬件协作的流程。如果仅仅掌握了计组的知识，是没有办法对于异常处理流有一个很好的认识的。但是如果掌握了操作系统知识，而没有掌握计组知识，则不会有任何的实现负担。这是因为在 CPU 层面已经将异常处理流的硬件部分封装起来了（整个封装过程就是 P7，可以看到 P7 还是很难的），我们只要了解一下 CPU 提供给操作系统的接口，就可以利用这些接口提供的信息和功能完成异常处理流的软件部分。这是完全没有问题的。</p>
 <p>我们有如下示意图：</p>
-<p><img src="/.io//异常处理总论.drawio-16509617693631.png" alt="异常处理总论.drawio"></p>
+<p><img src="/posts/671ebf76/异常处理总论.drawio-16509617693631.png" alt="异常处理总论.drawio"></p>
 <p>其中蓝色的是硬件部分（也就是计组要解决的问题），黄色的是软件部分（也就是操作系统），其中红色的部分，就是两个部分的接口。</p>
 <p>这幅图最重要的就是搞懂那两个接口寄存器的意义。Cause 为选择哪一个异常处理函数提供了决策的依据，EPC 为有朝一日返回这个进程接着执行提供了支持（注意异常处理完成后不一定会返回异常发生时所在的进程，比如由于时钟中断导致的进程切换）。</p>
 <h3 id="1-2-明确概念"><a href="#1-2-明确概念" class="headerlink" title="1.2 明确概念"></a>1.2 明确概念</h3><p>这个问题其实在计组实践的时候，就已经出现了。因为我们要处理的 “意外情况” 特别的多，所以我们需要一些名词来描述概念，但是往往会有一些因为名词冲突，而导致概念混淆的情况。所以在开始文章之前，还是先介绍一下概念名词，这些名词只在这篇文章中有效。另外声明，这里的概念定义跟我在计组P7博客里的概念是冲突的（只能说年少无知太轻狂）。</p>
 <p>概念有如下关系</p>
-<p><img src="/.io//image-20220426173308911.png" alt="image-20220426173308911"></p>
+<p><img src="/posts/671ebf76/image-20220426173308911.png" alt="image-20220426173308911"></p>
 <p>所有的“控制流异常情况的原因”统称为“异常”，同步异常指的是处理器执行某条指令而导致的异常，异步异常指的是异常触发的原因与处理器当前正在执行的指令无关的异常。更低一级的概念并不能保证正确性。</p>
 <h3 id="1-3-异常处理流程"><a href="#1-3-异常处理流程" class="headerlink" title="1.3 异常处理流程"></a>1.3 异常处理流程</h3><p>这里给出异常处理的<strong>一般</strong>流程</p>
-<p><img src="/.io//异常处理流程.drawio.png" alt="异常处理流程.drawio"></p>
+<p><img src="/posts/671ebf76/异常处理流程.drawio.png" alt="异常处理流程.drawio"></p>
 <hr>
 <h2 id="二、硬件部分"><a href="#二、硬件部分" class="headerlink" title="二、硬件部分"></a>二、硬件部分</h2><h3 id="2-1-计组-CP0-结构"><a href="#2-1-计组-CP0-结构" class="headerlink" title="2.1 计组 CP0 结构"></a>2.1 计组 CP0 结构</h3><p>这里给出上个学期我实现 P7 的时候的源码，但是需要注意的是计组实现的 CPU 架构好像是 Mips32，与操作系统用的 R3000 并不相同，CP0 的结构有一些细节上的差异。</p>
 <p>这是 CP0 的实现。</p>
@@ -442,13 +442,13 @@
 <span class="token keyword">wire</span> ExcReq <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">|</span>ExcCodeIn<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token operator">~</span><span class="token constant">`EXL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">assign</span> Req <span class="token operator">=</span> IntReq <span class="token operator">|</span> ExcReq<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，SR 主要提供中断的掩码 <code>IM</code> 和中断使能 <code>IE</code> ，异常等级 <code>EXL</code> 三个位。之后通过这些位的运算后来确定到底要不要发出异常信号和更新 EPC 之类的一系列处理。重点其实就是<strong>掩码</strong>与<strong>使能</strong>。因为操作系统使用的是 R3000，所以重点介绍 R3000 的结构</p>
-<p><img src="/.io//image-20220426200407641.png" alt="image-20220426200407641"></p>
+<p><img src="/posts/671ebf76/image-20220426200407641.png" alt="image-20220426200407641"></p>
 <p>虽然有很多位，而且每一位都很重要，但是其实真正用到的没有几个，首先是 <code>IM</code> ，他是中断掩码，也就是说，R3000 有 8 个外部中断源，只有该位置 1 ，对应的外部中断才会被引发异常，否则不会。</p>
 <p>然后就是所谓的二重栈结构，这个结构在 <code>SR[5:0]</code> ，首先解释一下，<code>KU</code> 如果置 1，就说明当前进程处于内核态（ 内核态可以使用的指令更多，访问的地址空间更大），<code>IE</code> 如果置 1，这说明当前允许异常发生（注意是异常，而不是中断，范围扩大了）。然后在解释一下下标，<code>o</code> 是 old 的意思，<code>p</code> 是 previous 的意思，<code>c</code> 是 current 的意思。</p>
 <p>然后介绍一下这个所谓的二重三级栈，其实就是当发生异常的时候，previous 的内容会被拷贝到 old 中，current 的内容会被拷贝到 previous 中。然后当 <code>eret</code> 指令一下达，previous 的内容会被拷贝到 current 中，old 中内容会被拷贝到 previous 中。</p>
 <p>关于这个神奇的栈设置，还是妄谈几句。R3000 应该是不希望允许嵌套中断的，所以当处理中断的时候，先把 IEc 设置为 0 ，这样就不允许其他的中断在处理这个中断的时候发生了，屏蔽了其他中断。但是似乎不允许嵌套中断，CPU 功能又实现不了了，如果缺页中断中又有一个缺页中断，那么就崩了（具体我不知道，下面截图），所以为了支持嵌套中断，所以必须有所记录。就跟我们用栈来支持函数嵌套一样，我们同样需要栈结构来支持，<code>EPC</code> 似乎自己找地方去了，然后 <code>SR</code> 这两位就是用这个栈结构。</p>
-<p><img src="/.io//image-20220426205044011.png" alt="image-20220426205044011"></p>
-<p><img src="/.io//image-20220426205144463.png" alt="image-20220426205144463"></p>
+<p><img src="/posts/671ebf76/image-20220426205044011.png" alt="image-20220426205044011"></p>
+<p><img src="/posts/671ebf76/image-20220426205144463.png" alt="image-20220426205144463"></p>
 <h3 id="2-3-Cause-寄存器"><a href="#2-3-Cause-寄存器" class="headerlink" title="2.3 Cause 寄存器"></a>2.3 Cause 寄存器</h3><p> Cause 寄存器里的内容由 CP0 生成，然后操作系统会访问这个值，我们在计组中，有</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token constant">`define</span> BD Cause<span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">]</span>
 <span class="token constant">`define</span> IP Cause<span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">]</span>
@@ -463,13 +463,13 @@
 <span class="token constant">`IP</span> <span class="token operator">&lt;=</span> HWInt<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，Cause 里比较重要的一个域就是 <code>ExcCode</code> 用来记录到底是哪一种异常。这样操作系统才可以根据信息来选择不同的异常处理函数去处理。</p>
 <p>对于R3000架构来说，Cause 寄存器如图：</p>
-<p><img src="/.io//image-20220426213212839.png" alt="image-20220426213212839"></p>
+<p><img src="/posts/671ebf76/image-20220426213212839.png" alt="image-20220426213212839"></p>
 <p>BD 这个域同样是接口，如果异常指令是一个分支延迟槽指令，那么这位就会被置 1。这是因为当异常指令为延迟槽指令的时候，<code>EPC</code> 的值会变成延迟槽指令的前一条指令（为了程序的正常执行）。我们在软件侧可以利用 <code>BD</code> 来获得真正发生异常的指令。</p>
 <p>IP 是 Interrupt pending 的意思，他的意思结合代码来看就很容易，它记录的是现在发生的中断，但是这些中断不一定被响应，还有看 IM 的设置。IP 只是一个单纯的记录者</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token constant">`IP</span> <span class="token operator">&lt;=</span> HWInt<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>最重要的是 ExcCode，异常码，CPU 会根据异常的不同，将这个域设置成不同的值，操作系统通过读取这里的值，就可以获得这次异常的信息，R3000 常用的异常码如下：</p>
-<p><img src="/.io//image-20220426213741842.png" alt="image-20220426213741842"></p>
-<p><img src="/.io//image-20220426213754952.png" alt="image-20220426213754952"></p>
+<p><img src="/posts/671ebf76/image-20220426213741842.png" alt="image-20220426213741842"></p>
+<p><img src="/posts/671ebf76/image-20220426213754952.png" alt="image-20220426213754952"></p>
 <h3 id="2-4-EPC-寄存器"><a href="#2-4-EPC-寄存器" class="headerlink" title="2.4 EPC 寄存器"></a>2.4 EPC 寄存器</h3><p>计组 CP0 跟 R3000 这个是一样的，可以看代码</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> nextEPC <span class="token operator">=</span> <span class="token punctuation">(</span>Req<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>BDIn<span class="token punctuation">)</span><span class="token operator">?</span> VPC <span class="token operator">-</span> <span class="token number">4</span> <span class="token punctuation">:</span> VPC<span class="token punctuation">)</span> <span class="token punctuation">:</span>
 								 EPC<span class="token punctuation">;</span>		<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -563,13 +563,13 @@ j			ret_from_exception<span aria-hidden="true" class="line-numbers-rows"><span><
 <p>下面就会结合这个流程来进行进行介绍。</p>
 <h3 id="4-2-选择内核栈"><a href="#4-2-选择内核栈" class="headerlink" title="4.2 选择内核栈"></a>4.2 选择内核栈</h3><h4 id="4-2-1-内核中的栈"><a href="#4-2-1-内核中的栈" class="headerlink" title="4.2.1 内核中的栈"></a>4.2.1 内核中的栈</h4><p>选择内核栈是通过重置栈指针实现的。为什么要重置栈指针？这是因为此时计算机刚刚处于异常后的状态，虽然 PC 已经被纠正到了 <code>0x80000080</code> 。但是栈指针还是用户进程的栈指针，这显然是不能正常发挥作用的，我们需要将栈指针设置成一个内核栈指针。</p>
 <p>在内核上我们有三个栈（先别纠结为啥仨栈），一个栈的栈底是 <code>0x8040_0000</code> 一个栈的栈底是 <code>KERNEL_SP</code> （在 <code>settimer</code> 中设置 ）另一个栈的栈底是 <code>TIMESTACK</code>。他们在内存中的分布是这样的</p>
-<p><img src="/.io//内核栈结构.drawio.png" alt="内核栈结构.drawio"></p>
+<p><img src="/posts/671ebf76/内核栈结构.drawio.png" alt="内核栈结构.drawio"></p>
 <p>我们说这几个栈的作用是不一样的，<code>Kernel Init Stack</code> 是初始化操作系统的时候用到的栈，之后就不会再使用了，因为这个栈上没法减少，也就没法重复利用。</p>
 <p><code>Kernel Stack</code> 是在原来的栈上新增出的栈，这个栈的栈底是变量 <code>KERNEL_SP</code> ，这个变量在 <code>set_timer</code> 这个函数中设置</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">sw	    sp, 			KERNEL_SP<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>他将这个时刻的栈指针存储在一个叫做 <code>KERNEL_SP</code> 的变量中，这个变量就定义在 <code>env_asm.S</code> 中，就一个字大小。</p>
 <p>为什么要存储这个栈指针，是因为当发生异常的时候，不仅 PC 需要从用户进程更新到操作系统的指令流中，同时栈指针也需要调整到操作系统的栈，这就需要我们确定一下异常之后操作系统的栈指针应该在那里，那么就应该在这里。这是因为 <code>set_timer</code> 被 <code>klock_init</code> 调用，而 <code>mips_init</code> 的最后一个函数调用就是 <code>klock_init</code> 。之后会执行一个死循环，直到被时钟中断改变。所以此时的栈结构是这样的：</p>
-<p><img src="/.io//异常内核栈.drawio.png" alt="异常内核栈.drawio"></p>
+<p><img src="/posts/671ebf76/异常内核栈.drawio.png" alt="异常内核栈.drawio"></p>
 <p>第三个栈是 TIMESTACK，这个栈主要是处理时钟中断的时候需要使用。这里讨论一下为啥内核需要两个栈（用于异常处理），我初步的结论（与叶哥哥和郭哥哥讨论过后）觉得一个就够了，没必要用两个。姜姐姐提供了一种说法，认为这两种栈的设计可能是一个未完成的设计，这个设计可能是为了支持在进行其他异常处理的时候也可以响应时钟中断，但是没有完成这个设计，所以现在的 MOS 两个栈的设计看上去就是很冗余。</p>
 <h4 id="4-2-2-get-sp"><a href="#4-2-2-get-sp" class="headerlink" title="4.2.2 get_sp"></a>4.2.2 get_sp</h4><p>这个宏就是用来选择栈的，我们来看一下其功能</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token punctuation">.</span>macro get_sp
@@ -609,13 +609,13 @@ sw	    k0,TF_REG29(sp)<span aria-hidden="true" class="line-numbers-rows"><span><
 <p><code>sp</code> 原本的值被保留了，而 <code>sp</code> 现在的值，作为了保存的基地址。</p>
 <p>换句话说，当异常为时钟中断的时候，我们将进程的上下文保存在 <code>TIMESTACK</code> ，而当其他异常的时候，我们将进程的上下文保存在 <code>KERNEL_SP</code>。然后我们会继续使用这附近的栈作为我们的内核栈空间。</p>
 <h3 id="4-3-保存上下文"><a href="#4-3-保存上下文" class="headerlink" title="4.3 保存上下文"></a>4.3 保存上下文</h3><p>主要通过 <code>SAVEALL</code> 中的部分实现，因为还有一部分是调用 <code>get_sp</code> 实现栈选择，对于 <code>SAVE_ALL</code> 之后的栈的结构，大概就是这样的</p>
-<p><img src="/.io//内核栈结构.drawio-16526749882911.png" alt="内核栈结构.drawio"></p>
+<p><img src="/posts/671ebf76/内核栈结构.drawio-16526749882911.png" alt="内核栈结构.drawio"></p>
 <p>此时 <code>sp</code> 指向 <code>Trapframe</code> 的底部。之所以要强调这一点，是因为在这之后，有这个语句（在build里）</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">move	    a0,         sp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这就表示如果是 C 函数，那么是可以完全利用这里面的上下文的，比如说</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">page_fault_handler</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">Trapframe</span> <span class="token operator">*</span>tf<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>但是这个用法太低级了，lab3-2 的考试题目可以用 C 来写，用法很高级，而且比汇编简单多了。我本来已经总结了，但是找不到了，摆烂放一张 banana 的图就好了（她没处理延迟槽）。可以看到可以利用这个指针获得基本上所有的信息。</p>
-<p><img src="/.io//image-20220516122924259.png" alt="image-20220516122924259"></p>
+<p><img src="/posts/671ebf76/image-20220516122924259.png" alt="image-20220516122924259"></p>
 <h3 id="4-4-禁止中断"><a href="#4-4-禁止中断" class="headerlink" title="4.4 禁止中断"></a>4.4 禁止中断</h3><p>主要通过 <code>CLI</code> 进行设置，具体的代码之前博客里有。但是这件事情有待商榷，因为据叶哥哥说，异常处理的禁用是在硬件层次上实现的，而 R3000 并没有实现这个功能（或者说实现了支持嵌套异常的功能），在软件方面是没有办法禁止中断的，我就不细讨论了。</p>
 <h3 id="4-5-进行异常处理"><a href="#4-5-进行异常处理" class="headerlink" title="4.5 进行异常处理"></a>4.5 进行异常处理</h3><p>这个每个都不一样，具体的回头再说。</p>
 <h3 id="4-6-从异常返回"><a href="#4-6-从异常返回" class="headerlink" title="4.6 从异常返回"></a>4.6 从异常返回</h3><h4 id="4-6-1-ret-from-exception"><a href="#4-6-1-ret-from-exception" class="headerlink" title="4.6.1 ret_from_exception"></a>4.6.1 ret_from_exception</h4><p>这个函数功能是从栈上恢复寄存器，并且跳转用户进程。</p>
@@ -723,15 +723,15 @@ nop
 jr 		k0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="五、TLB-缺失中断"><a href="#五、TLB-缺失中断" class="headerlink" title="五、TLB 缺失中断"></a>五、TLB 缺失中断</h2><h3 id="5-1-总体概览"><a href="#5-1-总体概览" class="headerlink" title="5.1 总体概览"></a>5.1 总体概览</h3><p>这种异常会发生在 TLB 缺失的时候，流程图如下：</p>
-<p><img src="/.io//MMU缺失中断流程图.drawio.png" alt="MMU缺失中断流程图.drawio"></p>
+<p><img src="/posts/671ebf76/MMU缺失中断流程图.drawio.png" alt="MMU缺失中断流程图.drawio"></p>
 <h3 id="5-2-TLB-结构"><a href="#5-2-TLB-结构" class="headerlink" title="5.2 TLB 结构"></a>5.2 TLB 结构</h3><p>首先我们需要弄懂 tlb 的结构，计组认为的 TLB，是长这样的：</p>
-<p><img src="/.io//tlb.drawio.png" alt="tlb.drawio"></p>
+<p><img src="/posts/671ebf76/tlb.drawio.png" alt="tlb.drawio"></p>
 <p>也就是说，TLB 是一个全相连的 cache，既然是全相连，就不由 index 段了。我们用虚拟地址的前 22 位作为 TAG，并行的比较 64 个TLB 的 line，如果 TAG 相等，就说明找到了，反之，这说明没有找到。</p>
 <p>不过这个模型还是有些粗糙的，很多细节并没有说明白。</p>
 <p>在操作系统指导书里提到，tlb 构建了一个映射关系，我简化一下，就是 $VPN\space \rightarrow\space PPN$ 。当然这是对的了，但是这种说法我就弄成了每个 VPN 都会对应一个 PPN，但是其实这种映射关系只有 64 对。而且叫映射似乎就是一下就射过去了，而不是一个并行的比较过程。</p>
 <p>其次就是，我们没有了解具体硬件发生了啥，比如 VPN 是怎样被检索的，被检索到的 PPN 放到了哪里，tlb 缺失以后具体怎么填补。都是没有的。这其实跟协处理器有很大关系。</p>
 <p>在了解协处理器之前，我们先来看一下 tlb 的表项，他比计组版本要复杂一些，我们以 MOS 中 64MB （也就是共有 $2^{14}$ 页 ）的物理内存为例</p>
-<p><img src="/.io//tlb_entry.png" alt="tlb_entry"></p>
+<p><img src="/posts/671ebf76/tlb_entry.png" alt="tlb_entry"></p>
 <p>我们来说明一下这些差别：</p>
 <ul>
 <li>朴素版的 PPN 只有 14 位，是因为物理页框号可以最少用 14 位表示，但是真实版的 PPN 也与 VPN 相同，是 22 位。可能是考虑到不同电脑上内存不同吧，这估计也是 mips_detect_memory() 这个函数的设置。</li>
@@ -807,8 +807,8 @@ jr 		k0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <p>这里再说一下各个寄存器的域</p>
 <ul>
 <li>EntryHi，EntryLo 的域与 tlb 表项完全相同</li>
-<li>Index 的域：<img src="/.io//image-20220409154810627.png" alt="image-20220409154810627"></li>
-<li>Random 的域：<img src="/.io//image-20220409154846877.png" alt="image-20220409154846877"></li>
+<li>Index 的域：<img src="/posts/671ebf76/image-20220409154810627.png" alt="image-20220409154810627"></li>
+<li>Random 的域：<img src="/posts/671ebf76/image-20220409154846877.png" alt="image-20220409154846877"></li>
 </ul>
 <p>与 tlb 相关的指令</p>
 <div class="table-container">
@@ -980,7 +980,7 @@ NoCOW:
 <h3 id="5-5-COW-的处理"><a href="#5-5-COW-的处理" class="headerlink" title="5.5 COW 的处理"></a>5.5 COW 的处理</h3><p>在这里的 <code>do_refill</code> 会有一个对于页表项权限位 <code>PTE_COW</code> 的判断。但是由于我们还没有介绍写时复制机制，所以这里只需要了解一下，如果一个页面被标记为 <code>PTW_COW</code> 了，那么我们就会去掉他的写权限，也就是说，如果这个页面被写了，就会触发 <code>handle_mod</code>。那么是不是所有的 <code>COW</code> 都会被去掉写权限呢？我们说是的，因为这些页面被标记为 <code>COW</code> 的时候要么没在 TLB 中，要么在 TLB 中被失效了（在 page_insert 中），所以这些页面都是被使用都需要先经过 TLB，所以一定会发生缺失，那么就一定会被去掉写权限。</p>
 <hr>
 <h2 id="六、时钟中断"><a href="#六、时钟中断" class="headerlink" title="六、时钟中断"></a>六、时钟中断</h2><h3 id="6-1-总体概览"><a href="#6-1-总体概览" class="headerlink" title="6.1 总体概览"></a>6.1 总体概览</h3><p>这个异常其实虽然叫做时钟中断，但是其实现的功能其实是进程切换。这个流程也是一个极其复杂的流程，所以需要有很好的理解。总体的流程如下：</p>
-<p><img src="/.io//时钟中断流程图.drawio.png" alt="时钟中断流程图.drawio"></p>
+<p><img src="/posts/671ebf76/时钟中断流程图.drawio.png" alt="时钟中断流程图.drawio"></p>
 <h3 id="6-2-恢复另一个现场"><a href="#6-2-恢复另一个现场" class="headerlink" title="6.2 恢复另一个现场"></a>6.2 恢复另一个现场</h3><p>这是跟其他异常最大的区别。就是其他异常都是在操作系统运行完异常处理程序以后，就会返回那个引发异常的进程。但是时钟中断不是，它不会返回发生异常的那个进程，而是重新挑选一个进程去运行。</p>
 <p>这就提出了一个很严峻的问题，就是 <code>TIMESTACK</code> 不够用了，因为对于其他异常，我们会把用户进程的现场存储在内核栈上，在干完事情以后再从内核栈上把这个现场恢复了。但是对于进程调度，这个就不行了，因为栈上存储的还是原来进程的现场，所以即使在某个函数里把现场调整成了新进程的现场，但是一个 <code>ret_from_exception</code> 就又给恢复了。正是因为如此，在流程图中可以看到，这个流程里是没有 <code>ret_from_exception</code> 的。不仅如此，我们还需要把被替换掉的进程上下文保存在进程控制块中，这是因为不然等这个进程再次被调用的时候，又怎么知道当时的现场是啥呢？这件事也可以这样理解，就是我们恢复现场的来源变成了不再是从 <code>TIMESTACK</code> 上，而是从进程控制块里。</p>
 <h3 id="6-3-handle-int"><a href="#6-3-handle-int" class="headerlink" title="6.3 handle_int"></a>6.3 handle_int</h3><p>先是在栈上保存用户寄存器的值，都是调用 SAVE_ALL。这个函数有两个功能，一个是选择一个内核栈（是 <code>KERNEL_SP</code> 还是 <code>TIMESTACK</code>）。另一个是在栈上报存寄存器。在时钟中断中，我们选择的是 <code>TIMESTACK</code>。</p>
@@ -1225,7 +1225,7 @@ LEAF(set_timer)
 	nop
 END(set_timer)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里先介绍一下 MOS 计时器的配置</p>
-<p><img src="/.io//微信图片_20220510093613.jpg" alt="微信图片_20220510093613"></p>
+<p><img src="/posts/671ebf76/微信图片_20220510093613.jpg" alt="微信图片_20220510093613"></p>
 <p>可以看到，这个函数的前两句将产生时钟中断的频率设置在了 200 次 / 秒。 </p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">li      t0,             0xc8
 sb      t0,             0xb5000100<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1235,7 +1235,7 @@ sb      t0,             0xb5000100<span aria-hidden="true" class="line-numbers-r
 <hr>
 <h2 id="七、读写异常"><a href="#七、读写异常" class="headerlink" title="七、读写异常"></a>七、读写异常</h2><h3 id="7-1-总体概述"><a href="#7-1-总体概述" class="headerlink" title="7.1 总体概述"></a>7.1 总体概述</h3><p>这个是当我们去写只读页面的时候，就会触发这个异常。但是这还不够精确，因为我们不会闲的没事去写一个只读的页面，所以很多时候就是发生在写时复制的情况，也就是当父进程 <code>fork</code> 出一个子进程的时候，父子进程都会把基本上所有的可写页面设置成 COW，而这些页面在通过 <code>do_refill</code> 进入 TLB 之后，都会变成只读页面，而当我们尝试去写这个只读页面的时候（我们不知道它已经变成只读的了），就会有异常发生，就是这个异常，这个异常会复制出一个页面来，这样两人就不存在“共享写”的情况了。</p>
 <p>具体流程如下：</p>
-<p><img src="/.io//写时复制异常流程图.drawio.png" alt="写时复制异常流程图.drawio"></p>
+<p><img src="/posts/671ebf76/写时复制异常流程图.drawio.png" alt="写时复制异常流程图.drawio"></p>
 <h3 id="7-2-微内核设计"><a href="#7-2-微内核设计" class="headerlink" title="7.2 微内核设计"></a>7.2 微内核设计</h3><h4 id="7-2-1-分布式"><a href="#7-2-1-分布式" class="headerlink" title="7.2.1 分布式"></a>7.2.1 分布式</h4><p>微内核设计可以看做是将本来应该由操作系统负责的一些功能，移出到了用户进程中负责。在这个异常处理中，操作系统并不会处理异常，而是将异常处理的任务转交给用户进程。</p>
 <p>这就涉及一个很有意思的问题，就是如果这些函数不是在内核中实现的，那么它就应该是每个用户进程都各自有一个的，这是因为如果由某个进程独占，那么本质上其实还是操作系统的性质，只不过是一个被放在低位的操作系统罢了。所以一定是每个用户进程都有异常处理函数的，就像一个分布式的操作系统，而微内核带来的好处就是一个用户进程崩了，但是其他进程的异常处理函数还能用，这正是分布式的好处。</p>
 <p>具体的实现分布式，就是在 <code>Makefile</code> 中实现的</p>
@@ -1247,7 +1247,7 @@ sb      t0,             0xb5000100<span aria-hidden="true" class="line-numbers-r
 <p>操作系统移植考虑的是 ABI，应用程序移植考虑的是 API。</p>
 </blockquote>
 <h4 id="7-2-2-用户异常栈"><a href="#7-2-2-用户异常栈" class="headerlink" title="7.2.2 用户异常栈"></a>7.2.2 用户异常栈</h4><p>与我们需要内核栈的原因相同，我们依然不能在原来的用户栈上进行异常处理，我们需要在用户进程的虚拟地址空间上另外找一个地方，来当我们的异常处理栈，最后我们找到了，如图所示</p>
-<p><img src="/.io//image-20220516163430299.png" alt="image-20220516163430299"></p>
+<p><img src="/posts/671ebf76/image-20220516163430299.png" alt="image-20220516163430299"></p>
 <h3 id="7-3-内核部分"><a href="#7-3-内核部分" class="headerlink" title="7.3 内核部分"></a>7.3 内核部分</h3><p>内核部分采用的也是一个异常包装函数，所以主要的功能实现就是底下这个函数 <code>page_fault_handler</code>。</p>
 <p>这是异常处理函数，是一个内核函数，其地位与 <code>do_refill</code> 类似，都是被包装过的。那么它到底进行了一个怎样的过程呢？。其实就是先看这个用户进程的栈指针在哪里，如果还在 <code>xstacktop</code> 这个页面上，就让其保存一下 <code>tf</code> 。如果已经超过了，那么就将栈指针重新定位到 <code>xstacktop</code> 然后再保存 <code>tf</code>。</p>
 <p>也就是下面的代码</p>
@@ -1422,7 +1422,7 @@ sb      t0,             0xb5000100<span aria-hidden="true" class="line-numbers-r
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">syscall_set_pgfault_handler</span><span class="token punctuation">(</span>newenvid<span class="token punctuation">,</span> __asm_pgfault_handler<span class="token punctuation">,</span> UXSTACKTOP<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
 <h2 id="八、系统调用异常"><a href="#八、系统调用异常" class="headerlink" title="八、系统调用异常"></a>八、系统调用异常</h2><h3 id="8-1-总体概述"><a href="#8-1-总体概述" class="headerlink" title="8.1 总体概述"></a>8.1 总体概述</h3><p>前面的异常或多或少都有“被动”的成分，而系统调用是一种主动的异常，主要是通过陷入异常来获得一些更高权限的功能，所以这个异常逻辑是很简单的，复杂的是不同的系统调用的处理，流程如下：</p>
-<p><img src="/.io//系统调用流程图.drawio.png" alt="系统调用流程图.drawio"></p>
+<p><img src="/posts/671ebf76/系统调用流程图.drawio.png" alt="系统调用流程图.drawio"></p>
 <h3 id="8-2-系统调用的前期"><a href="#8-2-系统调用的前期" class="headerlink" title="8.2 系统调用的前期"></a>8.2 系统调用的前期</h3><h4 id="8-2-1-syscall"><a href="#8-2-1-syscall" class="headerlink" title="8.2.1 syscall_*"></a>8.2.1 syscall_*</h4><p>所有的系统调用函数在用户进程看来都长成这样</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">syscall_<span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后他们所有函数都会调用 <code>myscall</code>，大概这样</p>
@@ -1477,7 +1477,7 @@ sys_call_table:                         // Syscall Table
 .word sys_ipc_recv
 .word sys_cgetc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后要获得第五个和第六个参数，这个同样是有 <code>ABI</code> 规范的，第五个参数和第六个参数会存在用户调用 <code>msyscall</code> 栈的上一个栈中，具体结构如图</p>
-<p><img src="/.io//image-20220511204955352-16527034425482.png" alt="image-20220511204955352"></p>
+<p><img src="/posts/671ebf76/image-20220511204955352-16527034425482.png" alt="image-20220511204955352"></p>
 <p>左侧为用户栈，所以我们可以从用户栈上把参数取出来</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lw      t0, TF_REG29(sp)            // t0 &lt;- users stack pointer
 lw      t3, 16(t0)                  // t3 &lt;- the 5th argument of msyscall
@@ -1923,7 +1923,7 @@ vpd:
 <p>最后我们需要让子进程进入调度序列，就是底下这个函数实现的</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">syscall_set_env_status</span><span class="token punctuation">(</span>newenvid<span class="token punctuation">,</span> ENV_RUNNABLE<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>最后偷一张图放在这里：</p>
-<p><img src="/.io//4_fork_process.png" alt="fork 流程图"></p>
+<p><img src="/posts/671ebf76/4_fork_process.png" alt="fork 流程图"></p>
 <hr>
 
     </div>

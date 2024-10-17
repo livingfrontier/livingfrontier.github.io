@@ -30,13 +30,13 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、快捷键使用 如果鼠标不选择某个特定区域，那么此时的复制粘贴删除都是对于一行进行的。 Ctrl + L ：选中特定的一行，如果一直按住，可以选择多行。 Ctrl + &#x2F;：注释掉选中的区域，使用的是单行注释的方式，再按取消注释。 Alt + Shift + a ：注释掉选中区域，使用的是多行注释的方式，这个按键，可以用右手按 Alt + Shift 相当舒服。 Ctrl + d：选中光标所在的单词">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220121163210490.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220121163410197.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220121175947505.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220121175834276.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220121172117607.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220121174638211.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220130160826781.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121163210490.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121163410197.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121175947505.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121175834276.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121172117607.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121174638211.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220130160826781.png">
 <meta property="article:published_time" content="2022-01-21T02:14:18.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.787Z">
 <meta property="article:author" content="Thysrael">
@@ -44,7 +44,7 @@
 <meta property="article:tag" content="办公工具">
 <meta property="article:tag" content="工具总结">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220121163210490.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/caed0f5d/image-20220121163210490.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/caed0f5d/">
 
@@ -314,9 +314,9 @@
 <h2 id="二、配置-vscode"><a href="#二、配置-vscode" class="headerlink" title="二、配置 vscode"></a>二、配置 vscode</h2><h3 id="2-1-改变插件安装的位置"><a href="#2-1-改变插件安装的位置" class="headerlink" title="2.1 改变插件安装的位置"></a>2.1 改变插件安装的位置</h3><p>如果是默认设置，那么插件会安装在C盘，这显然是我们不想看到的。所以我们要把插件安装到我们希望其在的文件夹中（起码不在C盘）。</p>
 <p>在网上有一种是用命令行的方法，即 <code>--[extensions-dir][path]</code> 的方法，但是这种方法有很多的弊端，比如直接打开文件的时候没有办法启用插件之类的，我没有调好。</p>
 <p>所以比较好的方法是下载vscode的时候，用 zip 包下载，如下</p>
-<p><img src="/.io//image-20220121163210490.png" alt="image-20220121163210490"></p>
+<p><img src="/posts/caed0f5d/image-20220121163210490.png" alt="image-20220121163210490"></p>
 <p>这种 vscode，在根目录下创建一个 <code>data</code> 文件夹，所有的插件就都会保存到这个里面了。如下：</p>
-<p><img src="/.io//image-20220121163410197.png" alt="image-20220121163410197"></p>
+<p><img src="/posts/caed0f5d/image-20220121163410197.png" alt="image-20220121163410197"></p>
 <h3 id="2-2-将终端设置成-git-bash"><a href="#2-2-将终端设置成-git-bash" class="headerlink" title="2.2 将终端设置成 git-bash"></a>2.2 将终端设置成 git-bash</h3><p>需要先将git-bash添加入终端，之前有一种方法是不行的，会提示</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json">This is deprecated<span class="token punctuation">,</span> the new recommended way to configure your default shell is by creating a terminal profile in `#terminal.integrated.profiles.windows#` and setting its profile name as the default in `#terminal.integrated.defaultProfile.windows#`. This will currently take priority over the new profiles settings but that will change in the future.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>所以要采用新的方法，将settings-json文件如下配置</p>
@@ -339,18 +339,18 @@
     <span class="token property">"git.path"</span><span class="token operator">:</span> <span class="token string">"D:\\github\\Git\\bin\\git.exe"</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-3-vscode-插件"><a href="#2-3-vscode-插件" class="headerlink" title="2.3 vscode 插件"></a>2.3 vscode 插件</h3><h4 id="2-3-1-drawio"><a href="#2-3-1-drawio" class="headerlink" title="2.3.1 drawio"></a>2.3.1 drawio</h4><p>是一个画流程图的软件，新建一个文件后缀名改成 <code>.drawio</code> ，然后右键该标签，选择用 <code>Reopen Editor With</code> 就可以选择 drawio打开，然后输出的时候选择 <code>File -&gt; Export</code> 即可。</p>
-<p><img src="/.io//image-20220121175947505.png" alt="image-20220121175947505"></p>
-<p><img src="/.io//image-20220121175834276.png" alt="image-20220121175834276"></p>
+<p><img src="/posts/caed0f5d/image-20220121175947505.png" alt="image-20220121175947505"></p>
+<p><img src="/posts/caed0f5d/image-20220121175834276.png" alt="image-20220121175834276"></p>
 <h3 id="2-4-设置编码方式"><a href="#2-4-设置编码方式" class="headerlink" title="2.4 设置编码方式"></a>2.4 设置编码方式</h3><p>因为vscode的默认编码方式是 <code>UTF-8</code> ，而可能我记得dev C++和 ISE 的默认编码方式都是 <code>GB</code> 所以会出现乱码，可以一个一个自己调，就是点击右下角的 <code>GB 2312</code> 然后就会在上面弹出这个框，选择 “Reopen with Encoding”。就可以进行编码方式的选择</p>
-<p><img src="/.io//image-20220121172117607.png" alt="image-20220121172117607"></p>
+<p><img src="/posts/caed0f5d/image-20220121172117607.png" alt="image-20220121172117607"></p>
 <p>如果想要方便一点，可以选择 <code>file -&gt; preferences -&gt; settings -&gt; atuo guess encoding</code> 将其修改为 ture，即可自动识别。</p>
 <hr>
 <h2 id="三、vscode-与-git"><a href="#三、vscode-与-git" class="headerlink" title="三、vscode 与 git"></a>三、vscode 与 git</h2><p>依然还是只能实现很笨拙的操作，没有办法向不同名的分支上进行提交，只能老老实实的提交同名分支，不过界面确实美化了很多，而且出现了很多图像化界面，所以操作变简单了，但是概念还是原来的概念</p>
-<p><img src="/.io//image-20220121174638211.png" alt="image-20220121174638211"></p>
+<p><img src="/posts/caed0f5d/image-20220121174638211.png" alt="image-20220121174638211"></p>
 <p>左面的Changes就是工作区，如果修改完代码保存以后，那么工作区就会记录这个变化，可以选择 <code>+</code> 将其提交到<strong>暂存区</strong>，变化就成了 Staged Changes，原来的工作区就是 Unstaged Changes，然后点击上面的对勾就可以提交到版本库，然后点击 <code>……</code> 就可以选择提交到远端。</p>
 <hr>
 <h2 id="四、编译环境配置"><a href="#四、编译环境配置" class="headerlink" title="四、编译环境配置"></a>四、编译环境配置</h2><h3 id="4-1-C-C-环境"><a href="#4-1-C-C-环境" class="headerlink" title="4.1 C/C++环境"></a>4.1 C/C++环境</h3><p>这个东西，是一个项目就必须配置一个 <code>.vscode</code> 文件，所以我装完以后尝试了一下，成功以后就放弃了，因为实在是太麻烦了，但是多亏了肖哥哥给我安利了这个软件，这个软件可以自动化配置 <code>.vscode</code> 文件。用起来爽歪歪。</p>
-<p><img src="/.io//image-20220130160826781.png" alt="image-20220130160826781"></p>
+<p><img src="/posts/caed0f5d/image-20220130160826781.png" alt="image-20220130160826781"></p>
 <p>软件地址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bhpan.buaa.edu.cn:443/link/BC026B1210B84413D35EAC66A7A153E1">https://bhpan.buaa.edu.cn:443/link/BC026B1210B84413D35EAC66A7A153E1</a></p>
 <p>除了这个软件以外，应该还需要在vscode上安装关于C的插件，但是不难，就跟着提示来就好了。</p>
 <p>调试快捷键：</p>

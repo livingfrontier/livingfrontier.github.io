@@ -30,8 +30,8 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论乱序指的是指令并不按照顺序执行，所以这个概念比较接近软件编程中的“异步”概念（强调对于顺序时序的破坏）。而我之前似乎一直把它和“并行”挂钩（强调对于共享资源的争用）。这种认识倒也不算是错误，目前学了一圈下来，感觉其实和两个概念都有关系。 在顺序模型下，指令是一条条阻塞执行的，必须前一条指令执行完，才能执行后一条指令。那么如果前一条指令非常花时间，那么后一条指令就只能阻塞等待。这个问题是用流">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//cpu.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//dag.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/af364ce6/cpu.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/af364ce6/dag.drawio.png">
 <meta property="article:published_time" content="2024-08-10T11:50:16.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.567Z">
 <meta property="article:author" content="Thysrael">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="S8假期">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//cpu.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/af364ce6/cpu.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/af364ce6/">
 
@@ -308,7 +308,7 @@
 </ul>
 <p>CPU 种有很多功能单元（也可以看作计算资源），我们希望让他们都运转起来，不要闲置或者做无用功。但是每条指令并不会“同时”使用这些资源，比如对于一条指令的执行，只要取出指令后，就不需要再从 I-Cache 中读值了，当这条指令让 ALU 进行运算的时候，Fetch，Decode，Write Back 这些单元是闲置的。所以我们发明了流水线技术，将功能单元划分到不同的流水级，每个流水级都运行一条指令，这样就可以并行利用不同的资源。但是这样还不够，因为可能一个阶段里还有很多个功能单元，比如说 Execute Stage 里就有整数计算单元，浮点数计算单元，访存单元等，这些单元想要满载运转，就不能再采用流水线技术了，因为这些资源并不是每条指令都会用到，如果我们将 Execute Stage 拆分成 Calculate Stage 和 Memory Stage ，那么 Memory Stage 的资源就会在执行计算指令时被闲置，而 Calculate Stage 的资源则会在执行访存指令时被闲置，所以我们可以采用乱序的方式，让一个流水级中包含多条指令，比如 Execute Stage 就可以同时包含一条计算指令和一条访存指令，这样资源就可以得到更充分的利用。</p>
 <p>总得来说，我们可以利用流水线技术和乱序技术对 CPU 内的资源进行不同维度的并行操作：</p>
-<p><img src="/.io//cpu.png" alt="cpu"></p>
+<p><img src="/posts/af364ce6/cpu.png" alt="cpu"></p>
 <p>从这个角度看，流水线深度并不是越深越好，因为被时序分割的资源，并不会在每条指令上得到充分利用，反而是乱序的方式，更能充分利用资源。</p>
 <p>总得来说，我们对于明显有依赖关系的资源，会采用流水线的方式来并行，比如说取指单元和译码单元的流水线处理；而对于没有依赖关系的资源，我们会采用乱序的方式并行，比如访存单元和计算单元的乱序。更进一步辩证地看，在同一级流水线中，一定存在没有依赖关系的资源，那么就是可以乱序的；在</p>
 <hr>
@@ -338,7 +338,7 @@ write r1 # commit first, correct<span aria-hidden="true" class="line-numbers-row
 <p>从任何意义上说，寄存器就是内存的一个过客。</p>
 </blockquote>
 <p>如果我们拨开 ISA 的复杂性的迷雾，就会发现 CPU 的核心在于“读入内存，计算，写入内存”的图灵机模式，其中的计算步骤，其实就是构建一个计算的 DAG 图（有向无环图），其结构如下：</p>
-<p><img src="/.io//dag.drawio.png" alt="dag.drawio"></p>
+<p><img src="/posts/af364ce6/dag.drawio.png" alt="dag.drawio"></p>
 <p>寄存器的作用就是存储这些 DAG 图的中间节点。这里面的 <code>(1), (2), (3)</code> 可能就分别对应某个寄存器。</p>
 <p>所谓的计分板，就是描述这幅图的数据结构，他的每个条目就是图上的一个点</p>
 <div class="table-container">

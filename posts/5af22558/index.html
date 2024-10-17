@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、面向对象基础1.1 定义class Point     def initialize(x, y)         @x &#x3D; x         @y &#x3D; y     end end  point &#x3D; Point.new(0, 1) puts point.is_a? Point		# true 其中 initialize 方法充当了构造器，以 @ 开头的变量是实例变量，也就是说是 Java 中的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220919111518809.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5af22558/image-20220919111518809.png">
 <meta property="article:published_time" content="2022-09-04T07:25:19.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.753Z">
 <meta property="article:author" content="Thysrael">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="S5课上">
 <meta property="article:tag" content="Ruby设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220919111518809.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/5af22558/image-20220919111518809.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/5af22558/">
 
@@ -491,7 +491,7 @@ otherPointA<span class="token punctuation">.</span>x <span class="token operator
 <span class="token constant">C</span> <span class="token operator">=</span> <span class="token builtin">Class</span><span class="token punctuation">.</span><span class="token keyword">new</span>		<span class="token comment"># some class called C</span>
 <span class="token constant">D</span> <span class="token operator">=</span> <span class="token builtin">Class</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">C</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">include</span> <span class="token constant">M</span><span class="token punctuation">}</span> <span class="token comment"># some C subclass called D, which include M</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-4-include-extend"><a href="#3-4-include-extend" class="headerlink" title="3.4 include, extend"></a>3.4 include, extend</h3><p>利用 <code>include</code> 和 <code>extend</code> 都可以进行 Mixin（混入操作），对于 <code>include</code> 就是直接混入到实例上？ <code>extend</code> 是混入到类上？</p>
-<h3 id="3-5-关系"><a href="#3-5-关系" class="headerlink" title="3.5 关系"></a>3.5 关系</h3><p><img src="/.io//image-20220919111518809.png" alt="image-20220919111518809"></p>
+<h3 id="3-5-关系"><a href="#3-5-关系" class="headerlink" title="3.5 关系"></a>3.5 关系</h3><p><img src="/posts/5af22558/image-20220919111518809.png" alt="image-20220919111518809"></p>
 <hr>
 <h2 id="三、函数式特征"><a href="#三、函数式特征" class="headerlink" title="三、函数式特征"></a>三、函数式特征</h2><h3 id="3-1-block"><a href="#3-1-block" class="headerlink" title="3.1 block"></a>3.1 block</h3><p><code>block</code> 是 一小段代码，用 <code>{}</code> 包裹， 用 <code>yield</code> 关键字调用。迭代器就是基于这个实现的。</p>
 <pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby"><span class="token keyword">def</span> <span class="token method-definition"><span class="token function">call_twice</span></span>

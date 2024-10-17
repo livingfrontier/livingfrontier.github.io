@@ -30,10 +30,10 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、抽象层次1.1 User Program 与 Operating System一开始的用户程序 User Program 都是裸机程序，他们直接运行在硬件上。这种方式的缺点在于，任何程序都需要思考与其他程序的“共存方式”，内存空间的是具象的，所以就要思考自己要利用多少的内存，利用哪个部分的内存；CPU 是具象的，所以就要思考自己何时会被调度，以怎样的形式被调度；所有的硬件资源都是具象的，所以要">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240217112245601.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240217113903538.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240217115357500.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240217120937767.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d2197181/image-20240217112245601.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d2197181/image-20240217113903538.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d2197181/image-20240217115357500.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/d2197181/image-20240217120937767.png">
 <meta property="article:published_time" content="2023-12-30T13:15:11.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.427Z">
 <meta property="article:author" content="Thysrael">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="S7课上">
 <meta property="article:tag" content="硬件平台">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20240217112245601.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/d2197181/image-20240217112245601.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/d2197181/">
 
@@ -387,19 +387,19 @@
 </table>
 </div>
 <p>从软件框架的角度上，根据虚拟化层是直接位于硬件之上还是在一个宿主操作系统之上，将虚拟化划分为 Typel 和 Type2。</p>
-<p><img src="/.io//image-20240217112245601.png" alt="image-20240217112245601"></p>
+<p><img src="/posts/d2197181/image-20240217112245601.png" alt="image-20240217112245601"></p>
 <p>Type1（类型1）Hypervisor 也叫 native 或 bare-metal Hypervisor。这类虚拟化层直接运行在硬件之上，没有所谓的宿主机操作系统。它们直接控制硬件资源以及客户机。典型地如 Xen 和 VMware ESX。</p>
 <p>Type2（类型2）Hypervisor 运行在一个宿主机操作系统之上，也就是一个应用程序，如 VMware Workstation；或宿主操作系统里，也就是内核的一部分，如 KVM。</p>
 <h2 id="三、安全"><a href="#三、安全" class="headerlink" title="三、安全"></a>三、安全</h2><h3 id="3-1-异常等级"><a href="#3-1-异常等级" class="headerlink" title="3.1 异常等级"></a>3.1 异常等级</h3><p>Exception Level 异常等级是 Armv8 新引进的术语，不同 EL 有着不同的硬件资源访问权限，总体概览如下：</p>
-<p><img src="/.io//image-20240217113903538.png" alt="image-20240217113903538"></p>
+<p><img src="/posts/d2197181/image-20240217113903538.png" alt="image-20240217113903538"></p>
 <p>可以看到 4 种异常等级刚好对应第一章提出的 3 个抽象层，是非常自然的事情。</p>
 <p>此外需要强调，在早期的 Armv8 中安全世界是不支持 EL2 下的 Hypervisor 的，这也是图中没有画出来的原因。不过晚期的 Armv8 或者 Armv9 是有这个功能的。</p>
 <h3 id="3-2-特权等级"><a href="#3-2-特权等级" class="headerlink" title="3.2 特权等级"></a>3.2 特权等级</h3><p>Privilege Level 特权等级是 Armv7 的概念，我查了一些资料，给我感觉看上去和 Armv8 的 EL 是对应的，区分这些等级的目的同样是为了区分不同的权限，如下所示：</p>
-<p><img src="/.io//image-20240217115357500.png" alt="image-20240217115357500"></p>
+<p><img src="/posts/d2197181/image-20240217115357500.png" alt="image-20240217115357500"></p>
 <p>这和上一张图是非常类似的，唯一不同的在 PL1 多了很多种模式 mode。这之前非常困扰我，因为似乎一个 PL 只有一个模式就够发挥功能了（毕竟 Armv8 就是这么设计的），而且一个 PL 对应一组特殊的寄存器，那么同一个 PL 下的多个 mode 意味着什么？他们到底靠什么区分？</p>
 <p>首先要补充 Banked 的概念，”Banked” 这个术语在计算机体系结构中是一个常见的概念，用来描述一种资源（如寄存器）按组进行切换的机制。在这个机制中，每个组被称为一个 “bank”（分组），bank 之间都是相近或者相同的。</p>
 <p>不同 mode 之间其实就是具有独有的 Banked Register，如下所示：</p>
-<p><img src="/.io//image-20240217120937767.png" alt="image-20240217120937767"></p>
+<p><img src="/posts/d2197181/image-20240217120937767.png" alt="image-20240217120937767"></p>
 <p>也就是说，在 armv7 架构中有多个 SP 寄存器（基本上每个模式都有一个），多个 LR 寄存器。这种 banked register 的好处在于模式切换的成本开销小，这是因为不同原因造成的模式切换会有不同的 banked register 来处理，如果只有 mode，那么嵌套异常发生时，就会导致之前的异常处理上下文需要保存后再进行新的异常处理，处理结束后还需要恢复，这样开销会增大。可以看做是一种用空间换时间的策略。</p>
 <p>此外注意到 FIQ 的 banked register 更多，这也是它被称为 Fast 的原因。</p>
 

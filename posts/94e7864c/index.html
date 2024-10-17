@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论设计模式是一个工程问题，它不能为某个问题提供具体的答案，它只能让答案写得好看一些。 更进一步地说，设计模式是用于解决代码复杂度高（不是算法复杂度）的问题，这会引发难以阅读，难以维护等伴生问题。当代码量小，复杂度低，没有什么维护需求的时候（比如说科研代码），其实是没有必要采用规范的设计模式的。 我个人学习设计模式，并不是为了写代码（因为我写的代码就是科研代码），而是为了更好的阅读代码，因为大">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//bridge.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/94e7864c/bridge.png">
 <meta property="article:published_time" content="2024-08-22T06:29:00.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.683Z">
 <meta property="article:author" content="Thysrael">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="面向对象">
 <meta property="article:tag" content="S8 假期">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//bridge.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/94e7864c/bridge.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/94e7864c/">
 
@@ -356,7 +356,7 @@ A b <span class="token operator">=</span> a<span class="token punctuation">.</sp
 <p>那么就在 A 外面套一层满足 B 接口的适配器就可以了。</p>
 <h4 id="3-2-2-桥接"><a href="#3-2-2-桥接" class="headerlink" title="3.2.2 桥接"></a>3.2.2 桥接</h4><p>其实这个模式很简单，它就是我们理解的“组合”，也就是每个部分只负责一些小的互相独立的功能，利用多个独立功能来组合完成复杂功能。</p>
 <p>但是我很喜欢 Bridge 的概念，桥似乎在计算机术语中，描述的就是一种将多个功能模块组合在一起的概念，比如说芯片中的南桥和北桥芯片，网络中的桥接模式。</p>
-<p><img src="/.io//bridge.png" alt="桥接设计模式"></p>
+<p><img src="/posts/94e7864c/bridge.png" alt="桥接设计模式"></p>
 <p>它更像是一种“中间人”或者“平台”的概念，与汉语中的“连接和沟通两地”的概念有些出入。</p>
 <h4 id="3-2-3-组合"><a href="#3-2-3-组合" class="headerlink" title="3.2.3 组合"></a>3.2.3 组合</h4><p>这里说的组合并不是和“继承”有对立关系的那个“组合”，而是一种树形结构，并且采用了递归处理：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>

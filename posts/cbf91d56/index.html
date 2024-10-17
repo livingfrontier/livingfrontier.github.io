@@ -30,16 +30,16 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="本文提出了一种用户态缺页异常处理框架，可以轻松适配不同的处理策略，适用于高并发环境。其亮点在于：  框架的易用性： 基于 Linux 的 Semi-Microkernel 设计 透明   性能： 采用了微内核和外核思想中的 upcall 设计 采用了先进的异步批处理 IO 后端 io_ring     一、背景1.1 特化内存管理从软件层去看，目前内存密集型应用越来越多，如 TB 级的机器学习、">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//userfaultsd.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//extmem.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//userfaultfd1.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//extmem2.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//io_uring.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//benchmark-1-1724747043453-9.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240827164626572.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240827165459110.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240827170114740.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240827170458158.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/userfaultsd.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/extmem.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/userfaultfd1.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/extmem2.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/io_uring.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/benchmark-1-1724747043453-9.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/image-20240827164626572.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/image-20240827165459110.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/image-20240827170114740.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/cbf91d56/image-20240827170458158.png">
 <meta property="article:published_time" content="2024-08-26T12:31:23.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.407Z">
 <meta property="article:author" content="Thysrael">
@@ -47,7 +47,7 @@
 <meta property="article:tag" content="S8假期">
 <meta property="article:tag" content="海边拾贝">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//userfaultsd.drawio.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/cbf91d56/userfaultsd.drawio.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/cbf91d56/">
 
@@ -329,20 +329,20 @@
 <h2 id="二、设计"><a href="#二、设计" class="headerlink" title="二、设计"></a>二、设计</h2><h3 id="2-1-upcall"><a href="#2-1-upcall" class="headerlink" title="2.1 upcall"></a>2.1 upcall</h3><p>Upcall 指的是从内核调用用户函数，可以看作是一种反向 syscall，常见于微内核系统，比如 chcore 中的 thread migration 机制。</p>
 <p>传统的 userfaultfd 在高并发环境下存在延迟问题，这主要是由两方面原因组成：</p>
 <p>一方面，线程的调度和切换开销很大，userfaultfd 下的 fault thread 和 MM thread 之间可能会插入多个其他无关线程（灰色虚线部分）：</p>
-<p><img src="/.io//userfaultsd.drawio.png" alt="userfaultsd.drawio"></p>
+<p><img src="/posts/cbf91d56/userfaultsd.drawio.png" alt="userfaultsd.drawio"></p>
 <p>而 upcall 可以由内核指定 MM thread 运行，并不需要调度：</p>
-<p><img src="/.io//extmem.drawio.png" alt="extmem.drawio"></p>
+<p><img src="/posts/cbf91d56/extmem.drawio.png" alt="extmem.drawio"></p>
 <p>另一方面，userfaultfd 的 MM thread 会串行处理 page fault，当多个线程都发生 page fault 的时候，会有排队现象：</p>
-<p><img src="/.io//userfaultfd1.drawio.png" alt="userfaultfd1.drawio"></p>
+<p><img src="/posts/cbf91d56/userfaultfd1.drawio.png" alt="userfaultfd1.drawio"></p>
 <p>但是利用 upcall 可以构造出 self-paging 机制，即 page fault handler 的本质是一个每个进程都有的库函数，发生 page fault 后内核会 upcall 进程自己的 handler 函数，这样多个 page fault handle 就可以并行了：</p>
-<p><img src="/.io//extmem2.drawio.png" alt="extmem2.drawio"></p>
+<p><img src="/posts/cbf91d56/extmem2.drawio.png" alt="extmem2.drawio"></p>
 <h3 id="2-2-io-uring"><a href="#2-2-io-uring" class="headerlink" title="2.2 io_uring"></a>2.2 io_uring</h3><p>内存管理可以分成前后端：前端负责处理 page fault 请求，分配页面完成映射；后端负责设备 I/O。</p>
 <p>ExtMem 对于后端只要求 Direct I/O（也就是绕过 Linux 系统的 page cache），并没有对后端的同步和异步做出限制，ExtMem 自己使用了最为先进的 io_uring 机制。</p>
 <p>之所以要强调这一点，是因为在后面的测试中，采用相同策略的 Linux 内核和 ExtMem 相对比，ExtMem 更占优势，它给出的解释是 ExtMem 在 evict 的代码更少，但是我觉得可能 io_uring 也发挥了一定的作用。</p>
 <p>总得来说，io_uring 是 Linux 提供的一个先进的，异步的，非常适合批处理的 IO 接口：</p>
-<p><img src="/.io//io_uring.png" alt="img"></p>
+<p><img src="/posts/cbf91d56/io_uring.png" alt="img"></p>
 <p>Linux 内部的 IO 使用的是中断驱动模式（应该是，不保真），而 io_uring 可以使用轮询模式。在高性能设备上，IO 的开销是小于上下文切换的开销的，所以轮询模式更优。</p>
-<p><img src="/.io//benchmark-1-1724747043453-9.png" alt="img"></p>
+<p><img src="/posts/cbf91d56/benchmark-1-1724747043453-9.png" alt="img"></p>
 <hr>
 <h2 id="三、实现"><a href="#三、实现" class="headerlink" title="三、实现"></a>三、实现</h2><h3 id="3-1-三层设计"><a href="#3-1-三层设计" class="headerlink" title="3.1 三层设计"></a>3.1 三层设计</h3><p>在设计上，该框架分为 3 层：</p>
 <ul>
@@ -389,22 +389,22 @@
 </table>
 </div>
 <h3 id="4-2-单次延迟"><a href="#4-2-单次延迟" class="headerlink" title="4.2 单次延迟"></a>4.2 单次延迟</h3><p>处理单个 page fault 的延迟如下：</p>
-<p><img src="/.io//image-20240827164626572.png" alt="image-20240827164626572"></p>
+<p><img src="/posts/cbf91d56/image-20240827164626572.png" alt="image-20240827164626572"></p>
 <p>其中 Upcall 指的是进行过性能优化的 SIGBUS 方法。</p>
 <p>可以看到 UFFD 的方式在高并发环境下表现不良。而 ExtMem 则更好。</p>
 <h3 id="4-3-相同策略吞吐"><a href="#4-3-相同策略吞吐" class="headerlink" title="4.3 相同策略吞吐"></a>4.3 相同策略吞吐</h3><p>他们在 ExtMem 上实现了和 Linux 相同的 2Q-LRU 逐出策略并进行测试。</p>
 <p>使用 <code>mmap</code>  microbenchmark 去测试吞吐量，将 RAM 限制到 8G 来触发 page fault。</p>
 <p>它测试了随机访存和顺序访存两种 pattern 下的吞吐</p>
-<p><img src="/.io//image-20240827165459110.png" alt="image-20240827165459110"></p>
+<p><img src="/posts/cbf91d56/image-20240827165459110.png" alt="image-20240827165459110"></p>
 <p>可以看到 ExtMem 都是优于 Linux，它论文中解释原因为 evict 的代码更简洁：</p>
 <blockquote>
 <p>The EXTMEM implementation evicts pages more quickly than Linux does, because its eviction code path is simpler, thereby explaining its performance advantage</p>
 </blockquote>
 <h3 id="4-4-预取"><a href="#4-4-预取" class="headerlink" title="4.4 预取"></a>4.4 预取</h3><p>在使用了预取策略后，我们评估 ExtMem 保留工作集的能力：</p>
-<p><img src="/.io//image-20240827170114740.png" alt="image-20240827170114740"></p>
+<p><img src="/posts/cbf91d56/image-20240827170114740.png" alt="image-20240827170114740"></p>
 <h3 id="4-5-CSR"><a href="#4-5-CSR" class="headerlink" title="4.5 CSR"></a>4.5 CSR</h3><p>压缩稀疏行（Compressed Sparse Row，CSR）是一种广泛用于内存图分析的数据结构。为使用 CSR 的应用开发一种新的内存管理策略：”将关键数据尽可能保存在内存中，并且利用一个滑动窗口的思想来指导数据的读入和逐出“，被称为 ”PR“。</p>
 <p>运行 Twitter dataset using GAP benchmark suite 效果对比如下：</p>
-<p><img src="/.io//image-20240827170458158.png" alt="image-20240827170458158"></p>
+<p><img src="/posts/cbf91d56/image-20240827170458158.png" alt="image-20240827170458158"></p>
 <hr>
 <h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>本文设计了一个用户态的内存管理策略框架，采用 upcall 机制来优化其在高并发环境下的表现，并且使用了一些工程技术来使得这个框架的易用性很好。</p>
 

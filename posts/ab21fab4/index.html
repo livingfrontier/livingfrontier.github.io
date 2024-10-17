@@ -30,19 +30,19 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="Nephele：拓展虚拟环境为 Unikernel 提供 Clone 能力一、概述项目开源地址：https:&#x2F;&#x2F;github.com&#x2F;nephele-vm  本文在 hypervisor 上为 unikernel 提供了 clone 能力。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//nephele.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-17052920154173.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-17052920174885.webp">
-<meta property="og:image" content="https://thysrael.github.io/.io//-17052920197247.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-17052920233949.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529203515111.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529205548013.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529206124115.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529206416017.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529206762319.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529207050521.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529207427223.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//-170529207607025.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/nephele.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-17052920154173.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-17052920174885.webp">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-17052920197247.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-17052920233949.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529203515111.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529205548013.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529206124115.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529206416017.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529206762319.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529207050521.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529207427223.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ab21fab4/-170529207607025.png">
 <meta property="article:published_time" content="2024-01-15T04:09:00.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.410Z">
 <meta property="article:author" content="Thysrael">
@@ -50,7 +50,7 @@
 <meta property="article:tag" content="S7课上">
 <meta property="article:tag" content="海边拾贝">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//nephele.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/ab21fab4/nephele.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/ab21fab4/">
 
@@ -307,22 +307,22 @@
 
       
         <h1 id="Nephele：拓展虚拟环境为-Unikernel-提供-Clone-能力"><a href="#Nephele：拓展虚拟环境为-Unikernel-提供-Clone-能力" class="headerlink" title="Nephele：拓展虚拟环境为 Unikernel 提供 Clone 能力"></a>Nephele：拓展虚拟环境为 Unikernel 提供 Clone 能力</h1><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>项目开源地址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nephele-vm">https://github.com/nephele-vm</a></p>
-<p><img src="/.io//nephele.png" alt="img" style="zoom:35%;"></p>
+<p><img src="/posts/ab21fab4/nephele.png" alt="img" style="zoom:35%;"></p>
 <p>本文在 hypervisor 上为 unikernel 提供了 clone 能力。</p>
 <hr>
 <h2 id="二、背景"><a href="#二、背景" class="headerlink" title="二、背景"></a>二、背景</h2><h3 id="2-1-Unikernel"><a href="#2-1-Unikernel" class="headerlink" title="2.1 Unikernel"></a>2.1 Unikernel</h3><p>Unikernel 是一种特殊的虚拟机，将单个应用程序与支持它运行的操作系统服务集成到单个地址空间中。</p>
 <p>这种集成的方式使得 Unikernel 的性能得到了提高，同时允许简单地移除未使用的操作系统代码。</p>
 <p>与传统操作系统相比，Unikernel 的体积和内存占用都大大减少，从而降低了云计算成本。</p>
-<p><img src="/.io//-17052920154173.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-17052920154173.png" alt="img"></p>
 <p>相比于普通的虚拟机，因为 Unikernel 为了节省资源和高效运行，移除了很多抽象，但这也导致了一些语义的缺失，比如说无法进行 Process Fork。</p>
-<p><img src="/.io//-17052920174885.webp" alt="img"></p>
+<p><img src="/posts/ab21fab4/-17052920174885.webp" alt="img"></p>
 <p>Unikernel 在云计算方面也被誉为“container 2.0”，Unikernel 在资源节约，安全性，平台独立性方面都比 docker 有优势。</p>
-<p><img src="/.io//-17052920197247.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-17052920197247.png" alt="img"></p>
 <h3 id="2-2-Fork"><a href="#2-2-Fork" class="headerlink" title="2.2 Fork"></a>2.2 Fork</h3><p>Unikernel 的重要设计就是通过移除“多地址空间”的抽象，来避免陷入内核和切换进程的开销，而 fork 要求存在多个地址空间。两者在语义上是冲突的。</p>
 <p>在云计算方面，fork 的功能又是十分有优势的，比如说 NGINX 利用 fork 来 Clone 出多个进程，实现自动扩容，增大吞吐量；Redis 利用 fork 产生相同的内存副本，方便数据镜像的保存。</p>
 <p>如果在云计算方面使用 Unikernel 技术，可以提高节约资源，提升性能，强化安全性。但是因为 fork 语义的缺失，所以许多使用了 fork 的应用都无法使用这项技术。</p>
 <h3 id="2-3-Xen"><a href="#2-3-Xen" class="headerlink" title="2.3 Xen"></a>2.3 Xen</h3><p>Xen 是一款半虚拟化的 hypervisor 框架。</p>
-<p><img src="/.io//-17052920233949.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-17052920233949.png" alt="img"></p>
 <p>Xen 提供了一个抽象的硬件层，称为域 0 或管理域（Dom0），它运行一个特殊的操作系统（通常是Linux）。Dom0 负责管理其他虚拟机，也被称为控制域。在 Dom0 里运行 toolstack（xl），他会显式创建和管理其他的 VM。</p>
 <p>虚拟监控程序（hypervisor）仅管理最小的关键资源集，包括 CPU、内存、定时器和中断，而对其他硬件设备的访问则由 Dom0 控制，Dom0 已经包含了支持这些设备所需的设备驱动程序。</p>
 <hr>
@@ -356,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/.io//-170529203515111.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529203515111.png" alt="img"></p>
 <h3 id="3-3-细节"><a href="#3-3-细节" class="headerlink" title="3.3 细节"></a>3.3 细节</h3><h4 id="3-3-1-透明-fork"><a href="#3-3-1-透明-fork" class="headerlink" title="3.3.1 透明 fork"></a>3.3.1 透明 fork</h4><p>即这种 clone 可以完全模拟 fork，应用并不需要做出代码更改即可运行在 nepele 上，为了达到这一点，需要做出多处修改：</p>
 <ul>
 <li>有一个寄存器专门专门返回 dom id</li>
@@ -379,33 +379,33 @@
 <li>实例化时间更短：clone 需要 20~30ms，boot 需要 160~300ms，速度提高 8 倍。这得益于 fork 的设计和相关优化</li>
 <li>内存消耗更小：在相同内存情况下，使用 boot，获得 2800 个实例，而使用 clone，获得 8900 个实例，提高 3 倍，得益于 COW 机制</li>
 </ul>
-<p><img src="/.io//-170529205548013.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529205548013.png" alt="img"></p>
 <h3 id="4-2-VM-Clone-vs-Process-Fork"><a href="#4-2-VM-Clone-vs-Process-Fork" class="headerlink" title="4.2 VM Clone vs Process Fork"></a>4.2 VM Clone vs Process Fork</h3><p>使用 Nephele 与普通的 Linux fork 进行对比，因为普通 fork 只需要复制用户态代码，而 clone 则需要将整个 VM 复制，所以在理论上应该只能接近，不太可能超越。</p>
 <ul>
 <li>用户内存空间对于 clone/fork 时长的影响，当内存空间增大的时候，两者的差距会缩小到 21%（最差是 5757%）。这是因为 clone 用的内存页面比 fork 用得更大，所以在大内存时有较好表现，而且因为缓存策略，所以在第二次 clone 的时候，差距会进一步缩小</li>
 </ul>
-<p><img src="/.io//-170529206124115.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529206124115.png" alt="img"></p>
 <ul>
 <li>NGINX 吞吐量对比：clone 策略更优：这是因为 IDC 实现要优于 IPC 实现，Unikernel 不用陷入内核态</li>
 </ul>
-<p><img src="/.io//-170529206416017.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529206416017.png" alt="img"></p>
 <ul>
 <li>在 Redis 场景下，总体来说这种新式 fork 是没有办法和 Linux 原生 fork 相比的，但是随着数据库的扩大，差距会缩小</li>
 </ul>
-<p><img src="/.io//-170529206762319.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529206762319.png" alt="img"></p>
 <ul>
 <li>Fuzz 测试：fuzz 测试会引发 COW。clone 支持将平均吞吐量提高到 470 次/秒，仅比 Linux 进程的平均 590 次/秒低 18.6%。</li>
 </ul>
-<p><img src="/.io//-170529207050521.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529207050521.png" alt="img"></p>
 <h3 id="4-3-Unikernel-vs-Container"><a href="#4-3-Unikernel-vs-Container" class="headerlink" title="4.3 Unikernel vs Container"></a>4.3 Unikernel vs Container</h3><p>对比 Nephele 和 Docker 在 Function as a Service （FaaS）场景下的表现：</p>
 <ul>
 <li>Nephele 内存消耗更小，这得益于共享内存机制</li>
 </ul>
-<p><img src="/.io//-170529207427223.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529207427223.png" alt="img"></p>
 <ul>
 <li>Nephele 延迟更低，这是因为 Unikernel 移除了许多抽象层，倒不是 VM Clone 的原因</li>
 </ul>
-<p><img src="/.io//-170529207607025.png" alt="img"></p>
+<p><img src="/posts/ab21fab4/-170529207607025.png" alt="img"></p>
 <hr>
 <h2 id="五、结论"><a href="#五、结论" class="headerlink" title="五、结论"></a>五、结论</h2><p>在设计上，Unikernel 选择减少复杂性，来获得更好的性能和安全性，但是牺牲了功能的灵活性和全面性。</p>
 <p>本文选择在 Hypervisor 层增加复杂性，来使得 Unikernel 兼具性能和功能。</p>

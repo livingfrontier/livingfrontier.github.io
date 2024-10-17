@@ -30,11 +30,11 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、编码此章的目的是弄清楚 ASCII, GBK, Unicode, UTF-8 编码的区别，大部分知识都来源于这里。所以我只是简单转述一下： ASCII 是最为古老的编码方式，它指的是用一个字节也就是 8 bit 完成编码，实际上只用了 7 bit ，最高位的值衡为 0 （这也成了其他编码方式兼容 ASCII 的一个重要抓手）。也就是说，ASCII 只能编码 27 &#x3D; 128 个文字，这对英文这">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//clipboard-20240610T153703.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//fig3-2-1.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//IF3.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//IF4.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//aaaa.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/6a65902d/clipboard-20240610T153703.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/6a65902d/fig3-2-1.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/6a65902d/IF3.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/6a65902d/IF4.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/6a65902d/aaaa.png">
 <meta property="article:published_time" content="2024-06-10T08:08:50.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.533Z">
 <meta property="article:author" content="Thysrael">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="自由王国">
 <meta property="article:tag" content="字体">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//clipboard-20240610T153703.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/6a65902d/clipboard-20240610T153703.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/6a65902d/">
 
@@ -308,7 +308,7 @@
 <hr>
 <h2 id="二、渲染"><a href="#二、渲染" class="headerlink" title="二、渲染"></a>二、渲染</h2><h3 id="2-1-点阵字体"><a href="#2-1-点阵字体" class="headerlink" title="2.1 点阵字体"></a>2.1 点阵字体</h3><p>在最开始的时候，字体是用点阵（bitmap）的方式描述的，也就是这个字体记录了不同大小（字号）的字符的像素的排列方式，非常的朴素和直观。但是这种方式是的缺点在于，不同字号的字都分别需要记录一次像素的排列方式，所以如果恰好这个字号没有记录，就非常尴尬了（不可能每个字号都有），只能用用相邻的有记录的字号进行推算。而且这种方式的也不适合进行一些数学相关的处理（比如加粗、倾斜、缩放和旋转）。</p>
 <h3 id="2-2-矢量字体"><a href="#2-2-矢量字体" class="headerlink" title="2.2 矢量字体"></a>2.2 矢量字体</h3><p>为了解决这个问题，人们提出了矢量字体，这种字体不再记录具体的像素排列方式，而是用数学上的贝塞尔曲线在一个虚拟的网格（类似于坐标系，但是并不连续）描述字体。这种方式解决了点阵字体的缺点，如下所示：</p>
-<p><img src="/.io//clipboard-20240610T153703.png" alt=""></p>
+<p><img src="/posts/6a65902d/clipboard-20240610T153703.png" alt=""></p>
 <p>最开始的时候，是 Adobe 公司最先开发了 Type1 矢量字体格式（后缀名为 <code>pfb</code>），但是 Adobe 太贵了，所以 MS 和 Apple 联手开发新的矢量字体，但是只有 Apple 开发成功了，它的作品是 TrueType（后缀名为 <code>ttf</code>，也就是 true type format）。后来 MS 又和 Adobe 公司开发出了 OpenType（后缀名为 <code>otf</code>，也就是 open type format），这种字体也被称为 Type2。除此之外，还有为 web 而生的字体标准 <code>woff</code> 和 <code>woff2</code>，它们的优势在于压缩率高。我们还常见一种后缀名为 <code>ttc</code> 的文件，它的全称是 TrueType Collection，是在一单独文件结构中包含多种字体，以便更有效地共享轮廓数据，当多种字体共享同一笔画时，TTC 技术可有效地减小字体文件的大小。</p>
 <p>总的来说，Type1 字体基本上已经不常见了，而 OTF 因为吸取了 TTF 的经验，所以更为先进，但是 TTF 具有先发优势，兼容性更好。不过两者的差别并不明显。</p>
 <h3 id="2-3-屏幕"><a href="#2-3-屏幕" class="headerlink" title="2.3 屏幕"></a>2.3 屏幕</h3><p>这里插叙一段关于屏幕的介绍。我个人的理解，屏幕是一块布满像素点的网格板子，其核心在于<strong>分辨率</strong>，也就是屏幕的实际大小和其上的像素点的关系。我们在字体设置时常常有诸多单位，记录如下：</p>
@@ -324,16 +324,16 @@
 <p>这种方式就衍生了一种新的调节字体高度的方式，除了传统的修改字体字号，现在还可以修改 ppi，将 ppi 改大，就会导致字体高度也变大。但是需要强调的是，此时的 ppi 已经不再是屏幕的一个物理参数了，而变成了一个程序渲染的参数，可以脱离实际意义。</p>
 <p>那么为什么在可以直接调节字号的情况下，还修改 ppi 呢？这是因为屏幕上不只有文字，还有许多其他的 UI 组件，修改 PPI 可以统一将他们一起放大缩小。至于为啥要修改它们，这可能是因为人眼具有“近大远小”的机制，所以离人较远的显示器，是需要通过放大来保证落入眼睛里时是正常大小的。</p>
 <h3 id="2-3-光栅化"><a href="#2-3-光栅化" class="headerlink" title="2.3 光栅化"></a>2.3 光栅化</h3><p>当然矢量字体也并非完全碾压点阵字体，点阵字体展示在屏幕上是非常直观的，基本上像素是怎么被记录的，就怎么显示到屏幕上就可以了（这个过程称之为渲染）。但是矢量字体想要映射到一个屏幕像素网格上，那么就会发生一个“从连续到离散”的过程了，这种渲染过程被称为光栅化，如图所示：</p>
-<p><img src="/.io//fig3-2-1.png" alt="figure_3"></p>
+<p><img src="/posts/6a65902d/fig3-2-1.png" alt="figure_3"></p>
 <p>从上图就可以看出，光栅化如果不加优化，直接映射，是非常丑陋的。而点阵字体因为开发时面对的就是网格，反而设计师不会设计出粗糙丑陋的字体。那么光栅化具体有哪些优化呢？</p>
 <p>为了解决渲染后的字体有一种机器渲染的粗糙和死板感的问题，比如说下面的 e 这个字符，顶部只有一个像素：</p>
-<p><img src="/.io//IF3.png" alt="figure_4"></p>
+<p><img src="/posts/6a65902d/IF3.png" alt="figure_4"></p>
 <p>人们发明了<strong>字型微调（hinting）</strong>，它指的是通过稍微调整字形（一般是倾斜）的方式，来达到一种更加“拟人”的渲染方式，当然如果过度使用这种方法，也会导致字形发生严重的扭曲。</p>
-<p><img src="/.io//IF4.png" alt="figure_5"></p>
+<p><img src="/posts/6a65902d/IF4.png" alt="figure_5"></p>
 <p><strong>抗锯齿（anti-aliasing）</strong>则是另一种优化手段，他指的是当像素过少的时候，很容易出现像素点之间的方块块，就会形成鳞次栉比的“锯齿”，这个时候就很丑陋，那么我们可以将边缘的像素点改成灰色（原本是黑色或者白色），然后就可以模糊了原本的锯齿。这种方法也称为<strong>灰度渲染（Grayscale rendering）</strong>。经过抗锯齿化的字体的缺点是边缘可能有些“模糊”。</p>
 <p>还有一种类似的方法叫作<strong>亚像素渲染（Subpixel rendering）</strong>，它利用了现行的 RGB 显示屏的像素点其实是 3 个分别显示红绿蓝颜色的“亚像素”拼成的，所以可以只显示三分之一个像素或者三分之二个像素，这样分辨率相当于在横向上提高了 3 倍。但是除了边缘模糊的缺点外，这种方法还会造成某种“腻感”，这是因为边缘出现了颜色。</p>
 <p>抗锯齿和亚像素渲染的概念如下图所示：</p>
-<p><img src="/.io//aaaa.png" alt="figure_6"></p>
+<p><img src="/posts/6a65902d/aaaa.png" alt="figure_6"></p>
 <hr>
 <h2 id="三、字族"><a href="#三、字族" class="headerlink" title="三、字族"></a>三、字族</h2><h3 id="3-1-风格"><a href="#3-1-风格" class="headerlink" title="3.1 风格"></a>3.1 风格</h3><p>评价一个字体的风格，最为简单的有 3 个标准：</p>
 <ol>

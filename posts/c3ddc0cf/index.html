@@ -30,21 +30,21 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="REEF：为并行 DNN 推断设计的抢占调度论文链接 源码链接 一、问题描述1.1 基本认识">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230711101343311.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230711104052536.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230711120628878.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230711121956242.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230711175707829.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230713212909250.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714125331664.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714143804109.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714161010084.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714162339912.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714163346964.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714163712033.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714164053978.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714165211822.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230714165844085.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230711101343311.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230711104052536.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230711120628878.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230711121956242.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230711175707829.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230713212909250.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714125331664.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714143804109.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714161010084.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714162339912.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714163346964.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714163712033.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714164053978.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714165211822.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230714165844085.png">
 <meta property="article:published_time" content="2023-07-14T10:10:47.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.417Z">
 <meta property="article:author" content="Thysrael">
@@ -52,7 +52,7 @@
 <meta property="article:tag" content="S6假期">
 <meta property="article:tag" content="海边拾贝">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20230711101343311.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/c3ddc0cf/image-20230711101343311.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/c3ddc0cf/">
 
@@ -318,11 +318,11 @@
 <p>那么这个问题是否是无法解决的呢？其实是有的，那就是抢占式调度，在 RT 任务到达的时候，立刻将进程切换成这个 RT 任务，当这个任务结束以后，再执行那些延迟不敏感的 BE 任务。那为什么这么直观的方法，没有人设计实现呢？这是因为 GPU 由于大量并行的特性，它的上下文是极其庞大的，所以切换上下文的开销是巨大的。所以 GPU 进程切换，常常发生在一个 kernel 结束的时候，所有用于这个 kernel 计算的上下文都失效了，此时切换的代价会较小。但这样是无法满足“实时”的需求的。</p>
 <p>所以这个问题的核心矛盾是：<strong>对 GPU 兼顾实时性和高吞吐量的要求与 GPU 高昂的进程切换代价之间的矛盾</strong>。不得不承认，这个矛盾是没有办法轻松调和或者解决的。它反应了一种 <strong>GPU 架构中由于并行带来的笨拙“惯性”与需求的精妙的矛盾</strong>。</p>
 <h3 id="1-3-抽象模型"><a href="#1-3-抽象模型" class="headerlink" title="1.3 抽象模型"></a>1.3 抽象模型</h3><p>为了更好地分析问题，我们来介绍一下此篇论文对于问题的抽象描述，它将任务（其实比叫“进程”要更好，因为运行在 GPU 上的东西并不具有完整的声明周期，它只是一个具体的任务而非进程）抽象成如下图所示的结构</p>
-<p><img src="/.io//image-20230711101343311.png" alt="image-20230711101343311" style="zoom:150%;"></p>
+<p><img src="/posts/c3ddc0cf/image-20230711101343311.png" alt="image-20230711101343311" style="zoom:150%;"></p>
 <p>一个 task 由多个横向排列（也就是按时间顺序排列）的 kernel 组成，一个 kernel 由一列 block 组成（也就是需要部署在不同的计算单元 CU 上的小东西）。这里它简化了 GPU 的硬件结构，认为不同的 block 是部署在不同的 CU 上的，而且调度的最小粒度就是 block，这些都是不太准确的，不同的 block 是可以部署在同一个 CU 上的，调度的最小粒度不是 block 而是 warp，但是这种有损进度的抽象并不会妨碍理论的推导，这是因为即使多个 block 部署到同一个 CU 上，也是硬件调度的分时复用，和一个“独占一个更弱的 CU”类似，block 只是在概念上比 warp 大一些，并没有实际的区别，完全可以将 warp 视为一个 block。</p>
 <p>由上图可以看出，不同 kernel 对于 CU 的占用是不同的，有些 kernel 用了 4 个 CU（第 1，4 个），但是有的 kernel 只用了一个 CU（第 3 个），用 CU 较少的 kernel 可以将剩下的 CU 分给其他 kernel，这是一个提高吞吐量的方法。</p>
 <p>我们将延迟分为以下几种，如图所示：</p>
-<p><img src="/.io//image-20230711104052536.png" alt="image-20230711104052536"></p>
+<p><img src="/posts/c3ddc0cf/image-20230711104052536.png" alt="image-20230711104052536"></p>
 <ul>
 <li><p>总延迟（overall latency）：指的是从第一个任务开始，到最后一个任务结束的时间。它是“吞吐量”的一种量度，它减小表示吞吐量的增大。</p>
 </li>
@@ -336,15 +336,15 @@
 </li>
 </ul>
 <h3 id="1-4-现有方法"><a href="#1-4-现有方法" class="headerlink" title="1.4 现有方法"></a>1.4 现有方法</h3><p>不同的调度策略直观图如下：</p>
-<p><img src="/.io//image-20230711120628878.png" alt="image-20230711120628878"></p>
+<p><img src="/posts/c3ddc0cf/image-20230711120628878.png" alt="image-20230711120628878"></p>
 <h4 id="1-4-1-串行执行"><a href="#1-4-1-串行执行" class="headerlink" title="1.4.1 串行执行"></a>1.4.1 串行执行</h4><p>其调度示意图如图（a）所示：完全按照到达时间进行调度，RT 并不进行抢占，所以只要前面有大量的 BE 任务，那么就会导致 RT 的抢占延迟极大。同时，也可以看到，这是一种独占式的调度策略，所以不同 kernel 是不能并发的，所以这种存在一定的吞吐量问题。</p>
 <p>这种策略是一般商用的通用 GPU 采用的策略。至于为何商用 GPU 会采用这种策略，可能是因为商用 GPU 不能保证每个时刻都有多个 kernel 方便它并发。也就是处于“通用”的目的，采用了较为朴素的方式。</p>
 <h4 id="1-4-2-多-GPU-流"><a href="#1-4-2-多-GPU-流" class="headerlink" title="1.4.2 多 GPU 流"></a>1.4.2 多 GPU 流</h4><p>目前提供的 GPU 库确实可以提供共享服务，也就是由图（C）展示的，不同的 kernel 是可以并发的，这时 overall latency 缩小，系统的吞吐量增大。但是由下图可以看出，当引入较多的尽力交付任务时，实时任务的尾部延迟（尾部延迟是高百分点的延迟，代表响应时间超过服务或应用程序处理的所有请求的98.xxx-99.xxx%的请求）会几何倍的增加：</p>
-<p><img src="/.io//image-20230711121956242.png" alt="image-20230711121956242" style="zoom:150%;"></p>
+<p><img src="/posts/c3ddc0cf/image-20230711121956242.png" alt="image-20230711121956242" style="zoom:150%;"></p>
 <p>尾部延迟过长会危害实时任务的稳定性和可信赖性。</p>
 <p>尾延迟的增加，是因为共享导致真实分给 RT 的计算资源被稀释了，执行时间增加了，可能要很靠后的时间才能完成。</p>
 <h4 id="1-4-3-基于等待的抢占"><a href="#1-4-3-基于等待的抢占" class="headerlink" title="1.4.3 基于等待的抢占"></a>1.4.3 基于等待的抢占</h4><p>这是之前学界提出的抢占策略，当一个 RT 任务来临时，会进行抢占，将任务切换成当前的 RT 任务。但是发生切换的时机并不是立刻切换，而是需要等待当前 kernel 运行结束之后才可以进行抢占，如图（b）所示。这样依然会有一些抢占延迟，而且有统计图如下：</p>
-<p><img src="/.io//image-20230711175707829.png" alt="image-20230711175707829" style="zoom:150%;"></p>
+<p><img src="/posts/c3ddc0cf/image-20230711175707829.png" alt="image-20230711175707829" style="zoom:150%;"></p>
 <p>可以看到当 BE 任务增多时，抢占时间也会增加，这会导致不符合“实时”的要求。</p>
 <p>三种方法的对比如下表所示：</p>
 <div class="table-container">
@@ -397,7 +397,7 @@
 </ul>
 <h4 id="2-2-1-基于重启的抢占调度"><a href="#2-2-1-基于重启的抢占调度" class="headerlink" title="2.2.1 基于重启的抢占调度"></a>2.2.1 基于重启的抢占调度</h4><p><strong>核函数的生命周期和运行环境</strong></p>
 <p>首先我们需要了解核函数的生命周期，才能更好地了解我们实现抢占式调度需要解决的问题。对于核函数的部署，如下所示</p>
-<p><img src="/.io//image-20230713212909250.png" alt="image-20230713212909250"></p>
+<p><img src="/posts/c3ddc0cf/image-20230713212909250.png" alt="image-20230713212909250"></p>
 <p>在 CPU 侧有 GPU runtim，会将不同的 kernel 分发到不同的 Host Queue 中，Device Queue 作为 CPU 和 GPU 的交互地带，kernel 会分别被入队和出队。然后 GPU 将出队的 kernel 部署到 GPU 的 CU 上。</p>
 <p>另外说一嘴，这里涉及了一个 GPU Stream 的概念，它可以提高 GPU 的并发度</p>
 <blockquote>
@@ -454,7 +454,7 @@
 </ul>
 <p>这是一个很保守的策略，因为能同时满足这两条的 BE 核函数并不是很多。但是却能很好的保证 RT 核函数一等公民的地位。</p>
 <h3 id="2-3-项目架构"><a href="#2-3-项目架构" class="headerlink" title="2.3 项目架构"></a>2.3 项目架构</h3><p>项目的整体架构如下图所示，可以看到分成了离线部分（offline）和在线部分（online）：</p>
-<p><img src="/.io//image-20230714125331664.png" alt="image-20230714125331664"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714125331664.png" alt="image-20230714125331664"></p>
 <h3 id="2-3-1-离线部分"><a href="#2-3-1-离线部分" class="headerlink" title="2.3.1 离线部分"></a>2.3.1 离线部分</h3><p>离线部分运行在模型的编译期，主要分为两个部分：</p>
 <ul>
 <li>code Tranformer：通过拓展 TVM，增加 code transformer 模块，来检验核函数是否具有幂等性，并转变其源码方便 GPU 的调度。在实际实现中，应该是位于 <code>reef/script</code> 中，有一些手段是字符串处理。</li>
@@ -467,26 +467,26 @@
 </ul>
 <hr>
 <h2 id="三、实验评估"><a href="#三、实验评估" class="headerlink" title="三、实验评估"></a>三、实验评估</h2><h3 id="3-1-DISB"><a href="#3-1-DISB" class="headerlink" title="3.1 DISB"></a>3.1 DISB</h3><p>本文仿照 YCSB 开发了新的 benchmark DISB，具有 5 种有特色的负载，如下表所示：</p>
-<p><img src="/.io//image-20230714143804109.png" alt="image-20230714143804109"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714143804109.png" alt="image-20230714143804109"></p>
 <p>除了 benchmark 之外，本文还准备了从真实自动驾驶平台（Apollo）上收集的工作集。</p>
 <p>在实验中，我们设置了多个对照组，其中RT-Only 策略是 RT 延迟的极限，因为只执行 RT 任务，GPUStreams 应该是吞吐的极限，因为是官方库组织的并发。</p>
 <h3 id="3-2-总体表现"><a href="#3-2-总体表现" class="headerlink" title="3.2 总体表现"></a>3.2 总体表现</h3><p>对于只有一个 BE client 的情况（也就是 A, B），因为 BE 的请求不多，所以 GPU 并不拥塞，不同的之前的调度策略的总体性能表现差不多，比如说 SEQ 的延迟很低，GPUStream 的吞吐量很高。但是只有 REEF 兼顾了二者的优势。</p>
 <p>当存在多个 BE client 的情况（C，D，E），随着 BE 请求的增多，GPU 出现拥塞，GPU stream 的处理 RT 任务的延迟会极大的提高，而 SEQ 的吞吐量会有一个下滑，只有 REEF 依然发挥稳定。</p>
 <p>在真实世界负载中，RT 任务的频率会更低，scheduler 会基本上一直维持 normal mode，这个状态和 GPUSteam 类似。</p>
-<p><img src="/.io//image-20230714161010084.png" alt="image-20230714161010084"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714161010084.png" alt="image-20230714161010084"></p>
 <h3 id="3-3-抢占式调度"><a href="#3-3-抢占式调度" class="headerlink" title="3.3 抢占式调度"></a>3.3 抢占式调度</h3><p>这里主要做了两组对照实验：</p>
 <h4 id="3-3-1-两种抢占方式"><a href="#3-3-1-两种抢占方式" class="headerlink" title="3.3.1 两种抢占方式"></a>3.3.1 两种抢占方式</h4><p>首先对照了基于等待的抢占式调度和基于重启的抢占式调度，本文先是在 DISB 五种负载上进行了测试，然后再不同的 DNN 网络上进行了测试，基于重启的延迟要明显低于基于等待的延迟，对照结果如下：</p>
-<p><img src="/.io//image-20230714162339912.png" alt="image-20230714162339912"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714162339912.png" alt="image-20230714162339912"></p>
 <p>然后我们进一步探究了为何这两种方式存在差异，可以看到当核函数数量增多或者执行时间提高时，基于等待的抢占调度都会有较差的性能表现（本来就是基于等待的抢占式调度不太适应的场景）</p>
-<p><img src="/.io//image-20230714163346964.png" alt="image-20230714163346964"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714163346964.png" alt="image-20230714163346964"></p>
 <h4 id="3-3-2-有无优化"><a href="#3-3-2-有无优化" class="headerlink" title="3.3.2 有无优化"></a>3.3.2 有无优化</h4><p>其次对照了无优化的基于重启的抢占调度与有优化的调度，优化项包括异步内存回收和队列容量限制。优化过后效果会显著提高，图示如下：</p>
-<p><img src="/.io//image-20230714163712033.png" alt="image-20230714163712033"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714163712033.png" alt="image-20230714163712033"></p>
 <p>究其原因，是因为 Device Queue 的清空十分耗时，这两个优化都可以减少清空需要的开销，如下图所示</p>
-<p><img src="/.io//image-20230714164053978.png" alt="image-20230714164053978"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714164053978.png" alt="image-20230714164053978"></p>
 <h3 id="3-4-动态核函数补全"><a href="#3-4-动态核函数补全" class="headerlink" title="3.4 动态核函数补全"></a>3.4 动态核函数补全</h3><h4 id="3-4-1-补全技术"><a href="#3-4-1-补全技术" class="headerlink" title="3.4.1 补全技术"></a>3.4.1 补全技术</h4><p>当 BE 负载过大的时候，可以看到只有 GPUstreams 保证了吞吐量，RT 有一定的衰减，这是因为我们的补全策略比较保守。</p>
-<p><img src="/.io//image-20230714165211822.png" alt="image-20230714165211822"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714165211822.png" alt="image-20230714165211822"></p>
 <h4 id="3-4-2-有无优化对比"><a href="#3-4-2-有无优化对比" class="headerlink" title="3.4.2 有无优化对比"></a>3.4.2 有无优化对比</h4><p>优化主要设计全局函数指针和代理函数两个部分，其效果都是十分显著的：</p>
-<p><img src="/.io//image-20230714165844085.png" alt="image-20230714165844085"></p>
+<p><img src="/posts/c3ddc0cf/image-20230714165844085.png" alt="image-20230714165844085"></p>
 
     </div>
 

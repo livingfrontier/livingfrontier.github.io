@@ -30,15 +30,15 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论1.1 直观感受这一章虽然名义上很简单，但是我个人觉得真的很难，其难度是要远超于 lab3 和 lab4 的。对于 lab3 和 lab4，其难度主要集中于复杂的函数调用关系上，如果理清了函数调用关系，会发现难度就很容易弄清了，而理清函数关系只要通过认认真真的看代码，整理就可以办到。而 lab5 的难度在于理解操作系统的设计，这种理解不是代码层次的“一个函数是调用了哪些函数，传了哪些参数？">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162202400.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162259377.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162316179.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162328887.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162347241.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162418190.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162459547.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220607162515076.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//用户侧函数调用图.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162202400.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162259377.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162316179.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162328887.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162347241.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162418190.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162459547.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162515076.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/c8a10fd9/用户侧函数调用图.drawio.png">
 <meta property="article:published_time" content="2022-06-07T08:16:08.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.333Z">
 <meta property="article:author" content="Thysrael">
@@ -47,7 +47,7 @@
 <meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220607162202400.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/c8a10fd9/image-20220607162202400.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/c8a10fd9/">
 
@@ -317,7 +317,7 @@
 <h3 id="1-4-磁盘镜像"><a href="#1-4-磁盘镜像" class="headerlink" title="1.4 磁盘镜像"></a>1.4 磁盘镜像</h3><p>然后还有一个概念需要理解一下，就是磁盘镜像。它是对于磁盘的一个完整拷贝，也就是说，可以看作是物理磁盘的一个模拟，物理磁盘上面有什么，它上面就有什么（包括分区表，元数据之类的信息）。</p>
 <p>它的本质是一个文件。因为我们采用的是模拟器，所以我们也应该是没有办法给操作系统挂载一个实际的硬盘。所以我们除了要写有关于操作系统的东西，我们还要写一个生成磁盘镜像的程序。</p>
 <h3 id="1-5-内容概述"><a href="#1-5-内容概述" class="headerlink" title="1.5 内容概述"></a>1.5 内容概述</h3><p>结合上面三个内容，我们这个单元要完成后的职能分工应该是这样的</p>
-<p><img src="/.io//image-20220607162202400.png" alt="image-20220607162202400"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162202400.png" alt="image-20220607162202400"></p>
 <p>所以最后我们要完成的任务有</p>
 <ul>
 <li>构建一个磁盘镜像：涉及的文件是 <code>fsformat.c</code> 。我们会用 X64 的编译器去进行一个普通的编译（就是这个东西是与操作系统的实现没啥关系的），生成的 <code>fsformat</code> 会利用已经准备好的 <code>motd</code> 和 <code>newmotd</code> 文件构建出一个磁盘镜像。这个磁盘镜像就是我们要挂载到模拟器上的镜像。</li>
@@ -341,7 +341,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>真正写到磁盘中去的，只有 <code>data</code> 。</p>
 <h3 id="2-2-磁盘结构和初始化"><a href="#2-2-磁盘结构和初始化" class="headerlink" title="2.2 磁盘结构和初始化"></a>2.2 磁盘结构和初始化</h3><p>首先了解一下 MOS 的磁盘的文件系统的结构（严格的说，应该叫做 Mips 磁盘的文件系统结构，设置叫做北航磁盘的文件系统结构，总之也是一个人为设计的东西）。我们磁盘上的文件系统结构如下</p>
-<p><img src="/.io//image-20220607162259377.png" alt="image-20220607162259377"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162259377.png" alt="image-20220607162259377"></p>
 <p>这里的磁盘块的大小是 4096 Byte，相关的常数在 <code>include/fs.h</code> 中有记录</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BY2BLK</span> 		<span class="token expression"><span class="token number">4096</span>					</span><span class="token comment">// 每个磁盘块的字节数是 4096</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BIT2BLK</span>		<span class="token expression"><span class="token punctuation">(</span>BY2BLK <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span>			</span><span class="token comment">// 每个磁盘块的bit位数是 4096 * 8</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -379,7 +379,7 @@
     BLOCK_INDEX <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>			<span class="token comment">// 索引块，存放间接索引编号</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这些属性决定了磁盘块内部数据排布的形式（Boot 那个块画错了，因为这俩东西都没那么大），如图所示</p>
-<p><img src="/.io//image-20220607162316179.png" alt="image-20220607162316179"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162316179.png" alt="image-20220607162316179"></p>
 <p>这些属性主要是在 <code>reverse</code> 函数改变大小端的时候用到（当然还有理解）。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// Initial the disk. Do some work with bitmap and super block.</span>
 <span class="token keyword">void</span> <span class="token function">init_disk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -429,7 +429,7 @@
     <span class="token keyword">return</span> nextbno<span class="token operator">++</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-3-2-save-block-link"><a href="#2-3-2-save-block-link" class="headerlink" title="2.3.2 save_block_link"></a>2.3.2 save_block_link</h4><p>这个函数用于在建立一个文件控制块体与特定的磁盘块之间的联系。因为文件控制块里会有很多个指针指向磁盘块，被指向的磁盘块中的内容就是文件的内容，具体的结构如下</p>
-<p><img src="/.io//image-20220607162328887.png" alt="image-20220607162328887"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162328887.png" alt="image-20220607162328887"></p>
 <p>所以我们在创建文件过程中，需要在文件控制块处登记这个文件。首先熟悉一下文件结构体</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">File</span>
 <span class="token punctuation">{</span>
@@ -669,7 +669,7 @@ target<span class="token operator">-&gt;</span>f_type <span class="token operato
 <p>首先思考 MOS 的物理地址空间的大小是 <code>0x400_0000</code>，而对于 kseg0 段和 kseg1 段抹零以后可以映射的范围是 <code>0x0 ~ 0x3000_0000</code> 。也就是说，有些虚拟地址空间即使有了这种第一性的映射关系，但是依然是没有办法对应到实际的物理地址空间的，因为即使抹零了，这个地址也远远超过物理地址。也就是说，我之前一直以为我可以把操作系统放在 <code>0x8000_0000 ~ 0xB000_0000</code> 的任何一个地方，但是其实只能放在 <code>0x8000_0000 ~ 0x8400_0000</code> 的虚拟空间上，不然的话就会没有物理地址承载。</p>
 <p>那么是不是说明高 2G 的大部分空间是没有的，似乎是这样的。但是这种映射的缺失却可以为我们访问外设而不造成冲突提供一种便利。我们可以把外设的物理地址设置成一个比 <code>0x400_0000</code> 大的地址，那么就不会有正常的读写物理内存的地址会访问到这片“域外之地”。事实上我们也是这么干的。我们的外设的物理地址最低是 <code>0x1000_0000</code> （这是控制台的物理地址）。</p>
 <p>直观理解如图，其中虚线表示可能映射的范围，而实线表示实际可用的范围，蓝色实线和红色实线没有相交，所以不存在冲突现象：</p>
-<p><img src="/.io//image-20220607162347241.png" alt="image-20220607162347241"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162347241.png" alt="image-20220607162347241"></p>
 <p>如果从这个角度看，似乎读写设备并不能很容易的看成一种对虚拟空间的读写，因为确实不太一样。这正是我们需要系统调用的原因。如果只是写一个物理内存的话，其实可以在低地址区建立一个映射关系就可以完成，没必要系统调用。只有真正遇到页表无法建立的情况，才需要系统调用。</p>
 <p>关于读写两个系统调用，主要是想强调参数问题，<code>va</code> 指的是一个“正常”的虚拟地址，而 <code>dev</code> 指的是一个“不太正常”的设备物理地址。写设备就是把 <code>va</code> 为起始地址长度为 <code>len</code> 的内容拷贝到以 <code>dev</code> 为起始地址的设备物理地址区域。读设备就是把 <code>dev</code> 为起始地址长度为 <code>len</code> 的内容拷贝到以 <code>va</code> 为起始地址的虚拟地址区域。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sys_write_dev</span><span class="token punctuation">(</span><span class="token keyword">int</span> sysno<span class="token punctuation">,</span> u_int va<span class="token punctuation">,</span> u_int dev<span class="token punctuation">,</span> u_int len<span class="token punctuation">)</span>
@@ -1222,7 +1222,7 @@ req <span class="token operator">=</span> <span class="token punctuation">(</spa
 <p>可以看到 <code>Filefd</code> 里是没有指针的，所以这些信息都是会被完完全全的传递的给用户进程。我们来分析一下，<code>Fd</code> 结构体肯定是要传的，因为 <code>Fd</code> 是用户侧的抽象，<code>fileid</code> 也是要传的，这是文件的唯一标识，不过似乎 <code>File</code> 的作用需要限制一下，我们传递 <code>File</code> 结构体，是为了使用里面的 <code>f_name</code>，<code>f_size</code>, <code>f_type</code> 的信息，而不是为了使用里面记录的 <code>f_direct, f_indirect, f_dir</code> 信息，这些信息涉及了磁盘块，对于一般用户进程是不需要知道的。</p>
 <p>正是因为采用的是页面共享的方式，所以每个 <code>Filefd</code> 必须占据一个页面，不然就会导致一次共享传递了多个 <code>Fielfd</code> 。导致了安全问题。</p>
 <h3 id="4-3-服务进程的内存布局"><a href="#4-3-服务进程的内存布局" class="headerlink" title="4.3 服务进程的内存布局"></a>4.3 服务进程的内存布局</h3><p>服务进程的内存布局如下图</p>
-<p><img src="/.io//image-20220607162418190.png" alt="image-20220607162418190"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162418190.png" alt="image-20220607162418190"></p>
 <p>我们首先来说一下 <code>struct Open</code> 结构体</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">Open</span>
 <span class="token punctuation">{</span>
@@ -1309,7 +1309,7 @@ req <span class="token operator">=</span> <span class="token punctuation">(</spa
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">syscall_mem_unmap</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> REQVA<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>因为 <code>ipc_recv</code> 实现了阻塞机制，所以 <code>for</code> 的死循环并不会造成 CPU 的空转。</p>
 <p>然后介绍具体的实现方式，我们从下面这张图中可以看出，所谓的查找，就是打开一个个 <code>File</code> 结构体，然后根据其记录的指针，去查找磁盘块的过程。</p>
-<p><img src="/.io//image-20220607162459547.png" alt="image-20220607162459547"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162459547.png" alt="image-20220607162459547"></p>
 <p>虽然磁盘块的编号 <code>bno</code> 是没有规律的（不连续，不单调），但是文件的磁盘块编号是连续一致的，即 <code>filebno</code> 。而 <code>filebno</code> 是很好与文件的偏移量转换的。所以我们要做的工作就是，在给出偏移量的时候，直接找到对应的磁盘块（一般普通文件都是这样的），在没有给出偏移量的时候，遍历所有的 <code>filebno</code> ，找到对应的磁盘块（一般目录是这样的）。</p>
 <p>这个函数是最基础的函数，他可以查询出某个文件的某个块，他会传入一个文件控制块 <code>f</code>，然后传入需要查询的块 <code>filebno</code>，然后他会有一个参数式的返回值是 <code>ppdiskno</code>，会是磁盘编号，但是我想不清楚为啥是需要二重指针，我觉得一重就够了，然后还有一个 <code>allco</code> 负责当查询不到的时候就分配的一个操作。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">file_block_walk</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">File</span> <span class="token operator">*</span>f<span class="token punctuation">,</span> u_int filebno<span class="token punctuation">,</span> u_int <span class="token operator">*</span><span class="token operator">*</span>ppdiskbno<span class="token punctuation">,</span> u_int alloc<span class="token punctuation">)</span>
@@ -1647,7 +1647,7 @@ opentab<span class="token punctuation">[</span>i<span class="token punctuation">
 <p><code>fd</code> 中记录着我们打开文件的时候的状态信息，我们平时也不用 <code>fd</code>，而是用一个索引去查找对应的 <code>fd</code>。这个索引被成为 <code>fdnum</code>，我们一般都会用这个东西。而 <code>fd</code> 会规规矩矩的存在一个地方（就像一个数组一样）。</p>
 <p>那么为什么不直接做成一个 <code>fd</code> 的数组呢？在之前说为说过如果有共享页面的需求的话，可以一个数组元素单独存放一页，但是 <code>Fd</code> 数组是没有这个需求的，那么为啥不直接开一个数组。我觉得是这个原因，是因为最顶层用户是没有 <code>Filefd</code> 结构体的，用户只能看见 <code>Fd</code> 结构体，相当于 <code>File</code> 结构体被隐藏了。所以为了少让用户看见，干脆一个 <code>Fd</code> 开一页，这样也方便将 <code>Fd</code> 转换成 <code>Filefd</code>。但是有一说一，实在是丑。</p>
 <h3 id="5-3-用户进程的内存布局"><a href="#5-3-用户进程的内存布局" class="headerlink" title="5.3 用户进程的内存布局"></a>5.3 用户进程的内存布局</h3><p>用户进程的内存布局如图：</p>
-<p><img src="/.io//image-20220607162515076.png" alt="image-20220607162515076"></p>
+<p><img src="/posts/c8a10fd9/image-20220607162515076.png" alt="image-20220607162515076"></p>
 <p>主要是三个部分，<code>fsipcbuf</code> 是用来与 <code>fs</code> 进程通信的页面，<code>FDTABLE</code> 是存放 <code>fd</code> 的伪数组。<code>Data</code> 区是一个以 <code>DMAP</code> 为元素大小的伪数组，用于存放 <code>fd</code> 对应的文件对应的数据。</p>
 <p>对于用户来说，其实可以拿到三个东西，一个是 <code>fdno</code> ，这是一个 <code>int</code> 的变量，他表示第几个 <code>fd</code> （在代码中也被称为 <code>index, num</code>）；一个是 <code>fd</code> ，这是一个 <code>struct Fd</code> 的变量，但是大小为一个页面，里面记录着基本的信息（在代码中也被称为 <code>fd</code> ）；一个是 <code>file data</code>，这是文件在内存中的映射，每个元素为 <code>PDMAP</code> 那么大（在代码中也被称为 <code>data</code> ）。我们要做的，就是在着三种数据中进行转换，正确让用户接触到的数据结构越少越好，越简单越好。代码如下：</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">INDEX2FD</span><span class="token expression"><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">(</span>FDTABLE <span class="token operator">+</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">*</span>BY2PG<span class="token punctuation">)</span></span></span>
@@ -1703,7 +1703,7 @@ u_int <span class="token function">fd2data</span><span class="token punctuation"
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个结构体通过定义了一大堆函数指针，相当于定义了一大堆没有实现的函数。我之前以为，<code>fd.c</code> 负责的就是通过组织调用这些抽象的方法，实现复杂的而且具有一致性的功能，向用户提供统一的接口，但是后来我发现，上面列出的抽象函数并没有覆盖完全所有的功能，导致比如说打开文件，创建文件之类的功能是没有办法通过组织这些抽象函数来实现的。也就是说，我原本以为用户进程调用的函数都在 <code>fd.c</code> 中，<code>file.c</code> 中的函数唯一功能就是实现 <code>fd.c</code> 中定义的抽象函数，用户不会实际接触到 <code>file.c</code> 中的函数。但是这是一种错误的观念，比如说 <code>open</code> 函数就是在 <code>file.c</code> 中定义的。</p>
 <p>所以最后的结构是这样的：</p>
-<p><img src="/.io//用户侧函数调用图.drawio.png" alt="用户侧函数调用图.drawio"></p>
+<p><img src="/posts/c8a10fd9/用户侧函数调用图.drawio.png" alt="用户侧函数调用图.drawio"></p>
 <p>尽管用户侧的文件系统实现也是很复杂的，但是实际上用户需要提供的东西是很少的，只有 <code>fdnum</code> 路径之类比较普通的东西，这些函数返回的也一般是 <code>fdnum</code> 和时候成功，只有在状态查询的时候会返回一个复杂的 <code>Stat</code> 结构体，结构如下</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// State</span>
 <span class="token keyword">struct</span> <span class="token class-name">Stat</span>

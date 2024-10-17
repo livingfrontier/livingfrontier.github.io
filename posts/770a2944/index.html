@@ -30,15 +30,15 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、写在前面的话首先，这道题目我并没有过，一共是应该六个左右的测试点，我最好的一次提交是还剩下2个测试点没有过，但是那次提交已经是属于脱离了规范，纯粹为了测试而写的，不是规范风格的代码。我在签退以后，虽然在群里面同学的帮助下（结尾有鸣谢名单），意识到自己代码存在的问题，但是新写好的代码也是没有经过评测机检验的。所以尽管我很想对大家负责，但是确实是客观条件不允许，我的代码要是运行出来bug了，请大家">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014141731307.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014141954854.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014142522601.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014143251581.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014185747336.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014190329371.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014190612514.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014163041824.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211014161552470.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014141731307.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014141954854.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014142522601.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014143251581.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014185747336.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014190329371.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014190612514.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014163041824.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/770a2944/image-20211014161552470.png">
 <meta property="article:published_time" content="2022-01-16T07:47:15.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.563Z">
 <meta property="article:author" content="Thysrael">
@@ -46,7 +46,7 @@
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20211014141731307.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/770a2944/image-20211014141731307.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/770a2944/">
 
@@ -308,24 +308,24 @@
 <hr>
 <h2 id="二、测试模块的写法"><a href="#二、测试模块的写法" class="headerlink" title="二、测试模块的写法"></a>二、测试模块的写法</h2><h3 id="2-1-总论"><a href="#2-1-总论" class="headerlink" title="2.1 总论"></a>2.1 总论</h3><p>这个东西也是我最近才接触，也没有做过大型电路的调试，所以可能现在很多方法和规范，到了大型电路的时候，或者现在，就很显得不那么<strong>优雅</strong>，所以也欢迎同学在评论区，介绍自己喜欢的调试方法，我会选择优雅的方法补充到我的文章中，并在鸣谢名单中加上名字的。</p>
 <h3 id="2-2-ISim特性介绍"><a href="#2-2-ISim特性介绍" class="headerlink" title="2.2 ISim特性介绍"></a>2.2 ISim特性介绍</h3><p>第一、如果想要让一个变量输出在ISim的<strong>观测变量栏</strong>中，只需要把它在tb模块中按照声明变量的方式声明就可以了。比如这样。</p>
-<p><img src="/.io//image-20211014141731307.png" alt="image-20211014141731307"></p>
+<p><img src="/posts/770a2944/image-20211014141731307.png" alt="image-20211014141731307"></p>
 <p>尽管test和这道题目没啥关系，但是在模拟的时候，我们依然能看见他。因为没有与电路建立任何关系，所以它的值是高阻态。</p>
-<p><img src="/.io//image-20211014141954854.png" alt="image-20211014141954854"></p>
+<p><img src="/posts/770a2944/image-20211014141954854.png" alt="image-20211014141954854"></p>
 <p>换句话说，<strong>所有在tb模块中声明的变量，都会被视为待观测变量</strong>。</p>
 <p>第二、对于观测量，是可以调整输出形式的，默认形式是<strong>二进制</strong>，但是这道题的in是串行字符串，所以修改为ASCII格式方便调试。</p>
-<p><img src="/.io//image-20211014142522601.png" alt="image-20211014142522601"></p>
+<p><img src="/posts/770a2944/image-20211014142522601.png" alt="image-20211014142522601"></p>
 <p>第三、对于一位二进制，波形图是那种<strong>阶梯图</strong>，但是对于<strong>多位数</strong>，波形图就是<strong>条带图</strong>，就是说光看波形图，不看文字的话，是不知道它的值多少了，只能判断它在某个节点是否发生变化。以上图为例，clk就是阶梯图，但是status就是条带图。</p>
 <p>第四、ISim只能同时运行唯一一个窗口，如果两次打开，会报错，所以要把第一个先关掉，再打开第二个。有的时候还是不行，显示 “previous” 的报错信息，这时只需在tb模块任意空白处加一个空格，再次运行即可。</p>
 <h3 id="2-3-与被测模块建立联系"><a href="#2-3-与被测模块建立联系" class="headerlink" title="2.3 与被测模块建立联系"></a>2.3 与被测模块建立联系</h3><p>ISE主动提供这种服务，如果是先写电路模块，然后在生成测试模块，ISE会自动为用户写好这种联系的代码，大概就是这样。</p>
-<p><img src="/.io//image-20211014143251581.png" alt="image-20211014143251581"></p>
+<p><img src="/posts/770a2944/image-20211014143251581.png" alt="image-20211014143251581"></p>
 <p>这段代码的意思是，ISE声明了跟你编写的待测试模块同名的变量（输入是<strong>寄存器类型</strong>，输出是<strong>线型</strong>），注意这里的<strong>重名易造成混淆</strong>。最后这段代码是说，把在tb模块上声明的变量连接到我们的待测试端口，这样才有意义（不然就会像之前的那个test变量一样，是高阻态）。</p>
 <p>有的时候，我们需要知道模块的中间变量是怎样变化的，经两位助教哥哥的指正，我又学习了更加快捷的方法，只需要如下操作：</p>
 <p>首先，需要现在ISim界面勾选Instance and Processes和Obejects两个选项。</p>
-<p><img src="/.io//image-20211014185747336.png" alt="image-20211014185747336"></p>
+<p><img src="/posts/770a2944/image-20211014185747336.png" alt="image-20211014185747336"></p>
 <p>然后电机Instance and Process中的tb -&gt; uut （不用点开）。这时在Object中就会显示里面的变量，有I（input），O（output），V（variable），C（constant）四种类型。我们选择variable类型的中间变量，将其拖拽或者Ctrl+W就可以加到右面栏里了。像这样：</p>
-<p><img src="/.io//image-20211014190329371.png" alt="image-20211014190329371"></p>
+<p><img src="/posts/770a2944/image-20211014190329371.png" alt="image-20211014190329371"></p>
 <p>这时，有可能你的跟我一样，是会不显示的，所以就需要按这几个按钮：</p>
-<p><img src="/.io//image-20211014190612514.png" alt="image-20211014190612514"></p>
+<p><img src="/posts/770a2944/image-20211014190612514.png" alt="image-20211014190612514"></p>
 <p>先按1.00us向左数第三个，再按1.00us向左数第一个。就可以显示了。（这个感觉很神奇，可能是个坑，要是有空一定更新。）</p>
 <h3 id="2-4-生成测试时序规范"><a href="#2-4-生成测试时序规范" class="headerlink" title="2.4 生成测试时序规范"></a>2.4 生成测试时序规范</h3><p>我个人是习惯三个模块，第一个模块负责赋初值，然后完成复位操作（岔一句，因为<strong>initial是没办法综合</strong>，所以为了让写好的模块有初始值，必须要求模块有写复位操作，这样才可以借助tb来完成模块的赋初值操作），代码如下：</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">initial</span> <span class="token keyword">begin</span>
@@ -470,7 +470,7 @@
 <p>这个看着很奇怪，因为在我的逻辑里，他本来应该是：</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">assign</span> out <span class="token operator">=</span> max<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>但是写成第二个以后，会导致输出延后一个时钟周期，像这样：</p>
-<p><img src="/.io//image-20211014163041824.png" alt="image-20211014163041824"></p>
+<p><img src="/posts/770a2944/image-20211014163041824.png" alt="image-20211014163041824"></p>
 <p>本来应该在黄线处out发生变化，但是到了黄线以后的一个周期，才发生变化，输出整整拖延了一个周期。</p>
 <p>这是为什么呢？我将其称为<strong>非阻塞赋值左式的计算比所有语句都慢</strong>，当然更严谨的是用层次化队列的方式解释，这里提供一篇博客，写的十分详尽：</p>
 <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/huigeyu/article/details/100105428?utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link">Verilog之非阻塞赋值（三）—— 赋值延后一个周期_隔壁old余的博客-CSDN博客</a></p>
@@ -481,7 +481,7 @@
 <p>在cnt的赋值中，需要nextCnt，nextCnt的值需要非阻塞变量status的判断，所以间接地，非阻塞变量cnt的赋值需要非阻塞变量status的判断，所以cnt就晚了一个周期，相似地，max也因此晚了一个周期。</p>
 <p>但是不是啥大事情，因为哪怕是多个状态机串联，最后也是晚一个周期。对于只有一个状态机的情况，我们就输出状态机本身就可以了，输出nextStatus不太好（4.2有写），对于多状态机，只要用next就好了，就可以把输出归为正常。</p>
 <h3 id="4-2-拆分问题"><a href="#4-2-拆分问题" class="headerlink" title="4.2 拆分问题"></a>4.2 拆分问题</h3><p>正如前所言，<strong>工业开发自动机</strong>把状态机拆成了，<strong>状态转移部分</strong>（属于组合电路）、<strong>状态记忆部分</strong>（属于时序电路），所以状态转移部分可能变化会很快（会让人摸不着头脑，比如下面这种情况）。</p>
-<p><img src="/.io//image-20211014161552470.png" alt="image-20211014161552470"></p>
+<p><img src="/posts/770a2944/image-20211014161552470.png" alt="image-20211014161552470"></p>
 <p>nextStatus被在一个周期中总是在时钟上升沿跳到0去一段时间，虽然不影响功能吧，但是看着很奇怪。经过<strong>seeeagull</strong>的谆谆教诲，我明白，因为status在上升沿发生改变，而此时in并没有改变，因为nextStatus是组合逻辑的输出，所以会立即改变为s0（一般都是，本质是跳入else了）。</p>
 <p>但是正如4.1所述因为是组合逻辑且是连续赋值，所以并不会因为这里的异常造成真正的bug。是<strong>完全安全</strong>的写法。</p>
 <hr>

@@ -30,13 +30,13 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、ELF 部分1.1 types.h1.1.1 typedef这是 types.h 文件，主要是给一些基本的数据类型起一个简单一点的别名。 &#x2F;*	$OpenBSD: types.h,v 1.12 1997&#x2F;11&#x2F;30 18:50:18 millert Exp $	*&#x2F; &#x2F;*	$NetBSD: types.h,v 1.29 1996&#x2F;11&#x2F;15 22:48:25 jtc Exp $	*&#x2F;  #if">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//1.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220321104754019.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220321104950269.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220321110952578.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220321105551672.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//2.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220322172603002.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/1.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/image-20220321104754019.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/image-20220321104950269.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/image-20220321110952578.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/image-20220321105551672.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/2.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ad0b1f6a/image-20220322172603002.png">
 <meta property="article:published_time" content="2022-03-22T16:36:51.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.313Z">
 <meta property="article:author" content="Thysrael">
@@ -44,7 +44,7 @@
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//1.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/ad0b1f6a/1.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/ad0b1f6a/">
 
@@ -565,9 +565,9 @@
 
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span> <span class="token comment">/* kerelf.h */</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="1-2-1-ELF-文件的格式"><a href="#1-2-1-ELF-文件的格式" class="headerlink" title="1.2.1 ELF 文件的格式"></a>1.2.1 ELF 文件的格式</h4><p>在这份头文件中，主要定义了三种结构体，在说明之前，我们先介绍一下 ELF 文件的格式</p>
-<p><img src="/.io//1.png" alt="img"></p>
+<p><img src="/posts/ad0b1f6a/1.png" alt="img"></p>
 <p>这里还是要先说明一下，ELF 是有多种格式的，常见的就是可重定位文件、可执行文件和共享文件。对于可重定位文件，他的用途是作为链接器的输入，多个可重定位文件链接成可执行文件。所以他需要提供的是<strong>链接的信息</strong>。他的格式如下</p>
-<p><img src="/.io//image-20220321104754019.png" alt="image-20220321104754019"></p>
+<p><img src="/posts/ad0b1f6a/image-20220321104754019.png" alt="image-20220321104754019"></p>
 <p>可以看到它由三个部分组成</p>
 <ul>
 <li>头</li>
@@ -575,7 +575,7 @@
 <li>节（section）头部表</li>
 </ul>
 <p>而对于可执行文件，他的用途是作为<strong>加载器</strong>的输入，所以他需要提供的是<strong>将可执行文件映射到内存中的信息</strong>。所以他的格式如下</p>
-<p><img src="/.io//image-20220321104950269.png" alt="image-20220321104950269"></p>
+<p><img src="/posts/ad0b1f6a/image-20220321104950269.png" alt="image-20220321104950269"></p>
 <p>它由四个部分组成</p>
 <ul>
 <li>头</li>
@@ -624,7 +624,7 @@
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">EI_MAG3</span>         <span class="token expression"><span class="token number">3</span>               </span><span class="token comment">/* File identification byte 3 index */</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ELFMAG3</span>         <span class="token string">'F'</span>             <span class="token comment">/* Magic number byte 3 */</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在 <code>e_ident</code> 中除了魔数标识以外，还有一些属性，如下图</p>
-<p><img src="/.io//image-20220321110952578.png" alt="image-20220321110952578"></p>
+<p><img src="/posts/ad0b1f6a/image-20220321110952578.png" alt="image-20220321110952578"></p>
 <p>ELF 文件的类型，在这里的定义</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">Elf32_Half      e_type<span class="token punctuation">;</span>                 <span class="token comment">/* Object file type */</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>占两个字节，有如下对应</p>
@@ -699,7 +699,7 @@
         Elf32_Word      p_align<span class="token punctuation">;</span>                <span class="token comment">/* Segment alignment */</span>
 <span class="token punctuation">}</span> Elf32_Phdr<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对于一个可执行文件，会拥有多个这样的结构体，示例如下</p>
-<p><img src="/.io//image-20220321105551672.png" alt="image-20220321105551672"></p>
+<p><img src="/posts/ad0b1f6a/image-20220321105551672.png" alt="image-20220321105551672"></p>
 <p>这就是具有两个结构体，分为<strong>只读段</strong>和<strong>读写段</strong>，每个段都有一个上面这样的结构体来描述这个段的性质。</p>
 <p>段头部表里面有两个重要的属性</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">Elf32_Word      p_filesz<span class="token punctuation">;</span>               <span class="token comment">/* Segment size in file */</span>
@@ -955,7 +955,7 @@ symbol:         .frame  sp, framesize, rpc
 				symbol:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-2-1-栈和栈帧"><a href="#2-2-1-栈和栈帧" class="headerlink" title="2.2.1 栈和栈帧"></a>2.2.1 栈和栈帧</h4><p>我们都知道，汇编一旦发生函数调用的时候，一般就会借助内存中的栈结构，我们在学计组的时候，学习到了栈的操作是通过 <code>$sp</code> 寄存器实现的。当栈指针减小的时候，就相当于分配出一块栈空间。反之，则是栈消减了。我们每调用一个函数（其实不严谨，应该是每一个调用别的函数的函数，即非叶子函数），都需要在栈上开辟出一个栈空间来辅助函数的使用（在调用子函数的时候寄存器需要保存）。其实到这里跟我们计组知识是吻合的。</p>
 <p>但是这样不利于回溯，栈在我们眼里是同质性的，根本分不清子函数和母函数的界限在哪里。所以我们又规定了一个寄存器 <code>$fp</code>，这个寄存器会指向栈帧的第一个字，这样我们就可以回溯了，具体的示意图如下：</p>
-<p><img src="/.io//2.png" alt="img"></p>
+<p><img src="/posts/ad0b1f6a/2.png" alt="img"></p>
 <h4 id="2-2-2-声明函数格式"><a href="#2-2-2-声明函数格式" class="headerlink" title="2.2.2 声明函数格式"></a>2.2.2 声明函数格式</h4><p>我们都知道，汇编的函数是用<strong>标签</strong>声明的，函数的结尾会有一个 <code>jr $ra</code> 。就像这样</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">sum:
 #入栈过程
@@ -1196,7 +1196,7 @@ you can reference the memory layout in the include/mmu.h
 lui		sp, 0x8040
 jal		main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由内存图可以知道，只要把栈指针设置成 <code>0x8040_0000</code> 然后跳到 main 就可以了。</p>
-<p><img src="/.io//image-20220322172603002.png" alt="image-20220322172603002"></p>
+<p><img src="/posts/ad0b1f6a/image-20220322172603002.png" alt="image-20220322172603002"></p>
 <p>后面还有一个经典的刻意死循环</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">loop:
 	j		loop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>

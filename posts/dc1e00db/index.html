@@ -30,19 +30,19 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、OS 的启动过程1.1 启动流程在讲启动问题的时候，我手头其实可以参考的教材或者纸质资料并不多，如果有，很多也是偏向工具性的阐述，而不是理论化的结构。只能说是在这里给出一个直观的、不太严谨的描述，如果之后有了更深的理解，那么就在之后再说吧。 整个流程，应该是从 CPU 加电开始，到操作系统完全掌握硬件资源结束。 整个启动流程可以被总结为下面这张图：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220313000021505.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220313153204826.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312213324449.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//2012052117213095.gif">
-<meta property="og:image" content="https://thysrael.github.io/.io//2012052117224297.gif">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312223759343.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312231614397.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312233110868.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312234050566.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312235916191.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220312191746902.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//SouthEast-16471603204844.jpeg">
-<meta property="og:image" content="https://thysrael.github.io/.io//SouthEast.jpeg">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220313000021505.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220313153204826.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312213324449.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/2012052117213095.gif">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/2012052117224297.gif">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312223759343.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312231614397.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312233110868.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312234050566.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312235916191.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220312191746902.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/SouthEast-16471603204844.jpeg">
+<meta property="og:image" content="https://thysrael.github.io/posts/dc1e00db/SouthEast.jpeg">
 <meta property="article:published_time" content="2022-03-13T08:33:51.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.373Z">
 <meta property="article:author" content="Thysrael">
@@ -50,7 +50,7 @@
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220313000021505.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/dc1e00db/image-20220313000021505.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/dc1e00db/">
 
@@ -309,7 +309,7 @@
         <h2 id="一、OS-的启动过程"><a href="#一、OS-的启动过程" class="headerlink" title="一、OS 的启动过程"></a>一、OS 的启动过程</h2><h3 id="1-1-启动流程"><a href="#1-1-启动流程" class="headerlink" title="1.1 启动流程"></a>1.1 启动流程</h3><p>在讲启动问题的时候，我手头其实可以参考的教材或者纸质资料并不多，如果有，很多也是偏向工具性的阐述，而不是理论化的结构。只能说是在这里给出一个直观的、不太严谨的描述，如果之后有了更深的理解，那么就在之后再说吧。</p>
 <p>整个流程，应该是从 CPU 加电开始，到操作系统完全掌握硬件资源结束。</p>
 <p>整个启动流程可以被总结为下面这张图：</p>
-<p><img src="/.io//image-20220313000021505.png" alt="image-20220313000021505"></p>
+<p><img src="/posts/dc1e00db/image-20220313000021505.png" alt="image-20220313000021505"></p>
 <p>但是这张图似乎是不完善的，比如我在听课的时候听到的另一种流程：</p>
 <ul>
 <li>加载 <strong>BIOS</strong> 的硬件信息与进行<strong>自我检测</strong>（自检），并根据设置取得第一个可启动的设备。</li>
@@ -319,7 +319,7 @@
 <li>在<strong>硬件驱动</strong>成功后，<strong>Kernel</strong> 会主动调用 <strong>systemed</strong> 程序（似乎就是 init 程序），并以 <strong>default target</strong> 流程启动。</li>
 </ul>
 <p>当然，哪怕是我现在敲这些概念，我也没有完全掌握这些可怕的名词，只能说我能把我知道的记录在下面。</p>
-<p><img src="/.io//image-20220313153204826.png" alt="image-20220313153204826"></p>
+<p><img src="/posts/dc1e00db/image-20220313153204826.png" alt="image-20220313153204826"></p>
 <h3 id="1-2-BIOS"><a href="#1-2-BIOS" class="headerlink" title="1.2 BIOS"></a>1.2 BIOS</h3><h4 id="1-2-1-直观理解"><a href="#1-2-1-直观理解" class="headerlink" title="1.2.1 直观理解"></a>1.2.1 直观理解</h4><p>即 Basic Input/Output System，这是我们启动操作系统的时候，第一个涉及的软件。也就是说，启动操作系统的第一步就是<strong>加载BIOS</strong>。</p>
 <p>这里可以介绍一下加载程序的时候的背景，程序一定是 CPU 执行的，那么程序一定需要存在一个 CPU 够得着的地方。这种废话却引出了一个问题，就是 BIOS 本应是存在磁盘上的（就像大多数程序一样），因为放在内存里，一个停电，就啥都没了。可惜CPU 是没有办法直接访问磁盘的，一个程序必须先被搬运到内存中，然后才能被 CPU 访问。矛盾的是，决定把磁盘上面哪些东西搬到内存中，恰恰是操作系统的工作。</p>
 <p>上面其实阐述了启动过程中的一个<strong>普遍性</strong>的矛盾，硬件调度需要操作系统已经启动，操作系统的启动需要硬件调度。这种“先有鸡还是先有蛋”的问题贯穿了整个启动。我们形象的称其为<strong>“BootStrap”</strong>（意思似乎是提着自己鞋子，把自己提上天，郭大侠的梯云纵）。</p>
@@ -328,7 +328,7 @@
 <h4 id="1-2-2-功能"><a href="#1-2-2-功能" class="headerlink" title="1.2.2 功能"></a>1.2.2 功能</h4><p>我觉得 BIOS 的功能可以被概括为两个部分，一个是进行自我检测（<strong>Power-on self-test</strong>），另一个是<strong>设置读取启动顺序</strong>（Boot Sequence），其实我觉得就是选择一个<strong>启动设备</strong>来进一步引导电脑（比如光盘，硬盘，USB）。</p>
 <p>对于自我检测，其实可以看做是对照<strong>电脑组件参数表</strong>（比如 CPU 与内存的频率，网卡的各项配置参数）来进行检测。那么这些参数并没有存在 ROM 上，因为 ROM 的空间有限（ BIOS 一般几 MB）。而是写在了一个叫做 <strong>CMOS</strong> （与数字电路中的 CMOS 同名，但是应该只是重名）的芯片上，这个芯片需要借助额外的电源来使用记录功能，这也是主板上纽扣电池的作用。BIOS 干的事情就是读取 CMOS 上的信息，然后进行自我检测。</p>
 <p>另一件事情就是<strong>设置读取顺序</strong>。这个也挺有意思的，尽管有诸多的限制，但是 BIOS 依然是实现了人机交互的（还实现了图像化界面），用户是可以通过 BIOS 来选择<strong>启动设备</strong>的，这个功能对安装操作系统，用 CD 引导电脑有作用。如图：</p>
-<p><img src="/.io//image-20220312213324449.png" alt="image-20220312213324449"></p>
+<p><img src="/posts/dc1e00db/image-20220312213324449.png" alt="image-20220312213324449"></p>
 <p>当完成了上面两件事情以后，我们可以说 BIOS 达到了他的最终目的<strong>将引导的控制权交给了其他设备</strong>。</p>
 <p>BIOS 对电脑系统非常重要，因为它掌握了<strong>系统硬件的详细信息和启动设备的选择</strong>，但是电脑发展速度太快了，BIOS 的程序代码也需要做适度的修改。我们可以在主板官网上找到 BIOS 的更新程序。这与 ROM 的只读特性并不矛盾，是因为现在 BIOS 通常写入的是 flash 或者 EEPROM。</p>
 <h4 id="1-2-3-UEFI"><a href="#1-2-3-UEFI" class="headerlink" title="1.2.3 UEFI"></a>1.2.3 UEFI</h4><p>UEFI 即 Unified extensible firmware interface。我现在对它的理解就是他是 BIOS 的一种替代品，因为 UEFI 采用 C 语言，更容易开发，容错率更高，而且寻址能力更强。</p>
@@ -339,13 +339,13 @@
 </blockquote>
 <p>此外，还有一个重要的直观理解，是 BootLoader 已经是可以看做是操作系统的组成成分之一了，对于不同的操作系统，我们有与之对应的不同的 BootLoader。</p>
 <h4 id="1-3-2-磁盘硬件结构"><a href="#1-3-2-磁盘硬件结构" class="headerlink" title="1.3.2 磁盘硬件结构"></a>1.3.2 磁盘硬件结构</h4><p>硬件结构可以用两张图来介绍</p>
-<p><img src="/.io//2012052117213095.gif" alt="img"></p>
-<p><img src="/.io//2012052117224297.gif" alt="img"></p>
+<p><img src="/posts/dc1e00db/2012052117213095.gif" alt="img"></p>
+<p><img src="/posts/dc1e00db/2012052117224297.gif" alt="img"></p>
 <p>需要强调的是，<strong>磁道</strong>和<strong>扇区</strong>都是平面结构，而柱面是一个立体结构。应该这么说，长得像牛角包一样的扇区（不是扇子，它是一段圆弧，而不是一个披萨）绕成环组成了磁道，磁道就是一个圆圈（不是一个圆饼），磁道叠加起来，组成了柱面。但是这其实是物理结构概念。我们从软件角度去理解的话，只需要理解成两层结构就够了，即 <code>柱面 -&gt; 扇面</code>。</p>
 <p>其中<strong>柱面</strong>（cylinder）是文件系统的单位（文件系统跟实际存储又是两码事），也是分区的单位。而<strong>扇区</strong>（sector）是物理上的最小单位，一般为 512 字节或者 4K 字节。可以看成很多个扇区组成了柱面（忽略了磁道这一层）。</p>
 <p>在介绍之前，还是先强调，尽管我已经记忆无数次了，但是我依然记不清磁盘的硬件结构。我觉得这有两个原因，一个是他是个立体的，而且很多示意图画的很不清楚（比如我无数次记忆扇区是披萨型的，其实很没道理，因为这样就不是<strong>划分</strong>了）。另一个是我没有将它的上层抽象搞出来，导致我没办法跟所学到的知识联系在一起，以后注意即可。</p>
 <h4 id="1-3-3-磁盘分区"><a href="#1-3-3-磁盘分区" class="headerlink" title="1.3.3 磁盘分区"></a>1.3.3 磁盘分区</h4><p>大概一个磁盘示意图就长这个样子</p>
-<p><img src="/.io//image-20220312223759343.png" alt="image-20220312223759343"></p>
+<p><img src="/posts/dc1e00db/image-20220312223759343.png" alt="image-20220312223759343"></p>
 <p>跟之前描述的很像，1,100,200……这些编号说的都是柱面，一共是 400 个柱面（假设），然后很多个 sector （方形的）堆成了一个长条的柱面。</p>
 <p>磁盘是需要分区的，这是因为有如下考量</p>
 <ul>
@@ -353,7 +353,7 @@
 <li>系统性能：由于数据是<strong>集中</strong>的，所以数据查找和读取的速度都会变快。</li>
 </ul>
 <p>我们对分区也是有分类的，有如下示意图：</p>
-<p><img src="/.io//image-20220312231614397.png" alt="image-20220312231614397"></p>
+<p><img src="/posts/dc1e00db/image-20220312231614397.png" alt="image-20220312231614397"></p>
 <p>可以看到分区一共有三个种类：</p>
 <ul>
 <li>主要分区：就是最普通的分区，可以被格式化。</li>
@@ -368,15 +368,15 @@
 </ul>
 <p>我们为了记录分区信息，需要一种叫做<strong>分区表</strong>的结构，这种结构可以用于记录分区信息。在第一幅图中，可以看到在第一扇区里的分区表，它规定了四个分区。</p>
 <p>分区表不仅会出现在<strong>第一扇区</strong>（不然只会有四个分区），还会出现在拓展分区，这里的分区表，记录的就是逻辑分区的内容。如下图所示：</p>
-<p><img src="/.io//image-20220312233110868.png" alt="image-20220312233110868"></p>
+<p><img src="/posts/dc1e00db/image-20220312233110868.png" alt="image-20220312233110868"></p>
 <h4 id="1-3-4-启动扇区"><a href="#1-3-4-启动扇区" class="headerlink" title="1.3.4 启动扇区"></a>1.3.4 启动扇区</h4><p>之所以花了 1.3.2 和 1.3.3 两节，来讲与操作系统启动关系不大的硬件概念，主要就是为了这节打基础。Boot Sector 即<strong>启动扇区</strong>，可以看成每个分区都拥有的一个<strong>特殊的扇区</strong>，然后我们要讲的 <strong>MBR</strong>（Master Boot Record，主引导记录）就是在第一柱面第一扇区，它就是一个<strong>启动扇区</strong>。也就是逻辑关系 <code>扇区 -&gt; 启动扇区 -&gt; MBR</code>。</p>
 <p>MBR 的结构如下</p>
-<p><img src="/.io//image-20220312234050566.png" alt="image-20220312234050566"></p>
+<p><img src="/posts/dc1e00db/image-20220312234050566.png" alt="image-20220312234050566"></p>
 <p>可以看到，这个扇区基本上有两部分组成（一共是 512 字节），BootLoader 占了 446字节，而分区表占了64字节。我们在 1.2 提到的 BIOS 会去读取 MBR （当然是选中的设备的 MBR），这样，就完成了控制权的交接。那么其他的 boot sector 怎么办？他们存在的意义其实是为了<strong>多系统</strong>服务的，在不同的分区上安装不同的操作系统，不同的操作系统有不同的 boot sector。但是如果默认读取 MBR 上的 BootLoader，那么其他的 boot sector 就没有意义了。</p>
 <p>这就引出了一个重要的概念，即<strong>多重引导</strong>，即在 MBR 上的 Boot Loader 可以<strong>将启动管理功能转交给其他的启动引导程序负责</strong>，也就是下面的示意图</p>
-<p><img src="/.io//image-20220312235916191.png" alt="image-20220312235916191"></p>
+<p><img src="/posts/dc1e00db/image-20220312235916191.png" alt="image-20220312235916191"></p>
 <h4 id="1-3-5-引导程序功能"><a href="#1-3-5-引导程序功能" class="headerlink" title="1.3.5 引导程序功能"></a>1.3.5 引导程序功能</h4><p>常见的 BootLoader 有 grub2 和 LILO，我不太清楚他们的区别。他们实现的功能就如图吧</p>
-<p><img src="/.io//image-20220312191746902.png" alt="image-20220312191746902"></p>
+<p><img src="/posts/dc1e00db/image-20220312191746902.png" alt="image-20220312191746902"></p>
 <p>可以看到是分成了 stag1 和 stag2 的，具体的划分界限，我也是不清楚的。反正最终目的就是<strong>加载内核到内存中</strong>。</p>
 <h3 id="1-4-内核启动"><a href="#1-4-内核启动" class="headerlink" title="1.4 内核启动"></a>1.4 内核启动</h3><p>这个的资料就更少了，应该说只有幻灯片上有，其他地方我都没有找到一点蛛丝马迹。只能说我们清楚的知道，这个环节的目的是<strong>检测硬件</strong>和<strong>加载驱动程序</strong>。</p>
 <p>检测硬件这个还是比较好理解的，就是类似于 BIOS 曾经干过的活儿，内核又干了一遍。</p>
@@ -390,7 +390,7 @@
 </blockquote>
 <p>内核是存在 <code>/boot</code> 中的，而模块是存在 <code>/lib/modules</code> 中的。</p>
 <p>然后我们来看设计者是怎么解决梯云纵问题的，他们引入了一个叫做<strong>虚拟文件系统</strong>的东西，一般存在 <code>/boot/initrd</code> 或者 <code>/boot/initramfs</code> 中，这个文件也可以通过 BootLoader 加载到内存中，然后会在内存中解压缩并模拟出一个根目录（也就是一个低配的文件系统），这个文件系统可以提供一个程序来加载启动过程中的需要的<strong>内核模块</strong>，也就是各种驱动程序。如图</p>
-<p><img src="/.io//SouthEast-16471603204844.jpeg" alt="img"></p>
+<p><img src="/posts/dc1e00db/SouthEast-16471603204844.jpeg" alt="img"></p>
 <h3 id="1-5-系统初始化"><a href="#1-5-系统初始化" class="headerlink" title="1.5 系统初始化"></a>1.5 系统初始化</h3><p>Kernel启动，并进行完硬件检测与驱动程序加载之后，主机的硬件已经准备就绪了，这时kernel会主动呼叫第一个程序，就是systemd（linux下的一种init软件）。systemd最主要的功能就是准备软件执行的环境，包括系统的主机名称，网络，语言，档案格式以及其他服务的启动等。</p>
 <ul>
 <li>执行 sysinit.target 初始化系统及 basic.target 准备操作系统</li>
@@ -399,7 +399,7 @@
 <li>执行 multi-user.target 下的 getty.target 及登录服务</li>
 <li>执行 graphical 需要的服务</li>
 </ul>
-<p><img src="/.io//SouthEast.jpeg" alt="img"></p>
+<p><img src="/posts/dc1e00db/SouthEast.jpeg" alt="img"></p>
 <hr>
 <h2 id="二、优化分析"><a href="#二、优化分析" class="headerlink" title="二、优化分析"></a>二、优化分析</h2><h3 id="2-1-最耗时的启动过程"><a href="#2-1-最耗时的启动过程" class="headerlink" title="2.1 最耗时的启动过程"></a>2.1 最耗时的启动过程</h3><p>由操作系统启动过程分析我们知道，BIOS 自检过程会对 CPU、内存、显卡、外设等硬件设备（包括中断向量，设置寄存器）进行检测和初始化，所以CPU、内存、外设这些硬件设备的性能好坏会对操作系统启动造成影响。除了硬件对启动造成影响，软件过多也会对降低操作系统的启动速度。</p>
 <p>　例如，我们安装了打印机、扫描仪、USB硬盘等设备后，由于USB接口速度较慢，因此相应设备会对电脑启动速度有较明显的影响；如果设置了网卡，网络会自动获取IP地址，系统在启动时就会不断在网络中搜索服务器。</p>

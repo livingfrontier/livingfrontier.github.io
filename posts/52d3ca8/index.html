@@ -30,8 +30,8 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、比喻Trampoline 指的是“蹦床”，也就是底下这个东西：  他是一种很有趣的比喻，人们不能直接跳到高空中，而是需要先往下跳，然后借助蹦床的弹力跳到高空中。 这个比喻出现在用户态和内核态的相互转变中，转变不能直接发生，而是必须要借助一个“蹦床”机制。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//aHR0cHM6Ly93d3cuYmVyZ3RveXMuY29tL2NyYWZ0L21lZGlhL2Jhbm5lcnMvXzE1MzR4ODAwX2Nyb3BfY2VudGVyLWNlbnRlcl9ub25lL1RyYW1wb2xpbmVzX1Byb0JvdW5jZXJfMi5qcGc.jpeg">
-<meta property="og:image" content="https://thysrael.github.io/.io//1024px-Kernel_page-table_isolation.svg.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/52d3ca8/aHR0cHM6Ly93d3cuYmVyZ3RveXMuY29tL2NyYWZ0L21lZGlhL2Jhbm5lcnMvXzE1MzR4ODAwX2Nyb3BfY2VudGVyLWNlbnRlcl9ub25lL1RyYW1wb2xpbmVzX1Byb0JvdW5jZXJfMi5qcGc.jpeg">
+<meta property="og:image" content="https://thysrael.github.io/posts/52d3ca8/1024px-Kernel_page-table_isolation.svg.png">
 <meta property="article:published_time" content="2024-04-05T08:41:52.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.430Z">
 <meta property="article:author" content="Thysrael">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="S8课上">
 <meta property="article:tag" content="硬件平台">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//aHR0cHM6Ly93d3cuYmVyZ3RveXMuY29tL2NyYWZ0L21lZGlhL2Jhbm5lcnMvXzE1MzR4ODAwX2Nyb3BfY2VudGVyLWNlbnRlcl9ub25lL1RyYW1wb2xpbmVzX1Byb0JvdW5jZXJfMi5qcGc.jpeg">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/52d3ca8/aHR0cHM6Ly93d3cuYmVyZ3RveXMuY29tL2NyYWZ0L21lZGlhL2Jhbm5lcnMvXzE1MzR4ODAwX2Nyb3BfY2VudGVyLWNlbnRlcl9ub25lL1RyYW1wb2xpbmVzX1Byb0JvdW5jZXJfMi5qcGc.jpeg">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/52d3ca8/">
 
@@ -296,7 +296,7 @@
 
       
         <h2 id="一、比喻"><a href="#一、比喻" class="headerlink" title="一、比喻"></a>一、比喻</h2><p>Trampoline 指的是“蹦床”，也就是底下这个东西：</p>
-<p><img src="/.io//aHR0cHM6Ly93d3cuYmVyZ3RveXMuY29tL2NyYWZ0L21lZGlhL2Jhbm5lcnMvXzE1MzR4ODAwX2Nyb3BfY2VudGVyLWNlbnRlcl9ub25lL1RyYW1wb2xpbmVzX1Byb0JvdW5jZXJfMi5qcGc.jpeg" alt="BERG Champion - Rectangular, round and oval trampolines"></p>
+<p><img src="/posts/52d3ca8/aHR0cHM6Ly93d3cuYmVyZ3RveXMuY29tL2NyYWZ0L21lZGlhL2Jhbm5lcnMvXzE1MzR4ODAwX2Nyb3BfY2VudGVyLWNlbnRlcl9ub25lL1RyYW1wb2xpbmVzX1Byb0JvdW5jZXJfMi5qcGc.jpeg" alt="BERG Champion - Rectangular, round and oval trampolines"></p>
 <p>他是一种很有趣的比喻，人们不能直接跳到高空中，而是需要先往下跳，然后借助蹦床的弹力跳到高空中。</p>
 <p>这个比喻出现在用户态和内核态的相互转变中，转变不能直接发生，而是必须要借助一个“蹦床”机制。</p>
 <hr>
@@ -306,7 +306,7 @@
 <hr>
 <h2 id="三、KPTI-蹦床"><a href="#三、KPTI-蹦床" class="headerlink" title="三、KPTI 蹦床"></a>三、KPTI 蹦床</h2><p>Kernel Page-Table Isolation 是一项 Linux 内核功能，可缓解 Meltdown 安全漏洞（主要影响 Intel 的x86 CPU），并改进了针对绕过内核地址空间布局随机化 (KASLR) 尝试的内核强化。</p>
 <p>具体来说，就是用户态向内核态切换时（比如发生异常），地址空间并不会立刻切换成完全的内核空间，而是先切换到一个只包含最基本 EL0 到 EL1入口和出口代码的向量表等信息映射的地址空间，然后再切换到一个包含全部内核的地址空间。</p>
-<p><img src="/.io//1024px-Kernel_page-table_isolation.svg.png" alt="undefined"></p>
+<p><img src="/posts/52d3ca8/1024px-Kernel_page-table_isolation.svg.png" alt="undefined"></p>
 <p>之所以这种方法可以防止 meltdown，是因为 meltdown 那条“窃取指令”紧紧贴着引发内核态转换的指令，所以那个时候窃取指令实际发挥作用的地址空间就会变成 trampoline 地址空间。</p>
 
     </div>

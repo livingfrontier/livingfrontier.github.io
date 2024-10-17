@@ -30,10 +30,10 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论1.1 硬件术语为了不让读者懵逼（主要是我自己也懵逼），所以特地整理一下在后面会用到术语。 我们电脑上有个东西叫做内存，他的大小比较小，像我的电脑就是 16 GB 的。它是由 ROM 和 RAM 组成的（“组成”可能不太严谨）。他也被叫做主存，我们为了访问他，所以需要给他的存储空间进行编号，这种编号被叫做物理地址。 我们电脑上还有个东西叫做外存，他的大小比较大，像我的电脑是 256 GB的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//tlb.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//tlb_entry.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220409154810627.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220409154846877.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/92de1690/tlb.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/92de1690/tlb_entry.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/92de1690/image-20220409154810627.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/92de1690/image-20220409154846877.png">
 <meta property="article:published_time" content="2022-04-05T00:42:00.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.317Z">
 <meta property="article:author" content="Thysrael">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//tlb.drawio.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/92de1690/tlb.drawio.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/92de1690/">
 
@@ -356,13 +356,13 @@
 <li>管理后备存储的策略（后备存储就是 swap 技术里的外存空间）</li>
 </ul>
 <h3 id="3-3-优化"><a href="#3-3-优化" class="headerlink" title="3.3 优化"></a>3.3 优化</h3><h4 id="5-3-1-TLB"><a href="#5-3-1-TLB" class="headerlink" title="5.3.1 TLB"></a>5.3.1 TLB</h4><p>首先我们需要弄懂 tlb 的结构，计组认为的 TLB，是长这样的：</p>
-<p><img src="/.io//tlb.drawio.png" alt="tlb.drawio"></p>
+<p><img src="/posts/92de1690/tlb.drawio.png" alt="tlb.drawio"></p>
 <p>也就是说，TLB 是一个全相连的 cache，既然是全相连，就不由 index 段了。我们用虚拟地址的前 22 位作为 TAG，并行的比较 64 个TLB 的 line，如果 TAG 相等，就说明找到了，反之，这说明没有找到。</p>
 <p>不过这个模型还是有些粗糙的，很多细节并没有说明白。</p>
 <p>在操作系统指导书里提到，tlb 构建了一个映射关系，我简化一下，就是 $VPN\space \rightarrow\space PPN$ 。当然这是对的了，但是这种说法我就弄成了每个 VPN 都会对应一个 PPN，但是其实这种映射关系只有 64 对。而且叫映射似乎就是一下就射过去了，而不是一个并行的比较过程。</p>
 <p>其次就是，我们没有了解具体硬件发生了啥，比如 VPN 是怎样被检索的，被检索到的 PPN 放到了哪里，tlb 缺失以后具体怎么填补。都是没有的。这其实跟协处理器有很大关系。</p>
 <p>在了解协处理器之前，我们先来看一下 tlb 的表项，他比计组版本要复杂一些，我们以 MOS 中 64MB （也就是共有 $2^{14}$ 页 ）的物理内存为例</p>
-<p><img src="/.io//tlb_entry.png" alt="tlb_entry"></p>
+<p><img src="/posts/92de1690/tlb_entry.png" alt="tlb_entry"></p>
 <p>我们来说明一下这些差别：</p>
 <ul>
 <li>朴素版的 PPN 只有 14 位，是因为物理页框号可以最少用 14 位表示，但是真实版的 PPN 也与 VPN 相同，是 22 位。可能是考虑到不同电脑上内存不同吧，这估计也是 mips_detect_memory() 这个函数的设置。</li>
@@ -438,8 +438,8 @@
 <p>这里再说一下各个寄存器的域</p>
 <ul>
 <li>EntryHi，EntryLo 的域与 tlb 表项完全相同</li>
-<li>Index 的域：<img src="/.io//image-20220409154810627.png" alt="image-20220409154810627"></li>
-<li>Random 的域：<img src="/.io//image-20220409154846877.png" alt="image-20220409154846877"></li>
+<li>Index 的域：<img src="/posts/92de1690/image-20220409154810627.png" alt="image-20220409154810627"></li>
+<li>Random 的域：<img src="/posts/92de1690/image-20220409154846877.png" alt="image-20220409154846877"></li>
 </ul>
 <p>与 tlb 相关的指令</p>
 <div class="table-container">

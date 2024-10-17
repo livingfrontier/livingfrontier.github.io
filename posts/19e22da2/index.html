@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论如何熟悉工具呢？我觉得最为重要的是理解工具被设计和使用时的理念或者概念或者抽象，只要理解了工具中蕴含的理念是什么，对于具体的操作，就可以抄文档了。 linux 下的常见命令行工具有什么特点呢？这些常见的，简单的命令行工具，本质是 GNU&#x2F;Linux 生态的一部分，他们的很多概念，本质是 Linux Kernel 的概念的延续和拓展。 GNU&#x2F;Linux 的伟大真的是难以形容啊。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230920163008838.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230921090246054.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//rootfs.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/19e22da2/image-20230920163008838.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/19e22da2/image-20230921090246054.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/19e22da2/rootfs.jpg">
 <meta property="article:published_time" content="2023-09-30T09:46:56.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.733Z">
 <meta property="article:author" content="Thysrael">
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="S7课上">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20230920163008838.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/19e22da2/image-20230920163008838.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/19e22da2/">
 
@@ -390,7 +390,7 @@
 <li>搜索的范围并不是局限于一个文件（后面介绍的的 sed 和 awk 因为对格式的依赖更强，所以搜索的一般是同格式的一个或者多个文件），而是一个范围的文件组（比如一个或者多个目录下的所有文件）。</li>
 </ul>
 <h4 id="4-2-2-正则"><a href="#4-2-2-正则" class="headerlink" title="4.2.2 正则"></a>4.2.2 正则</h4><p>基础的正则表达式用法很显然了，这个图可以进行说明：</p>
-<p><img src="/.io//image-20230920163008838.png" alt="image-20230920163008838"></p>
+<p><img src="/posts/19e22da2/image-20230920163008838.png" alt="image-20230920163008838"></p>
 <p>然后我们来谈一下正则表达式的时间复杂度，我们规定模式串的长度为 $m$，匹配串的长度是 $n$。 这其实是涉及了正则表达式引擎的实现，引擎需要先根据正则表达式建立 NFA 或则 DFA，建立 DFA 的时间复杂度是 $O(2^m)$，而建立 NFA 的时间复杂度只是 $O(m)$。但是利用状态机进行匹配时，DFA 可以做到不回退，所以只需要扫描一遍匹配串即可，时间复杂度是 $O(n)$，而 NFA 需要回退，所以时间复杂度是 $O(mn)$ （每个匹配串的字符都回退，回退前的状态机路径长度都是 m）。所以其实是需要取舍的。据不可靠资料，据说一般程序都会采用 NFA 的方式。</p>
 <p>总的来说，正则表达式不是一个十分高效的手段，不过考虑到我们需求的要求（用简单的字符串匹配很多种字符），这也是一种“最不坏”的方案了。此外，我们也可以通过优化正则表达式的写法，来简化 NFA，其核心思想就是少引入 $\varepsilon$ 。</p>
 <p>然后介绍一下正则表达式的用法：</p>
@@ -411,7 +411,7 @@
 <li>异步性：流可以支持异步操作，即数据可以按照不同的速率和时间间隔进行处理，提高程序的并发性能。</li>
 </ul>
 <p>在 <code>sed</code> 中，它的流式编程特点体现在，他每次只读入待处理文本中的一行，然后进行处理，然后再读入下一行，这样循环，其流程如下所示：</p>
-<p><img src="/.io//image-20230921090246054.png" alt="image-20230921090246054"></p>
+<p><img src="/posts/19e22da2/image-20230921090246054.png" alt="image-20230921090246054"></p>
 <p>基本上遵循一个“读入，处理，输入”的过程，比较明显的区别是这个过程会循环发生。</p>
 <p>如图上显示的一般，sed 会将文件中的一行读入它的流处理 buffer，它的特定词汇是 pattern space 模式空间。然后会对这个 pattern space 里的文本执行多条 sed command，最后将 pattern space 里的文本输出（在默认情况下），输出后会清空然后读入下一条文本，开启循环。</p>
 <p>与 vim 这样的编辑器的设计思路不同，sed 不会将整个待处理文本读入内存后再工作，这种特点产生了如下有好有坏的影响：</p>
@@ -833,7 +833,7 @@ trash-empty	n	<span class="token comment"># 清空 n 天前的回收站文件</s
 <p><code>wget</code> 的格式为：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">wget</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&lt;</span>url<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
-<h2 id="七、根文件系统"><a href="#七、根文件系统" class="headerlink" title="七、根文件系统"></a>七、根文件系统</h2><p><img src="/.io//rootfs.jpg" alt=""></p>
+<h2 id="七、根文件系统"><a href="#七、根文件系统" class="headerlink" title="七、根文件系统"></a>七、根文件系统</h2><p><img src="/posts/19e22da2/rootfs.jpg" alt=""></p>
 <h3 id="7-1-dev-和-sys-的区别"><a href="#7-1-dev-和-sys-的区别" class="headerlink" title="7.1 /dev 和 /sys 的区别"></a>7.1 <code>/dev</code> 和 <code>/sys</code> 的区别</h3><p><code>/dev</code> 是一个很著名的文件夹，因为它是 Unix “一切皆文件”设计哲学下的一个例子，这个文件夹下的文件都是“设备文件”，我们可以用操纵文件的 API 来控制我们的设备，但是在我之后的了解中，似乎 <code>/sys</code> 也有类似的效果，比如说可以用 <code>cat</code> 查看电池剩余电量，如下所示</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /sys/class/power_supply/BAT0/capacity<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样看上去似乎两者的功能冲突了。</p>

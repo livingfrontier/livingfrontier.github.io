@@ -30,13 +30,13 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="hw1: Ring 实验报告一、个人信息    条目 信息     姓名 Thysrael   学号 xxxxxxx   学院 xxxxxx      二、题目分析">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221024225632543.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221024233057658.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20221026152347436.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//实验结果.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//延迟.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//延迟4.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//微信图片_20221026150507.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/image-20221024225632543.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/image-20221024233057658.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/image-20221026152347436.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/实验结果.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/延迟.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/延迟4.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/70e6c140/微信图片_20221026150507.png">
 <meta property="article:published_time" content="2022-10-26T09:43:59.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.227Z">
 <meta property="article:author" content="Thysrael">
@@ -44,7 +44,7 @@
 <meta property="article:tag" content="S5课上">
 <meta property="article:tag" content="并行计算">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20221024225632543.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/70e6c140/image-20221024225632543.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/70e6c140/">
 
@@ -343,7 +343,7 @@ comm <span class="token operator">=</span> MPI<span class="token punctuation">.<
 <p>在终端中运行</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mpirun -np <span class="token number">6</span> python hello.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>结果如图所示</p>
-<p><img src="/.io//image-20221024225632543.png" alt="image-20221024225632543"></p>
+<p><img src="/posts/70e6c140/image-20221024225632543.png" alt="image-20221024225632543"></p>
 <h3 id="3-2-计时的实现"><a href="#3-2-计时的实现" class="headerlink" title="3.2 计时的实现"></a>3.2 计时的实现</h3><p>在 ring 中的每个节点基本上是等价的，在一次循环中，每个节点从发送信息到接受信息的时间间隔是一样的，所以可以任选一个节点进行时间的测量，为了方便，选择了 0 号进程。实现如下</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 在主进程进行计时，开始时间</span>
 <span class="token keyword">double</span> start_time <span class="token operator">=</span> <span class="token function">MPI_Wtime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -485,7 +485,7 @@ comm <span class="token operator">=</span> MPI<span class="token punctuation">.<
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"source is %d\n"</span><span class="token punctuation">,</span> status<span class="token punctuation">.</span>MPI_SOURCE<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 获得消息的源</span>
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"error is %x\n"</span><span class="token punctuation">,</span> status<span class="token punctuation">.</span>MPI_ERROR<span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">// 获得错误码</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>其中 <code>SOURCE</code> 正常工作，但是 <code>ERROR</code> 作为错误码，即使正常运行，但是也会出现随机数（可能也不那么随机），如下所示</p>
-<p><img src="/.io//image-20221024233057658.png" alt="image-20221024233057658"></p>
+<p><img src="/posts/70e6c140/image-20221024233057658.png" alt="image-20221024233057658"></p>
 <p>我找不到具体原因，只找到相关文献说 <code>STATUS_ERROR</code> 在阻塞通信中没有意义</p>
 <blockquote>
 <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_error/index.html">MPI_ERROR</a> is the member of the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_status/index.html">MPI_Status</a> structure that contains the error code of the corresponding receive operation. Although in practice it has no use for a blocking receive (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_recv/index.html">MPI_Recv</a>) since the error code is returned directly by the routine, it does have uses for its non-blocking counterpart (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_irecv/index.html">MPI_Irecv</a>) where the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_status/index.html">MPI_Status</a> cannot be obtained until the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_request/index.html">MPI_Request</a> collected is waited on (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_wait/index.html">MPI_Wait</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_waitall/index.html">MPI_Waitall</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_waitany/index.html">MPI_Waitany</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_waitsome/index.html">MPI_Waitsome</a>) or tested (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_test/index.html">MPI_Test</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_testall/index.html">MPI_Testall</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_testany/index.html">MPI_Testany</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rookiehpc.github.io/mpi/docs/mpi_testsome/index.html">MPI_Testsome</a>).</p>
@@ -495,7 +495,7 @@ comm <span class="token operator">=</span> MPI<span class="token punctuation">.<
 <span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>MPI<span class="token punctuation">.</span>SUCCESS<span class="token punctuation">)</span>
 <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>后记，在我不知道改了啥之后，似乎 <code>error_code</code> 在成功情况下又变成了 <code>0</code></p>
-<p><img src="/.io//image-20221026152347436.png" alt="image-20221026152347436"></p>
+<p><img src="/posts/70e6c140/image-20221026152347436.png" alt="image-20221026152347436"></p>
 <h2 id="四、实验成果"><a href="#四、实验成果" class="headerlink" title="四、实验成果"></a>四、实验成果</h2><h3 id="4-1-基本成果"><a href="#4-1-基本成果" class="headerlink" title="4.1 基本成果"></a>4.1 基本成果</h3><div class="table-container">
 <table>
 <thead>
@@ -529,18 +529,18 @@ comm <span class="token operator">=</span> MPI<span class="token punctuation">.<
 </table>
 </div>
 <p>运行截图：</p>
-<p><img src="/.io//实验结果.png" alt=""></p>
+<p><img src="/posts/70e6c140/实验结果.png" alt=""></p>
 <h3 id="4-2-冷启动和溢出猜想"><a href="#4-2-冷启动和溢出猜想" class="headerlink" title="4.2 冷启动和溢出猜想"></a>4.2 冷启动和溢出猜想</h3><p>如果打印每一轮的测试信息，就会发现两个有趣的现象：</p>
 <ul>
 <li>前几轮的时间会明显很大。</li>
 <li>时间在趋于平稳后会有周期性（待定）的长时间传递出现</li>
 </ul>
 <p>如图所示：</p>
-<p><img src="/.io//延迟.png" alt="延迟"></p>
+<p><img src="/posts/70e6c140/延迟.png" alt="延迟"></p>
 <p>从上图可以看出前几个周期明显要长很多。</p>
-<p><img src="/.io//延迟4.png" alt=""></p>
+<p><img src="/posts/70e6c140/延迟4.png" alt=""></p>
 <p>从这里可以看出会出现一个“尖刺”。如果绘图（感谢陈凝香的图表）：</p>
-<p><img src="/.io//微信图片_20221026150507.png" alt=""></p>
+<p><img src="/posts/70e6c140/微信图片_20221026150507.png" alt=""></p>
 <p>可以更加明显的观测到这种现象。</p>
 <p>在于小组同学商讨后，我个人倾向于这样的一种解释：这可能与某种“高速缓存机制（cache）”有关，对于一开始，位于路由中或者其他关键节点的高速缓存存在常见的“冷启动”现象，需要填充缓存来达到增加命中率的目的，而这个过程会伴随这缺失的代价，这就导致一开始的时候的缓慢，而之后的周期性缓慢，可能是 cache 中某一缓存行被换出的过程，当一个缓存行被换出，需要发生一次缺失，才能更新 cache，这就导致了一次长的周期。</p>
 <p>当然也可能就是普通的网速问题，具组内某同学说，这个一点也不周期，我就是在强行解释，嗯嗯，有道理。</p>

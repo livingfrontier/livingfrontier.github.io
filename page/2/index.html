@@ -782,7 +782,7 @@
 
       
           <h2 id="一、结构"><a href="#一、结构" class="headerlink" title="一、结构"></a>一、结构</h2><p>因为一直分不清 Cache 的结构名字，所以特地画了一个比较满意的图来标注各种结构。</p>
-<p><img src="/.io//cache.drawio.png" alt></p>
+<p><img src="/posts/603a762d/cache.drawio.png" alt></p>
 <p>这个示意图的参数在右上角。Cache 中的基本单位是 Cache Line，它又被叫作 Block，它是由多个 Word 组成的。多个 Cache Line 会组成一个 Cache Set，一个 Cache Set 内包含的 Cache Line 数量被成为 Way。比如图中就是 2-Way 的 Cache，那么每个 Cache Set 就有 2 个 Cache Line。相同 Cache Set 中的 Cache Line 的关系被称为 associative（相联），它们不能依靠 set index 进行区分，只能通过 tag 区分。 </p>
 <p>根据 Set 个数和 Way 的不同（其本质是 Cache Line 的位置确定），可以对 Cache 进行分类：</p>
           <!--noindex-->

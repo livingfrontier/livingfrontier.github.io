@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、设计想法1.1 我的CPU的整体架构 1.2 从单周期到流水线虽然学长一直在强调重构，身边大佬也都对重构乐此不疲。但是以我个人的感觉，感觉不太需要重构（这可能就是我TLE了两天的错误观念）。我个人感觉完全可以在单周期上面改。为了给大家一个直观印象，我从修改原单周期CPU，流水线寄存器，加入阻塞刷新功能，加入转发功能方面分别说一下怎么改（严格说是怎么加，需要改的地方好像没有）：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//微信图片_20211123100405.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/59164957/微信图片_20211123100405.jpg">
 <meta property="article:published_time" content="2022-01-16T07:59:10.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.583Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//微信图片_20211123100405.jpg">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/59164957/微信图片_20211123100405.jpg">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/59164957/">
 
@@ -293,7 +293,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一、设计想法"><a href="#一、设计想法" class="headerlink" title="一、设计想法"></a>一、设计想法</h2><h3 id="1-1-我的CPU的整体架构"><a href="#1-1-我的CPU的整体架构" class="headerlink" title="1.1 我的CPU的整体架构"></a>1.1 我的CPU的整体架构</h3><p><img src="/.io//微信图片_20211123100405.jpg" alt="微信图片_20211123100405"></p>
+        <h2 id="一、设计想法"><a href="#一、设计想法" class="headerlink" title="一、设计想法"></a>一、设计想法</h2><h3 id="1-1-我的CPU的整体架构"><a href="#1-1-我的CPU的整体架构" class="headerlink" title="1.1 我的CPU的整体架构"></a>1.1 我的CPU的整体架构</h3><p><img src="/posts/59164957/微信图片_20211123100405.jpg" alt="微信图片_20211123100405"></p>
 <h3 id="1-2-从单周期到流水线"><a href="#1-2-从单周期到流水线" class="headerlink" title="1.2 从单周期到流水线"></a>1.2 从单周期到流水线</h3><p>虽然学长一直在强调重构，身边大佬也都对重构乐此不疲。但是以我个人的感觉，感觉不太需要重构（这可能就是我TLE了两天的错误观念）。我个人感觉完全可以在单周期上面改。为了给大家一个直观印象，我从<strong>修改原单周期CPU，流水线寄存器，加入阻塞刷新功能，加入转发功能</strong>方面分别说一下怎么改（严格说是怎么加，需要改的地方好像没有）：</p>
 <h4 id="1-2-1-修改原单周期CPU"><a href="#1-2-1-修改原单周期CPU" class="headerlink" title="1.2.1 修改原单周期CPU"></a>1.2.1 修改原单周期CPU</h4><p>在数据通路方面，就是把NPC放到D级，相应的输入端口因为要从F_instr和D_instr中挑选，所以要加一个MUX，然后加一个CMP（看过我之前帖子，应该知道我的本来就有CMP）。然后去掉GRF的多功能（正常人GRF也没有多功能，只有我的是可以完成set，link，lui功能）。数据通路的修改就完成了。最后要在GRF中实现一个内部转发功能。</p>
 <p>在信号方面，只需要加入用于选择F_instr和D_instr的Sel信号就好了，其他不需要更改。</p>

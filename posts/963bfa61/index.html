@@ -30,12 +30,12 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论智能体系结构（Intelligent Architecture）是我大三上学期报的一门选修课。这门课的主要实验目的是搭建一个人工神经网络（可能是卷积神经网络）的加速器。在接触这门课前我对于这个名词一无所知。 现在来看，大概是这个意思，人工神经网络是一种模拟人脑神经结构的数学模型，这个数学模型需要计算机辅助实现。但是这个数学模型跟计算机原有的冯诺依曼体系有些不搭配。我们常见的计算机一般将存储">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220908144008961.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//微信图片_20220909084859.jpg">
-<meta property="og:image" content="https://thysrael.github.io/.io//neural-network-3816319_960_720.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220909091040713.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220909091252400.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220909091102314.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/963bfa61/image-20220908144008961.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/963bfa61/微信图片_20220909084859.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/963bfa61/neural-network-3816319_960_720.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/963bfa61/image-20220909091040713.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/963bfa61/image-20220909091252400.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/963bfa61/image-20220909091102314.png">
 <meta property="article:published_time" content="2022-09-08T03:26:46.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.720Z">
 <meta property="article:author" content="Thysrael">
@@ -43,7 +43,7 @@
 <meta property="article:tag" content="S5课上">
 <meta property="article:tag" content="IEArch">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220908144008961.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/963bfa61/image-20220908144008961.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/963bfa61/">
 
@@ -308,20 +308,20 @@
 <p>智能体系结构就是这样一个模糊的东西，我之前理解的人工智能，是用软件模拟人脑，这很计算机，因为计算机软件的一大功能就是对于客观世界的模拟，我没有任何意见。但是硬件模拟，而且似乎甚至为了这个数学模型，我们去开发新的材料，新的元器件，来做加速器。看上去就像是在搭建一个人工的神经元，实在是太震撼了。</p>
 <p>ReRAM 对于电压敏感的特性与神经元细胞膜上离子门控通道的特性很像，CrossBar 的设计与灰质的解剖结构也很像。可以说，我们在亲手搭建一个人脑。一个硅基的人脑。那么这个硅脑，是否还是计算机的范畴呢？</p>
 <hr>
-<h2 id="三、人工神经网络-Artificial-Neural-Network"><a href="#三、人工神经网络-Artificial-Neural-Network" class="headerlink" title="三、人工神经网络 (Artificial Neural Network)"></a>三、人工神经网络 (Artificial Neural Network)</h2><h3 id="3-1-神经元-Neural"><a href="#3-1-神经元-Neural" class="headerlink" title="3.1 神经元 (Neural)"></a>3.1 神经元 (Neural)</h3><p><img src="/.io//image-20220908144008961.png" alt=""></p>
+<h2 id="三、人工神经网络-Artificial-Neural-Network"><a href="#三、人工神经网络-Artificial-Neural-Network" class="headerlink" title="三、人工神经网络 (Artificial Neural Network)"></a>三、人工神经网络 (Artificial Neural Network)</h2><h3 id="3-1-神经元-Neural"><a href="#3-1-神经元-Neural" class="headerlink" title="3.1 神经元 (Neural)"></a>3.1 神经元 (Neural)</h3><p><img src="/posts/963bfa61/image-20220908144008961.png" alt=""></p>
 <p>正如我们所见，这是一个神经元，神经元有很多个树突，用于接受其他神经元或者感觉细胞传递而来的神经递质，一般只有一个轴突，用于向其他神经元传递递质。神经元通过收集各个树突传递来的神经递质，打开不同的离子门控通道，当细胞膜电位超过阈值，就会触发动作电位，释放神经递质。我们可以利用这样的一个模型来对这个神经元建模。</p>
 <script type="math/tex; mode=display">
 o = f(WI-b)</script><p>其中 $I$ 是输入信号向量，$W$ 是输入信号权值向量，$b$ 是阈值，$f$ 是非线性映射关系，$o$ 是输出信号。我们用这个式子很精炼的概括了一个神经元的特征。</p>
-<p><img src="/.io//微信图片_20220909084859.jpg" alt=""></p>
+<p><img src="/posts/963bfa61/微信图片_20220909084859.jpg" alt=""></p>
 <h3 id="3-2-神经网络-Neural-Network"><a href="#3-2-神经网络-Neural-Network" class="headerlink" title="3.2 神经网络 (Neural Network)"></a>3.2 神经网络 (Neural Network)</h3><p>很多个神经元在不同层（指信号迭代的次数）就可以构成神经网络。我们对其进行模型训练，训练可以通过影响权值的大小，来获得更加精确的结果，这个过程与人脑的记忆过程具有很高的相似性。</p>
-<p><img src="/.io//neural-network-3816319_960_720.png" alt=""></p>
+<p><img src="/posts/963bfa61/neural-network-3816319_960_720.png" alt=""></p>
 <p>我们称第一层为<strong>输入层</strong>，最后一层是<strong>输出层</strong>，中间的层我们称其为<strong>隐层</strong>。</p>
-<p><img src="/.io//image-20220909091040713.png" alt="image-20220909091040713"></p>
+<p><img src="/posts/963bfa61/image-20220909091040713.png" alt="image-20220909091040713"></p>
 <p>在训练中，我们一般不改变非线性映射，而只改变权重向量。</p>
 <p>我们管比较简单的网络叫做<strong>感知机</strong>。</p>
-<p><img src="/.io//image-20220909091252400.png" alt="image-20220909091252400"></p>
+<p><img src="/posts/963bfa61/image-20220909091252400.png" alt="image-20220909091252400"></p>
 <h3 id="3-3-学科坐标"><a href="#3-3-学科坐标" class="headerlink" title="3.3 学科坐标"></a>3.3 学科坐标</h3><p>人工神经网络在学科坐标中大概是这个位置，顺带说一句“启发”的英文是 inspiration，启发式在我粗浅的理解下，似乎就是人们已经没法硬钢解决这个问题了，所以就通过模仿或者瞎猜一个算法路径去解决问题。</p>
-<p><img src="/.io//image-20220909091102314.png" alt="image-20220909091102314"></p>
+<p><img src="/posts/963bfa61/image-20220909091102314.png" alt="image-20220909091102314"></p>
 <p>这幅图还没有画全，神经网络里还有一个包含是深度学习，深度学习又名“深度学习网络”。所谓的“深度“指的是神经网络的层数很多。</p>
 <h3 id="3-4-反向传播-Back-Propagation"><a href="#3-4-反向传播-Back-Propagation" class="headerlink" title="3.4 反向传播 (Back Propagation)"></a>3.4 反向传播 (Back Propagation)</h3><hr>
 <h2 id="四、数学原理"><a href="#四、数学原理" class="headerlink" title="四、数学原理"></a>四、数学原理</h2><p>开始前先放上大佬的话</p>

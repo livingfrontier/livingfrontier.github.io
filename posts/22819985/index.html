@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="集合论是后面关系，函数和图论的基础，可以说充分体现了离散数学“元数学”的特性。 一个给定的元素是否属于某一个集合，这是集合论中的一个基本问题。元素与集合之间这种属于关系（成员关系），是集合中的一个基本关系。 这篇博文介绍了一种做题方法，可以说在某些意义上，更加逼近了集合论的本质。我十分满意。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107104456515.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107105020186.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107111226823.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/22819985/image-20220107104456515.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/22819985/image-20220107105020186.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/22819985/image-20220107111226823.png">
 <meta property="article:published_time" content="2022-01-07T03:43:56.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.507Z">
 <meta property="article:author" content="Thysrael">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="离散数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220107104456515.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/22819985/image-20220107104456515.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/22819985/">
 
@@ -317,7 +317,7 @@
 <p>这里主要是强调，字符串集合的归纳规则是很<strong>简单</strong>的，在出集合的归纳定义的题目的时候，<strong>原子元素</strong>的选择和生成算法都是很难很难的点。</p>
 <p>有了字符串集合的定义，我们有了新的定义<strong>语言</strong>，即：设 $\Sigma$ 是一个有限字母表，一个在 $\Sigma$ 上的语言是 $\Sigma^\ast$ 的一个子集。</p>
 <h3 id="1-4-其他题目"><a href="#1-4-其他题目" class="headerlink" title="1.4 其他题目"></a>1.4 其他题目</h3><p>这里介绍一个题目，这个题目最大的难点就是认识到 “1.” 是合法的，就是 1，解法如下</p>
-<p><img src="/.io//image-20220107104456515.png" alt="image-20220107104456515"></p>
+<p><img src="/posts/22819985/image-20220107104456515.png" alt="image-20220107104456515"></p>
 <hr>
 <h2 id="二、集合的运算"><a href="#二、集合的运算" class="headerlink" title="二、集合的运算"></a>二、集合的运算</h2><h3 id="2-1-集合的本质"><a href="#2-1-集合的本质" class="headerlink" title="2.1 集合的本质"></a>2.1 集合的本质</h3><p>虽然在这一章中会涉及很多公式，答案也会有很多天外飞仙的构造式证明。但是我认为，切不可被这些表象蒙蔽了双眼，盲目追逐答案的奇技淫巧，甚至背诵公式以至于背诵答案。</p>
 <p>那么到底什么是集合的本质呢？一个给定的元素是否属于某一个集合，这是集合论中的一个基本问题。元素与集合之间这种<strong>属于关系</strong>（成员关系），是集合中的一个基本关系。那么这个到底怎么应用呢，我觉得可以落实到集合的<strong>抽象定义法</strong>中</p>
@@ -332,7 +332,7 @@ A\cap B \rightarrow P(x)\wedge Q(x)</script><h3 id="2-2-方法的核心"><a href
 <p>这里讲的方法是将一个集合运算与一个命题逻辑表达式映射（原理应该是元素选取的随机性），比如说</p>
 <script type="math/tex; mode=display">
 A\cap B \cap C \rightarrow a\wedge b \wedge c,\quad \sim A \cup C \rightarrow \bar{a}\vee c</script><p>我们去做恒等式的证明的时候，其实就是做命题逻辑的化为<strong>主析取范式</strong>（因为我比较习惯，主合取范式也行），因为主析取范式是唯一的，所以从恒等式两端开始的化简，最后会化成同一个式子。这种思路会大大简化做题难度，比如说这道题：</p>
-<p><img src="/.io//image-20220107105020186.png" alt="image-20220107105020186"></p>
+<p><img src="/posts/22819985/image-20220107105020186.png" alt="image-20220107105020186"></p>
 <p><strong>同一律</strong>就是一种构造手段，一般人是想不出来的，但是如果按照我的方法：</p>
 <script type="math/tex; mode=display">
 A\cap(B\oplus C) \rightarrow a(b\oplus c) = a((b-c)+(c-b)) = ab\bar c +a\bar bc</script><script type="math/tex; mode=display">
@@ -347,7 +347,7 @@ A\subseteq B\Longleftrightarrow A -B = \emptyset</script><p>对于相等关系�
 <script type="math/tex; mode=display">
 A = B \Longleftrightarrow (A-B)\cup(B-A) = A\oplus B = \emptyset</script><p>有了这两个，我们就可以处理另一类题目了，就是<strong>补条件使恒等式成立</strong>，如</p>
 <p>给出充要条件，使 $(A - B)\cup(A-C) = A$</p>
-<p><img src="/.io//image-20220107111226823.png" alt="image-20220107111226823"></p>
+<p><img src="/posts/22819985/image-20220107111226823.png" alt="image-20220107111226823"></p>
 <p>可以看出，答案给出的方法十分难懂，但是如果把两侧都画出来，就会发现有</p>
 <script type="math/tex; mode=display">
 (A - B)\cup(A-C) \rightarrow \{100,101,110\},\quad A\rightarrow\{100,101,110,111\}</script><p>可以看到，A多了111一项，那么就让这项对应的集合为空集就好了，即</p>

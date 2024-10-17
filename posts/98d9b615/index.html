@@ -30,8 +30,8 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、BFS 模板如下所示 set&lt;Node&gt; visited;  bool check(Node son);  int bfs(Node start) {     &#x2F;&#x2F; init     queue&lt;Node&gt; q;     q.push(start);     visited.insert(start);          while (!q.empty())     {">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//KUjKfJ.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//KUjAO0.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/98d9b615/KUjKfJ.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/98d9b615/KUjAO0.png">
 <meta property="article:published_time" content="2023-02-19T10:26:29.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.510Z">
 <meta property="article:author" content="Thysrael">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="S5假期">
 <meta property="article:tag" content="算法设计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//KUjKfJ.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/98d9b615/KUjKfJ.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/98d9b615/">
 
@@ -353,9 +353,9 @@ levels<span class="token punctuation">.</span><span class="token function">find<
 <hr>
 <h2 id="二、双向-BFS"><a href="#二、双向-BFS" class="headerlink" title="二、双向 BFS"></a>二、双向 BFS</h2><p>其思想是，如果 BFS 的起点和终点是可以确定的，那么就分别从起点和终点进行 BFS，最终的判断条件是两棵树是否相交（本质是两个 <code>visited</code> 相交），这样做的好处是可以去掉大量的无用的遍历，同时保有了 BFS 的特性</p>
 <p>单向搜索：</p>
-<p><img src="/.io//KUjKfJ.png" alt="img"></p>
+<p><img src="/posts/98d9b615/KUjKfJ.png" alt="img"></p>
 <p>双向搜索：</p>
-<p><img src="/.io//KUjAO0.png" alt="img"></p>
+<p><img src="/posts/98d9b615/KUjAO0.png" alt="img"></p>
 <p>其在实现上基本上就是普通 BFS 复制一遍，唯一需要注意的就是利用 <code>visit</code> 相交的判断，板子题如下</p>
 <blockquote>
 <h1 id="NOIP2002-提高组-字串变换"><a href="#NOIP2002-提高组-字串变换" class="headerlink" title="[NOIP2002 提高组] 字串变换"></a>[NOIP2002 提高组] 字串变换</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>已知有两个字串 $A,B$ 及一组字串变换的规则（至多 $6$ 个规则），形如：</p>

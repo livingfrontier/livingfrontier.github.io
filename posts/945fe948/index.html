@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、符号查找在编译课中我们学过，符号是编译中的重点，我们必须确保我们的每个符号都是“指向它应当指的地方”。但是在实际工程中，符号分散在多个文件中，可能会出现“符号相同”和“符号查找不到”两种经典的情况，所以每门语言都在尽力解决多个符号的问题，python 也不例外。 一般解决这种问题，都是通过一种加 namespace 的方式解决的，当我们有两个 name 的时候，可以考虑给他们分别一个 name">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230121011113152.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/945fe948/image-20230121011113152.png">
 <meta property="article:published_time" content="2023-01-20T15:57:24.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.637Z">
 <meta property="article:author" content="Thysrael">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="S5假期">
 <meta property="article:tag" content="语言高阶">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20230121011113152.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/945fe948/image-20230121011113152.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/945fe948/">
 
@@ -321,7 +321,7 @@
 <hr>
 <h2 id="三、Python-import"><a href="#三、Python-import" class="headerlink" title="三、Python import"></a>三、Python import</h2><p>在 python 中，对于命名空间，也是和 java 一样，并不显式的使用，而是利用文件和文件夹进行构造。python 认为一个名称空间为一个 module，这个 module 可以表现为一个文件夹，一个 <code>py</code> 文件，一个 <code>so</code> 动态库，什么都行。对于文件夹形式的 <code>module</code> 我们也称它为“包 <code>package</code> ”。所以我们想要指明“包 package1 下的包 package2 的模块 module1 的函数 f” ，就可以写作 <code>package1.package2.module1.f</code>。</p>
 <p>下面我们用例子来描述一下 <code>import</code> 的使用，我们的文件结构如下所示</p>
-<p><img src="/.io//image-20230121011113152.png" alt="image-20230121011113152"></p>
+<p><img src="/posts/945fe948/image-20230121011113152.png" alt="image-20230121011113152"></p>
 <p>当我们想在 <code>main.py</code> 中使用 <code>module3.py</code> 中的函数的时候，可以这样</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> module3
 module3<span class="token punctuation">.</span>print_info<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>

@@ -30,17 +30,17 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="傅里叶变换完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是）的映射。 主要利用的原理是复数的旋转特性，也就是欧拉公式的一个应用">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211227173829361.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211227174910837.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211227175708538.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211227175800383.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227173829361.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227174910837.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227175708538.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227175800383.png">
 <meta property="article:published_time" content="2021-12-27T09:26:03.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.533Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="补充数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20211227173829361.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227173829361.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/5d6f5a0a/">
 
@@ -300,18 +300,18 @@
 <p>主要利用的原理是<strong>复数的旋转特性</strong>，也就是欧拉公式的一个应用</p>
 <span id="more"></span>
 <p>按照<strong>3Blue1Brown</strong>的讲解，傅里叶变换完成的其实是一个将波函数缠绕在通过原点，且垂直于xy平面轴上的过程，也就是这个过程：</p>
-<p><img src="/.io//image-20211227173829361.png" alt="image-20211227173829361"></p>
+<p><img src="/posts/5d6f5a0a/image-20211227173829361.png" alt="image-20211227173829361"></p>
 <p>这其中有两个频率，一个是<strong>3 beats/second</strong>，这是源波函数，是我们变换的操作对象，一个是<strong>1.81 cycles/second</strong> ，这是我们的缠绕频率（也就是我们我们每秒将图像绕轴几圈）。右侧的图像是这个缠绕的图像的质心的x轴（如果曲线有质量的话）。</p>
 <p>如果是一般的缠绕频率，可以看出一般缠绕图像就是挺对称的，所以质心一般就在原点附近，但是当缠绕频率等于原来波函数的频率的时候，就会呈现下面这种图像：</p>
-<p><img src="/.io//image-20211227174910837.png" alt="image-20211227174910837"></p>
+<p><img src="/posts/5d6f5a0a/image-20211227174910837.png" alt="image-20211227174910837"></p>
 <p>可以看出，因为频率恰好相等，所以缠绕的图像变得特别规整（也就是不再弥散的对称了）。此时质心会有一个明显的偏移。</p>
 <p>傅里叶变换的目的是把不同的波分开（有点像<strong>傅里叶展开</strong>了），所以如果在右下侧图刚好对应一个峰，那么就说明有一个这样频率的波在合成的波形中。也就是这样：</p>
-<p><img src="/.io//image-20211227175708538.png" alt="image-20211227175708538"></p>
+<p><img src="/posts/5d6f5a0a/image-20211227175708538.png" alt="image-20211227175708538"></p>
 <p>可以看到，合成波被分开了。</p>
 <p>关于这种旋转的具体实现，我们用的是复数，原理如下：</p>
 <script type="math/tex; mode=display">
 \hat{g(f)} = \int^{+\infty}_{-\infty}g(t)e^{-2\pi ift}dt</script><p>其中 $e^{-2\pi ift}$ 起到了<strong>旋转</strong>的作用，而积分则是对质心的模拟。</p>
-<p><img src="/.io//image-20211227175800383.png" alt="image-20211227175800383"></p>
+<p><img src="/posts/5d6f5a0a/image-20211227175800383.png" alt="image-20211227175800383"></p>
 
     </div>
 

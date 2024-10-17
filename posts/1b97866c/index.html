@@ -30,15 +30,15 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="斯特林数感觉已经偏向于动态规划求解了，是一个很漂亮的组合数学，本来这一部分应该关于生成函数的介绍，但是因为没时间了，所以就鸽了。 在这个博文里，不仅介绍斯特林数，还介绍了对组合数学的一种普遍处理。所以还是有很好的参考意义的。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107212352249.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107202557296.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/1b97866c/image-20220107212352249.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/1b97866c/image-20220107202557296.png">
 <meta property="article:published_time" content="2022-01-07T12:20:48.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.560Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="补充数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220107212352249.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/1b97866c/image-20220107212352249.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/1b97866c/">
 
@@ -300,7 +300,7 @@
 <h2 id="一、第二类斯特林数"><a href="#一、第二类斯特林数" class="headerlink" title="一、第二类斯特林数"></a>一、第二类斯特林数</h2><p>第二类斯特林数记作 $S(n, m)$​，意思是把含有n个元素的集合秩为m的划分的个数，如果更加形象一点，就是把n个球丢入m个不加区分的盒子里，并且每个盒子不能为空的方法数。</p>
 <p>这个是可以用<strong>容斥原理</strong>求出通项的，容斥原理是为了计算<strong>一个并集中元素</strong>的多少，每个组成并集的集合有一条性质来描述，不同的性质之间可能会重合（也就是集合的交不为空集），但是容斥原理可以在重合的条件下很好的计算出元素的个数（也就是这些元素可以满足其中的至少一条性质）。当我们应用容斥原理的时候，有两种用法：一种是求并集性质，也就是所有性质都要满足，这个其实比较反人类，因为一般性质越复杂，计数越简单，所以通常不予考虑（但是这是公式的描述）。另一种是求交集的性质，那么就是在等式两端移项了。</p>
 <p>对于这道题来说，我们用的是<strong>广义容斥原理</strong>（我其实也不知道是不是），我们写个公式</p>
-<p><img src="/.io//image-20220107212352249.png" alt="image-20220107212352249"></p>
+<p><img src="/posts/1b97866c/image-20220107212352249.png" alt="image-20220107212352249"></p>
 <p>也就是说，我们思考的问题由0个盒子没有被放满，转换为求解至少一个盒子没被放满，至少两个盒子没被放满，至少三个盒子没被放满……</p>
 <p>我们可以这样思考，这个数，就是n个球，扔进m个有区分的盒子里的数量（全集数量），减去“n个球，扔进m-1个有区分的盒子里（至少1个盒子中没有球）”的数量，加上“n个球，扔进m-2个有区分的盒子里（至少2个盒子没有球）”的数量，写成通项，就是</p>
 <script type="math/tex; mode=display">
@@ -316,7 +316,7 @@ S(n+1,m)=S(n,m-1)+m\times S(n,m)</script><p>有了状态转移方程，还需要
 <script type="math/tex; mode=display">
 C^{m}_{n+1} = C_n^{m-1} + C_n^{m}</script><p>其实Pascal三角形就是适用于所有在(n+1, m)（底）,(n, m - 1)（左肩）, (n, m)（右肩）间建立关系的递推式。</p>
 <p>故其三角形为</p>
-<p><img src="/.io//image-20220107202557296.png" alt="image-20220107202557296"></p>
+<p><img src="/posts/1b97866c/image-20220107202557296.png" alt="image-20220107202557296"></p>
 <hr>
 <h3 id="三、贝尔数"><a href="#三、贝尔数" class="headerlink" title="三、贝尔数"></a>三、贝尔数</h3><p>贝尔数是元素为n的集合的能形成划分的总数目，不难想，贝尔数就是对第二类斯特林数的求和，有</p>
 <script type="math/tex; mode=display">

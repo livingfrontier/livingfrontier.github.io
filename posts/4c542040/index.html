@@ -30,19 +30,19 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、总论1.1 关于需求我认为，在P7，我们设计的最终目的是实现一个看上去像单周期CPU的、具有反馈控制接口的流水线CPU。如果再将目标细化一些，那么就是两个小目标，那就是：  从外部（也就是软件程序开发者）看，流水线CPU被封装成了单周期CPU CPU可以为外部提供反馈信息，并且可以让外部根据反馈信息进而更改CPU的运行状态（整个过程叫做反馈，实现了这个功能的CPU具有了软硬件交互接口）  其中">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211214101033952.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211214112709072.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211214162515250.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211214162829846.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211214201334968.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211214201353733.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4c542040/image-20211214101033952.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4c542040/image-20211214112709072.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4c542040/image-20211214162515250.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4c542040/image-20211214162829846.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4c542040/image-20211214201334968.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4c542040/image-20211214201353733.png">
 <meta property="article:published_time" content="2022-01-15T16:51:23.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.577Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20211214101033952.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/4c542040/image-20211214101033952.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/4c542040/">
 
@@ -322,7 +322,7 @@
 <p>我为什么要在一个讲如何搭CPU的博客里讲信号。这是因为只有在有了这个明确的分类，我们才能意识到，我们在实现P7的时候，实现的信号几乎都是以动态信号的考察，实现动态信号比实现静态信号更为复杂，因为动态信号更加<strong>考验逻辑</strong>，静态信号啥时候像<strong>AT法</strong>那么难理解了。但是AT法还是有明确教程的提醒，大家不至于放松警惕，而P7教程的短小和实现的自由，很容易让人忽略这个点，比如说很多人（包括我）没有意识到各个清空信号的优先级问题（就是那个著名的<strong>缺少中断6/10</strong>）。如果在设计之初，就可以意识到这个事情，那么就不会粗心大意了。</p>
 <h3 id="1-5-关于中断"><a href="#1-5-关于中断" class="headerlink" title="1.5 关于中断"></a>1.5 关于中断</h3><p>先明确一下本文的各个概念（只是约定，为了概念没有被混淆），不正常的情况分为两种：<strong>内部异常</strong>和<strong>外部中断</strong>，<strong>外部中断</strong>包括<strong>计时器中断</strong>和<strong>tb中断</strong>，所有不正常的情况都会导致CPU进入<strong>中断</strong>，也就是异常处理程序。我在整篇文章都会只用这几个概念：<strong>内部异常、外部中断、计时器中断、tb中断、中断</strong>。每个概念都不会有别的意思，也不会与其他概念混淆。</p>
 <p>中断其实与过程（函数）调用极其相似，在《深入理解计算机系统》这本书中，说“中断就是不确定发生位置的过程调用。”我觉得是一个很好的类比。当发生中断的时候，就好像一个函数调用一样，会跳到一个固定的位置0x4180（仅是我们的CPU），然后开始一系列指令，最后用eret返回（就好像jr一样）。然后经过这个函数，我们就可以重新执行原来的程序了。</p>
-<p><img src="/.io//image-20211214101033952.png" alt="image-20211214101033952"></p>
+<p><img src="/posts/4c542040/image-20211214101033952.png" alt="image-20211214101033952"></p>
 <p>可以看到和函数调用具有很多的相似性。但是同时也应该意识到，正是因为发生中断的位置是无法确定的，所以要想将中断封装成<strong>单周期CPU</strong>，是有很大的难度的。</p>
 <h3 id="1-6-关于实现"><a href="#1-6-关于实现" class="headerlink" title="1.6 关于实现"></a>1.6 关于实现</h3><p>首先要强调，P7是很花费时间的，我是从上周开始做准备，看各种资料，从上周五开始写代码，写了周五一天，周六一天，周日晚饭前写完了，然后开始做测试，debug，要是没有先是两位最彪悍的头脑帮我肉眼debug，然后另一个彪悍的头脑给出了彪悍的数据，我是不可能在周日晚上11点de完的，而这之后，为了保证CPU没啥大问题，我又进行了周一晚七点到十一点的对拍，然后现在在写我的设计文档。虽然我确实手慢脑子笨，但是也不得不说，P7挺花时间的。</p>
 <p>吴佬给出了一个实现顺序是先CP0，然后桥，然后计时器。我当时就是按照这个顺序走的，但是效果不太好。原因是正如前文阐述，P7的难点不在模块的实现，而是在<strong>封装和接口</strong>的设计，就好像P5的难点不在于流水线寄存器该咋写，而是在转发和阻塞逻辑的设计。所以我觉得应该先设计中断相关，不需要设计任何模块，就可以完成这个设计，只需要假定自己已经有了一个信号Req，是中断信号，只要这个信号置1，就会中断就能完成大部分设计。</p>
@@ -728,7 +728,7 @@
 <span class="token keyword">endmodule</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>还有一个坑点是Count是只读的，所以如果storeCount寄存器，会异常，我也不知道为啥没有注意到。</p>
 <p>状态图如下</p>
-<p><img src="/.io//image-20211214112709072.png" alt="image-20211214112709072"></p>
+<p><img src="/posts/4c542040/image-20211214112709072.png" alt="image-20211214112709072"></p>
 <p>在模式0下：当计数器倒计数为 0 后，计数器停止计数，此时控制寄存器中的使能 Enable 自动变为 0。当使能 Enable 被设置为 1 后，初值寄存器值再次被加载至计数器， 计数器重新启动倒计数。 模式 0 通常用于产生定时中断。例如，为操作系统的时间片调度机制提供定 时。模式 0 下的中断信号将持续有效，直至控制寄存器中的中断屏蔽位被设置为 0。</p>
 <p>在模式1下：当计数器倒计数为 0 后，初值寄存器值被自动加载至计数器，计数器继续倒 计数。 模式 1 通常用于产生周期性脉冲。例如，可以用模式 1 产生步进电机所需的 步进控制信号。不同于模式 0，模式 1 下计数器每次计数循环中只产生一周期的中断信号。</p>
 <p>模式0计时结束后，一直保持中断，直到en或IM被修改，模式1计时结束后，中断一个周期，再重新计数。可以理解为中断保持的逻辑不同。</p>
@@ -1191,7 +1191,7 @@
 <span class="token keyword">assign</span> m_data_addr <span class="token operator">=</span> <span class="token punctuation">(</span>tbReq<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token number">32'h7f20</span> <span class="token punctuation">:</span> DMAdd<span class="token punctuation">;</span>
 <span class="token keyword">assign</span> m_data_byteen <span class="token operator">=</span> <span class="token punctuation">(</span>tbReq<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token number">4'b1111</span> <span class="token punctuation">:</span> DMByteEn<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后你就会发现，这个方法行不通，这是因为tbReq在下降沿产生，但是到了下一个上升沿，因为进入中断，所以EXL置1，所以tbReq就为0了，但是tb中的interrupt需要在下降沿检测这个信号，所以下降沿就发现tbReq为0，所以就没办法复位为0了，具体波形图如下</p>
-<p><img src="/.io//image-20211214162515250.png" alt="image-20211214162515250"></p>
+<p><img src="/posts/4c542040/image-20211214162515250.png" alt="image-20211214162515250"></p>
 <p>可以看到tbReq只维持了半个周期，所以为了延长tbReq的输出，我们做一个寄存器来延缓一个周期，具体写法如下</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token comment">//为了处理测试约定</span>
 <span class="token keyword">initial</span> <span class="token keyword">begin</span>
@@ -1205,7 +1205,7 @@
 <span class="token keyword">assign</span> m_data_addr <span class="token operator">=</span> <span class="token punctuation">(</span>tmpTbReq<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token number">32'h7f20</span> <span class="token punctuation">:</span> DMAdd<span class="token punctuation">;</span>
 <span class="token keyword">assign</span> m_data_byteen <span class="token operator">=</span> <span class="token punctuation">(</span>tmpTbReq<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token number">4'b1111</span> <span class="token punctuation">:</span> DMByteEn<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后就可以看到合乎情理的波形图了（因为用的是杰哥的图，所以它的寄存器的名字叫Req，等价于代码里的tmpTbReq）：</p>
-<p><img src="/.io//image-20211214162829846.png" alt="image-20211214162829846"></p>
+<p><img src="/posts/4c542040/image-20211214162829846.png" alt="image-20211214162829846"></p>
 <h3 id="4-3-外部中断的类型"><a href="#4-3-外部中断的类型" class="headerlink" title="4.3 外部中断的类型"></a>4.3 外部中断的类型</h3><p>外部中断的特殊之处就在于它可以发生在任何一条指令上，所以比内部异常限制了指令的类别，外部中断更加自由。其难度或者说要点主要体现在：</p>
 <ul>
 <li>对于任何一条被中断的指令，他的功能，无论是写寄存器，还是写主存，还是跳转，都不能发挥作用</li>
@@ -2203,9 +2203,9 @@ end:
 <h3 id="10-3-请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态转移图。"><a href="#10-3-请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态转移图。" class="headerlink" title="10.3 请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态转移图。"></a>10.3 请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态转移图。</h3><p>中断模式0：将计数器写使能变为0，并且保持中断信号持续有效，直到计数器写使能为1。该模式通常用于定时中断。</p>
 <p>中断模式1：只保持一周期的中断信号，并重新载入计数器初值，再次<strong>倒计时</strong>。该模式通常用于产生周期性脉冲。</p>
 <p>模式0：</p>
-<p><img src="/.io//image-20211214201334968.png" alt="image-20211214201334968"></p>
+<p><img src="/posts/4c542040/image-20211214201334968.png" alt="image-20211214201334968"></p>
 <p>模式1：</p>
-<p><img src="/.io//image-20211214201353733.png" alt="image-20211214201353733"></p>
+<p><img src="/posts/4c542040/image-20211214201353733.png" alt="image-20211214201353733"></p>
 <h3 id="10-4-请开发一个主程序以及定时器的-exception-handler。整个系统完成如下功能："><a href="#10-4-请开发一个主程序以及定时器的-exception-handler。整个系统完成如下功能：" class="headerlink" title="10.4 请开发一个主程序以及定时器的 exception handler。整个系统完成如下功能："></a>10.4 请开发一个主程序以及定时器的 exception handler。整个系统完成如下功能：</h3><p>（1）定时器在主程序中被初始化为模式 0；</p>
 <p>（2）定时器倒计数至 0 产生中断；</p>
 <p>（3）handler 设置使能 Enable 为 1 从而再次启动定时器的计数器。(2) 及 (3) 被无限重复</p>

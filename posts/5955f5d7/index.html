@@ -30,10 +30,10 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、个人感受1.1 权衡在我写这份报告的时候，已经是 6 月 30 号了，经历了一个学期的“折磨”，我面对终点，已经没啥感觉了，就想着赶快呼噜完了就完事了。其实做这个项目最大的体会就是“人力有穷，一切皆权衡”。我当时选择这个项目，其实就两个原因：  做出来贼装逼 据说可以从中体会很多知识  现在看来，确实这两点都达到了，对于装逼层面而言，确实只要跟人提起“我是做移植操作系统”的，基本上就没人可以在">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220722173841563.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220704012304596.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220704012312475.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220704012243222.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5955f5d7/image-20220722173841563.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5955f5d7/image-20220704012304596.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5955f5d7/image-20220704012312475.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5955f5d7/image-20220704012243222.png">
 <meta property="article:published_time" content="2022-07-03T17:12:11.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.277Z">
 <meta property="article:author" content="Thysrael">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220722173841563.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/5955f5d7/image-20220722173841563.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/5955f5d7/">
 
@@ -358,7 +358,7 @@
 <hr>
 <h2 id="二、Aarch64-汇编"><a href="#二、Aarch64-汇编" class="headerlink" title="二、Aarch64 汇编"></a>二、Aarch64 汇编</h2><h3 id="2-1-学习资料"><a href="#2-1-学习资料" class="headerlink" title="2.1 学习资料"></a>2.1 学习资料</h3><p>这里简要介绍一下。我们使用的是 armv8 的 A64 指令集（Aarch64 叫执行模式，总是就是一种 64 位的东西），是一种 64 位的指令集（armv8 还支持其他的模式，比如 32 位的 A32）。</p>
 <p>汇编学习官方提供的就是文档，但是众所周知，文档太难了。所以这里安利这本书，可以对于汇编还有异常处理体系有一个初步的了解。如下</p>
-<p><img src="/.io//image-20220722173841563.png" alt="image-20220722173841563"></p>
+<p><img src="/posts/5955f5d7/image-20220722173841563.png" alt="image-20220722173841563"></p>
 <h3 id="2-2-寄存器"><a href="#2-2-寄存器" class="headerlink" title="2.2 寄存器"></a>2.2 寄存器</h3><h4 id="2-2-1-通用寄存器"><a href="#2-2-1-通用寄存器" class="headerlink" title="2.2.1 通用寄存器"></a>2.2.1 通用寄存器</h4><h5 id="2-2-1-1-函数-ABI"><a href="#2-2-1-1-函数-ABI" class="headerlink" title="2.2.1.1 函数 ABI"></a>2.2.1.1 函数 ABI</h5><p>通用寄存器 x0 ~ x7 是传参寄存器，只要函数的参数少于等于 8 个，那么都会通过这些这些寄存器来传递，第一个参数会被写入 x0，第二个参数写入 x1，以此类推。</p>
 <p>同时，对于返回值，我们也是存储在 x0 中的，也就是说，x0 在函数中有两个作用，一个是传递第一个参数，一个是传递返回值。</p>
 <p>对于函数的返回地址会存在 x30 中，类似与 mips 中的 ra。</p>
@@ -620,9 +620,9 @@ clear_loop:
 </blockquote>
 <hr>
 <h2 id="Lab-2"><a href="#Lab-2" class="headerlink" title="Lab 2"></a>Lab 2</h2><h3 id="内存地址布局"><a href="#内存地址布局" class="headerlink" title="内存地址布局"></a>内存地址布局</h3><p>内核的地址布局：</p>
-<p><img src="/.io//image-20220704012304596.png" alt="image-20220704012304596"></p>
+<p><img src="/posts/5955f5d7/image-20220704012304596.png" alt="image-20220704012304596"></p>
 <p>用户进程的地址布局</p>
-<p><img src="/.io//image-20220704012312475.png" alt="image-20220704012312475"></p>
+<p><img src="/posts/5955f5d7/image-20220704012312475.png" alt="image-20220704012312475"></p>
 <h3 id="Arm-的地址映射与重定向"><a href="#Arm-的地址映射与重定向" class="headerlink" title="Arm 的地址映射与重定向"></a>Arm 的地址映射与重定向</h3><p>与 MOS 在高地址区提供直接映射不同，Arm 并不提供直接的虚拟地址到物理地址的映射，所有的映射都需要依靠页表进行，同时地址映射是一个硬件过程，相比于 MOS 在 TLB 中找不到就触发异常，然后软件查表，Arm 只需要页目录的物理地址即可自动完成查找，报异常的原因是页表项权限位错误，异常处理只需要修改页表项即可。</p>
 <p>但是因为没有原生的直接映射，所以在开启 MMU 之前，只能使用物理地址，这里我们做出创新，利用汇编指令的相对寻址，避免了在开启 MMU 之前访问高地址区，在开启 MMU 之后，重新将 <code>PC</code> 重定位到高地址，解决了 <code>bootloader</code> 的难题</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">en_mmu:
@@ -1213,7 +1213,7 @@ msr sp_el0,		x16			// wrong<span aria-hidden="true" class="line-numbers-rows"><s
 <p>Emmc是一个通用性比较强的flash memory控制传输协议,其具体内容非常复杂.有一大部分比较通用的emmc协议,其实是借助spi的接口实现的,而这种实现的控制也会比较复杂.好在树莓派的soc内部,提供了EMMC的控制器,可以通过soc的总线读写EMMC控制器的寄存器,实现对树莓派上sd卡/emmc闪存的读写.</p>
 <p>具体关于树莓派的EMMC控制器信息,树莓派3使用的是BCM2837 soc, 我并没有找到这款soc的手册(BCM2837 ARM Peripherals), 但根据树莓派论坛上获得的信息,BCM283X系列的soc,使用的EMMC控制器都是相同的,区别只在于其MMIO映射的基址不同.于是我查看了BCM2835的手册<code>https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf</code></p>
 <p>在手册中,可以知道,BCM283X系列EMMC控制器相关控制寄存器的mmio偏移地址. (BCM2835-ARM-Peripherals Pages 66)</p>
-<p><img src="/.io//image-20220704012243222.png" alt="image-20220704012243222"></p>
+<p><img src="/posts/5955f5d7/image-20220704012243222.png" alt="image-20220704012243222"></p>
 <p>BCM2837与BCM2835的差别还在于MMIO的基准地址. BCM2835的mmio基地址为0x7E000000,而BCM2837的则为0x3F000000. 故BCM2837控制Emmc控制器的基准地址是在0x3F300000.我们只需要这一点就可以完成EMMC驱动的适配.</p>
 <p>虽然EMMC控制器大幅度减少了控制的复杂性,但EMMC的控制复杂度依然超高,很难短时间完成.因此,我们使用了针对树莓派1(BCM2835)开发的emmc驱动,并进行了简单的移植,使其能在树莓派3上正常的工作.(来源<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jncronin/rpi-boot">https://github.com/jncronin/rpi-boot</a>)</p>
 <p>(相关代码在drivers/emmc.c中)</p>

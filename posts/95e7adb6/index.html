@@ -30,12 +30,12 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="有些东西可能是离散数学这门学科的通病。相比于高数或者线代，有一定在物理上的应用场景，而且其精神，比如说无穷，比如说代数系统，很容易被理解，而且很容易为我所用。离散这门学科没有一个中心，没有一个明确的思想（也可能是我没有发现），没有具体的应用场景（可能在算法里有用吧），学科的体系感也不强（可能是我接触的比较浅的缘故）。正因为如此，图论才如此难学，而且我参考了三本书，有的时候三本书对于同一个定义都具有">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107214433063.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107214413075.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220107214858440.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211231171022101.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211231171311191.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211231174139749.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/95e7adb6/image-20220107214433063.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/95e7adb6/image-20220107214413075.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/95e7adb6/image-20220107214858440.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/95e7adb6/image-20211231171022101.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/95e7adb6/image-20211231171311191.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/95e7adb6/image-20211231174139749.png">
 <meta property="article:published_time" content="2021-12-29T09:21:17.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.463Z">
 <meta property="article:author" content="Thysrael">
@@ -43,7 +43,7 @@
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="离散数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220107214433063.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/95e7adb6/image-20220107214433063.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/95e7adb6/">
 
@@ -354,12 +354,12 @@ P = \sum^{n-1}_{i = 1}X^{i}</script><p>这个利用了阶为 n 的图中，基�
 <p>有向图有一条完备回路，当且仅当它是强联通的。</p>
 <h4 id="2-3-2-有向连通分支"><a href="#2-3-2-有向连通分支" class="headerlink" title="2.3.2 有向连通分支"></a>2.3.2 有向连通分支</h4><p>如果对于每一对顶点 $u,v$ ，都可以由 $u$ 到 $v$ ，或者由 $v$ 到 $u$ 。那么，就称这个图是有向连通的。</p>
 <p>有向图有一条完备通路，当且仅当它是有向连通的。</p>
-<p><img src="/.io//image-20220107214433063.png" alt="image-20220107214433063"></p>
+<p><img src="/posts/95e7adb6/image-20220107214433063.png" alt="image-20220107214433063"></p>
 <h4 id="2-3-3-弱连通分支"><a href="#2-3-3-弱连通分支" class="headerlink" title="2.3.3 弱连通分支"></a>2.3.3 弱连通分支</h4><p>当有向图的基础图是连通的，那么这个图就是弱连通的。</p>
 <p>有向图有一条完备的半通路，当且仅当它是弱联通的。</p>
-<p><img src="/.io//image-20220107214413075.png" alt="image-20220107214413075"></p>
+<p><img src="/posts/95e7adb6/image-20220107214413075.png" alt="image-20220107214413075"></p>
 <p>结合出度用到了鸽笼原理</p>
-<p><img src="/.io//image-20220107214858440.png" alt="image-20220107214858440"></p>
+<p><img src="/posts/95e7adb6/image-20220107214858440.png" alt="image-20220107214858440"></p>
 <hr>
 <h2 id="三、穿程问题"><a href="#三、穿程问题" class="headerlink" title="三、穿程问题"></a>三、穿程问题</h2><p>连通性不关注是怎样连通的，只关注是否连通，这是其与穿程问题最明显的区别，穿程问题对于过程的要求较高。如果以解题来举例，那么连通性回答的是可不可解的问题，而穿程问题回答的是怎样求解的问题。</p>
 <h3 id="3-1-欧拉图"><a href="#3-1-欧拉图" class="headerlink" title="3.1 欧拉图"></a>3.1 欧拉图</h3><p>如果每个节点都是偶节点，那么这个图就是欧拉图。注意，这里并没有强调连通性的问题，所以有可能一个欧拉图没有欧拉回路。</p>
@@ -367,9 +367,9 @@ P = \sum^{n-1}_{i = 1}X^{i}</script><p>这个利用了阶为 n 的图中，基�
 <p>设G是非平凡的连通无向图，G是欧拉图当且仅当G是若干个边不相交的回路之并</p>
 <p>G是非平凡的弱连通有向图，G是欧拉有向图，当且仅当G是若干个边不相交的有向回路之并。</p>
 <h3 id="3-2-哈密顿图"><a href="#3-2-哈密顿图" class="headerlink" title="3.2 哈密顿图"></a>3.2 哈密顿图</h3><h4 id="3-2-1-充分条件"><a href="#3-2-1-充分条件" class="headerlink" title="3.2.1 充分条件"></a>3.2.1 充分条件</h4><h5 id="3-2-1-1-基础图为完全图的有向图"><a href="#3-2-1-1-基础图为完全图的有向图" class="headerlink" title="3.2.1.1 基础图为完全图的有向图"></a>3.2.1.1 基础图为完全图的有向图</h5><p>基础图为完全图的有向图必有哈密顿回路</p>
-<p><img src="/.io//image-20211231171022101.png" alt="image-20211231171022101"></p>
+<p><img src="/posts/95e7adb6/image-20211231171022101.png" alt="image-20211231171022101"></p>
 <h5 id="3-2-1-2-欧尔定理"><a href="#3-2-1-2-欧尔定理" class="headerlink" title="3.2.1.2 欧尔定理"></a>3.2.1.2 欧尔定理</h5><p>如果 $G$ 是一个有 $n$ 个顶点的简单图，其中 $n\geq3$ ，并且对 $G$ 中每一对不相邻的顶点 $u,v$ 来说，都有 $d(u)+d(v) \geq n$ 。那么 $G$ 有哈密顿回路。</p>
-<p><img src="/.io//image-20211231171311191.png" alt="image-20211231171311191"></p>
+<p><img src="/posts/95e7adb6/image-20211231171311191.png" alt="image-20211231171311191"></p>
 <h5 id="3-2-1-3-狄拉克定理"><a href="#3-2-1-3-狄拉克定理" class="headerlink" title="3.2.1.3 狄拉克定理"></a>3.2.1.3 狄拉克定理</h5><p>如果 $G$ 是一个有 $n$ 个顶点的简单图，其中 $n\geq3$ ，并且每个顶点的度都至少为 $n/2$ 。那么 $G$ 有哈密顿回路。狄拉克定理可以用欧尔定理推导。</p>
 <h4 id="3-2-2-必要条件"><a href="#3-2-2-必要条件" class="headerlink" title="3.2.2 必要条件"></a>3.2.2 必要条件</h4><h5 id="3-2-2-1-黑白点着色法"><a href="#3-2-2-1-黑白点着色法" class="headerlink" title="3.2.2.1 黑白点着色法"></a>3.2.2.1 黑白点着色法</h5><p>黑白两种颜色给图中的点着色，使相邻点的色不同。只有当图中黑白点的个数相等或者相差为1的时候，才说明可能存在哈密顿回路。  </p>
 <h5 id="3-2-2-2-去边法"><a href="#3-2-2-2-去边法" class="headerlink" title="3.2.2.2 去边法"></a>3.2.2.2 去边法</h5><p>考虑哈密顿回路 $C$， 图中每个结点都恰有两条和它关联的边在 $C$ 上。 因此，可以通过对每个结点去掉“多余的边” 得到。如果不能用这种方法得到，说明一定不存在哈密顿回路。      </p>
@@ -379,7 +379,7 @@ P = \sum^{n-1}_{i = 1}X^{i}</script><p>这个利用了阶为 n 的图中，基�
 <h2 id="四、树"><a href="#四、树" class="headerlink" title="四、树"></a>四、树</h2><p>树之所以重要，是因为它具有非常简单的结构，又具有许多重要的性质。而且大量的图论问题和实际问题最后都可以归结为对树的研究。</p>
 <h3 id="4-1-生成树"><a href="#4-1-生成树" class="headerlink" title="4.1 生成树"></a>4.1 生成树</h3><h4 id="4-1-1-最小生成树"><a href="#4-1-1-最小生成树" class="headerlink" title="4.1.1 最小生成树"></a>4.1.1 最小生成树</h4><h4 id="4-1-2-圈"><a href="#4-1-2-圈" class="headerlink" title="4.1.2 圈"></a>4.1.2 圈</h4><p>圈的概念是紧密与生成树联系在一起的。</p>
 <h3 id="4-2-有向树与有序树"><a href="#4-2-有向树与有序树" class="headerlink" title="4.2 有向树与有序树"></a>4.2 有向树与有序树</h3><h4 id="4-2-1-有向树"><a href="#4-2-1-有向树" class="headerlink" title="4.2.1 有向树"></a>4.2.1 有向树</h4><h4 id="4-2-2-有序树"><a href="#4-2-2-有序树" class="headerlink" title="4.2.2 有序树"></a>4.2.2 有序树</h4><p>关于<strong>有序树</strong>和<strong>定位有序树</strong>的区别，这张图片给出了很好的解释</p>
-<p><img src="/.io//image-20211231174139749.png" alt="image-20211231174139749"></p>
+<p><img src="/posts/95e7adb6/image-20211231174139749.png" alt="image-20211231174139749"></p>
 <h3 id="4-3-二叉树"><a href="#4-3-二叉树" class="headerlink" title="4.3 二叉树"></a>4.3 二叉树</h3><h4 id="4-3-1-n-元有向树"><a href="#4-3-1-n-元有向树" class="headerlink" title="4.3.1 n 元有向树"></a>4.3.1 n 元有向树</h4><p>出度最大为n。</p>
 <h4 id="4-3-2-完全-n-元有向树"><a href="#4-3-2-完全-n-元有向树" class="headerlink" title="4.3.2 完全 n 元有向树"></a>4.3.2 完全 n 元有向树</h4><p>出度要么是n，要么是0。完全 n 元有向树又称<strong>二叉树</strong>。</p>
 <h4 id="4-3-3-最优二叉树"><a href="#4-3-3-最优二叉树" class="headerlink" title="4.3.3 最优二叉树"></a>4.3.3 最优二叉树</h4><p>Huffman编码。</p>

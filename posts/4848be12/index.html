@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、除常数优化的定义对于任何处理器，进行除法计算所需要的时间都远远高于乘法和移位运算（当然这两者也不在一个量级上），所以我们有一种想法，就是把除法转换成乘法和移位操作，也就是  \tt{quotient &#x3D; \frac{dividend}{divisor} &#x3D; (dividend \times multiplier) &gt;&gt; shift}这个式子是一个很容易看懂的式子，不幸的是，这个式子是没有办法直">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220830155012490.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220830155803189.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220830160025971.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4848be12/image-20220830155012490.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4848be12/image-20220830155803189.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/4848be12/image-20220830160025971.png">
 <meta property="article:published_time" content="2022-08-30T03:37:23.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.533Z">
 <meta property="article:author" content="Thysrael">
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="S4假期">
 <meta property="article:tag" content="编译技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220830155012490.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/4848be12/image-20220830155012490.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/4848be12/">
 
@@ -326,17 +326,17 @@
 <h2 id="五、向零取整"><a href="#五、向零取整" class="headerlink" title="五、向零取整"></a>五、向零取整</h2><p>对于有符号数来说，C 语言的特性是这样的，除法是向零取整的，也就是说 <code>3 / 4 = 0, -3 / 4 = 0</code>。但是对于位移来说，是向下取整的，也就是说 <code>3 &gt;&gt; 2 = 0, -3 &gt;&gt; 2 = -1</code>。因为我们用左移代替了除法，所以我们需要对于这里进行一定的修正。一共有两种修正，一种是对于除数是 2 的幂次的情况，那么我们修改被除数：</p>
 <script type="math/tex; mode=display">
 \tt{newDividend = oldDividend + divisor - 1}</script><p>另一种就是除数不为 2 的幂次，对于有符号除法，有如下公式（证明就不列了）</p>
-<p><img src="/.io//image-20220830155012490.png" alt=""></p>
+<p><img src="/posts/4848be12/image-20220830155012490.png" alt=""></p>
 <p>其中 $\tt{TRUNC}$ 是向零取整的意思。</p>
 <hr>
 <h2 id="六、选择-Multiplier-和-Shift"><a href="#六、选择-Multiplier-和-Shift" class="headerlink" title="六、选择 Multiplier 和 Shift"></a>六、选择 Multiplier 和 Shift</h2><p>这就要涉及一些神秘的数学证明了，在证明开始之前，我觉得先说一下咱们需要干啥，现在我们需要根据 <code>divisor</code> 来确定 <code>multiplier</code> 和 <code>shift</code> ，但是显然一个数没法确定两个数，所以我们要挑出 <code>multiplier</code> 和 <code>shift</code>。但是也不能瞎挑，我们要保证我们挑出的东西是可以满足底下这个效果的</p>
 <script type="math/tex; mode=display">
 \tt{\lfloor \frac{dividend}{divisor} \rfloor = \lfloor \frac{dividend \times multiplier}{2 ^ {N + shift}} \rfloor}</script><p>待会要证明的东西就是一个“挑“ 的指导方针，大致是这个</p>
-<p><img src="/.io//image-20220830155803189.png" alt=""></p>
+<p><img src="/posts/4848be12/image-20220830155803189.png" alt=""></p>
 <p>证明就不写了，因为懒，而且背不过。</p>
 <hr>
 <h2 id="七、精度"><a href="#七、精度" class="headerlink" title="七、精度"></a>七、精度</h2><p>待会的源码里还会有精度 <code>precision</code> 的说法，但是我对于这个东西的理解很肤浅，所以就不说了，论文中说的也不多，而且在有符号数里没有太多的用到，大致是这样的</p>
-<p><img src="/.io//image-20220830160025971.png" alt=""></p>
+<p><img src="/posts/4848be12/image-20220830160025971.png" alt=""></p>
 <hr>
 <h2 id="八、源码模拟"><a href="#八、源码模拟" class="headerlink" title="八、源码模拟"></a>八、源码模拟</h2><p>我用 CPP 写了一份有<code>符号数除法</code>的模拟源码，放在这里以供参考</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// div.h</span>

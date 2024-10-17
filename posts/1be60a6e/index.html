@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、基础在 Armv8 的 A32 架构或者 Armv7 及以前的指令集中，每条指令都可以“条件执行”，也就是根据 CPSR 的条件码来确定这条指令是否真的具有执行效果。 比如说如下指令，只有在 CPSR 中 Z 位为 1 的时候，addz 这条指令才有实际效果，这依赖于前一条指令 cmp 对 CPSR 的修改（ARM 同样可以指定是否修改 CPSR，这是通过在指令位中的 S 确定的）。 cmp">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//150003_5d64c652d9-屏幕截图-2022-05-22-165758.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/1be60a6e/150003_5d64c652d9-屏幕截图-2022-05-22-165758.jpg">
 <meta property="article:published_time" content="2024-02-11T14:42:53.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.427Z">
 <meta property="article:author" content="Thysrael">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="S7课上">
 <meta property="article:tag" content="硬件平台">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//150003_5d64c652d9-屏幕截图-2022-05-22-165758.jpg">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/1be60a6e/150003_5d64c652d9-屏幕截图-2022-05-22-165758.jpg">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/1be60a6e/">
 
@@ -299,7 +299,7 @@
 <pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">cmp r4, r5
 addz r1, r2, r3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>MIPS 或者 RISCV 都有条件指令，不过这些条件指令一般是条件指令，这样可以实现编程思想中的分支结构。Arm 的特殊之处在于每条 32 位指令的高 4 位都是条件码，这就会导致每条指令都是条件指令。</p>
-<p><img src="/.io//150003_5d64c652d9-屏幕截图-2022-05-22-165758.jpg" alt="屏幕截图 2022-05-22 165758.jpg"></p>
+<p><img src="/posts/1be60a6e/150003_5d64c652d9-屏幕截图-2022-05-22-165758.jpg" alt="屏幕截图 2022-05-22 165758.jpg"></p>
 <p>条件指令编码如下所示：</p>
 <div class="table-container">
 <table>

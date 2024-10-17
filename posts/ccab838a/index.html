@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="应该说，我们去看随机过程的时候，具有两条线索，一条是纵向来看，即给定事件 $e_0$ ，获得的是样本函数；另一条是横向来看，即给定参数 $t_1$ ，获得是在 $t_1$ 时刻的一个随机变量。我觉得随机变量比较好理解。但是我同时也觉得，对于样本函数要是能有一个更加深入的理解，那么对随机过程的理解才能更上一层楼。 我觉得，样本函数也可以看做一个特殊的随机变量。随机变量的观测值本来应该是一个实数，但是">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//1.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/ccab838a/1.png">
 <meta property="article:published_time" content="2021-12-27T09:04:15.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.407Z">
 <meta property="article:author" content="Thysrael">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="概率统计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//1.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/ccab838a/1.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/ccab838a/">
 
@@ -307,7 +307,7 @@
 <p>​    设有n台性能完全相同的接收机。我们在相同的工作环境和测试条件下记录各台接收机的输出噪声波形（这也可以理解为对一台接收机在一段时间内持续地进行n次观测）。测试结果将表明，尽管设备和测试条件相同，记录的n条曲线中找不到两个完全相同的波形。这就是说，接收机输出的噪声电压随 时间的变化是不可预知的，因而它是一个随机过程。</p>
 </blockquote>
 <p>我觉得上面的话很好的体现了纵切的特点，我们用图再加深一下理解：</p>
-<p><img src="/.io//1.png" alt="1"></p>
+<p><img src="/posts/ccab838a/1.png" alt="1"></p>
 <p>可以视为，每次取样，观测结果都是一个<strong>过程</strong>，而这个过程具有随机性。</p>
 <h3 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2 基本概念"></a>1.2 基本概念</h3><p>对于样本空间中的每个 $e_0$ ，$X(e_0,t)=x(t)$ 是仅依赖于 $t$ 的函数（注意这里是小写，说明是<strong>观测结果</strong>），称为随机过程的样本函数，它是随机过程的一次物理实现或对应 $e_0$ 的轨道。</p>
 <p>对于任意给定的<strong>参数集</strong>中的 $t_1$ ，$X(e,t_1) = X(t_1)$ 是一个随机变量（注意这里是大写，说明依然是一个随机变量），称为随机过程在 $t = t_1$ 时的<strong>状态变量</strong>，简称<strong>状态</strong>。这个用的确实多，在后面马尔科夫链的讨论中，这个也是一个很基本的概念。</p>

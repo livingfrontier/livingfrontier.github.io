@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="数理统计倒逼了概率论的发展。 分布只是分布，他是更为抽象的东西，他描述的是一种连续数据的组织形式，无论这组数据是采集到的样本，还是理论推导的概率。虽然它们已经是某种客观现象的抽象了，但它们依然都是分布的应用。 或许不只是分布，比如说期望，方差或者其他矩，都是更高维度的抽象。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//分位点.jpg">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220103191314910.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220103191346220.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/11bdf502/分位点.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/11bdf502/image-20220103191314910.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/11bdf502/image-20220103191346220.png">
 <meta property="article:published_time" content="2021-12-18T07:55:26.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.403Z">
 <meta property="article:author" content="Thysrael">
@@ -41,7 +41,7 @@
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="概率统计">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//分位点.jpg">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/11bdf502/分位点.jpg">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/11bdf502/">
 
@@ -358,7 +358,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x - \mu)^2}{2\sigma^2}}</script><p
 <script type="math/tex; mode=display">
 F(x) = \Phi(\frac{x - \mu}{\sigma})</script><p>但是光有了这个联系，还是不足以辅助查表，因为在实际的应用中，我们的场景一般是“我要查查沿对称轴分布的区间多宽的时候概率是某个值 $\alpha$” ，所以我们还需要<strong>分位点</strong>（分割位置点）的概念。</p>
 <script type="math/tex; mode=display">
-\Phi(z_{\alpha}) = \alpha\\z_{\alpha} = \Phi^{-1}(\alpha)</script><p><img src="/.io//分位点.jpg" alt=""></p>
+\Phi(z_{\alpha}) = \alpha\\z_{\alpha} = \Phi^{-1}(\alpha)</script><p><img src="/posts/11bdf502/分位点.jpg" alt=""></p>
 <p>可以看到，还是很直观的。但是我们一般采用的是沿对称轴对称的区间，所以下面这个关系同样不能忽略。</p>
 <script type="math/tex; mode=display">
 P(\mid X \mid \leq Z_{1 - \frac{\alpha}{2}}) = 1 - \alpha</script><p>当然，如果说最本质的话，是对任何关于y轴对称分布的分布，其分位点都有如下性质</p>
@@ -384,9 +384,9 @@ P(x = k)=\frac{C_N^kC^{n-k}_M}{C^n_{M+N}}</script><h3 id="3-4-二项分布"><a h
 P(x = k)=C_n^k p^k (1-p)^{n-k}</script><p>称 $X$ 服从参数为n，p 的二项分布，记作 $X \sim B(n,p)$</p>
 <p>二项分布在n很大（大于10），p很小（小于0.1）的时候，可以近似为泊松分布，其中 $\lambda = np$ 。然后就可以借助泊松分布表进行查询了。跟标准化正态分布的处理有异曲同工之处。</p>
 <h3 id="3-5-一个离散型变量分布函数的易错点"><a href="#3-5-一个离散型变量分布函数的易错点" class="headerlink" title="3.5 一个离散型变量分布函数的易错点"></a>3.5 一个离散型变量分布函数的易错点</h3><p>尽管我们在离散型变量中更关注分布律，但是确实他也是有分布函数的，对于这种分布函数，有一个比较重要的点就是它<strong>不连续</strong>，如果不连续的话，那么有的时候就会造成意想不到的错误（尤其是<strong>我们习惯了连续型以后，对端点问题就考察会疏忽一些</strong>），比如</p>
-<p><img src="/.io//image-20220103191314910.png" alt="image-20220103191314910"></p>
+<p><img src="/posts/11bdf502/image-20220103191314910.png" alt="image-20220103191314910"></p>
 <p>此题答案是A，没有C，反例如下</p>
-<p><img src="/.io//image-20220103191346220.png" alt="image-20220103191346220"></p>
+<p><img src="/posts/11bdf502/image-20220103191346220.png" alt="image-20220103191346220"></p>
 
     </div>
 

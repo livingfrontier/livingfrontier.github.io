@@ -30,8 +30,8 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、再次回顾启动流程1.1 stage 1在学 OS 的时候我就已经写过一篇介绍启动流程的文章了，在我忙了一上午以后重新学了一遍，发现其实之前就已经学的十分详细了，属于是自己造自己的轮子了。不过再次回顾，尤其是结合了自己开发操作系统的经验，还是发现很多重点的，所以再来回顾一遍。 首先是关于启动最初，bios，MBR 和 grub 的区别">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//boot.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//systemd.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/16dd6674/boot.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/16dd6674/systemd.png">
 <meta property="article:published_time" content="2023-09-30T10:40:34.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:01.737Z">
 <meta property="article:author" content="Thysrael">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="S7课上">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//boot.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/16dd6674/boot.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/16dd6674/">
 
@@ -297,7 +297,7 @@
       
         <h2 id="一、再次回顾启动流程"><a href="#一、再次回顾启动流程" class="headerlink" title="一、再次回顾启动流程"></a>一、再次回顾启动流程</h2><h3 id="1-1-stage-1"><a href="#1-1-stage-1" class="headerlink" title="1.1 stage 1"></a>1.1 stage 1</h3><p>在学 OS 的时候我就已经写过一篇介绍启动流程的文章了，在我忙了一上午以后重新学了一遍，发现其实之前就已经学的十分详细了，属于是自己造自己的轮子了。不过再次回顾，尤其是结合了自己开发操作系统的经验，还是发现很多重点的，所以再来回顾一遍。</p>
 <p>首先是关于启动最初，bios，MBR 和 grub 的区别</p>
-<p><img src="/.io//boot.png" style="zoom:80%;"></p>
+<p><img src="/posts/16dd6674/boot.png" style="zoom:80%;"></p>
 <p>他仨除了有一个“引导和被引导”的关系，其实在逻辑上还可以区分的更好。</p>
 <p>BIOS 是在 ROM 中保存的，它的读取和执行时一种硬件行为，上电以后会自动读取，所以它是第一个，并不会被引导，只会引导别人。BIOS 可以选择不同的外存设备加载到内存进行启动，也就是选择不同的 MBR。BIOS 在逻辑上被称为固件，同类产品还有 UEFI。BIOS 执行的过程可能叫做 stage1。</p>
 <p>MBR 并不是一个程序，他是外存设备上的一个固定扇区，之所以把他拉出来，是因为它一般作为 GRUB 这样的 bootloader 的一个子模块，其主要原因是 MBR 比较小，没法放下整个 GRUB。</p>
@@ -375,7 +375,7 @@ cpio -idm <span class="token operator">&lt;</span> ./initramfs-5.15-x86_64<span 
 <h2 id="二、启动后"><a href="#二、启动后" class="headerlink" title="二、启动后"></a>二、启动后</h2><p>之前的启动似乎一般侧重于介绍控制权是如何递交到操作系统上就结束了，但是实际上操作系统依然需要启动一些程序，然后才可以将控制权移交给用户。这些程序在 windows 中被称为“服务”（service），在 linux 中被称为“守护进程”（daemon）。</p>
 <p>systemd 就是一个管理这些守护进程的程序，提供对守护进程的管理，评测，日志等功能。之前还有 system V 发挥着和他类似的功能。</p>
 <p>systemd 的整体架构如下</p>
-<p><img src="/.io//systemd.png" alt="img"></p>
+<p><img src="/posts/16dd6674/systemd.png" alt="img"></p>
 <hr>
 <h2 id="三、systemd"><a href="#三、systemd" class="headerlink" title="三、systemd"></a>三、systemd</h2><h3 id="3-1-用户接口"><a href="#3-1-用户接口" class="headerlink" title="3.1 用户接口"></a>3.1 用户接口</h3><p>为了方便管理，systemd 提供了一组用户命令来使用 systemd。</p>
 <p><strong>systemctl</strong></p>

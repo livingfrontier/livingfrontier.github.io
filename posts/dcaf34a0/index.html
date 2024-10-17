@@ -30,9 +30,9 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、块设备外存是一种块设备（block device），是指以固定大小的块（block）为单位进行读写访问的设备。这些设备以块为最小的访问单元，每个块都有一个唯一的地址。我个人理解，可以将一个块设备理解成以 block 为元素的线性数组。 其中 block 大小一般是 512 字节，也被叫作扇区 sector。其实这个大小对于现在的计算机有些太小了，所以往往这些 block 也会聚集成一个更大的单">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20240504174321947.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//v2-1d745e32b36be641322ac90ea9812978_720w.webp">
-<meta property="og:image" content="https://thysrael.github.io/.io//v2-63bc5bc54fda33eef63e5d3102234756_720w.webp">
+<meta property="og:image" content="https://thysrael.github.io/posts/dcaf34a0/image-20240504174321947.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/dcaf34a0/v2-1d745e32b36be641322ac90ea9812978_720w.webp">
+<meta property="og:image" content="https://thysrael.github.io/posts/dcaf34a0/v2-63bc5bc54fda33eef63e5d3102234756_720w.webp">
 <meta property="article:published_time" content="2024-05-04T07:47:22.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.437Z">
 <meta property="article:author" content="Thysrael">
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="S8课上">
 <meta property="article:tag" content="硬件平台">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20240504174321947.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/dcaf34a0/image-20240504174321947.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/dcaf34a0/">
 
@@ -313,7 +313,7 @@
 <p>而为什么需要多个文件系统，就有很多原因了，比如最为朴素的，希望不同的文件属于不同的文件系统，比如 Windows 就希望所有的软件都在 C 盘中安装。而比较高端的，就是因为不同的文件系统具有不同的性质，比如有些不易失，但是速率较慢，而有些速度块，却很易失，所以就需要用多个文件系统来达到权衡。</p>
 <p>分区的实现依赖于分区表，目前有两种格式的分区表，分别是 MBR 分区表和 GPT 分区表，后者可以创建更多的分区，是一种先进的设计。</p>
 <p>我们可以用 <code>fdisk</code> 或者 <code>gparted</code> 对磁盘进行分区，我截了张图，是 Windows 下的分区</p>
-<p><img src="/.io//image-20240504174321947.png" alt="image-20240504174321947"></p>
+<p><img src="/posts/dcaf34a0/image-20240504174321947.png" alt="image-20240504174321947"></p>
 <p>这张图基本上直观地反映了这篇博文的所有知识点。这个磁盘有 6 个分区，其中比较重要的 3 个分区分别是 C，D，E 盘。</p>
 <p>有趣的是，分区和磁盘一样，同样会在 <code>/dev/</code> 文件夹下出现，他们的命名格式就是原本的磁盘名字加上数字编号（或者一些其他类似的后缀），当我们使用 <code>lsblk</code> 命令时，会清楚得发现这个关系，如下所示：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ lsblk
@@ -344,9 +344,9 @@ nvme0n1     <span class="token number">259</span>:7    <span class="token number
 <h2 id="四、挂载"><a href="#四、挂载" class="headerlink" title="四、挂载"></a>四、挂载</h2><p>那么如何让一个外存上的文件系统转变成我们常见的<strong>前端文件系统</strong>呢？是通过挂载 mount 。</p>
 <p>挂载指的是在原有的前端文件系统中找到一个目录（也被称为挂载点），然后让 OS 解析外存文件系统，并将其根节点放到挂载点上的过程。之后我们就可以通过访问挂载点下的文件树，来访问实际的文件系统了。</p>
 <p>示意图如下：</p>
-<p><img src="/.io//v2-1d745e32b36be641322ac90ea9812978_720w.webp" alt="img"></p>
+<p><img src="/posts/dcaf34a0/v2-1d745e32b36be641322ac90ea9812978_720w.webp" alt="img"></p>
 <p>以 <code>/home</code> 为挂载点挂载 partition b，效果如图：</p>
-<p><img src="/.io//v2-63bc5bc54fda33eef63e5d3102234756_720w.webp" alt="img"></p>
+<p><img src="/posts/dcaf34a0/v2-63bc5bc54fda33eef63e5d3102234756_720w.webp" alt="img"></p>
 
     </div>
 

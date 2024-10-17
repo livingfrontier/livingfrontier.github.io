@@ -30,28 +30,28 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="因为笔者鸽了，所以这里的代码就截止到 lab2 了，lab3 和 lab4 的代码在异常处理流那篇文章中有  MOS 源码解读[TOC] boot&#x2F;start.S">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220322172603002.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//VAddr.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//Index.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//pte.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220406211428285.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//list.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//queue.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//queue.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//queue.head.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//pmap.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//2.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//图例.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//allocate.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//kseg0_new.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220407162822077.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//boot_pgdir_walk.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220406211428285.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//tlb.drawio.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//tlb_entry.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220409154810627.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20220409154846877.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//kseg0.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/image-20220322172603002.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/VAddr.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/Index.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/pte.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/image-20220406211428285.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/list.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/queue.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/queue.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/queue.head.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/pmap.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/2.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/图例.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/allocate.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/kseg0_new.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/image-20220407162822077.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/boot_pgdir_walk.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/image-20220406211428285.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/tlb.drawio.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/tlb_entry.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/image-20220409154810627.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/image-20220409154846877.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/597dbeba/kseg0.drawio.png">
 <meta property="article:published_time" content="2022-04-09T11:08:33.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.300Z">
 <meta property="article:author" content="Thysrael">
@@ -60,7 +60,7 @@
 <meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20220322172603002.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/597dbeba/image-20220322172603002.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/597dbeba/">
 
@@ -365,7 +365,7 @@ you can reference the memory layout in the include/mmu.h
 lui		sp, 0x8040
 jal		main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由内存图可以知道，只要把栈指针设置成 <code>0x8040_0000</code> 然后跳到 main 就可以了。设置栈指针是极其有必要的，因为我们后面会调用各种函数，而这些函数存储局部变量的位置就在栈上（下面这幅图画的有些不严谨，栈顶指针应该在栈顶）</p>
-<p><img src="/.io//image-20220322172603002.png" alt="image-20220322172603002"></p>
+<p><img src="/posts/597dbeba/image-20220322172603002.png" alt="image-20220322172603002"></p>
 <p>后面还有一个经典的刻意死循环</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">loop:
 	j		loop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -582,7 +582,7 @@ max <span class="token operator">=</span> dst <span class="token operator">+</sp
 <h4 id="Memory-Constant"><a href="#Memory-Constant" class="headerlink" title="Memory Constant"></a>Memory Constant</h4><p>首先定义了页面的大小，我们知道无论是虚拟页面，还是物理页框，大小都是相同的，我们看到 MIPS 一页的大小是 4 KB。有意思的是，这个宏的名字的意思是 “Byte Per Page”。因为有两个首字母是 P，所以是 2P</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BY2PG</span>		<span class="token expression"><span class="token number">4096</span>		</span><span class="token comment">// bytes to a page</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在虚拟内存管理中，我们采用的是两级页表的方式，我们的第一级页表叫做“Page Dictionary”，一共有 1024 个条目（entry），每个条目都对应一个二级页表。第二级页表叫做“Page Table”，也有 1024 个条目，每个条目对应一个虚拟页。我们的虚拟地址一共是 32 位，呈现如下结构：</p>
-<p><img src="/.io//VAddr.drawio.png" alt="VAddr.drawio"></p>
+<p><img src="/posts/597dbeba/VAddr.drawio.png" alt="VAddr.drawio"></p>
 <p>由此我们知道，一个 page directory entry 对应 1 个 page table，一个 page table 又有 1024 个 Page，一个 Page 的大小是 $2^{12}$ 字节。 所以一个 page directory entry 对应的虚拟地址空间的大小就是 PDMAP。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">PDMAP</span>		<span class="token expression"><span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span>	</span><span class="token comment">// bytes mapped by a page directory entry</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后我们定义了两个偏移量，这两个偏移量可以方便利用位运算求解各种东西。意义见注释</p>
@@ -592,13 +592,13 @@ max <span class="token operator">=</span> dst <span class="token operator">+</sp
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">PDX</span><span class="token expression"><span class="token punctuation">(</span>va<span class="token punctuation">)</span>		<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>u_long<span class="token punctuation">)</span><span class="token punctuation">(</span>va<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&gt;&gt;</span><span class="token number">22</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x03FF</span><span class="token punctuation">)</span></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">PTX</span><span class="token expression"><span class="token punctuation">(</span>va<span class="token punctuation">)</span>		<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>u_long<span class="token punctuation">)</span><span class="token punctuation">(</span>va<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&gt;&gt;</span><span class="token number">12</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x03FF</span><span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>可以用下面的图来表示</p>
-<p><img src="/.io//Index.png" alt="Index"></p>
+<p><img src="/posts/597dbeba/Index.png" alt="Index"></p>
 <h4 id="PTE"><a href="#PTE" class="headerlink" title="PTE"></a>PTE</h4><p><strong>PTE_ADDR</strong></p>
 <p>用于将 pte 前面的物理地址取出来，示意图如下</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">PTE_ADDR</span><span class="token expression"><span class="token punctuation">(</span>pte<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>u_long<span class="token punctuation">)</span><span class="token punctuation">(</span>pte<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token operator">~</span><span class="token number">0xFFF</span><span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/.io//pte.drawio.png" alt="pte.drawio"></p>
+<p><img src="/posts/597dbeba/pte.drawio.png" alt="pte.drawio"></p>
 <p><strong>Page Dictionary/Table Flags</strong></p>
-<p><img src="/.io//image-20220406211428285.png" alt="image-20220406211428285"></p>
+<p><img src="/posts/597dbeba/image-20220406211428285.png" alt="image-20220406211428285"></p>
 <p>所谓的 flag 就是<strong>权限位</strong>，一共有 12 位，可以通过给不同的位置 1 来表示<strong>物理页</strong>的权限，具体解释如下</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">PTE_G</span>			<span class="token expression"><span class="token number">0x0100</span>	</span><span class="token comment">// 0001_0000_0000	Global bit</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">PTE_V</span>			<span class="token expression"><span class="token number">0x0200</span>	</span><span class="token comment">// 0010_0000_0000	Valid bit</span></span>
@@ -683,7 +683,7 @@ typedef u_long Pte;<span aria-hidden="true" class="line-numbers-rows"><span></sp
     <span class="token expression"><span class="token punctuation">}</span><span class="token punctuation">)</span></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="queue-h"><a href="#queue-h" class="headerlink" title="queue.h"></a>queue.h</h3><p>我们用内存管理中的链表举例：</p>
-<p><img src="/.io//list.png" alt="list"></p>
+<p><img src="/posts/597dbeba/list.png" alt="list"></p>
 <h4 id="List-Declare"><a href="#List-Declare" class="headerlink" title="List Declare"></a>List Declare</h4><p><strong>LIST HEAD</strong></p>
 <p>这个宏很有意思，因为它不是会当一个<strong>函数</strong>来使，就是完成某个功能，然后给出一个返回值。它的作用是定义一个结构体，这个结构体是链表的表头。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// this macro define a struct</span>
@@ -708,7 +708,7 @@ typedef u_long Pte;<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">LIST_FIRST</span><span class="token expression"><span class="token punctuation">(</span>head<span class="token punctuation">)</span> 		<span class="token punctuation">(</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token operator">-&gt;</span>lh_first<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>LIST_NEXT</strong></p>
 <p>这个其实跟单向链表那个挺像的，但是就是非得多了一个 <code>field</code> ，这是因为这种结构体把所有的链接指针都分装到了一起，所以不是结构体里面有指针，而是结构体里面有指针结构体，指针结构体里面有指针，所以我们需要用 <code>field</code> 来指定访问哪个指针结构体，比如</p>
-<p><img src="/.io//queue.drawio.png" alt="queue.drawio"></p>
+<p><img src="/posts/597dbeba/queue.drawio.png" alt="queue.drawio"></p>
 <p>我们就需要指定 <code>field = pp_link</code> </p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">LIST_NEXT</span><span class="token expression"><span class="token punctuation">(</span>elm<span class="token punctuation">,</span> field<span class="token punctuation">)</span> 	<span class="token punctuation">(</span><span class="token punctuation">(</span>elm<span class="token punctuation">)</span><span class="token operator">-&gt;</span>field<span class="token punctuation">.</span>le_next<span class="token punctuation">)</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="List-Operate"><a href="#List-Operate" class="headerlink" title="List Operate"></a>List Operate</h4><p>这些操作只要有了上面那张链表的示意图，就是很好理解的。</p>
@@ -828,7 +828,7 @@ typedef u_long Pte;<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <span class="token expression"><span class="token keyword">struct</span> <span class="token class-name">type</span> <span class="token operator">*</span><span class="token operator">*</span>le_prev<span class="token punctuation">;</span>  </span><span class="token comment">/* address of previous next element */</span>  	<span class="token punctuation">\</span>
         <span class="token expression"><span class="token punctuation">}</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>Page</code> 这个结构体可以看做是链表的一个节点，其结构如下</p>
-<p><img src="/.io//queue.drawio.png" alt="queue.drawio"></p>
+<p><img src="/posts/597dbeba/queue.drawio.png" alt="queue.drawio"></p>
 <p>那么 <code>Page</code> 到底是什么，我们说这个东西不是一个页面（显然这个东西没有 4KB 大小），他只是一个记录页面信息的东西，如果说得更确切些，它是一个<strong>记录物理页框信息</strong>的数据结构。他的官方属于叫做<strong>内存控制块</strong>，我们把空闲的内存控制块放进链表中，当我们需要分配物理内存的时候，就取出链表里的一些内存控制块，表示我们占用这些物理内存。</p>
 <p>然后它又定义了一个链表，</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">LIST_HEAD</span><span class="token punctuation">(</span>Page_list<span class="token punctuation">,</span> Page<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -840,9 +840,9 @@ typedef u_long Pte;<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <span class="token expression"><span class="token keyword">struct</span> <span class="token class-name">type</span> <span class="token operator">*</span>lh_first<span class="token punctuation">;</span>  </span><span class="token comment">/* first element */</span>                     	<span class="token punctuation">\</span>
         <span class="token expression"><span class="token punctuation">}</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看出这个链表的表头不是原来的 Page 结构体，而是一个新的结构体，结构如下</p>
-<p><img src="/.io//queue.head.png" alt="queue.head"></p>
+<p><img src="/posts/597dbeba/queue.head.png" alt="queue.head"></p>
 <h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>这里会有一些各种数据结构的转化，这里用一张图总结一下各个数据结构之间的转化关系</p>
-<p><img src="/.io//pmap.drawio.png" alt="pmap.drawio"></p>
+<p><img src="/posts/597dbeba/pmap.drawio.png" alt="pmap.drawio"></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">extern</span> <span class="token keyword">struct</span> <span class="token class-name">Page</span> <span class="token operator">*</span>pages<span class="token punctuation">;</span>
 
 <span class="token keyword">static</span> <span class="token keyword">inline</span> u_long
@@ -909,7 +909,7 @@ Get the Page struct whose physical address is 'pa'.
 <h3 id="asm-h"><a href="#asm-h" class="headerlink" title="asm.h"></a>asm.h</h3><h4 id="stack-frame"><a href="#stack-frame" class="headerlink" title="stack frame"></a>stack frame</h4><p>首先补充一下栈和栈帧的知识：</p>
 <p>我们都知道，汇编一旦发生函数调用的时候，一般就会借助内存中的栈结构，我们在学计组的时候，学习到了栈的操作是通过 <code>$sp</code> 寄存器实现的。当栈指针减小的时候，就相当于分配出一块栈空间。反之，则是栈消减了。我们每调用一个函数（其实不严谨，应该是每一个调用别的函数的函数，即非叶子函数），都需要在栈上开辟出一个栈空间来辅助函数的使用（在调用子函数的时候寄存器需要保存）。其实到这里跟我们计组知识是吻合的。</p>
 <p>但是这样不利于回溯，栈在我们眼里是同质性的，根本分不清子函数和母函数的界限在哪里。所以我们又规定了一个寄存器 <code>$fp</code>，这个寄存器会指向栈帧的第一个字，这样我们就可以回溯了，具体的示意图如下：</p>
-<p><img src="/.io//2.png" alt="img"></p>
+<p><img src="/posts/597dbeba/2.png" alt="img"></p>
 <h4 id="function-declare"><a href="#function-declare" class="headerlink" title="function declare"></a>function declare</h4><p>我们都知道，汇编的函数是用<strong>标签</strong>声明的，函数的结尾会有一个 <code>jr $ra</code> 。就像这样</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">sum:
 #入栈过程
@@ -1319,8 +1319,8 @@ Post-Condition:
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个要结合 <code>tools/scse0_3.lds</code> 理解，<code>scse0_3.lds</code> 的最后一句话声明了一个地址指针 <code>end</code> 它的值就是 <code>0x8040_0000</code>，他代表初始化结束后内核栈的栈顶，我们让 <code>freemem</code> 等于这个值，就说明我们分配的起点就是 <code>0x8040_0000</code>，其实分配虚拟内存空间，就是堆（可能是叫这个名字吧）增长的一个过程。</p>
 <p>然后我们来看一下分配是如何操作的：</p>
-<p><img src="/.io//图例.png" alt="图例"></p>
-<p><img src="/.io//allocate.png" alt="allocate"></p>
+<p><img src="/posts/597dbeba/图例.png" alt="图例"></p>
+<p><img src="/posts/597dbeba/allocate.png" alt="allocate"></p>
 <p>还是很好理解的。</p>
 <p>这个函数只在内存控制块相关数据结构没有建立好之前使用（也就是 pages_init() 之前），当空闲链表的结构建立好了，那么就用 page_alloc() 分配页面。</p>
 <h4 id="mips-vm-init"><a href="#mips-vm-init" class="headerlink" title="mips_vm_init()"></a>mips_vm_init()</h4><p>这个函数还是比较复杂的，我们先来看一下与两级页表相关的部分</p>
@@ -1332,9 +1332,9 @@ Post-Condition:
 	pages <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">Page</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">alloc</span><span class="token punctuation">(</span>npage <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">Page</span><span class="token punctuation">)</span><span class="token punctuation">,</span> BY2PG<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"to memory %x for struct Pages.\n"</span><span class="token punctuation">,</span> freemem<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>分配空间用的是 <code>alloc</code> 函数，而这个函数就是一个在虚拟地址空间上工作的函数，而不是在物理地址空间上工作的函数。这两个语句首先分配出一个虚拟页面来存放第一级页表，然后分配了 <code>npage</code> 个（也就是物理页框的数目）个内存控制块大小的空间来放置 <code>Pages</code> 数组。这些语句完成后的虚拟地址空间如图</p>
-<p><img src="/.io//kseg0_new.png" alt="kseg0_new"></p>
+<p><img src="/posts/597dbeba/kseg0_new.png" alt="kseg0_new"></p>
 <p>这有这样，我们才能在最后的输出上看到如下语句</p>
-<p><img src="/.io//image-20220407162822077.png" alt="image-20220407162822077"></p>
+<p><img src="/posts/597dbeba/image-20220407162822077.png" alt="image-20220407162822077"></p>
 <p>这里涉及一个需要仔细思考的问题，就是对于一个进程来说，他的数据可以存储在哪里？数据其实可以存在三个地方：</p>
 <ul>
 <li>数据段里，这个相当于是静态的，在进程还没有运行的时候就已经存在了，相当于上图的 <code>Kernel Text</code> 中的一部分。在 lab2-extra 中，它让做伙伴系统，但是我当时以为数据只能存储在堆或者栈里，所以一直不敢动笔，实在是哭笑不得。在这个段里存储的数据最大的缺点就是在写程序的时候这部分数据就已经被固定了。这里说的 ”固定“ 不是说就是不能修改的，而是对于数据的规模不能修改，其实就是类似于 C 语言的数组，即使可以修改内容，但是不能修改数组的大小。 </li>
@@ -1504,9 +1504,9 @@ n <span class="token operator">=</span> <span class="token function">ROUND</span
     <span class="token keyword">return</span> pgtable_entry<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个函数可以用如下流程图演示</p>
-<p><img src="/.io//boot_pgdir_walk.drawio.png" alt="boot_pgdir_walk.drawio"></p>
+<p><img src="/posts/597dbeba/boot_pgdir_walk.drawio.png" alt="boot_pgdir_walk.drawio"></p>
 <p>此外，关于二级页表的查找过程，在此补充</p>
-<p><img src="/.io//image-20220406211428285.png" alt="image-20220406211428285"></p>
+<p><img src="/posts/597dbeba/image-20220406211428285.png" alt="image-20220406211428285"></p>
 <h4 id="pgdir-walk"><a href="#pgdir-walk" class="headerlink" title="pgdir_walk()"></a>pgdir_walk()</h4><p>流程基本上与 boot_pgdir_walk() 类似，只有以下区别：</p>
 <ul>
 <li>返回值不再是虚拟地址对应的二级页表项了，而是状态码，0 表示运行成功，其他表示有故障，二级页表项变成指针修改</li>
@@ -1708,13 +1708,13 @@ n <span class="token operator">=</span> <span class="token function">ROUND</span
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="tlb-asm-S"><a href="#tlb-asm-S" class="headerlink" title="tlb_asm.S"></a>tlb_asm.S</h3><h4 id="tlb-out"><a href="#tlb-out" class="headerlink" title="tlb_out()"></a>tlb_out()</h4><p>这个函数主要实现的是给定一个 tlb 需要的键值（即表项的高 32 位），把这个键值对应的表项置 0 （就是 64 位全是 0）。</p>
 <p>首先我们需要弄懂 tlb 的结构，计组认为的 TLB，是长这样的：</p>
-<p><img src="/.io//tlb.drawio.png" alt="tlb.drawio"></p>
+<p><img src="/posts/597dbeba/tlb.drawio.png" alt="tlb.drawio"></p>
 <p>也就是说，TLB 是一个全相连的 cache，既然是全相连，就不由 index 段了。我们用虚拟地址的前 22 位作为 TAG，并行的比较 64 个TLB 的 line，如果 TAG 相等，就说明找到了，反之，这说明没有找到。</p>
 <p>不过这个模型还是有些粗糙的，很多细节并没有说明白。</p>
 <p>在操作系统指导书里提到，tlb 构建了一个映射关系，我简化一下，就是 $VPN\space \rightarrow\space PPN$ 。当然这是对的了，但是这种说法我就弄成了每个 VPN 都会对应一个 PPN，但是其实这种映射关系只有 64 对。而且叫映射似乎就是一下就射过去了，而不是一个并行的比较过程。</p>
 <p>其次就是，我们没有了解具体硬件发生了啥，比如 VPN 是怎样被检索的，被检索到的 PPN 放到了哪里，tlb 缺失以后具体怎么填补。都是没有的。这其实跟协处理器有很大关系。</p>
 <p>在了解协处理器之前，我们先来看一下 tlb 的表项，他比计组版本要复杂一些，我们以 MOS 中 64MB （也就是共有 $2^{14}$ 页 ）的物理内存为例</p>
-<p><img src="/.io//tlb_entry.png" alt="tlb_entry"></p>
+<p><img src="/posts/597dbeba/tlb_entry.png" alt="tlb_entry"></p>
 <p>我们来说明一下这些差别：</p>
 <ul>
 <li>朴素版的 PPN 只有 14 位，是因为物理页框号可以最少用 14 位表示，但是真实版的 PPN 也与 VPN 相同，是 22 位。可能是考虑到不同电脑上内存不同吧，这估计也是 mips_detect_memory() 这个函数的设置。</li>
@@ -1790,8 +1790,8 @@ n <span class="token operator">=</span> <span class="token function">ROUND</span
 <p>这里再说一下各个寄存器的域</p>
 <ul>
 <li>EntryHi，EntryLo 的域与 tlb 表项完全相同</li>
-<li>Index 的域：<img src="/.io//image-20220409154810627.png" alt="image-20220409154810627"></li>
-<li>Random 的域：<img src="/.io//image-20220409154846877.png" alt="image-20220409154846877"></li>
+<li>Index 的域：<img src="/posts/597dbeba/image-20220409154810627.png" alt="image-20220409154810627"></li>
+<li>Random 的域：<img src="/posts/597dbeba/image-20220409154846877.png" alt="image-20220409154846877"></li>
 </ul>
 <p>与 tlb 相关的指令</p>
 <div class="table-container">
@@ -2282,7 +2282,7 @@ fp <span class="token operator">=</span> f<span class="token punctuation">;</spa
   end <span class="token operator">=</span> <span class="token builtin class-name">.</span> <span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们可以根据这个画出一幅图来</p>
-<p><img src="/.io//kseg0.drawio.png" alt="kseg0.drawio"></p>
+<p><img src="/posts/597dbeba/kseg0.drawio.png" alt="kseg0.drawio"></p>
 <p>这个 end 指针会在分配虚拟内存空间的时候用到，这并不奇怪，因为 end 指针刚好是初始化结束后内核栈的栈顶，而内核栈是向下增长的。</p>
 <hr>
 <h2 id="drivers"><a href="#drivers" class="headerlink" title="drivers/"></a>drivers/</h2><h3 id="dev-cons-h"><a href="#dev-cons-h" class="headerlink" title="dev_cons.h"></a>dev_cons.h</h3><p><code>dev_cons.h</code> 中定义了一些外设虚拟地址常量，这些常量会在 <code>console.c</code> 中被用到（从注释角度来看，应该是不止这个文件会用到），下面是源代码</p>

@@ -30,11 +30,11 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、写在前面的话这篇博文的本质不是一篇答案的汇总，HDLBits的题目组织形式是蕴含思想的（就像五三或者衡中的数学卷子），可以看到，虽然大部分前面的题目都谈不上难，但是如果一道一道的做下来，就会有体会，网站的搭建者是希望通过这组题目，来传递一种硬件设计思想。当然，更谦虚的说法是硬件设计思想基础。这篇博文的目的就是通过这些题目，来勉力阐述这种思想。 我写到了FSM章节的一半，其他的都写了，短期内应该">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211026205647699-16423204660301.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211026194446947-16423204939202.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211026194746201-16423204974793.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211026195222334-16423205016684.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20211026195329255-16423205047345.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/fc8b68d4/image-20211026205647699-16423204660301.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/fc8b68d4/image-20211026194446947-16423204939202.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/fc8b68d4/image-20211026194746201-16423204974793.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/fc8b68d4/image-20211026195222334-16423205016684.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/fc8b68d4/image-20211026195329255-16423205047345.png">
 <meta property="article:published_time" content="2022-01-16T08:04:03.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.560Z">
 <meta property="article:author" content="Thysrael">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="S3课上">
 <meta property="article:tag" content="计算机组成">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20211026205647699-16423204660301.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/fc8b68d4/image-20211026205647699-16423204660301.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/fc8b68d4/">
 
@@ -338,7 +338,7 @@
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token punctuation">.</span><span class="token function">clk1</span><span class="token punctuation">(</span>clk2<span class="token punctuation">)</span><span class="token punctuation">,</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>​    第一、我每次都分不清到底clk1和clk2哪个是端口，哪个是激励端，现在知道，加了” .  “的clk1是端口（因为是层次名），而clk2是激励端。</p>
 <p>​    第二、对ISE左侧的继承关系更加清晰，</p>
-<p><img src="/.io//image-20211026205647699-16423204660301.png" alt="image-20211026205647699"></p>
+<p><img src="/posts/fc8b68d4/image-20211026205647699-16423204660301.png" alt="image-20211026205647699"></p>
 <p>​    可以看出，最上层的是<strong>测试平台</strong>，之后是top模块，之后是top模块实例化的各个小模块，即使测试平台并不是一个传统的模块（没法综合）但是它还是有一个名字。</p>
 <p>​    第三、对命名块和生成块的理解加深</p>
 <p>​    命名块应该是为了服务于内部的局部变量的，生成块应该是服务于在其中生成的硬件的，他们必选要名字，我会在下面的一组例题中阐述。</p>
@@ -2026,13 +2026,13 @@ endmodule<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <pre class="line-numbers language-none"><code class="language-none">`timescale 1ns / 1ps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>其中前一个代表<strong>时间单元</strong>是1ns，而后面代表<strong>时间精度</strong>是1ps。需要多一句嘴的是，这里的数值只能是1、10、100，而且时间单元必须大于等于时间精度。我们常用的是前面的<strong>时间单元</strong>，比如我们说#5，指的就是延时五个时间单元，在这个指令下就是延时5ns。</p>
 <p>我们可以通过修改时间单位的值来达到增加仿真总周期的目的，比如我写了一个时钟，一个周期走一秒，默认时只能运行1分多钟，如图</p>
-<p><img src="/.io//image-20211026194446947-16423204939202.png" alt="image-20211026194446947"></p>
+<p><img src="/posts/fc8b68d4/image-20211026194446947-16423204939202.png" alt="image-20211026194446947"></p>
 <p>但是如果我把时间单位修改为1ps，就会发现运行了三个多小时：</p>
-<p><img src="/.io//image-20211026194746201-16423204974793.png" alt="image-20211026194746201"></p>
+<p><img src="/posts/fc8b68d4/image-20211026194746201-16423204974793.png" alt="image-20211026194746201"></p>
 <p>这是因为模拟时间是固定的，单位小的话，周期就多了。但是这个方法不是正途，正确的解决办法是修改这个参数</p>
-<p><img src="/.io//image-20211026195222334-16423205016684.png" alt="image-20211026195222334"></p>
+<p><img src="/posts/fc8b68d4/image-20211026195222334-16423205016684.png" alt="image-20211026195222334"></p>
 <p>然后就可以多仿真几个周期了，像这个我扩大了两倍，可以看到运行了七个多小时</p>
-<p><img src="/.io//image-20211026195329255-16423205047345.png" alt="image-20211026195329255"></p>
+<p><img src="/posts/fc8b68d4/image-20211026195329255-16423205047345.png" alt="image-20211026195329255"></p>
 <h4 id="5-2-3-Shifter-Register"><a href="#5-2-3-Shifter-Register" class="headerlink" title="5.2.3 Shifter Register"></a>5.2.3 Shifter Register</h4><h5 id="5-2-3-1-4-bit-shift-register"><a href="#5-2-3-1-4-bit-shift-register" class="headerlink" title="5.2.3.1 4-bit shift register"></a>5.2.3.1 4-bit shift register</h5><pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">module</span> <span class="token function">top_module</span><span class="token punctuation">(</span>
     <span class="token keyword">input</span> clk<span class="token punctuation">,</span>
     <span class="token keyword">input</span> areset<span class="token punctuation">,</span>  <span class="token comment">// async active-high reset to zero</span>

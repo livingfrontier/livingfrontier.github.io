@@ -30,12 +30,12 @@
 <meta property="og:site_name" content="钟鼓楼">
 <meta property="og:description" content="一、正交矩阵正交矩阵的定义如下  UU^T &#x3D; I$UU^T$ 这种写法虽然看似独特，但是并不是很晦涩的，当我们形容向量 $X$ 与其自身做内积的时候，用的就是 $XX^T$，$UU^T$ 无非是利用“矩阵可以看成向量组”的特性，对于多个向量同时进行内积运算，当  UU^T &#x3D; diag也就是只要结果是一个对角阵，就说明 $U$ 里面的向量彼此之间是正交的（也就是内积结果为 0），而 $UU^T">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230214204303884.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230214212231058.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230214212527089.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230214212537126.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230214212558120.png">
-<meta property="og:image" content="https://thysrael.github.io/.io//image-20230214212841427.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214204303884.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214212231058.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214212527089.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214212537126.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214212558120.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214212841427.png">
 <meta property="article:published_time" content="2023-02-14T11:50:48.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.557Z">
 <meta property="article:author" content="Thysrael">
@@ -43,7 +43,7 @@
 <meta property="article:tag" content="S5假期">
 <meta property="article:tag" content="补充数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/.io//image-20230214204303884.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/e856ecd9/image-20230214204303884.png">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/e856ecd9/">
 
@@ -312,7 +312,7 @@ UU^T = diag</script><p>也就是只要结果是一个对角阵，就说明 $U$ �
 <script type="math/tex; mode=display">
 A = U \Sigma V^T</script><p>其中 $U, V$ 均为酉矩阵，而 $\Sigma$ 矩阵是一个 m x n 的矩阵，除了它的主对角线（满足行号的等于列号）外的元素均为 0，主对角线上元素被称为奇异值，这也是其名字的由来，singular 可以被理解为“单一的”，但是同时也可以被理解为“奇异的”。</p>
 <p>如果画图就是这样的</p>
-<p><img src="/.io//image-20230214204303884.png" alt="image-20230214204303884"></p>
+<p><img src="/posts/e856ecd9/image-20230214204303884.png" alt="image-20230214204303884"></p>
 <p>可以看到，奇异值分解与特征向量分解具有一定的相似性，比如说都需要两个方阵去辅助分解，中间的部分是“分解的精髓”，它暗示了某种原来矩阵的性质，在特征向量分解中，组成中间矩阵的是特征值，而在在奇异值分解中，组成中间矩阵的是奇异值。两者的区别是奇异值分解可以对于非方阵使用。此外特征值之间“并不平等”，有“主特征值”的概念，只需要几个比较有代表性的特征值（说白了就是值更大），就可以很好的代表未分解的矩阵，奇异值也有这个特性。 </p>
 <hr>
 <h2 id="三、分解"><a href="#三、分解" class="headerlink" title="三、分解"></a>三、分解</h2><h3 id="3-1-理论"><a href="#3-1-理论" class="headerlink" title="3.1 理论"></a>3.1 理论</h3><p>首先求解 $U$，其满足方程</p>
@@ -325,15 +325,15 @@ A^TA v = \lambda v</script><p>其本质是对 n x n 的方阵 $A^TA$ <strong>求
 <script type="math/tex; mode=display">
 Av_i = \sigma_i u_i \quad\Rightarrow\quad \sigma_i = Av_i \div u_i</script><p>其中 $Av_i$ 和 $u_i$ 的形状相同，所以是数乘的意思。可以看到，从本质上讲，一个奇异值 $\sigma_i$ ，都会对应一个左奇异值 $u_i$ 和一个右奇异值 $v_i$ 。 </p>
 <p>但是实际上，我们也不用这个方法，因为有推导</p>
-<p><img src="/.io//image-20230214212231058.png" alt="image-20230214212231058"></p>
+<p><img src="/posts/e856ecd9/image-20230214212231058.png" alt="image-20230214212231058"></p>
 <p>所以我们可以考虑直接求出 $A^TA$ 的特征值，然后对每个特征值开方即可。</p>
-<h3 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h3><p><img src="/.io//image-20230214212527089.png" alt="image-20230214212527089"></p>
-<p><img src="/.io//image-20230214212537126.png" alt="image-20230214212537126"></p>
-<p><img src="/.io//image-20230214212558120.png" alt="image-20230214212558120"></p>
+<h3 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h3><p><img src="/posts/e856ecd9/image-20230214212527089.png" alt="image-20230214212527089"></p>
+<p><img src="/posts/e856ecd9/image-20230214212537126.png" alt="image-20230214212537126"></p>
+<p><img src="/posts/e856ecd9/image-20230214212558120.png" alt="image-20230214212558120"></p>
 <hr>
 <h2 id="四、意义"><a href="#四、意义" class="headerlink" title="四、意义"></a>四、意义</h2><p>对于奇异值,它跟我们特征分解中的特征值类似，在奇异值矩阵中也是按照从大到小排列，而且奇异值的减少特别的快，在很多情况下，前 10% 甚至 1% 的奇异值的和就占了全部的奇异值之和的 99% 以上的比例。</p>
 <p>也就是说，我们也可以用最大的 k 个的奇异值和对应的左右奇异向量来近似描述矩阵。</p>
-<p><img src="/.io//image-20230214212841427.png" alt="image-20230214212841427"></p>
+<p><img src="/posts/e856ecd9/image-20230214212841427.png" alt="image-20230214212841427"></p>
 
     </div>
 
