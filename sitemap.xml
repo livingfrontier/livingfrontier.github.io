@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://thysrael.github.io/resource/index.html</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://thysrael.github.io/roam/LICENSE.html</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://thysrael.github.io/posts/94e7864c/</loc>
     
     <lastmod>2024-10-17</lastmod>
@@ -20,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/friends/index.html</loc>
+    <loc>https://thysrael.github.io/categories/index.html</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -38,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/tags/index.html</loc>
+    <loc>https://thysrael.github.io/friends/index.html</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -47,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/categories/index.html</loc>
+    <loc>https://thysrael.github.io/tags/index.html</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -110,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/e7337a74/</loc>
+    <loc>https://thysrael.github.io/posts/4d93d9f0/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -119,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/4d93d9f0/</loc>
+    <loc>https://thysrael.github.io/posts/e7337a74/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -263,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/50c7e0e6/</loc>
+    <loc>https://thysrael.github.io/posts/770a2944/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -272,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/770a2944/</loc>
+    <loc>https://thysrael.github.io/posts/50c7e0e6/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -452,7 +470,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/538b27b7/</loc>
+    <loc>https://thysrael.github.io/posts/bae88282/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -461,7 +479,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/bae88282/</loc>
+    <loc>https://thysrael.github.io/posts/538b27b7/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -830,7 +848,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/ba998857/</loc>
+    <loc>https://thysrael.github.io/posts/d9d8ff0a/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -839,7 +857,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/d9d8ff0a/</loc>
+    <loc>https://thysrael.github.io/posts/ba998857/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -965,7 +983,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/d95cb083/</loc>
+    <loc>https://thysrael.github.io/posts/deea4832/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -974,7 +992,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/deea4832/</loc>
+    <loc>https://thysrael.github.io/posts/d95cb083/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -1424,7 +1442,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/ea36b7db/</loc>
+    <loc>https://thysrael.github.io/posts/5af22558/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -1433,7 +1451,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/5af22558/</loc>
+    <loc>https://thysrael.github.io/posts/ea36b7db/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -1640,7 +1658,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/bb314391/</loc>
+    <loc>https://thysrael.github.io/posts/a860c828/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -1649,7 +1667,7 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/posts/a860c828/</loc>
+    <loc>https://thysrael.github.io/posts/bb314391/</loc>
     
     <lastmod>2024-10-17</lastmod>
     
@@ -1688,15 +1706,6 @@
     <loc>https://thysrael.github.io/posts/582ee379/</loc>
     
     <lastmod>2024-10-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://thysrael.github.io/resource/index.html</loc>
-    
-    <lastmod>2024-10-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1901,6 +1910,13 @@
   </url>
   
   <url>
+    <loc>https://thysrael.github.io/tags/%E6%B5%81%E6%B5%AA%E9%95%BF%E5%AE%89/</loc>
+    <lastmod>2024-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://thysrael.github.io/tags/%E6%B5%81%E6%B5%AA%E8%B4%B5%E9%98%B3/</loc>
     <lastmod>2024-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1909,13 +1925,6 @@
   
   <url>
     <loc>https://thysrael.github.io/tags/S7%E5%81%87%E6%9C%9F/</loc>
-    <lastmod>2024-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://thysrael.github.io/tags/%E6%B5%81%E6%B5%AA%E9%95%BF%E5%AE%89/</loc>
     <lastmod>2024-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

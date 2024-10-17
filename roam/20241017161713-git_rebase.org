@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       d420ddad-8a9b-4b2a-bb88-07882f0c85da
+:END:
+#+title: Git Rebase
+
+* 原理
+~git rebase~ 的原理如图：
+
+[[file:img/clipboard-20241017T161753.png]]
+
+~git rebase~ 的指令格式如下：
+
+#+begin_src shell
+git rebase [commit]
+#+end_src
+
+一般而言，我们在 ~feature~ 分支上执行 ~git rebase master~ ，这样我们就会先找出 ~feature~ 和 ~master~ 的共同祖先 ~base~ ，然后将 ~feature~ 与 ~base~ 的不同都重新提交（重播，replay）到 ~master~ 上。这种过程看上去就像 ~feature~ 的所有工作的基（原本是 ~base~ ）变成了 ~master~ ，是为“变基”。示意图如下：
+
+[[file:img/rebase-example.gif]]
+
+因为 ~git rebase~ 的 *“重播”* 特性，所以我们常常在重播过程中整一些花活，比如说压缩多个 commit ，或者删除一些 commit 。
+
+* Pull Conflict
+我们 ~git pull --rebase~ 时，本质上是先用 ~git fetch~ 更新 ~origin~ 标签，然后再在 ~local~ 分支上执行 ~git rebase origin~ 的命令。相当于我们将不同于 ~origin~ 的本地工作都重播到 ~origin~ 上。
+
+当然只要是 ~pull~ ，就会有冲突，对于 ~git merge~ 来说，处理冲突就是将冲突解决后形成一个新的 commit 即可：
+
+#+begin_src shell
+git add [conflict-file]
+git commit -m "conflict-solved"
+#+end_src
+
+而对于 ~git rebase~ 来说，并不需要形成一个新的 ~commit~ ，只需要进行如下命令即可：
+
+#+begin_src shell
+git add [conflict-file]
+git rebase --continue
+#+end_src
+
+为什么这里的修改不需要形成一个新的 commit 了？因为 ~rebase~ 重播的过程就是形成一个个 commit 的过程，当有一个 commit 无法形成的时候，那么就会冲突，重播就会停下，我们将冲突修复并 ~add~ 后，自然就可以用 ~--continue~ 命令让它继续重播下去了。

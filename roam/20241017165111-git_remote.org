@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       0ab31a16-fa0c-4f7e-b9d5-54ff23ff98ee
+:END:
+#+title: Git Remote
+
+* Origin 的变化
+Remote 在本地常常表示为 ~origin~ 标签（当然可能还有别的名字），我们通过比较 ~origin/main~ 和 ~main~ 差别，就可以判断本地工作和远端工作的进度对比。我很感兴趣 ~origin~ 是什么时候更新的。
+
+其实 ~origin~ 只在 ~git fetch~ 和 ~git push~ 的时候移动，而在 ~merge~ 和 ~rebase~ 的时候并不移动。
+
+* Upstream 和 PushStream 
+简单说，就是 upstream 是拉取代码的分支，而 pushstream 是推送代码的分支。
+
+之所以要区分这两个分支，是因为我们在提 pr 的时候，upstream 是原作者的库，而 pushstream 是我们 fork 的库。
