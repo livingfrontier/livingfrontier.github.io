@@ -31,7 +31,7 @@
 <meta property="og:description" content="一、总论在并行编程中，除了“互斥”这个原语外（一般是采用“锁”来实现），还存在“同步（synchronous）”这个原语，这个原语指的是“各个事件按照特定顺序执行”的需求。比如说在生产者消费者模型中，必须要让生产者先生产，消费者才可以进行消费，这就是一种同步行为，是没有办法仅仅依靠锁来实现的。 当涉及互斥时，涉及到的术语是 lock, unlock, mutex ，而涉及到同步是术语是 wait,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-29T08:42:45.000Z">
-<meta property="article:modified_time" content="2024-10-17T06:35:03.277Z">
+<meta property="article:modified_time" content="2024-10-21T06:12:52.420Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="并行计算">
@@ -248,7 +248,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-10-17 14:35:03" itemprop="dateModified" datetime="2024-10-17T14:35:03+08:00">2024-10-17</time>
+                <time title="Modified: 2024-10-21 14:12:52" itemprop="dateModified" datetime="2024-10-21T14:12:52+08:00">2024-10-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -414,7 +414,7 @@ condition <span class="token operator">=</span> true<span class="token punctuati
         <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">CompareAndSwap</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>flag<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         s<span class="token punctuation">.</span>count<span class="token operator">--</span><span class="token punctuation">;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>count <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment">/* 该线程进入 s.quene 队列 */</span>
+                <span class="token comment">/* 该线程进入 s.queue 队列 */</span>
                 <span class="token comment">/* 阻塞该线程（还需将 s.flag 设置为 0，阻塞和赋值需要是一个原子操作） */</span>
         <span class="token punctuation">}</span>
         s<span class="token punctuation">.</span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -436,12 +436,7 @@ condition <span class="token operator">=</span> true<span class="token punctuati
 
 <span class="token function">sem_wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// 临界区</span>
-<span class="token function">sem_post</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">sem_t</span> m<span class="token punctuation">;</span>
-<span class="token function">sem_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token function">sem_wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 临界区</span>
-<span class="token function">sem_post</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">sem_post</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>而当信号量初始值为 <code>0</code> 时，可以用于同步，这是因为此时就必须先 <code>post</code> 后 <code>wait</code> 才可以避免阻塞：</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">f1</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
