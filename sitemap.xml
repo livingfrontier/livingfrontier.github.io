@@ -2,16 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://thysrael.github.io/tags/index.html</loc>
-    
-    <lastmod>2024-10-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://thysrael.github.io/links/index.html</loc>
+    <loc>https://thysrael.github.io/friends/index.html</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -29,7 +20,16 @@
   </url>
   
   <url>
-    <loc>https://thysrael.github.io/friends/index.html</loc>
+    <loc>https://thysrael.github.io/tags/index.html</loc>
+    
+    <lastmod>2024-10-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://thysrael.github.io/links/index.html</loc>
     
     <lastmod>2024-10-24</lastmod>
     
