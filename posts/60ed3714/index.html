@@ -425,7 +425,7 @@
 <p>下面的规则都是这种现象的体现，他们会给 NFA 引入大量的 $\epsilon$ 。这显然是不利于 NFA 到 DFA 的化简的（后面的例题也有说明），为了规避这种现象，我们考虑将一些的 $\epsilon$ 化简掉。在化简中，这样形式的正则表达式可以十分有用</p>
 <script type="math/tex; mode=display">
 X = aYb</script><p>  其中 $Y$ 可以是任何正则表达式，$a, b$ 是终止符，这个表达式意味着，$X$ 一定是由 $a$ 开头，由 $b$ 结尾，这个是一个很好的性质，我们可以将开头的 $\epsilon$ 和结尾的 $\epsilon$ 可以分别被替换成 $a, b$ 。这种替换只要不会导致 NFA 的定义被违反（也就是上面提到的情况），那么就是可行的。</p>
-<p><img src="/posts/60ed3714/image-20221201003526026.png" alt></p>
+<p><img src="/posts/60ed3714/image-20221201003526026.png" alt=""></p>
 <p><img src="/posts/60ed3714/image-20221201003535465.png" alt="image-20221201003535465"></p>
 <p>反之：</p>
 <p><img src="/posts/60ed3714/image-20221201003601763.png" alt="image-20221201003601763"></p>
@@ -435,9 +435,9 @@ X = aYb</script><p>  其中 $Y$ 可以是任何正则表达式，$a, b$ 是终�
 <p>实际操作的时候是真的难，首先是这种题一般是给出正则表达式，然后求最小 DFA。那么如果不幸构造出一个极其复杂的 NFA，那就真的完蛋了，比如说下面的例子，如果按照规则构造的话，是这样的</p>
 <script type="math/tex; mode=display">
 \tt{a((a|b)*|ab*a)*b }</script><p>正常构造是 7 个状态</p>
-<p><img src="/posts/60ed3714/构造1.jpg" alt></p>
+<p><img src="/posts/60ed3714/构造1.jpg" alt=""></p>
 <p>然后就会陷入无限的求解闭包的过程（甚至 DFA 的状态比 NFA 还多）中，所以应当用前面介绍的方法，先手动化简成这样</p>
-<p><img src="/posts/60ed3714/构造2.jpg" alt></p>
+<p><img src="/posts/60ed3714/构造2.jpg" alt=""></p>
 <p>具体的过程是这样的，考虑题目</p>
 <script type="math/tex; mode=display">
 \tt{a((a|b)*|ab*a)*b }</script><p>可以知道，大概会翻译成这样</p>

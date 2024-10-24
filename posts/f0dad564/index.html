@@ -310,14 +310,14 @@
 
       
         <h1 id="实验报告"><a href="#实验报告" class="headerlink" title="实验报告"></a>实验报告</h1><h2 id="一、实验原理"><a href="#一、实验原理" class="headerlink" title="一、实验原理"></a>一、实验原理</h2><h3 id="1-1-项目架构"><a href="#1-1-项目架构" class="headerlink" title="1.1 项目架构"></a>1.1 项目架构</h3><p>相比于 lab4 只有 Bram 是在板子上，而 PL 采用软件模拟的，这次 PL 侧我们利用 FPGA 实现了，也就是真正完成了一个简单的乘法运算加速器。</p>
-<p><img src="/posts/f0dad564/示意图.png" alt></p>
+<p><img src="/posts/f0dad564/示意图.png" alt=""></p>
 <p>PL 侧架构如图所示:</p>
 <p><img src="/posts/f0dad564/image-20221124103808249.png" alt="image-20221124103808249"></p>
 <p>可以看到，依然是利用 bram 进行通信。用到了在 lab3 中开发的 MAC 模块。</p>
 <h3 id="1-2-矩阵乘法"><a href="#1-2-矩阵乘法" class="headerlink" title="1.2 矩阵乘法"></a>1.2 矩阵乘法</h3><p>在 lab3 的时候我们开发了 8x8 的矩阵乘法模块，可以用计算 $A<em>{8 \times N} \cdot B</em>{N \times 8}$ 的矩阵乘法，其中 $N$ 可以是任意值。</p>
 <p>由于 FPGA 的硬件资源的限制，我们在板子上实现 2 个 8x8 的矩阵乘法模块，由矩阵乘法的性质很容易得出，2 个 8x8 的矩阵乘法模块等价于一个 8x16 的矩阵乘法模块，也就是说，可以计算 $A<em>{8 \times N} \cdot B</em>{N \times 16}$ 的矩阵乘法。</p>
 <p>但是我们实际的需求是计算  $A<em>{M \times N} \cdot B</em>{N \times P}$  ，所以需要对这两个矩阵分块，分块的方法就是 $A$ 矩阵横着分（适应 $8 \times N$ ）$B$ 矩阵竖着分（适应 $N \times 16$ ）。如图所示：</p>
-<p><img src="/posts/f0dad564/矩阵乘法.png" alt></p>
+<p><img src="/posts/f0dad564/矩阵乘法.png" alt=""></p>
 <p>对于不足 8 和 16 的输入矩阵，需要补齐。</p>
 <h3 id="1-3-对齐"><a href="#1-3-对齐" class="headerlink" title="1.3 对齐"></a>1.3 对齐</h3><p>对齐有很多种实现方式，比较方便的就是补零操作，比如说需要进行 8 对齐，而数据宽度只有 1 位，那么就可以补充 7 位的零。本次 lab 的基础部分就是采用这个方法实现的。</p>
 <p>如果比较本质的看，对齐操作应当是与数据接受方的需求有关，本次 lab 一共有两个数据接收方，一个是沟通 PS 和 PL 的 Bram，是 32 位的，一个是 8x16 的乘法单元，是 32 位对齐和 64 位对齐的，所以补零操作发生了两次，第一次在 <code>Matmul.py</code> 中，如下代码，是 32 对齐的。</p>
@@ -375,7 +375,7 @@
 <p>输出为</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">data right<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="2-2-上板流程"><a href="#2-2-上板流程" class="headerlink" title="2.2 上板流程"></a>2.2 上板流程</h3><p>生成 bit 流后上板，需要用到 lab4 的 <code>Matmul.py</code> ，最后效果如图</p>
-<p><img src="/posts/f0dad564/微信图片_20221124120955.png" alt></p>
+<p><img src="/posts/f0dad564/微信图片_20221124120955.png" alt=""></p>
 <hr>
 <h1 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>有如下约束</p>
 <script type="math/tex; mode=display">
@@ -676,7 +676,7 @@ always @(*) begin
     endcase
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>状态图：</p>
-<p><img src="/posts/f0dad564/multi_ctrl.png" alt></p>
+<p><img src="/posts/f0dad564/multi_ctrl.png" alt=""></p>
 <p>寄存器功能如下表所示</p>
 <div class="table-container">
 <table>
@@ -708,7 +708,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 </div>
 <hr>
 <h2 id="9"><a href="#9" class="headerlink" title="9"></a>9</h2><p>Align_fifo 模块内结构如图所示</p>
-<p><img src="/posts/f0dad564/fifo.png" alt></p>
+<p><img src="/posts/f0dad564/fifo.png" alt=""></p>
 <p>也就是说，Align_fifo 内部有 8 个 FIFO IP 核，用于存储 Multi_8x8 的输出。</p>
 <h3 id="9-1-读过程"><a href="#9-1-读过程" class="headerlink" title="9.1 读过程"></a>9.1 读过程</h3><p>从代码中可以看出，读过程是并行执行的，只是需要受到检验是否入队（因为对于有些数据是无效的），代码如图</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token comment">// 检验是否入队，要满足没有被读出，该位有效，还没有写完等条件</span>
@@ -731,7 +731,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <span class="token keyword">assign</span> fifo_din<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> data_get6<span class="token punctuation">;</span>
 <span class="token keyword">assign</span> fifo_din<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> data_get7<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>仿真如图</p>
-<p><img src="/posts/f0dad564/输入图.png" alt></p>
+<p><img src="/posts/f0dad564/输入图.png" alt=""></p>
 <h3 id="9-2-写过程"><a href="#9-2-写过程" class="headerlink" title="9.2 写过程"></a>9.2 写过程</h3><p>写过程是一个串行过程，这可能是因为写入 BRAM_32 的时候是串行的，所以没必要在这里并行。相关代码如图</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token comment">// 状态转换，根据 fifo_rd_en 进行转换</span>
 <span class="token important">always @</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">begin</span>
@@ -834,7 +834,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     <span class="token keyword">endcase</span>
 <span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>读出的时候，是一个队列一个队列的读出，最终完成串行化。</p>
-<p><img src="/posts/f0dad564/输出图.png" alt></p>
+<p><img src="/posts/f0dad564/输出图.png" alt=""></p>
 <hr>
 <h2 id="10"><a href="#10" class="headerlink" title="10"></a>10</h2><h3 id="10-1-削减-MAC-资源"><a href="#10-1-削减-MAC-资源" class="headerlink" title="10.1 削减 MAC 资源"></a>10.1 削减 MAC 资源</h3><p>原工程中为了确定有效数据，提供了很多的信号位（<code>w_valid</code> 和 <code>f_valid</code> 信号，对于全局还有一个 <code>num_valid</code>）来进行确定，但是各个信号之间的功能是有重叠部分的，也就是有冗余现象的出现。</p>
 <p>可以考虑只使用一个 <code>num_valid</code> 信号完成对于“有效”的控制，它充当一个类似 reset 信号的功能，重置乘加器内部的寄存器，设置内部的num_r寄存器为输入的num_r值。当输入数据有效时，再拉低num_valid信号，乘加器自动开始计数，在指定周期内完成乘法的运算要求。</p>

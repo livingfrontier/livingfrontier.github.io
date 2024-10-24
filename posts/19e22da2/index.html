@@ -833,7 +833,7 @@ trash-empty	n	<span class="token comment"># 清空 n 天前的回收站文件</s
 <p><code>wget</code> 的格式为：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">wget</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&lt;</span>url<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
-<h2 id="七、根文件系统"><a href="#七、根文件系统" class="headerlink" title="七、根文件系统"></a>七、根文件系统</h2><p><img src="/posts/19e22da2/rootfs.jpg" alt></p>
+<h2 id="七、根文件系统"><a href="#七、根文件系统" class="headerlink" title="七、根文件系统"></a>七、根文件系统</h2><p><img src="/posts/19e22da2/rootfs.jpg" alt=""></p>
 <h3 id="7-1-dev-和-sys-的区别"><a href="#7-1-dev-和-sys-的区别" class="headerlink" title="7.1 /dev 和 /sys 的区别"></a>7.1 <code>/dev</code> 和 <code>/sys</code> 的区别</h3><p><code>/dev</code> 是一个很著名的文件夹，因为它是 Unix “一切皆文件”设计哲学下的一个例子，这个文件夹下的文件都是“设备文件”，我们可以用操纵文件的 API 来控制我们的设备，但是在我之后的了解中，似乎 <code>/sys</code> 也有类似的效果，比如说可以用 <code>cat</code> 查看电池剩余电量，如下所示</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /sys/class/power_supply/BAT0/capacity<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样看上去似乎两者的功能冲突了。</p>

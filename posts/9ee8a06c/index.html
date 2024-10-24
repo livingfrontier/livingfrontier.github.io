@@ -349,7 +349,7 @@
 <script type="math/tex; mode=display">
 \tt{acc\_rate = 16.8556230068 \div 1.6867085472 = 9.997}</script><p>可以看到加速了近 10 倍，足以见到并行计算的威力。</p>
 <hr>
-<h2 id="三、流程分析"><a href="#三、流程分析" class="headerlink" title="三、流程分析"></a>三、流程分析</h2><h3 id="3-1-泳道图"><a href="#3-1-泳道图" class="headerlink" title="3.1 泳道图"></a>3.1 泳道图</h3><p><img src="/posts/9ee8a06c/并行矩阵乘法.png" alt></p>
+<h2 id="三、流程分析"><a href="#三、流程分析" class="headerlink" title="三、流程分析"></a>三、流程分析</h2><h3 id="3-1-泳道图"><a href="#3-1-泳道图" class="headerlink" title="3.1 泳道图"></a>3.1 泳道图</h3><p><img src="/posts/9ee8a06c/并行矩阵乘法.png" alt=""></p>
 <p><strong>采用的是广播模式，所以与提供的源码（为点对点通信）显示的流程差异较大，我会在下面介绍具体的算法。</strong></p>
 <h3 id="3-2-源码错误分析"><a href="#3-2-源码错误分析" class="headerlink" title="3.2 源码错误分析"></a>3.2 源码错误分析</h3><p><strong>死锁问题</strong></p>
 <p><img src="/posts/9ee8a06c/image-20221111105308194.png" alt="image-20221111105308194"></p>
@@ -465,7 +465,7 @@
 <p><img src="/posts/9ee8a06c/image-20221111121317893.png" alt="image-20221111121317893"></p>
 <p><img src="/posts/9ee8a06c/image-20221111121333805.png" alt="image-20221111121333805"></p>
 <p>在并行矩阵乘法中，我们利用 <code>MPI_Scatter</code> 进行对矩阵 $A$ 进行<strong>块状（block）划分</strong>，如图所示：</p>
-<p><img src="/posts/9ee8a06c/scatter.drawio.png" alt></p>
+<p><img src="/posts/9ee8a06c/scatter.drawio.png" alt=""></p>
 <p>对于大部分的矩阵 $A$ ，都可以均匀的分配给每个进程，对于无法均分的部分，最后将有主进程处理。还有一种思路是对于 $A$ 进行<strong>行补零</strong>操作，使其变成一个可以均匀分配的矩阵。但是依然需要主进程操作。</p>
 <h4 id="3-4-2-问题解决"><a href="#3-4-2-问题解决" class="headerlink" title="3.4.2 问题解决"></a>3.4.2 问题解决</h4><p><strong>死锁错误</strong></p>
 <p>当 <code>numprocs &gt; M</code> 的时候，原有程序会死锁，但是在新的程序中，这只会导致主进程自己进行计算，分发的矩阵大小为 0，每个进程都会收到大小为 0 的局部矩阵，所以不会死锁。，如下所示</p>

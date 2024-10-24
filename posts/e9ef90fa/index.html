@@ -354,10 +354,10 @@ This is the match result on node <span class="token number">3</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="三、算法流程"><a href="#三、算法流程" class="headerlink" title="三、算法流程"></a>三、算法流程</h2><h3 id="3-1-泳道图"><a href="#3-1-泳道图" class="headerlink" title="3.1 泳道图"></a>3.1 泳道图</h3><p>该泳道图过长，如果在 PDF 中不方便查看，还可以看文件中附带的图片</p>
-<p><img src="/posts/e9ef90fa/kmp泳道图.png" alt></p>
+<p><img src="/posts/e9ef90fa/kmp泳道图.png" alt=""></p>
 <p>在绘制泳道图的时候，需要注意 <code>MPI_Send, MPI_Recv, MPI_Bcast</code> 都是阻塞通信。</p>
 <h3 id="3-2-段内匹配和段间匹配"><a href="#3-2-段内匹配和段间匹配" class="headerlink" title="3.2 段内匹配和段间匹配"></a>3.2 段内匹配和段间匹配</h3><p>段间比配指的是，可能存在主串中的模式串横跨两个进程的段的情况，所以需要每个进程都需要向后一进程传递 <code>prefixlen</code> 信息，并利用前一进程传递的 <code>prefixlen</code> 信息进行段间匹配。也就是这样的图</p>
-<p><img src="/posts/e9ef90fa/段间匹配.png" alt></p>
+<p><img src="/posts/e9ef90fa/段间匹配.png" alt=""></p>
 <h3 id="3-3-还原-nextvalue"><a href="#3-3-还原-nextvalue" class="headerlink" title="3.3 还原 nextvalue"></a>3.3 还原 nextvalue</h3><p>为了节省开支，我们在首进程中计算出的 <code>nextval</code> 和读取的 <code>pattern</code> 并不会完全广播，而是只广播一部分，然后利用周期信息完成还原，这就要求周期信息可以作用于还原，我们看到，主进程一般发送 <code>pped.pedlen * 2</code> 模式串周期长度的两倍，这是因为对于周期循环而言，两个周期就可以概括 <code>nextval</code> 信息。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">if</span> <span class="token punctuation">(</span>numprocs <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> 
 <span class="token punctuation">{</span>

@@ -394,7 +394,7 @@ string s<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-3-排序遍历"><a href="#2-3-排序遍历" class="headerlink" title="2.3 排序遍历"></a>2.3 排序遍历</h3><p>这个是一个很有意思的东西，例题是<strong>箱子问题</strong></p>
-<p><img src="/posts/538b27b7/微信图片_20221020105946.png" alt></p>
+<p><img src="/posts/538b27b7/微信图片_20221020105946.png" alt=""></p>
 <p>在获得箱子数组后，需要对于这个数组进行一个排序，让标号小的箱子不可能堆叠在标号大的箱子上（即标号大的箱子可能可以堆叠在标号小的箱子上）。我本来以为这是一个神来之笔。但是实际上这是确立计算路径的一种方式。</p>
 <p>如果从自顶向下的角度来看，这个排序是没有必要的，用递归来解的话，大概是这样的</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 备忘录</span>
@@ -425,7 +425,7 @@ string s<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但是在自底向下的时候，排序就变成必要的了，因为在不排序的时候，依赖是可能出现在当前状态之后的（即标号比当前状态大）</p>
-<p><img src="/posts/538b27b7/排序.png" alt></p>
+<p><img src="/posts/538b27b7/排序.png" alt=""></p>
 <p>但是排序后，依赖状态一定先于当前状态求解，这十分美妙。</p>
 <p>最后给出这道题两种解法的实现代码：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>

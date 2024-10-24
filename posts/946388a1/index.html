@@ -666,7 +666,7 @@ stash@<span class="token punctuation">{</span><span class="token number">1</span
 <p><img src="/posts/946388a1/image-20230928114131115.png" alt="image-20230928114131115"></p>
 <p>另一个就是三路合并（3-ways）式，也就是待合并的两个分支真的做出了不同的改变，那么就需要思考如何处理这个问题了。</p>
 <p>我们首先考虑较为简单的两方合并，如下图所示：</p>
-<p><img src="/posts/946388a1/two-way.png" alt></p>
+<p><img src="/posts/946388a1/two-way.png" alt=""></p>
 <p>参与合并的一共有两个版本，在第 30 行出现了差异，那么应该如何去办呢？</p>
 <p>实际情况有如下几种：</p>
 <ol>
@@ -695,7 +695,7 @@ stash@<span class="token punctuation">{</span><span class="token number">1</span
 <p>如果在版本库中表示，则示意图如下：</p>
 <p><img src="/posts/946388a1/image-20230929095712148.png" alt="image-20230929095712148"></p>
 <p>我们举一个例子：</p>
-<p><img src="/posts/946388a1/three-way-result.png" alt></p>
+<p><img src="/posts/946388a1/three-way-result.png" alt=""></p>
 <p>至此，关于 merge 的部分就介绍完毕了。不过需要强调的是，三路合并并不是 merge 的专属原理，cherry-pick 和 rebase 甚至是 stash apply 等操作都会导致三路合并的发生。</p>
 <hr>
 <h2 id="五、重写版本库"><a href="#五、重写版本库" class="headerlink" title="五、重写版本库"></a>五、重写版本库</h2><h3 id="5-1-cherry-pick"><a href="#5-1-cherry-pick" class="headerlink" title="5.1 cherry-pick"></a>5.1 cherry-pick</h3><p>cherry-pick 指的是在版本库中挑选一个版本，然后“重播”到当前 HEAD 版本之后，这样的效果就是，cherry-pick 会生成一个子版本，这个版本既有被 pick 版本的特征，也有 HEAD 版本的特征，相当于一次“繁殖”。示意图如下所示：</p>
@@ -735,7 +735,7 @@ pick 74199ce commit F
 <span class="token function">git</span> checkout master
 <span class="token function">git</span> merge feature
 <span class="token function">git</span> branch -d feature<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/posts/946388a1/Dec-30-2020-rebase-example.gif" alt></p>
+<p><img src="/posts/946388a1/Dec-30-2020-rebase-example.gif" alt=""></p>
 <p>可以看到有两点和 cherry-pick 不同：</p>
 <ul>
 <li>rebase 的 ours 不是 HEAD，而是 rebase 的参数分支。</li>
