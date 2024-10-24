@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://thysrael.github.io/about/index.html</loc>
+    
+    <lastmod>2024-10-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://thysrael.github.io/friends/index.html</loc>
     
     <lastmod>2024-10-24</lastmod>
@@ -48,15 +57,6 @@
   
   <url>
     <loc>https://thysrael.github.io/posts/94e7864c/</loc>
-    
-    <lastmod>2024-10-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://thysrael.github.io/about/index.html</loc>
     
     <lastmod>2024-10-17</lastmod>
     
