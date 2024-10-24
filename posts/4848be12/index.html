@@ -326,17 +326,17 @@
 <h2 id="五、向零取整"><a href="#五、向零取整" class="headerlink" title="五、向零取整"></a>五、向零取整</h2><p>对于有符号数来说，C 语言的特性是这样的，除法是向零取整的，也就是说 <code>3 / 4 = 0, -3 / 4 = 0</code>。但是对于位移来说，是向下取整的，也就是说 <code>3 &gt;&gt; 2 = 0, -3 &gt;&gt; 2 = -1</code>。因为我们用左移代替了除法，所以我们需要对于这里进行一定的修正。一共有两种修正，一种是对于除数是 2 的幂次的情况，那么我们修改被除数：</p>
 <script type="math/tex; mode=display">
 \tt{newDividend = oldDividend + divisor - 1}</script><p>另一种就是除数不为 2 的幂次，对于有符号除法，有如下公式（证明就不列了）</p>
-<p><img src="/posts/4848be12/image-20220830155012490.png" alt=""></p>
+<p><img src="/posts/4848be12/image-20220830155012490.png" alt></p>
 <p>其中 $\tt{TRUNC}$ 是向零取整的意思。</p>
 <hr>
 <h2 id="六、选择-Multiplier-和-Shift"><a href="#六、选择-Multiplier-和-Shift" class="headerlink" title="六、选择 Multiplier 和 Shift"></a>六、选择 Multiplier 和 Shift</h2><p>这就要涉及一些神秘的数学证明了，在证明开始之前，我觉得先说一下咱们需要干啥，现在我们需要根据 <code>divisor</code> 来确定 <code>multiplier</code> 和 <code>shift</code> ，但是显然一个数没法确定两个数，所以我们要挑出 <code>multiplier</code> 和 <code>shift</code>。但是也不能瞎挑，我们要保证我们挑出的东西是可以满足底下这个效果的</p>
 <script type="math/tex; mode=display">
 \tt{\lfloor \frac{dividend}{divisor} \rfloor = \lfloor \frac{dividend \times multiplier}{2 ^ {N + shift}} \rfloor}</script><p>待会要证明的东西就是一个“挑“ 的指导方针，大致是这个</p>
-<p><img src="/posts/4848be12/image-20220830155803189.png" alt=""></p>
+<p><img src="/posts/4848be12/image-20220830155803189.png" alt></p>
 <p>证明就不写了，因为懒，而且背不过。</p>
 <hr>
 <h2 id="七、精度"><a href="#七、精度" class="headerlink" title="七、精度"></a>七、精度</h2><p>待会的源码里还会有精度 <code>precision</code> 的说法，但是我对于这个东西的理解很肤浅，所以就不说了，论文中说的也不多，而且在有符号数里没有太多的用到，大致是这样的</p>
-<p><img src="/posts/4848be12/image-20220830160025971.png" alt=""></p>
+<p><img src="/posts/4848be12/image-20220830160025971.png" alt></p>
 <hr>
 <h2 id="八、源码模拟"><a href="#八、源码模拟" class="headerlink" title="八、源码模拟"></a>八、源码模拟</h2><p>我用 CPP 写了一份有<code>符号数除法</code>的模拟源码，放在这里以供参考</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// div.h</span>

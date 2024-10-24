@@ -340,7 +340,7 @@
 <hr>
 <h2 id="三、LeNet"><a href="#三、LeNet" class="headerlink" title="三、LeNet"></a>三、LeNet</h2><h3 id="3-1-总论"><a href="#3-1-总论" class="headerlink" title="3.1 总论"></a>3.1 总论</h3><p>LeNet 是一个经典的卷积网络，有神经网络界的 “Hello, world” 之称，所以网上资料还是很多的。可以大量的查阅资料。</p>
 <h3 id="3-2-输入"><a href="#3-2-输入" class="headerlink" title="3.2 输入"></a>3.2 输入</h3><p>虽然在经典的这张图中，一张图片的大小事 <code>32 x 32</code> 的，但是实际在 <code>mnist</code> 数据集中，一张图片的大小是 <code>28 x 28</code> ，所以可以采用 padding 补零的方法让后续操作不太改变。</p>
-<p><img src="/posts/5478c034/image-20221010211912313.png" alt=""></p>
+<p><img src="/posts/5478c034/image-20221010211912313.png" alt></p>
 <p>通过给定的输入处理函数，我们最终会获得 3 个四维的张量，分别是训练集（train），验证集（validation），测试集（test）。其四个维度为 <code>[batch, height, width, channel]</code> ，其中 <code>batch</code> 为批量之意，在这里是图片数，这里我们的训练集的 <code>batch</code> 为 55000， 验证集的 <code>batch</code> 为 5000，测试集的 <code>batch</code> 为 1000    ，<code>height, width</code> 是图片的高和宽，这里均为 28 ，<code>channel</code> 是通道之意，因为是黑白照片，所以 <code>channel = 1</code> 恒成立（如果是 RGB 彩色图片，则 <code>channel = 3</code>）。</p>
 <h3 id="3-3-Conv1"><a href="#3-3-Conv1" class="headerlink" title="3.3 Conv1"></a>3.3 Conv1</h3><p>卷积层的搭建需要用到 TensorFlow 中的函数，如下示例</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>conv2d<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">,</span> <span class="token builtin">filter</span><span class="token punctuation">,</span> strides<span class="token punctuation">,</span> padding<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -418,7 +418,7 @@ fc3_h <span class="token operator">=</span> tf<span class="token punctuation">.<
 <hr>
 <h2 id="四、TensorFlow"><a href="#四、TensorFlow" class="headerlink" title="四、TensorFlow"></a>四、TensorFlow</h2><h3 id="4-1-张量-Tensor"><a href="#4-1-张量-Tensor" class="headerlink" title="4.1 张量 Tensor"></a>4.1 张量 Tensor</h3><p>张量就是多维矩阵的意思，从上面的分析可知，LeNet 用 TensorFlow 实现是很恰当的。</p>
 <h3 id="4-2-Session-和-Computational-Graph"><a href="#4-2-Session-和-Computational-Graph" class="headerlink" title="4.2 Session 和 Computational Graph"></a>4.2 Session 和 Computational Graph</h3><p>对于 TensorFlow，我们大量的运算（看似的运算），其实不是在运算，而是在写一个运算结构，比如说我们搭建的神经网络，其实上面写的东西，并没有实际运算，而是搭建成了这样的一个网络</p>
-<p><img src="/posts/5478c034/微信图片_20221011114201.png" alt=""></p>
+<p><img src="/posts/5478c034/微信图片_20221011114201.png" alt></p>
 <p>是一个像表达式树的东西，我们需要利用“对话（session）” 来运行这个结构。</p>
 <blockquote>
 <p>计算图包含<strong>数据</strong>（data，也就是各种Tensor）和<strong>操作</strong>（operation）。一个模型中的每一个数据或者操作都是图中的一个节点，箭头代表了数据流动的方向。上文提到的用Session计算的过程实际上就是数据流经整个图，计算出每一个节点的数值。</p>
@@ -476,11 +476,11 @@ accuracy_operation <span class="token operator">=</span> tf<span class="token pu
 <h3 id="5-1-训练过程"><a href="#5-1-训练过程" class="headerlink" title="5.1 训练过程"></a>5.1 训练过程</h3><p>训练过程截图：</p>
 <p><img src="/posts/5478c034/image-20221011150430768.png" alt="image-20221011150430768"></p>
 <p>准确率变化：</p>
-<p><img src="/posts/5478c034/微信图片_20221011162019.png" alt=""></p>
+<p><img src="/posts/5478c034/微信图片_20221011162019.png" alt></p>
 <p>loss 变化</p>
-<p><img src="/posts/5478c034/微信图片_20221011162012.png" alt=""></p>
+<p><img src="/posts/5478c034/微信图片_20221011162012.png" alt></p>
 <h3 id="5-2-实验结果"><a href="#5-2-实验结果" class="headerlink" title="5.2 实验结果"></a>5.2 实验结果</h3><p>2 号实验结果截图：</p>
-<p><img src="/posts/5478c034/微信图片_20221011152736.jpg" alt=""></p>
+<p><img src="/posts/5478c034/微信图片_20221011152736.jpg" alt></p>
 <p>不同参数数据</p>
 <div class="table-container">
 <table>
@@ -526,10 +526,10 @@ accuracy_operation <span class="token operator">=</span> tf<span class="token pu
 </table>
 </div>
 <h3 id="5-3-激活函数的选择"><a href="#5-3-激活函数的选择" class="headerlink" title="5.3 激活函数的选择"></a>5.3 激活函数的选择</h3><p>之所以讨论这个问题，是因为我的同学敲代码的时候将最后一层本来的 <code>sigmoid</code> 敲成 <code>relu</code>，然后导致她的正确率一直是 40% 多，最后我俩一起 de 了这个 bug，然后对激活函数的影响有了深刻认识。</p>
-<p><img src="/posts/5478c034/微信图片_20221011152453.png" alt=""></p>
+<p><img src="/posts/5478c034/微信图片_20221011152453.png" alt></p>
 <p>总的来说，不同的激活函数对与学习速度，过拟合现象，死神经现象都有影响，导致最终对于正确率也有一定的影响，比较详细的是和激活函数的梯度有关系，当然也和均值啥的有关系，我找到一篇写得很好的帖子，附在这里 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/p/427541517?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_oi=1124048358603636736&amp;utm_psn=1563147188217319424&amp;utm_source=wechat_session">详解激活函数</a> 。另外并不是准确率越高越好，还要考虑训练时间、训练规模等因素。</p>
 <p>在这个数据集和网络下，激活函数可以绘图如下</p>
-<p><img src="/posts/5478c034/微信图片_20221011152426.png" alt=""></p>
+<p><img src="/posts/5478c034/微信图片_20221011152426.png" alt></p>
 
     </div>
 
