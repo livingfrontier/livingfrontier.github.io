@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231020102344171.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/c9751615/image-20231020103055372.png">
 <meta property="article:published_time" content="2022-01-06T12:48:41.000Z">
-<meta property="article:modified_time" content="2024-11-06T09:23:31.143Z">
+<meta property="article:modified_time" content="2024-11-06T11:18:50.280Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="S3复习">
@@ -260,7 +260,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-11-06 17:23:31" itemprop="dateModified" datetime="2024-11-06T17:23:31+08:00">2024-11-06</time>
+                <time title="Modified: 2024-11-06 19:18:50" itemprop="dateModified" datetime="2024-11-06T19:18:50+08:00">2024-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -311,7 +311,7 @@
 <script type="math/tex; mode=display">
 a_{n-1}, a_{n-2}, \cdot\cdot\cdot, a_0</script><p>对于<strong>二进制转十进制</strong>，有公式</p>
 <script type="math/tex; mode=display">
-decimal = -a_{n-1} \times 2^{n-1} + a_{n-2} \times 2^{n-2} + \cdot\cdot\cdot + a_0 \times 2^0</script><p>这是因为补码的本质是<strong>将一个负数用一个正数表示</strong>，补码的构造是结合溢出，也就是<strong>取余</strong>操作，比如对于四位二进制，-4 对应的是 12，也就是 $-4+2^4 = 12$，可以看出，如果想把补码（负数对应的正数）还原成原来的负数，需要减去 $2^n$ ，所以对于一个二进制数表示的负数，如果按照无符号的算法，有 $unsigned<em>{decimal}$，减去 $2^n$，就得到了 $signed</em>{decimal}$ 。</p>
+decimal = -a_{n-1} \times 2^{n-1} + a_{n-2} \times 2^{n-2} + \cdot\cdot\cdot + a_0 \times 2^0</script><p>这是因为补码的本质是<strong>将一个负数用一个正数表示</strong>，补码的构造是结合溢出，也就是<strong>取余</strong>操作，比如对于四位二进制，-4 对应的是 12，也就是 $-4+2^4 = 12$，可以看出，如果想把补码（负数对应的正数）还原成原来的负数，需要减去 $2^n$ ，所以对于一个二进制数表示的负数，如果按照无符号的算法，有 unsigned_decimal，减去 $2^n$，就得到了 signed_decimal 。</p>
 <script type="math/tex; mode=display">
 unsigned_{decimal} = a_{n-1} \times 2^{n-1} + a_{n-2} \times 2^{n-2} + \cdot\cdot\cdot + a_0 \times 2^0</script><script type="math/tex; mode=display">
 signed_{decimal} =unsigned_{decimal} - 2^n = -a_{n-1} \times 2^{n-1} + a_{n-2} \times 2^{n-2} + \cdot\cdot\cdot + a_0 \times 2^0</script><p>然后发现，对于二进制正数，上面的计算公式也<strong>恰巧符合</strong>（$a_{n-1}$ 恰好为 0，正负不影响），所以这个公式就很简便了。</p>
@@ -361,7 +361,7 @@ C1 = G0 | P0 &amp; c0;
 C2 = G1 | G0 &amp; P1 | P0 &amp; P1 &amp; C0;
 C3 = G2 | G1 &amp; P2 | G0 &amp; P1 &amp; P2 | P0 &amp; P1 &amp; P2 &amp; C0;
 C4 = G3 | G2 &amp; P3 | G1 &amp; P2 &amp; P3 | G0 &amp; P1 &amp; P2 &amp; P3 | P0 &amp; P1 &amp; P2 &amp; P3 &amp; C0;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到，$C<em>i$ 不再和 $C</em>{i-1}$ 有直接关系了，这样就为<strong>并行计算</strong>提供了方法。但是相应的，电路设计变得复杂。</p>
+<p>可以看到，$Ci$ 不再和 $C{i-1}$ 有直接关系了，这样就为<strong>并行计算</strong>提供了方法。但是相应的，电路设计变得复杂。</p>
 <h3 id="1-7-无符号乘法"><a href="#1-7-无符号乘法" class="headerlink" title="1.7 无符号乘法"></a>1.7 无符号乘法</h3><p>首先我们看无符号乘法的的实现，其流程基本上就是 W 次（其中 W 为数据位宽）的加法和移位操作，是二进制竖式乘法的模拟：</p>
 <p><img src="/posts/c9751615/image-20231019205227001.png" alt="image-20231019205227001"></p>
 <p>做出来硬件比较直观的是这样：</p>
