@@ -897,20 +897,20 @@ W = \left[
 \end{matrix}
 \right]</script><p>此时我们只需要一个 <code>2 x 2</code> 个 <code>MAC</code> 即可完成运算，如下所示</p>
 <p><strong>Cycle 0</strong></p>
-<p><img src="/posts/d7aec70a/cycle0.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle0.png" alt></p>
 <p>首先数据呈现这这种形式</p>
 <p><strong>Cycle 1</strong></p>
-<p><img src="/posts/d7aec70a/cycle1.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle1.png" alt></p>
 <p><strong>Cycle 2</strong></p>
-<p><img src="/posts/d7aec70a/cycle2.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle2.png" alt></p>
 <p><strong>Cycle 3</strong></p>
-<p><img src="/posts/d7aec70a/cycle3.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle3.png" alt></p>
 <p><strong>Cycle 4</strong></p>
-<p><img src="/posts/d7aec70a/cycle4.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle4.png" alt></p>
 <p><strong>Cycle 5</strong></p>
-<p><img src="/posts/d7aec70a/cycle5.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle5.png" alt></p>
 <p><strong>Cycle 6</strong></p>
-<p><img src="/posts/d7aec70a/cycle6.png" alt=""></p>
+<p><img src="/posts/d7aec70a/cycle6.png" alt></p>
 <p>对于这样的一个计算，需要花 </p>
 <script type="math/tex; mode=display">
 2 + 3 + 2 = 7</script><p>个周期就可以得到结果。</p>
@@ -918,7 +918,7 @@ W = \left[
 <script type="math/tex; mode=display">
 A_{p \times n} \cdot B_{n \times q} = R_{p \times q}</script><p>对于 MAC 模块，它对应这结果矩阵 $R$ 中的一个分量，为了计算这个分量，需要进行 <code>n</code> 次的乘并累加操作。所以一般是在 <code>n</code> 个周期内完成的。需要注意的是，对于 $A, B$ 中的某个分量，不止会被一个 MAC 利用，所以 MAC 还承担着传播分量的作用，除此之外，MAC 计算出结果后，还需要将结果通过 MAC 网络传递出去。</p>
 <p>那么又没有什么更快的改进方法呢，其实是有的，比如说下面这种方法，就可以缩短传入的时间</p>
-<p><img src="/posts/d7aec70a/微信图片_20221026212853.jpg" alt=""></p>
+<p><img src="/posts/d7aec70a/微信图片_20221026212853.jpg" alt></p>
 <p>但是要付出更多的布线还有驱动的代价，所以综合考虑，还是利用了第一种。</p>
 <h3 id="2-4-内部关键信号与变量描述"><a href="#2-4-内部关键信号与变量描述" class="headerlink" title="2.4 内部关键信号与变量描述"></a>2.4 内部关键信号与变量描述</h3><p>在 MAC 中，<strong>固定长度</strong>的累加操作，是通过一个计数器 <code>num_cnt</code> 实现的，如下所示</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token comment">// 本级控制信号</span>

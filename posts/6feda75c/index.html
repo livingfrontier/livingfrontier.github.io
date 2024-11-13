@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://thysrael.github.io/posts/6feda75c/image-20220307174838762.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/6feda75c/image-20220307224930981.png">
 <meta property="article:published_time" content="2022-03-06T11:40:12.000Z">
-<meta property="article:modified_time" content="2024-10-17T06:35:03.283Z">
+<meta property="article:modified_time" content="2024-11-13T12:13:06.827Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S4课上">
 <meta property="article:tag" content="Linux">
@@ -278,7 +278,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-10-17 14:35:03" itemprop="dateModified" datetime="2024-10-17T14:35:03+08:00">2024-10-17</time>
+                <time title="Modified: 2024-11-13 20:13:06" itemprop="dateModified" datetime="2024-11-13T20:13:06+08:00">2024-11-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -408,7 +408,7 @@
 </ul>
 <p>首先先看一个标准的例子：</p>
 <p><img src="/posts/6feda75c/image-20220307093309080.png" alt="image-20220307093309080"></p>
-<p>可以看到，用这种格式 <code>{path命令符/目标子串}</code> 可以起到删除目的。其中 <code>命令符</code> 有以下几种：</p>
+<p>可以看到，用这种格式 <code>{path 命令符/目标子串}</code> 可以起到删除目的。其中 <code>命令符</code> 有以下几种：</p>
 <div class="table-container">
 <table>
 <thead>
@@ -484,14 +484,14 @@
 <tr>
 <td><code>var=${str=expr}</code></td>
 <td><code>str=expr,var=expr</code></td>
-<td><code>str不变,var=</code></td>
-<td><code>str不变,var=</code></td>
+<td><code>str 不变,var=</code></td>
+<td><code>str 不变,var=</code></td>
 </tr>
 <tr>
 <td><code>var=${str:=expr}</code></td>
 <td><code>str=expr,var=expr</code></td>
 <td><code>str=expr,var=expr</code></td>
-<td><code>str不变,var=</code></td>
+<td><code>str 不变,var=</code></td>
 </tr>
 </tbody>
 </table>
@@ -582,11 +582,11 @@
 <p>比较高阶一点的用法是将<strong>查找字符串</strong>用<strong>正则表达式的形式表示</strong>，这样的话，查找会更加快一些。</p>
 <h5 id="4-2-2-3-sed"><a href="#4-2-2-3-sed" class="headerlink" title="4.2.2.3 sed"></a>4.2.2.3 sed</h5><p><code>sed</code> 是一个按行处理文本的工具，前三个还比较局限于<strong>检索功能</strong>，而 <code>sed</code> 的编辑功能是强大的。其本质如下</p>
 <blockquote>
-<p>sed 是一种流编辑器，他是文本处理中的工具，能够完美配合正则表达式使用。处理时，把当前处理的行存储在临时缓存区中，称为“模式空间”(pattern space)，接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区中的内容送往屏幕。接着处理下一行，这样不断重复，直至文件结尾。</p>
+<p>sed 是一种流编辑器，他是文本处理中的工具，能够完美配合正则表达式使用。处理时，把当前处理的行存储在临时缓存区中，称为“模式空间”(pattern space)，接着用 sed 命令处理缓冲区中的内容，处理完成后，把缓冲区中的内容送往屏幕。接着处理下一行，这样不断重复，直至文件结尾。</p>
 </blockquote>
 <p>其实需要注意的是，就是 <code>sed</code> 不会修改目标文件的内容，而只是将改变后的信息输出到屏幕上。</p>
 <p><code>sed</code> 的命令由三部分组成（如果用作管道命令的话，就不需要后面的文件了），即</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token punctuation">[</span>参数<span class="token punctuation">]</span> <span class="token string">'查找1操作1;查找2操作2;查找3操作3...'</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token punctuation">[</span>参数<span class="token punctuation">]</span> <span class="token string">'查找 1 操作 1;查找 2 操作 2;查找 3 操作 3...'</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>参数</strong>如下</p>
 <div class="table-container">
 <table>
@@ -671,7 +671,7 @@
 <p><img src="/posts/6feda75c/image-20220316224440805.png" alt="image-20220316224440805"></p>
 <h5 id="4-2-2-4-awk"><a href="#4-2-2-4-awk" class="headerlink" title="4.2.2.4 awk"></a>4.2.2.4 awk</h5><p>相较于 <code>sed</code> 常常用作于一个整行的数据处理，<code>awk</code> 则比较倾向于一行当中分成数个字段来处理。</p>
 <p>其基本的处理模式如下：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'条件类型1{操作1} 条件类型2{操作2}...'</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'条件类型 1{操作 1} 条件类型 2{操作 2}...'</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>awk</code> 会默认按空格将一行中的内容分割成多个<strong>字段</strong>，我们可以用字段变量来表示获得的字段。其中 <code>$0</code> 代表一整行数据，<code>$1</code> 代表第一个个字段，<code>$2</code> 代表第二个字段，以此类推。</p>
 <p>此外，<code>awk</code> 还有许多内置变量，用以更好的完成工作</p>
 <div class="table-container">
@@ -703,13 +703,13 @@
 <p>第三个可以用于指定分隔符，可以把 <code>BEGIN</code> 看成一种特殊的条件</p>
 <h5 id="4-2-2-5-cut"><a href="#4-2-2-5-cut" class="headerlink" title="4.2.2.5 cut"></a>4.2.2.5 cut</h5><p><code>cut</code> 是弱化版的 <code>awk</code> 实现的是行内信息的切割，有如下格式，<code>-d</code> 说明要声明分割字符，<code>-f</code> 说明要挑选字段</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cut</span> -d <span class="token string">'分割字符'</span> -f num1,num2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>这条命令表示按照分割字符进行切分，并将切分的结构构成的子串，挑选出第num1到第num2个子串输出。</p>
+<p>这条命令表示按照分割字符进行切分，并将切分的结构构成的子串，挑选出第 num1 到第 num2 个子串输出。</p>
 <p>还有另外一种格式，即：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cut</span> -c num1-num2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>意思是挑选每一行从第num1到第num2个字符进行输出。效果如图：</p>
+<p>意思是挑选每一行从第 num1 到第 num2 个字符进行输出。效果如图：</p>
 <p><img src="/posts/6feda75c/image-20220307174838762.png" alt="image-20220307174838762"></p>
 <hr>
-<h2 id="五、脚本"><a href="#五、脚本" class="headerlink" title="五、脚本"></a>五、脚本</h2><h3 id="5-1-解释器"><a href="#5-1-解释器" class="headerlink" title="5.1 解释器"></a>5.1 解释器</h3><p>这里想谈一下我对<strong>解释型语言</strong>和<strong>编译型语言</strong>的理解。我们常说解释型语言写出来的源码叫做<strong>脚本</strong>。我觉得二者的区别在于是否经过编译。对于脚本语言（比如python，java，matlab），他们是不直接编译生成一个可执行文件的，他们会将源码交到一个叫做<strong>解释器</strong>的程序手里，由解释器读取相关的信息，并执行相关的操作。这个解释器在python里叫python解释器，在java里叫java虚拟机。如果说的再彻底一点，可以说解释器是脚本和操作系统之间的一个新的抽象层，就好像一个功能不太健全的虚拟机一样。而编译型语言并没有这个抽象的中间层，它直接编译生成可执行文件，这个文件可以直接运行，而不是通过解释器。</p>
+<h2 id="五、脚本"><a href="#五、脚本" class="headerlink" title="五、脚本"></a>五、脚本</h2><h3 id="5-1-解释器"><a href="#5-1-解释器" class="headerlink" title="5.1 解释器"></a>5.1 解释器</h3><p>这里想谈一下我对<strong>解释型语言</strong>和<strong>编译型语言</strong>的理解。我们常说解释型语言写出来的源码叫做<strong>脚本</strong>。我觉得二者的区别在于是否经过编译。对于脚本语言（比如 python，java，matlab），他们是不直接编译生成一个可执行文件的，他们会将源码交到一个叫做<strong>解释器</strong>的程序手里，由解释器读取相关的信息，并执行相关的操作。这个解释器在 python 里叫 python 解释器，在 java 里叫 java 虚拟机。如果说的再彻底一点，可以说解释器是脚本和操作系统之间的一个新的抽象层，就好像一个功能不太健全的虚拟机一样。而编译型语言并没有这个抽象的中间层，它直接编译生成可执行文件，这个文件可以直接运行，而不是通过解释器。</p>
 <p>shell 脚本就是发挥了 shell 作为一个解释器的功能，开发出的很多个程序。</p>
 <p>shell 脚本第一行会有一个固定的写法，来声明所用的 shell 程序，被叫做 shebang 行，如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1042,7 +1042,7 @@ do
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">c</span> <span class="token keyword">in</span> <span class="token punctuation">{</span>a<span class="token punctuation">..</span>z<span class="token punctuation">}</span>
 <span class="token keyword">do</span> 
 	<span class="token builtin class-name">echo</span> <span class="token variable">$c</span>
-don<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时 c 就会取遍小写字母表。</p>
 <h3 id="5-7-函数"><a href="#5-7-函数" class="headerlink" title="5.7 函数"></a>5.7 函数</h3><p>函数的格式如下:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">fname</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
