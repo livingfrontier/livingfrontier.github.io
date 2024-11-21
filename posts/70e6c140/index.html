@@ -529,7 +529,7 @@ comm <span class="token operator">=</span> MPI<span class="token punctuation">.<
 </table>
 </div>
 <p>运行截图：</p>
-<p><img src="/posts/70e6c140/实验结果.png" alt></p>
+<p><img src="/posts/70e6c140/实验结果.png" alt=""></p>
 <h3 id="4-2-冷启动和溢出猜想"><a href="#4-2-冷启动和溢出猜想" class="headerlink" title="4.2 冷启动和溢出猜想"></a>4.2 冷启动和溢出猜想</h3><p>如果打印每一轮的测试信息，就会发现两个有趣的现象：</p>
 <ul>
 <li>前几轮的时间会明显很大。</li>
@@ -538,9 +538,9 @@ comm <span class="token operator">=</span> MPI<span class="token punctuation">.<
 <p>如图所示：</p>
 <p><img src="/posts/70e6c140/延迟.png" alt="延迟"></p>
 <p>从上图可以看出前几个周期明显要长很多。</p>
-<p><img src="/posts/70e6c140/延迟4.png" alt></p>
+<p><img src="/posts/70e6c140/延迟4.png" alt=""></p>
 <p>从这里可以看出会出现一个“尖刺”。如果绘图（感谢陈凝香的图表）：</p>
-<p><img src="/posts/70e6c140/微信图片_20221026150507.png" alt></p>
+<p><img src="/posts/70e6c140/微信图片_20221026150507.png" alt=""></p>
 <p>可以更加明显的观测到这种现象。</p>
 <p>在于小组同学商讨后，我个人倾向于这样的一种解释：这可能与某种“高速缓存机制（cache）”有关，对于一开始，位于路由中或者其他关键节点的高速缓存存在常见的“冷启动”现象，需要填充缓存来达到增加命中率的目的，而这个过程会伴随这缺失的代价，这就导致一开始的时候的缓慢，而之后的周期性缓慢，可能是 cache 中某一缓存行被换出的过程，当一个缓存行被换出，需要发生一次缺失，才能更新 cache，这就导致了一次长的周期。</p>
 <p>当然也可能就是普通的网速问题，具组内某同学说，这个一点也不周期，我就是在强行解释，嗯嗯，有道理。</p>
@@ -1072,7 +1072,7 @@ os<span class="token punctuation">.</span>system<span class="token punctuation">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:48</span>
+    <span title="Reading time total">18:49</span>
 </div>
 
         

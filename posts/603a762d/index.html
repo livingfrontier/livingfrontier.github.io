@@ -296,7 +296,7 @@
 
       
         <h2 id="一、结构"><a href="#一、结构" class="headerlink" title="一、结构"></a>一、结构</h2><p>因为一直分不清 Cache 的结构名字，所以特地画了一个比较满意的图来标注各种结构。</p>
-<p><img src="/posts/603a762d/cache.drawio.png" alt></p>
+<p><img src="/posts/603a762d/cache.drawio.png" alt=""></p>
 <p>这个示意图的参数在右上角。Cache 中的基本单位是 Cache Line，它又被叫作 Block，它是由多个 Word 组成的。多个 Cache Line 会组成一个 Cache Set，一个 Cache Set 内包含的 Cache Line 数量被成为 Way。比如图中就是 2-Way 的 Cache，那么每个 Cache Set 就有 2 个 Cache Line。相同 Cache Set 中的 Cache Line 的关系被称为 associative（相联），它们不能依靠 set index 进行区分，只能通过 tag 区分。 </p>
 <p>根据 Set 个数和 Way 的不同（其本质是 Cache Line 的位置确定），可以对 Cache 进行分类：</p>
 <ul>
@@ -344,7 +344,7 @@ Word <span class="token function">find</span><span class="token punctuation">(</
 <p>VIPT 指的是使用 Physical 的 Tag 和 Virtual 的 Index 。这样的好处在于，地址翻译过程和 Cache 查找过程可以并行，在地址翻译还没有结果的时候，我们就可以用 VI 来进行 Cache Set 的确定了。而且这种方式不再有歧义问题了，但是可能有别名问题。</p>
 <p>对于歧义问题，此时的 PT 不再是 PA 的 Tag 部分，而变成了 PPN，PPN 具有唯一性，所以不再有歧义问题。</p>
 <p>而对于别名问题，则要分类讨论，因为 Index 依然是虚拟的，那么使用 PPN 作为 Tag 能否矫正 VI 的影响呢？这要看 PPN 的宽度（反过来也可以说看 Index 的宽度），如下所示：</p>
-<p><img src="/posts/603a762d/VIPT.drawio.png" alt></p>
+<p><img src="/posts/603a762d/VIPT.drawio.png" alt=""></p>
 <p>如果是第一种情况，VI 和 PI 存在差异，所以就会有别名现象，而第二种情况，VI 和 PI 不存在差异，就不会有别名现象。</p>
 <p>总结就是 PPN 和 Index 不能有交集，就不会有问题。</p>
 <hr>
@@ -548,7 +548,7 @@ Word <span class="token function">find</span><span class="token punctuation">(</
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:48</span>
+    <span title="Reading time total">18:49</span>
 </div>
 
         

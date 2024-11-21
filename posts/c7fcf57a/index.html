@@ -38,8 +38,8 @@
 <meta property="article:published_time" content="2023-02-11T10:11:46.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.510Z">
 <meta property="article:author" content="Thysrael">
-<meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="S5假期">
+<meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="编译技术">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://thysrael.github.io/posts/c7fcf57a/DAG1.jpg">
@@ -403,10 +403,10 @@ a <span class="token operator">=</span> a <span class="token operator">+</span> 
 <p>首先先说明一件事，就是因为这个图是从底向上构建的，所以第一个节点不能写得太靠上，因为要逐渐往上生长，也不能写得太靠侧边，因为表达式树或者 DAG 是有序的，显然 <code>a - b</code> 和 <code>b - a</code> 是两个东西，所以必然是 <code>b</code> 是左孩子，而 <code>a</code> 是右孩子。所以最终结论就是，不要期望自己的 DAG 有多好看，因为好看不了。</p>
 <p>还有一些简单性质，比如说只有入度的节点（也就是某种意义上的“叶子节点”）一定是 <code>livein</code> 的变量，而这些变量在之后可能会被赋值，所以一个变量可以对应多个节点（可以看成每个节点就是一个版本，比如说在课程里明说 $var<em>{0}$ 就是第一个版本，之后每次定义 <code>var</code> 的时候，都可以看做是在当前版本 $var</em>{n - 1}$  上做迭代（因为此时在表达式树上留存着 $var_{n - 1}$  这个版本），更新了 $var_n$ 这个值）。</p>
 <p>所以就可以构建表了，在构建表的时候，因为一个中间节点，只能是一个运算符，所以没法比较直观的对应，所以采用了标号的举措，但是这种标号感觉增加了查表的时间，不如直接将符号写到树节点上去：</p>
-<p><img src="/posts/c7fcf57a/DAG1.jpg" alt></p>
+<p><img src="/posts/c7fcf57a/DAG1.jpg" alt=""></p>
 <p>这种形式大概要比普通的形式要快很多，主要是不用人为查表了，所有的信息都在点上，而且不用在“画图—登记”之间来回切换。但是依然有标准形式，就是给节点标号，然后用符号对应标号。</p>
 <p>画图的时候需要注意不要画错顺序，同时尽量规整。还有一定要<strong>先看操作符，然后再看结果</strong>，也就是 <code>c = c + 1</code> 要被翻译成  <code>c1 = c0 + 1</code> 。</p>
-<p><img src="/posts/c7fcf57a/DAG2.jpg" alt></p>
+<p><img src="/posts/c7fcf57a/DAG2.jpg" alt=""></p>
 <p>还需要搭配表</p>
 <div class="table-container">
 <table>
@@ -860,8 +860,8 @@ out[B] = \bigcup_{B 的后继基本块P} in[P]</script><p>从上面这个式子�
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" rel="tag"><i class="fa fa-tag"></i> 直观理解</a>
               <a href="/tags/S5%E5%81%87%E6%9C%9F/" rel="tag"><i class="fa fa-tag"></i> S5假期</a>
+              <a href="/tags/%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" rel="tag"><i class="fa fa-tag"></i> 直观理解</a>
               <a href="/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/" rel="tag"><i class="fa fa-tag"></i> 编译技术</a>
           </div>
 
@@ -1029,7 +1029,7 @@ out[B] = \bigcup_{B 的后继基本块P} in[P]</script><p>从上面这个式子�
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:48</span>
+    <span title="Reading time total">18:49</span>
 </div>
 
         

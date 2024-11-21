@@ -373,7 +373,7 @@ parent 字典用来保存每个 vertex 的上一个 vertex
 </blockquote>
 <h3 id="3-2-二分法的-BFS"><a href="#3-2-二分法的-BFS" class="headerlink" title="3.2 二分法的 BFS"></a>3.2 二分法的 BFS</h3><p>这个部分可以分为两个部分来理解，一个是二分法（2D-Partitioning）对于矩阵和处理器的分配（本质上是并行算法的构造），一部分是建立在二分法上的 BFS 算法。</p>
 <p>关于二分法，值得注意的就是他在描述处理器阵列的时候，认为 row 是一个垂直方向的，而 col 是水平方向的。总的来说，就是很混乱的一个关系，我没法保证和图上的是契合的，只能保证我的图和我的算法伪代码是契合的。</p>
-<p><img src="/posts/5f538495/二分图演示.png" alt></p>
+<p><img src="/posts/5f538495/二分图演示.png" alt=""></p>
 <p>对于这种分法，他提出了两种性质：</p>
 <ul>
 <li>起点共列，指某个处理器的所有边的起点一定是该处理器所在列的处理器的点的子集。</li>
@@ -384,8 +384,8 @@ parent 字典用来保存每个 vertex 的上一个 vertex
 <p>通信的代价一个是本身造成的，另一个是顺序造成的，有的时候必须要求通信的顺序，这就导致了在通信时的并行化。</p>
 <p>这个算法主要利用了两个性质，一个是</p>
 <ul>
-<li>expand，也就是收集起始节点的过程，利用的是起点共列的性质。<img src="/posts/5f538495/二分图演示expand.png" alt></li>
-<li>fold，也就是发送终止节点的过程，利用的是终点共行的性质。<img src="/posts/5f538495/二分图演示fold.png" alt></li>
+<li>expand，也就是收集起始节点的过程，利用的是起点共列的性质。<img src="/posts/5f538495/二分图演示expand.png" alt=""></li>
+<li>fold，也就是发送终止节点的过程，利用的是终点共行的性质。<img src="/posts/5f538495/二分图演示fold.png" alt=""></li>
 </ul>
 <p>本质上，并行用在了将原来的迭代遍历子节点的过程变成了多个处理器进行。最终伪代码如下（这份伪代码是我在原来的基础上修改过的，在 fold 过程上与源码略有差异）</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> numpy <span class="token keyword">import</span> <span class="token operator">*</span>
@@ -548,16 +548,16 @@ processors <span class="token operator">=</span> <span class="token punctuation"
 <p>更进一步的，我们在 BFS 代价最高的步骤，用一个<strong>位图（bitmap）</strong>减少了处理器之间的数据交换。这个优化使得在 4096 GPU 上性能提高了 2 倍。</p>
 <p>最终的成果是一个在 4096 Nvidia K20X GPU 上具有良好的拓展性，每秒在一张具有 $2^{33}$ 个定点、830,000,000,000 条有向边的 R-MAT 图上遍历 830,000,000,000 条边的源码。我们在同一个 GPU 集群上，将我们的算法与原始的，依靠并行原语的组合来代替原子操作的算法进行比对，我们的算法的速度较原始代码快 8 倍。</p>
 <hr>
-<h2 id="五、展示-PPT"><a href="#五、展示-PPT" class="headerlink" title="五、展示 PPT"></a>五、展示 PPT</h2><p><img src="/posts/5f538495/1-16692670689401.png" alt></p>
-<p><img src="/posts/5f538495/2-16692670776972.png" alt></p>
-<p><img src="/posts/5f538495/3-16692670838653.png" alt></p>
-<p><img src="/posts/5f538495/4-16692670894074.png" alt></p>
-<p><img src="/posts/5f538495/5-16692670958755.png" alt></p>
-<p><img src="/posts/5f538495/6-16692671021316.png" alt></p>
-<p><img src="/posts/5f538495/7-16692671084977.png" alt></p>
-<p><img src="/posts/5f538495/8-16692671153388.png" alt></p>
-<p><img src="/posts/5f538495/9-16692671218629.png" alt></p>
-<p><img src="/posts/5f538495/10-166926712630710.png" alt></p>
+<h2 id="五、展示-PPT"><a href="#五、展示-PPT" class="headerlink" title="五、展示 PPT"></a>五、展示 PPT</h2><p><img src="/posts/5f538495/1-16692670689401.png" alt=""></p>
+<p><img src="/posts/5f538495/2-16692670776972.png" alt=""></p>
+<p><img src="/posts/5f538495/3-16692670838653.png" alt=""></p>
+<p><img src="/posts/5f538495/4-16692670894074.png" alt=""></p>
+<p><img src="/posts/5f538495/5-16692670958755.png" alt=""></p>
+<p><img src="/posts/5f538495/6-16692671021316.png" alt=""></p>
+<p><img src="/posts/5f538495/7-16692671084977.png" alt=""></p>
+<p><img src="/posts/5f538495/8-16692671153388.png" alt=""></p>
+<p><img src="/posts/5f538495/9-16692671218629.png" alt=""></p>
+<p><img src="/posts/5f538495/10-166926712630710.png" alt=""></p>
 
     </div>
 
@@ -736,7 +736,7 @@ processors <span class="token operator">=</span> <span class="token punctuation"
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:48</span>
+    <span title="Reading time total">18:49</span>
 </div>
 
         

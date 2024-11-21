@@ -46,8 +46,8 @@
 <meta property="article:published_time" content="2023-02-09T07:20:48.000Z">
 <meta property="article:modified_time" content="2024-10-17T06:35:03.530Z">
 <meta property="article:author" content="Thysrael">
-<meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="S5假期">
+<meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="编译技术">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://thysrael.github.io/posts/2fb034c4/image-20230209160923676.png">
@@ -670,7 +670,7 @@ xUy \rightarrow xuy, y \in V_t^*</script><p>在这个推导中，我们进行了
 <p>不得不说，这种列表法是有一定问题的，对于短语和简单短语，确实是可以每个非叶子节点都立即得出的，而对于句柄，其实是在得到所有的简单短语后，挑选最左面的简单短语获得的；而对于素短语，则是得到所有的短语后，从中挑出含有非终结符的最短短语。</p>
 </blockquote>
 <h3 id="1-4-语法范围"><a href="#1-4-语法范围" class="headerlink" title="1.4 语法范围"></a>1.4 语法范围</h3><p>如图所示</p>
-<p><img src="/posts/2fb034c4/层次结构.jpg" alt></p>
+<p><img src="/posts/2fb034c4/层次结构.jpg" alt=""></p>
 <p>有如下规律：</p>
 <ul>
 <li>LR 一定包括同级的 LL</li>
@@ -812,7 +812,7 @@ E::= E + T \space\space|\space\space T \\
  F::= (E) \space\space|\space\space i</script><p>对于 i + i <em> i 这种东西，我们希望先算 i </em> i （也就是先规约它），然后再规约 i * T 之类的。</p>
 <p>那么最直观的办法就是加括号，只要将其变成 $((i) + ((i)*(i)))$ ，规约顺序就一目了然了。</p>
 <p>所以为了构造这种括号，我们发明了算法优先分析法，通过终结符的优先级，构造出这种括号，就像这样</p>
-<p>$&lt;<i> + &lt;<i>*<i>&gt;$ 其中的 $&lt;, &gt;$ 符号就是根据终结符的优先级表生成的。</i></i></i></p><i><i><i>
+<p>$&lt;<i> + &lt;<i>*<i>&gt;$ 其中的 $&lt;, &gt;$ 符号就是根据终结符的优先级表生成的。</i></i></i></p>
 <p>为了构造这种优先级顺序，我们需要考察规约的优先级，而规约的优先级，本质上是语法导出的，而语法中优先级的判断，其实是判断语法产生式的某种“深度”，比如说 <em> 法优先级高于 + 法，是因为先推出 +，后推出 </em>。</p>
 <p>EqExp -&gt; RelExp -&gt; AddExp -&gt; MulExp -&gt; UnaryExp -&gt; PrimaryExp</p>
 <p>这就导致 <code>==, !=</code> 的优先级最低，而 <code>!, -</code> 的优先级最高。</p>
@@ -1693,7 +1693,7 @@ r_8: F \rightarrow (E)</script><p>构造出的 SR 分析表如图：</p>
 </tbody>
 </table>
 </div>
-</i></i></i>
+
     </div>
 
     
@@ -1702,8 +1702,8 @@ r_8: F \rightarrow (E)</script><p>构造出的 SR 分析表如图：</p>
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" rel="tag"><i class="fa fa-tag"></i> 直观理解</a>
               <a href="/tags/S5%E5%81%87%E6%9C%9F/" rel="tag"><i class="fa fa-tag"></i> S5假期</a>
+              <a href="/tags/%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" rel="tag"><i class="fa fa-tag"></i> 直观理解</a>
               <a href="/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/" rel="tag"><i class="fa fa-tag"></i> 编译技术</a>
           </div>
 
@@ -1871,7 +1871,7 @@ r_8: F \rightarrow (E)</script><p>构造出的 SR 分析表如图：</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:48</span>
+    <span title="Reading time total">18:49</span>
 </div>
 
         

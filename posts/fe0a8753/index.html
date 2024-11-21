@@ -952,13 +952,13 @@
 <hr>
 <h1 id="二、数据库概念模式设计"><a href="#二、数据库概念模式设计" class="headerlink" title="二、数据库概念模式设计"></a>二、数据库概念模式设计</h1><h2 id="2-1-系统初步-ER-图"><a href="#2-1-系统初步-ER-图" class="headerlink" title="2.1 系统初步 ER 图"></a>2.1 系统初步 ER 图</h2><h3 id="2-1-1-实体-ER-图"><a href="#2-1-1-实体-ER-图" class="headerlink" title="2.1.1 实体 ER 图"></a>2.1.1 实体 ER 图</h3><p><img src="/posts/fe0a8753/实体 ER 图.png" style="zoom:30%;"></p>
 <h3 id="2-1-2-关系-ER-图"><a href="#2-1-2-关系-ER-图" class="headerlink" title="2.1.2 关系 ER 图"></a>2.1.2 关系 ER 图</h3><p>下图分别为课程管理模块、活动模块、成绩查询模块对应的 ER 图。</p>
-<p><img src="/posts/fe0a8753/关系 ER 图.drawio.png" alt></p>
+<p><img src="/posts/fe0a8753/关系 ER 图.drawio.png" alt=""></p>
 <h2 id="2-2-系统基本-ER-图"><a href="#2-2-系统基本-ER-图" class="headerlink" title="2.2 系统基本 ER 图"></a>2.2 系统基本 ER 图</h2><p>分析系统初步 E-R 图，我们发现可以消除以下 1:1 联系：</p>
 <ul>
 <li>活动与活动图片是 1:1 的关系，因此在实现的时候没有必要将活动图片作为一个单独的实体，将其作为活动的个一个属性即可。</li>
 </ul>
 <p>合并并消除冗余之后得到的系统基本 ER 图有 7 个实体，如下图所示：</p>
-<p><img src="/posts/fe0a8753/系统基本 ER 图.png" alt></p>
+<p><img src="/posts/fe0a8753/系统基本 ER 图.png" alt=""></p>
 <h1 id="三、数据库逻辑模式设计"><a href="#三、数据库逻辑模式设计" class="headerlink" title="三、数据库逻辑模式设计"></a>三、数据库逻辑模式设计</h1><h2 id="3-1-数据库关系模式"><a href="#3-1-数据库关系模式" class="headerlink" title="3.1 数据库关系模式"></a>3.1 数据库关系模式</h2><p>关系模式可以形式化表示为<code>R(U, D, DOM, F)</code>。U 为组成该关系的属性名，D为 U 中属性所来自的域，DOM 指的是属性与域的映射，F 指的是属性间的依赖关系集合。以下约定 N 表示正整数，FLOAT 表示浮点数，S 为任意字符组成的字符 S，T 表示时间，B 表示布尔值。码以下划线标识。</p>
 <p>以下是由 ER 图得到的关系模式。</p>
 <h3 id="3-1-1-实体"><a href="#3-1-1-实体" class="headerlink" title="3.1.1 实体"></a>3.1.1 实体</h3><ol>
@@ -1364,7 +1364,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">18:48</span>
+    <span title="Reading time total">18:49</span>
 </div>
 
         
