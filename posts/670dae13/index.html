@@ -33,13 +33,15 @@
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104222633971.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104223628736.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104232230440.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250107104440121.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250107123106563.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104234121679.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104234817734.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104235458673.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250104235923446.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/670dae13/image-20250105000018381.png">
 <meta property="article:published_time" content="2025-01-02T09:48:54.000Z">
-<meta property="article:modified_time" content="2025-01-04T16:00:27.532Z">
+<meta property="article:modified_time" content="2025-01-07T04:31:15.691Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="计算机系统">
@@ -257,7 +259,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-01-05 00:00:27" itemprop="dateModified" datetime="2025-01-05T00:00:27+08:00">2025-01-05</time>
+                <time title="Modified: 2025-01-07 12:31:15" itemprop="dateModified" datetime="2025-01-07T12:31:15+08:00">2025-01-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,14 +284,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.3k</span>
+              <span>3.7k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+              <span>3 mins.</span>
             </span>
 
         </div>
@@ -328,7 +330,43 @@
 <p><img src="/posts/670dae13/image-20250104232230440.png" alt="image-20250104232230440" style="zoom:50%;"></p>
 <p>此外，VTX 还提供了 VMCS ，用于保存了虚拟机的状态信息和控制信息，使 VMM 能够精确管理和恢复虚拟机的执行状态。</p>
 <hr>
-<h2 id="二、内存虚拟化"><a href="#二、内存虚拟化" class="headerlink" title="二、内存虚拟化"></a>二、内存虚拟化</h2><h2 id="三、设备虚拟化"><a href="#三、设备虚拟化" class="headerlink" title="三、设备虚拟化"></a>三、设备虚拟化</h2><h3 id="3-1-背景"><a href="#3-1-背景" class="headerlink" title="3.1 背景"></a>3.1 背景</h3><p>我们希望一个真实设备可以供多个虚拟机使用，在此基础上，我们希望有如下功能：</p>
+<h2 id="二、内存虚拟化"><a href="#二、内存虚拟化" class="headerlink" title="二、内存虚拟化"></a>二、内存虚拟化</h2><h3 id="2-1-背景-1"><a href="#2-1-背景-1" class="headerlink" title="2.1 背景"></a>2.1 背景</h3><p>首先强调，除了 <code>load</code>，<code>store</code> 指令会涉及虚拟地址的使用，<code>call</code>， <code>return</code>， <code>jump</code> 这样的指令同样会涉及虚拟地址的使用。</p>
+<p>在虚拟化背景下，一共有 3 种地址：</p>
+<ul>
+<li>GVA：Guest Virtual Address</li>
+<li>GPA：Guest Physical Address</li>
+<li>HPA：Host Physical Address</li>
+</ul>
+<p>又有 3 种页表：</p>
+<ul>
+<li>GPT：Guest Page Table</li>
+<li>HPT：Host Page Table</li>
+<li>SPT：Shadow Page Table</li>
+</ul>
+<p>正因为有 3 种地址的存在，VM 的 GPA 并不是真实的物理地址，所以我们需要将其映射到真实的物理地址 HPA，这就是内存虚拟化要解决的问题。</p>
+<p>下图展示了 3 种地址的关系，和两种解决办法：</p>
+<p><img src="/posts/670dae13/image-20250107104440121.png" alt="image-20250107104440121" style="zoom:33%;"></p>
+<h3 id="2-2-Shadow-Page-Table"><a href="#2-2-Shadow-Page-Table" class="headerlink" title="2.2 Shadow Page Table"></a>2.2 Shadow Page Table</h3><p>按理来说，因为需要完成 3 个地址之间的转换，所以需要 2 个页表，但是在早期，我们只有一个页表基地址寄存器，如 <code>CR3</code> 。所以我们如果想借助 MMU 的力量完成地址翻译，那么就需要想办法把两个页表融合成一个页表，这个页表直接完成 GVA -&gt; HPA 的地址翻译，这种页表被称作影子页表，shadow paging。</p>
+<p>影子页表的构建就是遍历 GPT 和 HPT 的过程，其伪代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">set_cr3 <span class="token punctuation">(</span>guest_page_table<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> GVA <span class="token keyword">in</span> <span class="token number">0</span> to <span class="token number">220</span>
+        <span class="token keyword">if</span> guest_page_table<span class="token punctuation">[</span>GVA<span class="token punctuation">]</span> <span class="token operator">&amp;</span> PTE_P<span class="token punctuation">:</span>
+            GPA <span class="token operator">=</span> guest_page_table<span class="token punctuation">[</span>GVA<span class="token punctuation">]</span> <span class="token operator">&gt;&gt;</span> <span class="token number">12</span>
+            HPA <span class="token operator">=</span> host_page_table<span class="token punctuation">[</span>GPA<span class="token punctuation">]</span> <span class="token operator">&gt;&gt;</span> <span class="token number">12</span>
+            shadow_page_table<span class="token punctuation">[</span>GVA<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>HPA <span class="token operator">&lt;&lt;</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token operator">|</span> PTE_P
+        <span class="token keyword">else</span>
+            shadow_page_table <span class="token operator">=</span> <span class="token number">0</span>
+     CR3 <span class="token operator">=</span> PHYSICAL_ADDR<span class="token punctuation">(</span>shadow_page_table<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>影子页表的维护也比较繁琐，主要有两个问题。一个问题是如果 VM 修改自己的 GPT 怎么办？实际上 GPT 并不存在，那么修改后不会有任何效果，所以我们需要 trap 这种修改行为（通过将 GPT 设置成只读的），并将修改同步到影子页表。</p>
+<p>另一个问题是如果 Guest App 访问 Guest OS 的虚拟地址怎么办，因为此时 SPT 本质上是一个用户页表，所以也不存在用户地址空间和内核地址空间的隔离问题。我们可以准备两个 SPT，为 Guest App 提供的 SPT 中不包含 Guest OS 的地址映射，这样就解决了问题。</p>
+<p>SPT 的优点在于对落后硬件的兼容性强，并且只需要一次地址翻译流程，访问时延较低。而缺点在于，对于页表的修改需要时时 trap，性能不佳。此外，SPT 的数目会非常膨胀（其实也不是太多），这是因为每个 SPT 对应一个 (GPT, HPT) 对，而每个 Guest App 都有自己的 GPT，这就导致 SPT 的数量和所有 VM 上的所有 App 一致。如果为了避免 Guest OS 地址空间被 Guest App 读写，还需要多一倍的 SPT。</p>
+<h3 id="2-3-Direct-Paging"><a href="#2-3-Direct-Paging" class="headerlink" title="2.3 Direct Paging"></a>2.3 Direct Paging</h3><p>Direct Paging 是一种半虚拟化方法，也就是 Guest OS 使用 hypercall 来更新页表，并不能直接修改页表。页表记录的是 GVA -&gt; HPA 。</p>
+<p>这个的好处是实现简单，而问题在于对于 VM 不透明，而且 VM 会获得更多 Host Memory 的信息，引发安全事故。</p>
+<h3 id="2-4-Hardware-Support"><a href="#2-4-Hardware-Support" class="headerlink" title="2.4 Hardware Support"></a>2.4 Hardware Support</h3><p>硬件支持的方式就是拓展 MMU 的功能，使其可以完成二级翻译，如 Intel 的 EPT（Extended Page Table），AMD 的 NPT（Nested Page Table）。</p>
+<p>而二级翻译最大的缺点是，二级页表的内存访问次数会过多。对于 4 级页表而言，一次地址翻译最多需要访问内存 20 次。</p>
+<p><img src="/posts/670dae13/image-20250107123106563.png" alt="image-20250107123106563" style="zoom:50%;"></p>
+<hr>
+<h2 id="三、设备虚拟化"><a href="#三、设备虚拟化" class="headerlink" title="三、设备虚拟化"></a>三、设备虚拟化</h2><h3 id="3-1-背景"><a href="#3-1-背景" class="headerlink" title="3.1 背景"></a>3.1 背景</h3><p>我们希望一个真实设备可以供多个虚拟机使用，在此基础上，我们希望有如下功能：</p>
 <ul>
 <li>无论虚拟机想使用什么设备，我们都能模拟出来，这样便于迁移</li>
 <li>虚拟机看到的设备应该是独占的</li>
@@ -436,7 +474,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81CPU-%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">一、CPU 虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%83%8C%E6%99%AF"><span class="nav-text">2.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Trap-amp-Emulate"><span class="nav-text">2.2 Trap &amp; Emulate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">2.3 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-Instruction-Interpreter"><span class="nav-text">2.3.1 Instruction Interpreter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-Binary-Translator"><span class="nav-text">2.3.2 Binary Translator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-Para-virtualization"><span class="nav-text">2.3.3 Para-virtualization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-Hardware-Supported"><span class="nav-text">2.3.4 Hardware Supported</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%86%85%E5%AD%98%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">二、内存虚拟化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%AE%BE%E5%A4%87%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">三、设备虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%83%8C%E6%99%AF"><span class="nav-text">3.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Direct-access"><span class="nav-text">3.2 Direct access</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Emulating-Devices"><span class="nav-text">3.3 Emulating Devices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Para-Virtualized-Devices"><span class="nav-text">3.4 Para-Virtualized Devices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Hardware-Support"><span class="nav-text">3.5 Hardware Support</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E6%80%BB%E7%BB%93"><span class="nav-text">3.6 总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81CPU-%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">一、CPU 虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%83%8C%E6%99%AF"><span class="nav-text">2.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Trap-amp-Emulate"><span class="nav-text">2.2 Trap &amp; Emulate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">2.3 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-Instruction-Interpreter"><span class="nav-text">2.3.1 Instruction Interpreter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-Binary-Translator"><span class="nav-text">2.3.2 Binary Translator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-Para-virtualization"><span class="nav-text">2.3.3 Para-virtualization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-Hardware-Supported"><span class="nav-text">2.3.4 Hardware Supported</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%86%85%E5%AD%98%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">二、内存虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%83%8C%E6%99%AF-1"><span class="nav-text">2.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Shadow-Page-Table"><span class="nav-text">2.2 Shadow Page Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Direct-Paging"><span class="nav-text">2.3 Direct Paging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Hardware-Support"><span class="nav-text">2.4 Hardware Support</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%AE%BE%E5%A4%87%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">三、设备虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%83%8C%E6%99%AF"><span class="nav-text">3.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Direct-access"><span class="nav-text">3.2 Direct access</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Emulating-Devices"><span class="nav-text">3.3 Emulating Devices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Para-Virtualized-Devices"><span class="nav-text">3.4 Para-Virtualized Devices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Hardware-Support"><span class="nav-text">3.5 Hardware Support</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E6%80%BB%E7%BB%93"><span class="nav-text">3.6 总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -522,7 +560,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">19:02</span>
+    <span title="Reading time total">19:03</span>
 </div>
 
         
