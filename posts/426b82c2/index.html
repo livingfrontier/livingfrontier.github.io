@@ -31,7 +31,7 @@
 <meta property="og:description" content="代码优化1 个人信息    条目 内容     学号 2037xxxx   姓名 Thysrael   年级 2006   学院 计算机学院   竞速排名 2     2 总论我个人认为，优化分为两类，一类是分析型优化，这种类型的优化并不会改变 llvm ir 的结构，所以也不会有实际的优化效果，但是它们分析出来的信息，会去指导加工型优化的进行。另一种是加工型优化，这种优化会真正改变 llvm i">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-28T14:57:16.000Z">
-<meta property="article:modified_time" content="2024-10-17T06:35:03.523Z">
+<meta property="article:modified_time" content="2025-01-18T13:04:54.302Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="知识总结">
 <meta property="article:tag" content="S5课上">
@@ -248,7 +248,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-10-17 14:35:03" itemprop="dateModified" datetime="2024-10-17T14:35:03+08:00">2024-10-17</time>
+                <time title="Modified: 2025-01-18 21:04:54" itemprop="dateModified" datetime="2025-01-18T21:04:54+08:00">2025-01-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -388,8 +388,8 @@ temp = {index} \cup (\bigcap_{j \in preds(index)} domer(j) )</script><p>需要�
 <p>将所有的 <code>%v1</code> 都用 <code>3</code> 替代。</p>
 <p>除此之外，还可以进行一定的运算强度削弱，比如说</p>
 <pre class="line-numbers language-none"><code class="language-none">%v1 = mul i32 %v2, 2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre><code> 换成
-</code></pre><pre class="line-numbers language-none"><code class="language-none">%v1 = add i32 %v2, %v2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>换成</p>
+<pre class="line-numbers language-none"><code class="language-none">%v1 = add i32 %v2, %v2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>再比如说</p>
 <pre class="line-numbers language-none"><code class="language-none">%v1 = add i32 %v2, 0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>直接用 <code>v2</code> 替换 <code>v1</code>。</p>
@@ -619,7 +619,7 @@ v3 = (v2 + 1) + 1</script><p>那么我们可以考虑多生成一条冗余指令
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">19:08</span>
+    <span title="Reading time total">19:13</span>
 </div>
 
         
