@@ -23,24 +23,26 @@
     var CONFIG = {"hostname":"thysrael.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="傅里叶变换完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是）的映射。 主要利用的原理是复数的旋转特性，也就是欧拉公式的一个应用">
+  <meta name="description" content="一、总论傅里叶变换是非常著名的一种算法，它完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是以频率 $f$ 为自变量）的映射。 如果这么说可能非常难以理解，这是因为我们无法直观认识时域函数和频域函数具体指什么。我们可以将时域函数理解成一个非常“自然”的函数，也就是说，它是一种“原始数据”，典型的时域函数比如说，当人耳听到声音时，我们可以收集一个耳膜振幅随着时间变化的函数，如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="补充数学-傅里叶变换">
 <meta property="og:url" content="https://thysrael.github.io/posts/5d6f5a0a/index.html">
 <meta property="og:site_name" content="钟鼓楼">
-<meta property="og:description" content="傅里叶变换完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是）的映射。 主要利用的原理是复数的旋转特性，也就是欧拉公式的一个应用">
+<meta property="og:description" content="一、总论傅里叶变换是非常著名的一种算法，它完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是以频率 $f$ 为自变量）的映射。 如果这么说可能非常难以理解，这是因为我们无法直观认识时域函数和频域函数具体指什么。我们可以将时域函数理解成一个非常“自然”的函数，也就是说，它是一种“原始数据”，典型的时域函数比如说，当人耳听到声音时，我们可以收集一个耳膜振幅随着时间变化的函数，如">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227173829361.png">
-<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227174910837.png">
-<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227175708538.png">
-<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227175800383.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/a01c7723402192c4fb9fb1554f9fda82_1440w.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20250124185910704.png">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/40cf849e55ed95732a60b52d4019d609_1440w.jpg">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/Peek%202025-01-24%2019-57.gif">
+<meta property="og:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20250125233939493.png">
 <meta property="article:published_time" content="2021-12-27T09:26:03.000Z">
-<meta property="article:modified_time" content="2024-10-17T06:35:03.533Z">
+<meta property="article:modified_time" content="2025-02-14T16:01:18.878Z">
 <meta property="article:author" content="Thysrael">
+<meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="S3复习">
 <meta property="article:tag" content="补充数学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thysrael.github.io/posts/5d6f5a0a/image-20211227173829361.png">
+<meta name="twitter:image" content="https://thysrael.github.io/posts/5d6f5a0a/a01c7723402192c4fb9fb1554f9fda82_1440w.jpg">
 
 <link rel="canonical" href="https://thysrael.github.io/posts/5d6f5a0a/">
 
@@ -134,17 +136,17 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">30</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">62</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">65</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">189</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">191</span></a>
 
   </li>
         <li class="menu-item menu-item-resource">
@@ -252,7 +254,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-10-17 14:35:03" itemprop="dateModified" datetime="2024-10-17T14:35:03+08:00">2024-10-17</time>
+                <time title="Modified: 2025-02-15 00:01:18" itemprop="dateModified" datetime="2025-02-15T00:01:18+08:00">2025-02-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,14 +279,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>590</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>3 mins.</span>
             </span>
 
         </div>
@@ -296,22 +298,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>傅里叶变换完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是）的映射。</p>
-<p>主要利用的原理是<strong>复数的旋转特性</strong>，也就是欧拉公式的一个应用</p>
-<span id="more"></span>
-<p>按照<strong>3Blue1Brown</strong>的讲解，傅里叶变换完成的其实是一个将波函数缠绕在通过原点，且垂直于xy平面轴上的过程，也就是这个过程：</p>
-<p><img src="/posts/5d6f5a0a/image-20211227173829361.png" alt="image-20211227173829361"></p>
-<p>这其中有两个频率，一个是<strong>3 beats/second</strong>，这是源波函数，是我们变换的操作对象，一个是<strong>1.81 cycles/second</strong> ，这是我们的缠绕频率（也就是我们我们每秒将图像绕轴几圈）。右侧的图像是这个缠绕的图像的质心的x轴（如果曲线有质量的话）。</p>
-<p>如果是一般的缠绕频率，可以看出一般缠绕图像就是挺对称的，所以质心一般就在原点附近，但是当缠绕频率等于原来波函数的频率的时候，就会呈现下面这种图像：</p>
-<p><img src="/posts/5d6f5a0a/image-20211227174910837.png" alt="image-20211227174910837"></p>
-<p>可以看出，因为频率恰好相等，所以缠绕的图像变得特别规整（也就是不再弥散的对称了）。此时质心会有一个明显的偏移。</p>
-<p>傅里叶变换的目的是把不同的波分开（有点像<strong>傅里叶展开</strong>了），所以如果在右下侧图刚好对应一个峰，那么就说明有一个这样频率的波在合成的波形中。也就是这样：</p>
-<p><img src="/posts/5d6f5a0a/image-20211227175708538.png" alt="image-20211227175708538"></p>
-<p>可以看到，合成波被分开了。</p>
-<p>关于这种旋转的具体实现，我们用的是复数，原理如下：</p>
+        <h2 id="一、总论"><a href="#一、总论" class="headerlink" title="一、总论"></a>一、总论</h2><p>傅里叶变换是非常著名的一种算法，它完成的是一个由时域函数（也就是以时间 $t$ 为自变量）到频域函数（也就是以频率 $f$ 为自变量）的映射。</p>
+<p>如果这么说可能非常难以理解，这是因为我们无法直观认识时域函数和频域函数具体指什么。我们可以将时域函数理解成一个非常“自然”的函数，也就是说，它是一种“原始数据”，典型的时域函数比如说，当人耳听到声音时，我们可以收集一个耳膜振幅随着时间变化的函数，如下图所示：</p>
+<p><img src="/posts/5d6f5a0a/a01c7723402192c4fb9fb1554f9fda82_1440w.jpg" alt="img"></p>
+<p>这种函数就是时域函数，但是这种时域函数非常不能体现事物的本质特征。比如说我现在问你，你能通过上面这幅图来判断这个声音的音调吗？显然是不能的。但是通过傅里叶变换，我们可以将它转换成一个频域函数，如下所示：</p>
+<p><img src="/posts/5d6f5a0a/image-20250124185910704.png" alt="image-20250124185910704"></p>
+<p>这下基本上是个人就可以看出来这个声音由几个音调组成了吧（音调就是频率）。</p>
+<p>所以，傅里叶变换其实是一种从“原始数据（时域函数）”提取“特征（频域函数）”的方法。在实际生产中，“时域”并不一定是时间，可以是空间，可以是坐标；“频域”也不一定是频率，可以是任何特征。</p>
+<hr>
+<h2 id="二、傅里叶级数"><a href="#二、傅里叶级数" class="headerlink" title="二、傅里叶级数"></a>二、傅里叶级数</h2><h3 id="2-1-总论"><a href="#2-1-总论" class="headerlink" title="2.1 总论"></a>2.1 总论</h3><p>既然傅里叶变换如此神奇，那么它的原理是什么呢？它的底层原理就是傅里叶级数。</p>
+<p>傅里叶级数指的是，对于一个一般的周期函数 $f(x)$ ，它可以被表示成多个正弦函数和余弦函数的和，如下所示：</p>
 <script type="math/tex; mode=display">
-\hat{g(f)} = \int^{+\infty}_{-\infty}g(t)e^{-2\pi ift}dt</script><p>其中 $e^{-2\pi ift}$ 起到了<strong>旋转</strong>的作用，而积分则是对质心的模拟。</p>
-<p><img src="/posts/5d6f5a0a/image-20211227175800383.png" alt="image-20211227175800383"></p>
+f(x)\sim\frac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)</script><p>其中有：</p>
+<script type="math/tex; mode=display">
+a_n=\frac{2}{T}\int_{0}^{T}f(x)\cos n\frac{2\pi}{T} xdx</script><script type="math/tex; mode=display">
+b_n=\frac{2}{T}\int_{0}^{T}f(x)\sin n\frac{2\pi}{T} xdx</script><h3 id="2-2-函数正交"><a href="#2-2-函数正交" class="headerlink" title="2.2 函数正交"></a>2.2 函数正交</h3><p>为了理解傅里叶级数是怎么得出的，我们需要先补充函数正交的概念。</p>
+<p>当我们说两个 $N$ 维向量 $A, B$ 是正交的时候，我们说得是他们的向量积为 0，即：</p>
+<script type="math/tex; mode=display">
+A \cdot B = \sum^{N - 1}_{i = 0} a_i b_i = 0</script><p>而当我们说两个函数 $f(x), g(x)$ 是正交的时候，我们说得是如下积分为 0，即：</p>
+<script type="math/tex; mode=display">
+\int^{+\infty}_{-\infty} f(x) g(x) dx = 0</script><p>可以看到两者的形式基本上是一样的。</p>
+<p>当函数为三角函数时，我们注意到如下性质，当 $f(x) = \sin mx, g(x) = \sin nx$ ，且 $m \ne n$ 时，两者不正交，更进一步，不止是 $\sin$ 还有 $\cos$ 都具有这个性质。也就是说，频率不相同的正余弦函数都是彼此正交的。</p>
+<h3 id="2-3-施密特正交化"><a href="#2-3-施密特正交化" class="headerlink" title="2.3 施密特正交化"></a>2.3 施密特正交化</h3><p>有了这个性质后，我们就可以用施密特正交化的方式来生成这个级数，也就是按照频率顺序，不断将这个函数中的不正交的分量移除。</p>
+<p>最后我们就可以得到 2.1 中的式子。</p>
+<hr>
+<h2 id="三、傅里叶变换"><a href="#三、傅里叶变换" class="headerlink" title="三、傅里叶变换"></a>三、傅里叶变换</h2><h3 id="3-1-理解"><a href="#3-1-理解" class="headerlink" title="3.1 理解"></a>3.1 理解</h3><p>从傅里叶级数这些式子中可以看出，这些正弦函数和余弦函数的频率（也就是 $n$ ）是各不相同的，同时振幅（也就是 $a_n, b_n$）也各不相同，所以我们可以将他们按照“以频率为 x 轴，以振幅为 y 轴”组成函数，也就是所谓的“频域函数”。如下所示：</p>
+<p><img src="/posts/5d6f5a0a/40cf849e55ed95732a60b52d4019d609_1440w.jpg" alt="img"></p>
+<p>我们还有一种更加直观的理解，就是将理解为多个旋转运动的叠加。如下所示：</p>
+<p><img src="/posts/5d6f5a0a/Peek 2025-01-24 19-57.gif" alt=""></p>
+<p>这是因为三角函数本来就对应旋转运动。旋转运动的半径就是振幅，角速度就是频率（起码正相关）。这也是很多科普文章里所说的，可以用“一个圆”来表示的原因。</p>
+<h3 id="3-2-离散"><a href="#3-2-离散" class="headerlink" title="3.2 离散"></a>3.2 离散</h3><p>连续的傅里叶变换的公式如下：</p>
+<script type="math/tex; mode=display">
+F(\omega) = \int^{+\infty}_{-\infty} f(t) e^{-i\omega t} dt</script><p>其中 $\omega$ 是角速度，为 $2\pi f$ 。</p>
+<p>这个公式看上去和傅里叶级数不太一样，但是基本上一模一样，只是用到了欧拉定理表达了三角函数：</p>
+<script type="math/tex; mode=display">
+e^{i\theta} =  \cos \theta + i \sin \theta</script><p>在工程上，我们通常不会使用这个式子，因为时域函数 $f(t)$ 并不是一个连续的函数，而是一组数据点，这组数据点可以被写成一个向量 $A$ ，并有 $a_m = f(t_m)$ 。而时间向量 $T$ 或者说 $t_n$ ，则依赖于我们是如何进行采样的。</p>
+<p>对应的，离散傅里叶变换被定义为：</p>
+<script type="math/tex; mode=display">
+F(\omega_n) = \sum ^{N - 1}_{m = 0} a_m e^{-i\frac{2\pi m}{N}n}</script><p>这里计算出来的只是 $F(\omega)$ 的一个分量 $F(\omega_n)$ ，而 $N$ 是样本数目。</p>
+<p>这里面有一个很有意思的点，就是函数和向量的关系，你可以发现，他们在实际应用中，基本上是可以完全相互替代的，这也是一个很有趣的直观理解。</p>
+<p>对于上面的式子，我们发现它是可以被整理成一个向量与矩阵的乘法形式，有：</p>
+<p>输入信号为：</p>
+<script type="math/tex; mode=display">
+\mathbf{a} = \begin{bmatrix} a_0 \\ a_1 \\ \vdots \\ a_{N-1} \end{bmatrix}</script><p>而矩阵为：</p>
+<script type="math/tex; mode=display">
+\mathbf{E} = \begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & e^{-i \frac{2\pi}{N} \cdot 1} & e^{-i \frac{2\pi}{N} \cdot 2} & \cdots & e^{-i \frac{2\pi}{N} \cdot (N-1)} \\
+1 & e^{-i \frac{2\pi}{N} \cdot 2} & e^{-i \frac{2\pi}{N} \cdot 4} & \cdots & e^{-i \frac{2\pi}{N} \cdot 2(N-1)} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & e^{-i \frac{2\pi}{N} \cdot (N-1)} & e^{-i \frac{2\pi}{N} \cdot 2(N-1)} & \cdots & e^{-i \frac{2\pi}{N} \cdot (N-1)^2}
+\end{bmatrix}</script><p>输出为：</p>
+<script type="math/tex; mode=display">
+\mathbf{F} = \begin{bmatrix} f_0 \\ f_1 \\ \vdots \\ f_{N-1} \end{bmatrix}</script><p>计算过程为：</p>
+<script type="math/tex; mode=display">
+\mathbf{F_{N}} = \mathbf{E_{N \times N}} \mathbf{a_{N}}</script><h3 id="3-3-FFT"><a href="#3-3-FFT" class="headerlink" title="3.3 FFT"></a>3.3 FFT</h3><p>按理说，离散傅里叶变换一次矩阵与向量运算的时间是 $O(N^2)$ ，但是因为采样数 $N$ 通常很大，所以我们不能接受这个复杂度，FFT 是一种利用了 $E$ 矩阵特性，进而将时间复杂度优化到 $O(N\log N)$ 的优秀算法。</p>
+<p>更具体而言，FFT 是一种二分分治算法，利用的是矩阵 $E$ 每一行向量所具有的对称性，也就是前半部分向量的结果和后半部分向量的结果只用计算一个即可，而且这种特性是递归与，也就是前四分之一向量和后四分之一向量也只需要计算一个，这种标准的分治算法，时间复杂度为 $O(N\log N)$ 。</p>
+<p>伪代码如下：</p>
+<p><img src="/posts/5d6f5a0a/image-20250125233939493.png" alt="image-20250125233939493"></p>
+<h3 id="3-4-应用"><a href="#3-4-应用" class="headerlink" title="3.4 应用"></a>3.4 应用</h3><p>计算机领域傅里叶变换有很多应用，比如说 jpeg 图像压缩，利用的就是傅里叶变换，提取出图像特征来。计算机视觉中，也使用傅里叶变换来提取特征。</p>
 
     </div>
 
@@ -321,6 +366,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" rel="tag"><i class="fa fa-tag"></i> 直观理解</a>
               <a href="/tags/S3%E5%A4%8D%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> S3复习</a>
               <a href="/tags/%E8%A1%A5%E5%85%85%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 补充数学</a>
           </div>
@@ -403,6 +449,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%BB%E8%AE%BA"><span class="nav-text">一、总论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="nav-text">二、傅里叶级数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%80%BB%E8%AE%BA"><span class="nav-text">2.1 总论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%87%BD%E6%95%B0%E6%AD%A3%E4%BA%A4"><span class="nav-text">2.2 函数正交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%96%BD%E5%AF%86%E7%89%B9%E6%AD%A3%E4%BA%A4%E5%8C%96"><span class="nav-text">2.3 施密特正交化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="nav-text">三、傅里叶变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%90%86%E8%A7%A3"><span class="nav-text">3.1 理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E7%A6%BB%E6%95%A3"><span class="nav-text">3.2 离散</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-FFT"><span class="nav-text">3.3 FFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%BA%94%E7%94%A8"><span class="nav-text">3.4 应用</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -418,20 +465,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">189</span>
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -488,7 +535,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">19:13</span>
+    <span title="Reading time total">19:38</span>
 </div>
 
         
