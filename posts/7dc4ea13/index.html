@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://thysrael.github.io/posts/7dc4ea13/attention3.drawio.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/7dc4ea13/attention4.drawio.png">
 <meta property="article:published_time" content="2025-01-30T14:24:19.000Z">
-<meta property="article:modified_time" content="2025-02-14T16:01:18.844Z">
+<meta property="article:modified_time" content="2025-02-21T02:11:22.031Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="直观理解">
 <meta property="article:tag" content="S9假期">
@@ -256,7 +256,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-15 00:01:18" itemprop="dateModified" datetime="2025-02-15T00:01:18+08:00">2025-02-15</time>
+                <time title="Modified: 2025-02-21 10:11:22" itemprop="dateModified" datetime="2025-02-21T10:11:22+08:00">2025-02-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -906,7 +906,7 @@ Y = softmax(\frac{QK^T}{\sqrt{d_{in}}})V</script><p>最后生成的是一个 $t 
 <p>但是为什么 decoder-attention 相比于 encode-attention，多了一个 Sequence Mask 机制，它说得是对于 $A$ 矩阵中的 $a_{ij}$ ，如果有 $j &gt; i$ ，那么就会被 $softmax$ 忽略。这样的目的是确保模型在生成当前词时，只能使用当前词及其之前的词，而不能“偷看”未来的词。而 encoder 就没有这个问题，为了获得语料库中的所有语义，Encoder 是允许使用全部上下文的。</p>
 <p>这里有个问题，就是在 Self-Regression 中，本来就是逐词生成的，在当前词没有生成的时候，未来的词也肯定没有生成，那么就算模型想偷看，也偷看不成。为了解释清楚，我们就需要理解逐词生成是推理的行为，而在训练的时候，模型是并行处理整个目标序列的，所以才需要掩码。</p>
 <h3 id="3-5-Multi-Head"><a href="#3-5-Multi-Head" class="headerlink" title="3.5 Multi-Head"></a>3.5 Multi-Head</h3><p>除了计算资源的浪费之外，我们还注意到 Self-Attention 的并行度又变差了。本来在机器翻译中，Attention 机制改进了 RNN 每个 token 逐个翻译的缺点，可以并行生成一整个输出语句（也就是 token 集合 $Y$）。但是在这个算法中，并行生成的 $Y$ 只用最后一个 token 的行向量 $y$ ，就又变成串行生成了。</p>
-<p>但是这种“串行生成”是 self-regression 的精髓，所以我个人感觉很难改变。但是我们依然有办法加速，那就是每次 attention 的时候通过减少 $d<em>k, d_v$ 来提高速度。这种缩减 $d_k, d_v$ 的行为，可以理解为在原本 $d</em>{model}$ 的空间里提取特征。</p>
+<p>但是这种“串行生成”是 self-regression 的精髓，所以我个人感觉很难改变。但是我们依然有办法加速，那就是每次 attention 的时候通过减少 <script type="math/tex">d_k, d_v</script> 来提高速度。这种缩减 <script type="math/tex">d_k, d_v</script> 的行为，可以理解为在原本 <script type="math/tex">d_{model}</script> 的空间里提取特征。</p>
 <p>那么仅提供一个特征，就容易导致精度丧失，所以我们可以使用多个 attention，提取多个不同的特征，最后再将结果拼接在一起，这样提高了并行度和延迟，又不损失精度。我们设模型的 head 数为 $h$ ，通常有：</p>
 <script type="math/tex; mode=display">
 d_{model} =  h \cdot d_k</script><p>我们举一个例子，有参数：</p>

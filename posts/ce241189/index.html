@@ -49,16 +49,16 @@
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945390429437.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945390670239.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945390896841.png">
-<meta property="og:image" content="https://ipads.feishu.cn/space/api/box/stream/download/asynccode/?code=YjAzY2VjN2ZjMjZjYzZhYTlmMTNjY2MyNTg3ZDFiNThfTnRMM0RvUzBHYzVEeVU1djMyakdvdFAzWHlLUUp0TXZfVG9rZW46TFJhcGI1MGZBb0ZhWlh4TnhoNGNBQ2FtbmhpXzE3Mzk0NTM3MDU6MTczOTQ1NzMwNV9WNA">
+<meta property="og:image" content="https://thysrael.github.io/posts/ce241189/28d63d58-4bd5-4995-ac91-a004c6cf6f85.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945391102343.png">
-<meta property="og:image" content="https://ipads.feishu.cn/space/api/box/stream/download/asynccode/?code=NjllZGU4M2M4NjM2YTY2ZGJhNjUwOGVhYzBlYWUxNmFfYkdGUm9IZUJnOW9OeTBHS1RZb3hxYVpsMmdLeXZVeE1fVG9rZW46SzliTGJZaXYyb3FVN054SGdWYWNmTDJkbjNjXzE3Mzk0NTM3MDU6MTczOTQ1NzMwNV9WNA">
+<meta property="og:image" content="https://thysrael.github.io/posts/ce241189/2861afa9-44ca-43ca-ba57-24cee9103951-1740103737579-3.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945391334345.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945391528647.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945391724649.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945392031051.png">
 <meta property="og:image" content="https://thysrael.github.io/posts/ce241189/-173945392212853.png">
 <meta property="article:published_time" content="2025-02-13T13:32:06.000Z">
-<meta property="article:modified_time" content="2025-02-14T16:01:18.861Z">
+<meta property="article:modified_time" content="2025-02-21T02:08:58.617Z">
 <meta property="article:author" content="Thysrael">
 <meta property="article:tag" content="S9课上">
 <meta property="article:tag" content="海边拾贝">
@@ -276,7 +276,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-02-15 00:01:18" itemprop="dateModified" datetime="2025-02-15T00:01:18+08:00">2025-02-15</time>
+                <time title="Modified: 2025-02-21 10:08:58" itemprop="dateModified" datetime="2025-02-21T10:08:58+08:00">2025-02-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -364,7 +364,7 @@
 <pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">np.einsum('mk,kn-&gt;mn', A, B)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Einsum 的特点在于，它将 compute 和 reduce 阶段完全区分开了，而不是混在一起，更加清晰了。</p>
 <p>具体而言，在 compute 阶段，我们会根据输入坐标，构建一个迭代空间，然后遍历空间中的每一个点进行计算，得到一个相同维度的张量。以矩阵乘法为例，输入坐标是<script type="math/tex">m,k</script>和<script type="math/tex">k,n</script>，我们构建的迭代空间是<script type="math/tex">[1,M] \times [1,K] \times [1,N]</script>。经过计算得到的张量是<script type="math/tex">z'_{m,k, n} = [a_{m,k} \times b_{k,n}]</script>。</p>
-<p>在 reduce 阶段，我们需要将我们得到的张量 <script type="math/tex">z_{m,k,n}</script>与输出坐标<script type="math/tex">m,n</script>进行比对，发现多了一个<script type="math/tex">$$维度。所以我们会沿着多出的维度进行规约，然后就可以得到</script>z<em>{m,n}=[\sum^{K}</em>{k=1}[a<em>{m,k} \times b</em>{k,n}]$$。</p>
+<p>在 reduce 阶段，我们需要将我们得到的张量 $z<em>{m,k,n}$ 与输出坐标 <script type="math/tex">m,n</script> 进行比对，发现多了一个 <script type="math/tex">k</script> 维度。所以我们会沿着多出的维度进行规约，然后就可以得到 $$z</em>{m,n}=[\sum^{K}<em>{k=1}[a</em>{m,k} \times b_{k,n}]$$。</p>
 <p>对比我平时用的矩阵乘法，可以看到 compute 和 reduce 是混合在一起的。</p>
 <pre class="line-numbers language-C" data-language="C"><code class="language-C"> for (int i = 0; i &lt; M; i++) {
      for (int j = 0; j &lt; N; j++) {
@@ -374,7 +374,7 @@
     }
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="1-3-TeAAL"><a href="#1-3-TeAAL" class="headerlink" title="1.3 TeAAL"></a>1.3 TeAAL</h3><p>TeAAL 是一个加速器模型 generator，可以根据不同算子生成不同的加速器模型。在它的设计中，算子需要使用 Einsum Cascade 来进行描述，也就是一系列的 Einsum 。</p>
-<p>使用 Einsum 好处在于，引入了迭代空间，使得许多<strong>加速器**</strong>设计**中的优化和 tradeoff 都非常清晰。TeAAL 提出了 3 个维度的优化：</p>
+<p>使用 Einsum 好处在于，引入了迭代空间，使得许多加速器设计中的优化和 tradeoff 都非常清晰。TeAAL 提出了 3 个维度的优化：</p>
 <ul>
 <li><strong>Loop Order</strong>：迭代空间“是<script type="math/tex">[1,M] \times [1,K] \times [1,N]</script>还是<script type="math/tex">[1,K] \times [1,M] \times [1,N]</script>”？这会影响数据是 stationary 的，还是 stream 的。</li>
 <li><strong>Splitting</strong>：运算中我们常常将输入分块计算，也可以视为在对迭代空间分块。</li>
@@ -427,12 +427,12 @@
 <h3 id="3-3-SpeedUp"><a href="#3-3-SpeedUp" class="headerlink" title="3.3 SpeedUp"></a>3.3 SpeedUp</h3><p>在 attention 时的加速比：</p>
 <p><img src="/posts/ce241189/-173945390896841.png" alt="img"></p>
 <p>在 inference 时的加速比：</p>
-<p><img src="https://ipads.feishu.cn/space/api/box/stream/download/asynccode/?code=YjAzY2VjN2ZjMjZjYzZhYTlmMTNjY2MyNTg3ZDFiNThfTnRMM0RvUzBHYzVEeVU1djMyakdvdFAzWHlLUUp0TXZfVG9rZW46TFJhcGI1MGZBb0ZhWlh4TnhoNGNBQ2FtbmhpXzE3Mzk0NTM3MDU6MTczOTQ1NzMwNV9WNA" alt="img"></p>
+<p><img src="/posts/ce241189/28d63d58-4bd5-4995-ac91-a004c6cf6f85.png" alt=""></p>
 <p>因为计算单元利用率提高，所以加速比也显著提高。</p>
 <h3 id="3-4-Energy"><a href="#3-4-Energy" class="headerlink" title="3.4 Energy"></a>3.4 Energy</h3><p>在 attention 时的能耗：</p>
 <p><img src="/posts/ce241189/-173945391102343.png" alt="img"></p>
 <p>在 inference 时的能耗：</p>
-<p><img src="https://ipads.feishu.cn/space/api/box/stream/download/asynccode/?code=NjllZGU4M2M4NjM2YTY2ZGJhNjUwOGVhYzBlYWUxNmFfYkdGUm9IZUJnOW9OeTBHS1RZb3hxYVpsMmdLeXZVeE1fVG9rZW46SzliTGJZaXYyb3FVN054SGdWYWNmTDJkbjNjXzE3Mzk0NTM3MDU6MTczOTQ1NzMwNV9WNA" alt="img"></p>
+<p><img src="/posts/ce241189/2861afa9-44ca-43ca-ba57-24cee9103951-1740103737579-3.png" alt="2861afa9-44ca-43ca-ba57-24cee9103951"></p>
 <p>Flash-Attention 节约了 DRAM 的访存开销。</p>
 <hr>
 <h2 id="四、计算密度"><a href="#四、计算密度" class="headerlink" title="四、计算密度"></a>四、计算密度</h2><p>这篇工作主要结合了前人的工作，许多成果本质上是算法（Flash-Attention）或者开发框架（TeAAL，Timeloop）的成果，而非这篇工作自己的成果。</p>
